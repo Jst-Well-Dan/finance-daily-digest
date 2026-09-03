@@ -113,6 +113,20 @@ def build_command(args: argparse.Namespace, yt_dlp_cmd: list[str], node: str | N
         "--no-update",
         "--lazy-playlist",
         "--break-on-reject",
+        "--ignore-errors",  # 单条视频失败（如云端 403）时跳过它继续，不再让整个 job 挂掉
+        "--retries",
+        "5",
+        "--fragment-retries",
+        "5",
+        "--retry-sleep",
+        "fragment:2",
+        "--sleep-requests",
+        "1",
+        "--sleep-interval",
+        "3",
+        # 多客户端回退：默认客户端被限流时自动切换 android/tv 重试，明显降低 403
+        "--extractor-args",
+        "youtube:player_client=default,android,tv",
         "--dateafter",
         args.dateafter,
         "--datebefore",
@@ -184,11 +198,29 @@ def main() -> int:
         print("WARNING: 未找到 Node.js；将继续下载，但部分 YouTube 格式可能不可用。")
     print(f"Output directory: {args.run_dir}")
 
+    archive_before = _count_archive_lines(args.archive)
     returncode, output = run(build_command(args, yt_dlp_cmd, node))
     if is_expected_range_stop(returncode, output):
         print("已到达日期范围下界，结束频道扫描（正常）。")
         return 0
-    return returncode
+    errors = output.count("ERROR:")
+    archive_after = _count_archive_lines(args.archive)
+    added = archive_after - archive_before
+    # 容错语义：单条 403/网络抖动已由 --ignore-errors 跳过；只要本次有新增下载即视为成功。
+    # 若全程无新增且仍有 ERROR，视为真失败（需人工介入，如配置 cookies 或检查网络），让 CI 报警。
+    if errors > 0:
+        print(f"⚠ 本次扫描遇到 {errors} 个下载错误（已跳过单条，等待下次重试），新增 {added} 条归档")
+        if added == 0:
+            print("X 无任何新增且存在下载错误，判定为真失败，返回非零让 CI 报警")
+            return 1
+    return 0
+
+
+def _count_archive_lines(p: Path) -> int:
+    try:
+        return len(p.read_text(encoding="utf-8").splitlines())
+    except (OSError, FileNotFoundError):
+        return 0
 
 
 if __name__ == "__main__":
