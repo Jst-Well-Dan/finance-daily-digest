@@ -12,7 +12,7 @@ for (const d of fs.readdirSync(abs, {withFileTypes:true}).filter(x=>x.isDirector
   const dir = path.join(abs,d.name);
   for (const f of fs.readdirSync(dir).filter(x=>x.endsWith("_结构化笔记.md"))) {
     const p = path.join(dir,f); const txt = fs.readFileSync(p,"utf-8");
-    const core = (txt.match(/## 1\. 核心结论[\s\S]*?(?=\n## 2\.)/)||[])[0] || txt.slice(0,4000);
+    const core = (txt.match(/## 1\. 核心结论[\s\S]*?(?=\n## \d+\.)/)||[])[0] || txt.slice(0,4000);
     const title = (txt.match(/^# 结构化笔记｜(.+)/m)||[])[1] || d.name;
     notes.push({title, core});
   }
