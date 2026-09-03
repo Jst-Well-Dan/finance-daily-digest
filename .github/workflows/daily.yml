@@ -43,7 +43,7 @@ jobs:
 
       - name: Install yt-dlp & python deps
         run: |
-          pip install -U yt-dlp markdown
+          pip install -U yt-dlp markdown requests
           yt-dlp --version
 
       - name: Install pi (local, for ESM resolution)
@@ -87,6 +87,9 @@ jobs:
           echo "archive lines: $(wc -l < .pi/skills/youtube-digest/.youtube_download_archive.txt)"
 
       - name: Transcribe
+        # 转写失败不应阻断当天发布：单条失败已由脚本降级为 status=failed，
+        # 此处整体容错并打印 status-file 摘要，末尾若确有失败将触发 issue 提醒。
+        continue-on-error: true
         env:
           SILICONFLOW_API_KEY: ${{ secrets.SILICONFLOW_API_KEY }}
         run: |
@@ -95,8 +98,10 @@ jobs:
             --run-dir "${{ steps.ddir.outputs.dir }}" \
             --transcriber .pi/skills/video-transcriber/scripts/transcribe_siliconflow.py \
             --status-file "${{ steps.ddir.outputs.dir }}/.transcribe_status.json" \
-            --workers 3
-          cat "${{ steps.ddir.outputs.dir }}/.transcribe_status.json" || true
+            --workers 3 || RC=$?
+          echo "--- transcribe status ---"
+          python -c "import json,sys; d=json.load(open('${{ steps.ddir.outputs.dir }}/.transcribe_status.json')); [print(r['status'], r.get('dir',''), (r.get('reason') or '')[:300]) for r in d['results']]" 2>&1 || cat "${{ steps.ddir.outputs.dir }}/.transcribe_status.json" || true
+          exit ${RC:-0}
 
       - name: Configure pi auth.json (cloud provider key)
         env:

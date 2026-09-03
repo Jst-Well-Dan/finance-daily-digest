@@ -260,7 +260,20 @@ def main() -> int:
 
     payload["finished_at"] = datetime.now().astimezone().isoformat()
     write_status(args.status_file, payload)
-    return 1 if any(item["status"] == "failed" for item in payload["results"]) else 0
+
+    failed = [r for r in payload["results"] if r["status"] == "failed"]
+    ok = [r for r in payload["results"] if r["status"] == "success"]
+    skipped = [r for r in payload["results"] if r["status"] == "skipped"]
+    print(f"[transcribe] done: {len(ok)} ok, {len(skipped)} skipped, {len(failed)} failed (total {len(candidates)})")
+    for r in failed:
+        reason = str(r.get("reason") or "")[:600].replace("\n", " ")
+        tb = str(r.get("traceback") or "")
+        print(f"[transcribe] FAIL dir={r.get('dir')} id={r.get('id')} reason={reason}")
+        if tb:
+            print(f"[transcribe] TRACEBACK: {tb[:2000]}")
+    for r in ok:
+        print(f"[transcribe] ok id={r.get('id')} size={r.get('size')}")
+    return 1 if failed else 0
 
 
 if __name__ == "__main__":
