@@ -124,9 +124,9 @@ def build_command(args: argparse.Namespace, yt_dlp_cmd: list[str], node: str | N
         "1",
         "--sleep-interval",
         "3",
-        # 多客户端回退：默认客户端被限流时自动切换 android/tv 重试，明显降低 403
+        # 多客户端回退：默认客户端被限流/SABR 实验时自动切换 web_safari/tv_simply 重试（本地产子均验证可用）
         "--extractor-args",
-        "youtube:player_client=default,android,tv",
+        "youtube:player_client=default,android,tv,web_safari,tv_simply",
         "--dateafter",
         args.dateafter,
         "--datebefore",
