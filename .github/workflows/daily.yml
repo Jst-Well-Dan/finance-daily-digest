@@ -80,6 +80,24 @@ jobs:
             --workers 3
           cat "${{ steps.ddir.outputs.dir }}/.transcribe_status.json" || true
 
+      - name: Configure pi auth.json (cloud provider key)
+        env:
+          PI_OPENCODE_KEY: ${{ secrets.PI_OPENCODE_KEY }}
+        run: |
+          # 从 Secret 重建本地同构的 ~/.pi/agent/auth.json，pi 以相同 provider 名解析模型
+          mkdir -p "$HOME/.pi/agent"
+          python - <<'PYEOF'
+          import json, os
+          key = os.environ.get("PI_OPENCODE_KEY", "")
+          if not key:
+              print("PI_OPENCODE_KEY missing: pi will run without cloud auth")
+          else:
+              auth = {"opencode-go": {"type": "str", "key": key}}
+              p = os.path.expanduser("~/.pi/agent/auth.json")
+              json.dump(auth, open(p, "w", encoding="utf-8"), ensure_ascii=False)
+              print(f"auth.json written: {p} (opencode-go)")
+          PYEOF
+
       - name: Generate structured notes via pi (provider-agnostic)
         env:
           # 配置任一可用供应商的 Key，pi 会自动择优；也可在 Repo Variables 设 PI_MODEL=provider/model 定死
@@ -101,7 +119,7 @@ jobs:
           fi
           ls -lh "${{ steps.ddir.outputs.dir }}" || true
 
-      - name: Build index.html (A·暖档)
+      - name: Build HTML (Finance Gazette style)
         run: |
           python scripts/build_reader.py
           ls -lh index.html
