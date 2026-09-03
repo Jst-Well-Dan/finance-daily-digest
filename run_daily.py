@@ -190,7 +190,13 @@ def main() -> int:
     sh(dl_cmd, f"① 增量下载频道视频（窗口 {window_start} → {_date_days_ago(-1)}）", allow_fail_ok=True)
 
     # ①.5 按 upload_date 归档分发（核心：隔几天补时自动补齐中间日期）
-    date_dirs = distribute_by_upload_date(dd)
+    distributed = distribute_by_upload_date(dd)
+    print(f"◆ 分发涉及: {distributed}")
+    # 需处理全部已有日期（保证历史未完成也能补；全部幂等，已转写/已笔记自动跳过）
+    date_dirs = sorted(existing_daily_dates())
+    if date_str not in date_dirs:
+        date_dirs.append(date_str)
+        date_dirs = sorted(date_dirs)
     print(f"◆ 需处理的日期目录: {date_dirs}")
 
     # ②③④ 逐日转写 / 笔记 / 总结
