@@ -105,21 +105,24 @@ jobs:
 
       - name: Configure pi auth.json (cloud provider key)
         env:
-          PI_OPENCODE_KEY: ${{ secrets.PI_OPENCODE_KEY }}
+          PI_AUTH_JSON_B64: ${{ secrets.PI_AUTH_JSON_B64 }}
         run: |
-          # 从 Secret 重建本地同构的 ~/.pi/agent/auth.json，pi 以相同 provider 名解析模型
+          # 从 Secret 解码与本地同构的 auth.json（含 opencode-go，type=api_key），pi 以相同 provider 名解析模型
           mkdir -p "$HOME/.pi/agent"
-          python - <<'PYEOF'
-          import json, os
-          key = os.environ.get("PI_OPENCODE_KEY", "")
-          if not key:
-              print("PI_OPENCODE_KEY missing: pi will run without cloud auth")
-          else:
-              auth = {"opencode-go": {"type": "str", "key": key}}
-              p = os.path.expanduser("~/.pi/agent/auth.json")
-              json.dump(auth, open(p, "w", encoding="utf-8"), ensure_ascii=False)
-              print(f"auth.json written: {p} (opencode-go)")
-          PYEOF
+          echo "$PI_AUTH_JSON_B64" | base64 -d > "$HOME/.pi/agent/auth.json"
+          python -c "import json,os; d=json.load(open(os.path.expanduser('~/.pi/agent/auth.json'))); print('auth.json:', {k: v.get('type') for k, v in d.items()})"
+
+      - name: Debug pi model/auth resolution
+        run: |
+          node --input-type=module -e "
+          import { ModelRuntime, resolveCliModel } from '@earendil-works/pi-coding-agent';
+          const mr = await ModelRuntime.create();
+          const m = process.env.PI_MODEL;
+          const r = m ? resolveCliModel({ cliModel: m, modelRuntime: mr }) : { model: null, warning: 'no PI_MODEL' };
+          console.log('[pi-debug] PI_MODEL=' + (m || ''));
+          console.log('[pi-debug] resolve ok=' + !!r.model + ' warn=' + (r.warning || '') + ' err=' + (r.error || '') + (r.model ? ' -> ' + r.model.provider + '/' + r.model.id : ''));
+          try { console.log('[pi-debug] hasAuth(opencode-go)=' + await mr.hasConfiguredAuth('opencode-go')); } catch (e) { console.log('[pi-debug] auth check ERR: ' + e.message); }
+          "
 
       - name: Generate structured notes via pi (provider-agnostic)
         env:
