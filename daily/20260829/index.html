@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>解读君视频日报 · 20260829</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@400;600;700;900&display=swap" rel="stylesheet">
+  <style>
+:root {
+  --bg-page: #FBF8F2;
+  --bg-surface: #FFFDF9;
+  --bg-header: #F4EFE6;
+  --bg-subtle: #F0EADF;
+  --border-main: #E5DDCD;
+  --border-dark: #2B2625;
+  --text-main: #231F20;
+  --text-muted: #5C554E;
+  --text-light: #8E8478;
+  --accent-burgundy: #8B261D;
+  --accent-amber: #B45309;
+  --font-serif: 'Noto Serif SC', Georgia, 'Times New Roman', serif;
+  --font-sans: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'IBM Plex Mono', monospace;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 15px; }
+body {
+  background: var(--bg-page);
+  color: var(--text-main);
+  font-family: var(--font-sans);
+  line-height: 1.85;
+  -webkit-font-smoothing: antialiased;
+}
+
+.wrap {
+  max-width: 1300px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 290px 1fr;
+  min-height: 100vh;
+  border-left: 2px solid var(--border-dark);
+  border-right: 2px solid var(--border-dark);
+  background: var(--bg-surface);
+}
+
+@media (max-width: 1024px) {
+  .wrap { grid-template-columns: 1fr; border: none; }
+}
+
+/* Sidebar */
+.nav {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow-y: auto;
+  padding: 32px 24px;
+  background: #F7F3EB;
+  border-right: 1px solid var(--border-main);
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+@media (max-width: 1024px) {
+  .nav { position: relative; height: auto; border-right: none; border-bottom: 2px solid var(--border-dark); }
+}
+
+.brand {
+  padding-bottom: 18px;
+  border-bottom: 2px solid var(--border-dark);
+}
+.brand h1 {
+  font-family: var(--font-serif);
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: var(--border-dark);
+}
+.brand h1 span {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent-burgundy);
+  margin-top: 4px;
+}
+
+.toc h2 {
+  font-family: var(--font-serif);
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--border-dark);
+  border-bottom: 1px solid var(--border-main);
+  padding-bottom: 6px;
+  margin: 16px 0 10px;
+}
+
+.toc a {
+  display: flex;
+  flex-direction: column;
+  padding: 8px 10px;
+  text-decoration: none;
+  color: var(--text-main);
+  border: 1px solid transparent;
+  border-radius: 4px;
+  transition: all 0.15s;
+  font-size: 13px;
+  line-height: 1.4;
+  margin-bottom: 4px;
+}
+.toc a:hover {
+  background: var(--bg-subtle);
+  border-color: var(--border-main);
+}
+.toc a.active {
+  background: #EFE8DA;
+  border-color: var(--border-main);
+  color: var(--accent-burgundy);
+  font-weight: 600;
+}
+.toc a span {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+.nav-desc {
+  font-size: 11px;
+  font-family: var(--font-mono);
+  color: var(--text-muted);
+  line-height: 1.6;
+  padding: 4px 6px;
+}
+
+/* Main Area */
+.main {
+  padding: 40px 48px 80px;
+  max-width: 960px;
+}
+
+@media (max-width: 768px) {
+  .main { padding: 24px 18px 40px; }
+}
+
+.gazette-header {
+  border-top: 3px double var(--border-dark);
+  border-bottom: 1px solid var(--border-dark);
+  padding: 20px 0;
+  margin-bottom: 36px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+.gazette-header h1 {
+  font-family: var(--font-serif);
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--border-dark);
+}
+.gazette-header .gazette-meta {
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.summary-card, .article {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-main);
+  margin-bottom: 40px;
+}
+
+.summary-head, .article-head {
+  background: var(--bg-header);
+  padding: 20px 26px;
+  border-bottom: 1px solid var(--border-main);
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+}
+.article-head h3, .summary-head h3 {
+  font-family: var(--font-serif);
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text-main);
+  line-height: 1.35;
+}
+.article-head h3 a, .summary-head h3 a {
+  color: inherit;
+  text-decoration: none;
+}
+.article-head h3 a:hover, .summary-head h3 a:hover {
+  color: var(--accent-burgundy);
+}
+
+.meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-top: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.meta a {
+  color: var(--accent-burgundy);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.content {
+  padding: 32px 36px;
+  font-size: 14.5px;
+  line-height: 1.9;
+  color: #2D2726;
+}
+
+@media (max-width: 768px) {
+  .content { padding: 20px 18px; }
+  .summary-head, .article-head { padding: 16px 18px; }
+}
+
+.content h1 {
+  font-family: var(--font-serif);
+  font-size: 22px;
+  font-weight: 700;
+  margin: 0 0 18px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border-dark);
+}
+
+.content h2 {
+  font-family: var(--font-serif);
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--accent-burgundy);
+  background: var(--bg-header);
+  border: 1px solid var(--border-main);
+  border-radius: 4px;
+  padding: 8px 14px;
+  margin: 32px 0 14px;
+  letter-spacing: 0.02em;
+}
+
+.content h3 {
+  font-family: var(--font-serif);
+  font-size: 14.5px;
+  font-weight: 700;
+  margin: 22px 0 10px;
+  color: var(--text-main);
+}
+
+.content p {
+  margin-bottom: 16px;
+  text-align: justify;
+}
+
+.content strong {
+  font-weight: 700;
+  color: #1A1616;
+}
+
+.content ul, .content ol {
+  margin: 12px 0 18px 24px;
+}
+.content li {
+  margin-bottom: 6px;
+}
+
+.content blockquote {
+  background: #F3ECE0;
+  border: 1px solid var(--border-main);
+  border-radius: 4px;
+  padding: 14px 20px;
+  margin: 20px 0;
+  font-size: 13.5px;
+  font-style: italic;
+  color: #523E3B;
+}
+
+.content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 24px 0;
+  font-size: 13px;
+  border: 1px solid var(--border-main);
+}
+.content th {
+  background: #ECE4D6;
+  font-family: var(--font-serif);
+  font-weight: 700;
+  color: var(--border-dark);
+  text-align: left;
+  padding: 10px 14px;
+  border: 1px solid var(--border-main);
+}
+.content td {
+  padding: 9px 14px;
+  border: 1px solid var(--border-main);
+}
+.content tr:nth-child(even) {
+  background: #F8F4EC;
+}
+
+.content code {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  background: #EDE6D8;
+  padding: 2px 6px;
+  border-radius: 3px;
+  color: var(--accent-burgundy);
+}
+
+.day-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-main);
+  padding: 20px 24px;
+  margin-bottom: 18px;
+}
+.day-card h3 {
+  font-family: var(--font-serif);
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+.day-card h3 a {
+  color: var(--text-main);
+  text-decoration: none;
+}
+.day-card h3 a:hover {
+  color: var(--accent-burgundy);
+}
+.day-card p {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+.btn {
+  display: inline-flex;
+  padding: 8px 14px;
+  border: 1px solid var(--border-dark);
+  background: var(--bg-surface);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  text-decoration: none;
+  color: var(--text-main);
+  font-weight: 600;
+  transition: all 0.15s;
+}
+.btn:hover {
+  background: var(--bg-subtle);
+}
+.btn.primary {
+  background: var(--border-dark);
+  color: #FFFFFF;
+}
+.btn.primary:hover {
+  background: var(--accent-burgundy);
+  border-color: var(--accent-burgundy);
+}
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <nav class="nav">
+      <div class="brand">
+        <h1>解读君视频日报<span>JIEDU DAILY · 20260829</span></h1>
+      </div>
+      <div class="toc">
+        <h2>全量原文</h2>
+        <a href="#summary" class="active">每日核心总结<span>20260829</span></a>
+        
+        <h2>历史归档</h2>
+        <a href="../../index.html">← 返回历史总览</a>
+        <a href="../20260903/index.html" class="">20260903 <span>1 篇 · 当日归档</span></a><a href="../20260902/index.html" class="">20260902 <span>3 篇 · 当日归档</span></a><a href="../20260831/index.html" class="">20260831 <span>0 篇 · 当日归档</span></a><a href="../20260829/index.html" class="active">20260829 <span>0 篇 · 当日归档</span></a><a href="../20260828/index.html" class="">20260828 <span>0 篇 · 当日归档</span></a><a href="../20260825/index.html" class="">20260825 <span>0 篇 · 当日归档</span></a><a href="../20260824/index.html" class="">20260824 <span>1 篇 · 当日归档</span></a><a href="../20260823/index.html" class="">20260823 <span>0 篇 · 当日归档</span></a><a href="../20260821/index.html" class="">20260821 <span>3 篇 · 当日归档</span></a>
+      </div>
+    </nav>
+    <main class="main">
+      <div class="gazette-header">
+        <div>
+          <h1>金融经纬 · 每日纪要</h1>
+          <div class="gazette-meta">JIEDU DAILY FINANCIAL GAZETTE · VOL. 20260829</div>
+        </div>
+        <div class="gazette-meta">0 ARTICLES ARCHIVED</div>
+      </div>
+      
+<section id="summary" class="summary-card">
+  <div class="summary-head">
+    <div>
+      <h3>每日总结 · 20260829</h3>
+      <div class="meta">暂无</div>
+    </div>
+  </div>
+  <div class="content"><p>暂无总结</p></div>
+</section>
+
+      
+      <div class="day-card">
+        <p>归档路径 <code>daily/20260829/</code> · <a href="../../index.html">返回历史总览</a> · <a href="./index.html">本日目录</a></p>
+      </div>
+    </main>
+  </div>
+</body>
+</html>
