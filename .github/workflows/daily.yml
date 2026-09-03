@@ -30,7 +30,8 @@ jobs:
 
       - uses: actions/setup-node@v4
         with:
-          node-version: "20"
+          # pi SDK 0.84.4 依赖 node:fs.globSync，需要 Node 22+；24 与本地一致
+          node-version: "24"
 
       - name: Install system deps
         run: |
