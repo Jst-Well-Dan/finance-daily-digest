@@ -1,0 +1,31 @@
+# media — never commit (daily downloads are large)
+daily/**/*.mp4
+daily/**/*.webm
+daily/**/*.mkv
+daily/**/*.mov
+daily/**/*.m4v
+daily/**/*.avi
+daily/**/*.mp3
+daily/**/*.wav
+daily/**/*.m4a
+daily/**/*.info.json
+daily/**/.transcribe_status.json
+
+# keep markdown & html
+!daily/**/*.md
+
+# python
+__pycache__/
+*.pyc
+.venv/
+
+# node
+node_modules/
+
+# pi local-only assets — never commit (skills used in CI are un-ignored below)
+.pi/*
+!.pi/skills/
+.pi/skills/*
+!.pi/skills/youtube-digest/
+!.pi/skills/video-transcriber/
+.pi/skills/youtube-digest/**/__pycache__/

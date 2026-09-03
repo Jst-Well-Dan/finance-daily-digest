@@ -1,0 +1,146 @@
+name: daily
+
+on:
+  schedule:
+    - cron: "0 0 * * *" # 08:00 CST
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: daily
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install system deps
+        run: |
+          sudo apt-get update -y
+          sudo apt-get install -y ffmpeg
+          ffmpeg -version | head -1
+          node -v
+          python -V
+
+      - name: Install yt-dlp & python deps
+        run: |
+          pip install -U yt-dlp markdown
+          yt-dlp --version
+
+      - name: Install pi (local, for ESM resolution)
+        run: |
+          npm i --no-save @earendil-works/pi-coding-agent
+          node --input-type=module -e "import('@earendil-works/pi-coding-agent')" && echo "pi SDK import ok"
+
+      - name: Resolve daily dir
+        id: ddir
+        run: |
+          DDIR=$(python scripts/resolve_daily_dir.py --date $(date +%Y%m%d) --ensure)
+          echo "dir=$DDIR" >> $GITHUB_OUTPUT
+          echo "Daily dir: $DDIR"
+          cat content_paths.json
+
+      - name: Download channel (incremental 14d window)
+        env:
+          TZ: Asia/Shanghai
+        run: |
+          python .pi/skills/youtube-digest/scripts/download_youtube_channel.py \
+            --run-dir "${{ steps.ddir.outputs.dir }}" \
+            --dateafter $(date -d "14 days ago" +%Y%m%d) \
+            --datebefore $(date -d "tomorrow" +%Y%m%d) \
+            --archive .pi/skills/youtube-digest/.youtube_download_archive.txt
+          echo "archive lines: $(wc -l < .pi/skills/youtube-digest/.youtube_download_archive.txt)"
+
+      - name: Transcribe
+        env:
+          SILICONFLOW_API_KEY: ${{ secrets.SILICONFLOW_API_KEY }}
+        run: |
+          mkdir -p "${{ steps.ddir.outputs.dir }}"
+          python .pi/skills/youtube-digest/scripts/process_video_transcripts.py \
+            --run-dir "${{ steps.ddir.outputs.dir }}" \
+            --transcriber .pi/skills/video-transcriber/scripts/transcribe_siliconflow.py \
+            --status-file "${{ steps.ddir.outputs.dir }}/.transcribe_status.json" \
+            --workers 3
+          cat "${{ steps.ddir.outputs.dir }}/.transcribe_status.json" || true
+
+      - name: Generate structured notes via pi (provider-agnostic)
+        env:
+          # 配置任一可用供应商的 Key，pi 会自动择优；也可在 Repo Variables 设 PI_MODEL=provider/model 定死
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          SILICONFLOW_API_KEY: ${{ secrets.SILICONFLOW_API_KEY }}
+          PI_MODEL: ${{ vars.PI_MODEL }}
+        run: |
+          # 仅当存在新转写稿且缺笔记时才会调用 LLM；无待生成则秒退，不消耗额度
+          node scripts/generate_notes_via_pi.mjs --daily-dir "${{ steps.ddir.outputs.dir }}"
+
+      - name: Generate daily summary (deterministic copy of core conclusions)
+        run: |
+          # 每日总结是“原样复制核心结论”的确定性步骤，直接用 python 聚合，避免 LLM 改写漂移
+          if ls "${{ steps.ddir.outputs.dir }}"/*/*_结构化笔记.md >/dev/null 2>&1; then
+            python scripts/build_daily_summary.py --daily-dir "${{ steps.ddir.outputs.dir }}"
+          else
+            echo "no notes, skip summary"
+          fi
+          ls -lh "${{ steps.ddir.outputs.dir }}" || true
+
+      - name: Build index.html (A·暖档)
+        run: |
+          python scripts/build_reader.py
+          ls -lh index.html
+
+      - name: Commit & push if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add daily/ .pi/skills/youtube-digest/.youtube_download_archive.txt index.html || true
+          if git diff --cached --quiet; then
+            echo "no changes to commit"
+            exit 0
+          fi
+          git commit -m "daily: $(date +%Y-%m-%d) auto update"
+          git push
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: .
+
+      - name: Create issue on failure
+        if: failure()
+        uses: peter-evans/create-issue-from-file@v5
+        with:
+          title: "daily workflow failed: ${{ github.run_id }}"
+          content-filepath: .github/ISSUE_TEMPLATE.md
+          labels: automated
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    if: success()
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

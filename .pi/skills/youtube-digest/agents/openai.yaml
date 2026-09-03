@@ -1,0 +1,4 @@
+interface:
+  display_name: "解读君视频获取与总结"
+  short_description: "增量下载并转写解读君 YouTube 频道视频，撰写视频总结"
+  default_prompt: "Use $youtube-digest to fetch new videos from the 解读君 YouTube channel, transcribe them, and write a video digest."

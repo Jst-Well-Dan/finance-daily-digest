@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>解读君视频日报 · 4套浅色设计原型对比与选型</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@600;700;900&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #F8FAFC;
+      --card-bg: #FFFFFF;
+      --border: #E2E8F0;
+      --text: #0F172A;
+      --muted: #64748B;
+      --primary: #1E40AF;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, 'Noto Sans SC', sans-serif;
+      padding: 40px 24px 80px;
+      line-height: 1.6;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    .header h1 {
+      font-family: 'Noto Serif SC', serif;
+      font-size: 28px;
+      font-weight: 900;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+    .header p {
+      color: var(--muted);
+      font-size: 15px;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 28px;
+      margin-bottom: 40px;
+    }
+    @media (max-width: 860px) {
+      .grid { grid-template-columns: 1fr; }
+    }
+
+    .proto-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+    }
+    .proto-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 15px -3px rgba(0,0,0,0.08);
+      border-color: var(--primary);
+    }
+
+    .proto-preview {
+      height: 220px;
+      background: #F1F5F9;
+      border-bottom: 1px solid var(--border);
+      position: relative;
+      overflow: hidden;
+    }
+    .proto-preview iframe {
+      width: 200%;
+      height: 200%;
+      border: none;
+      transform: scale(0.5);
+      transform-origin: 0 0;
+      pointer-events: none;
+    }
+
+    .proto-info {
+      padding: 24px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    .proto-title {
+      font-family: 'Noto Serif SC', serif;
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .proto-tag {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 3px 8px;
+      border-radius: 4px;
+      background: #EFF6FF;
+      color: #1D4ED8;
+    }
+    .proto-desc {
+      font-size: 13.5px;
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+    .proto-specs {
+      background: #F8FAFC;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 12px 14px;
+      font-size: 12px;
+      margin-bottom: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      font-family: 'IBM Plex Mono', monospace;
+    }
+    .spec-item {
+      display: flex;
+      justify-content: space-between;
+    }
+    .spec-label {
+      color: var(--muted);
+    }
+    .spec-value {
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .proto-btn {
+      margin-top: auto;
+      display: block;
+      text-align: center;
+      background: var(--text);
+      color: #FFFFFF;
+      text-decoration: none;
+      padding: 12px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 14px;
+      transition: background 0.15s;
+    }
+    .proto-btn:hover {
+      background: var(--primary);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>解读君视频日报 · 4套浅色设计方案</h1>
+      <p>全部遵循浅色/纸面舒适背景、彻底去除侧边深色栏、无徽章视觉噪点、全量原文呈现。请点击查看各方案实际效果并选定：</p>
+    </div>
+
+    <div class="grid">
+      <!-- Prototype A -->
+      <div class="proto-card">
+        <div class="proto-preview">
+          <iframe src="1-dossier.html" loading="lazy"></iframe>
+        </div>
+        <div class="proto-info">
+          <div class="proto-title">
+            <span>方案 A · 研报档案</span>
+            <span class="proto-tag">Institutional</span>
+          </div>
+          <div class="proto-desc">国际顶级投行与宏观智库白皮书风。纯白底色配深海青蓝结构线，适合严谨的数据逻辑与结论核验。</div>
+          <div class="proto-specs">
+            <div class="spec-item"><span class="spec-label">主背景色</span><span class="spec-value">#F8FAFC / #FFFFFF</span></div>
+            <div class="spec-item"><span class="spec-label">视觉基调</span><span class="spec-value">投行海蓝 #1D4ED8 / 严谨克制</span></div>
+            <div class="spec-item"><span class="spec-label">核心排版</span><span class="spec-value">系统无衬线 + Noto Serif 标号分层</span></div>
+          </div>
+          <a class="proto-btn" href="1-dossier.html">打开方案 A (研报档案) ↗</a>
+        </div>
+      </div>
+
+      <!-- Prototype B -->
+      <div class="proto-card">
+        <div class="proto-preview">
+          <iframe src="2-gazette.html" loading="lazy"></iframe>
+        </div>
+        <div class="proto-info">
+          <div class="proto-title">
+            <span>方案 B · 金融经纬</span>
+            <span class="proto-tag">Gazette</span>
+          </div>
+          <div class="proto-desc">《金融时报》(FT) 与彭博社经典纸刊排版。暖调米纸底色配勃艮第酒红与经典报刊衬线体。</div>
+          <div class="proto-specs">
+            <div class="spec-item"><span class="spec-label">主背景色</span><span class="spec-value">#FBF8F2 (暖调米纸)</span></div>
+            <div class="spec-item"><span class="spec-label">视觉基调</span><span class="spec-value">勃艮第红 #8B261D / 报章经纬</span></div>
+            <div class="spec-item"><span class="spec-label">核心排版</span><span class="spec-value">Noto Serif SC 经典社论字距</span></div>
+          </div>
+          <a class="proto-btn" href="2-gazette.html">打开方案 B (金融经纬) ↗</a>
+        </div>
+      </div>
+
+      <!-- Prototype C -->
+      <div class="proto-card">
+        <div class="proto-preview">
+          <iframe src="3-studio.html" loading="lazy"></iframe>
+        </div>
+        <div class="proto-info">
+          <div class="proto-title">
+            <span>方案 C · 极简工坊</span>
+            <span class="proto-tag">Modern Studio</span>
+          </div>
+          <div class="proto-desc">Linear / Apple 风格高科技极简浅色。雪白背景与极细微边框，微动效目录，现代感最强。</div>
+          <div class="proto-specs">
+            <div class="spec-item"><span class="spec-label">主背景色</span><span class="spec-value">#FFFFFF / #FAFAFA</span></div>
+            <div class="spec-item"><span class="spec-label">视觉基调</span><span class="spec-value">电光蓝 #0284C7 / 极简科技</span></div>
+            <div class="spec-item"><span class="spec-label">核心排版</span><span class="spec-value">Modern Sans + 等宽代码流</span></div>
+          </div>
+          <a class="proto-btn" href="3-studio.html">打开方案 C (极简工坊) ↗</a>
+        </div>
+      </div>
+
+      <!-- Prototype D -->
+      <div class="proto-card">
+        <div class="proto-preview">
+          <iframe src="4-zenith.html" loading="lazy"></iframe>
+        </div>
+        <div class="proto-info">
+          <div class="proto-title">
+            <span>方案 D · 典雅文澜</span>
+            <span class="proto-tag">Kyoto Serif</span>
+          </div>
+          <div class="proto-desc">东方文人笔记与日式书籍装帧美学。温润淡茶白背景配松柏绿与落栗色，护眼沉浸式研读。</div>
+          <div class="proto-specs">
+            <div class="spec-item"><span class="spec-label">主背景色</span><span class="spec-value">#F6F5F0 (淡茶护眼白)</span></div>
+            <div class="spec-item"><span class="spec-label">视觉基调</span><span class="spec-value">松柏绿 #2D5A43 + 落栗 #784435</span></div>
+            <div class="spec-item"><span class="spec-label">核心排版</span><span class="spec-value">宋体/明体长文排版 · 疏朗从容</span></div>
+          </div>
+          <a class="proto-btn" href="4-zenith.html">打开方案 D (典雅文澜) ↗</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
