@@ -115,15 +115,11 @@ def build_command(args: argparse.Namespace, yt_dlp_cmd: list[str], node: str | N
         "--break-on-reject",
         "--ignore-errors",  # 单条视频失败（如云端 403）时跳过它继续，不再让整个 job 挂掉
         "--retries",
-        "5",
+        "2",
         "--fragment-retries",
         "5",
         "--retry-sleep",
         "fragment:2",
-        "--sleep-requests",
-        "1",
-        "--sleep-interval",
-        "3",
         # 多客户端回退：默认客户端被限流/SABR 实验时自动切换 web_safari/tv_simply 重试（本地产子均验证可用）
         "--extractor-args",
         "youtube:player_client=default,android,tv,web_safari,tv_simply",

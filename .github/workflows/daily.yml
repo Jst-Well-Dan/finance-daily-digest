@@ -24,7 +24,8 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    # 全链路含 10+ 视频下载与转写，20 分钟太紧；公开库免费层上限 6h，取 60 分钟余量
+    timeout-minutes: 60
     steps:
       - uses: actions/checkout@v4
         with:
