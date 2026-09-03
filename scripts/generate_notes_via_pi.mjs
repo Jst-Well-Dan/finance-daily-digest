@@ -56,14 +56,16 @@ const TEMPLATE = `# 结构化笔记｜{{TITLE}}
 function parseArgs() {
   const args = process.argv.slice(2);
   let dailyDir = null;
+  let limit = 0; // 0 = 不限
   for (let i = 0; i < args.length; i++) {
     if (args[i] === "--daily-dir" && args[i+1]) dailyDir = args[++i];
+    if (args[i] === "--limit" && args[i+1]) limit = parseInt(args[++i], 10) || 0;
   }
   if (!dailyDir) {
-    console.error("用法: node scripts/generate_notes_via_pi.mjs --daily-dir daily/YYYYMMDD");
+    console.error("用法: node scripts/generate_notes_via_pi.mjs --daily-dir daily/YYYYMMDD [--limit N]");
     process.exit(1);
   }
-  return { dailyDir };
+  return { dailyDir, limit };
 }
 
 async function generateOne(session, transcriptPath, notePath) {
@@ -113,7 +115,7 @@ ${transcript.slice(0, 30000)}
 }
 
 async function main() {
-  const { dailyDir } = parseArgs();
+  const { dailyDir, limit } = parseArgs();
   const absDaily = path.resolve(dailyDir);
   if (!fs.existsSync(absDaily)) { console.error(`目录不存在: ${absDaily}`); process.exit(1); }
 
@@ -144,6 +146,10 @@ async function main() {
     }
   }
   if (tasks.length === 0) { console.log("无待生成笔记"); return; }
+  if (limit > 0) {
+    tasks.length = Math.min(tasks.length, limit);
+    console.log(`本次限制只生成 ${tasks.length} 篇（--limit ${limit}）`);
+  }
   console.log(`待生成 ${tasks.length} 篇笔记...`);
 
   // pi 会话：按环境自动选可用模型，支持 PI_MODEL=provider/model 覆盖

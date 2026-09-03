@@ -4,6 +4,12 @@ on:
   schedule:
     - cron: "0 0 * * *" # 08:00 CST
   workflow_dispatch:
+    inputs:
+      notes_limit:
+        description: "本次最多生成的结构化笔记篇数（留空=不限；验证时填 1）"
+        required: false
+        type: string
+        default: ""
 
 permissions:
   contents: write
@@ -131,9 +137,10 @@ jobs:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           SILICONFLOW_API_KEY: ${{ secrets.SILICONFLOW_API_KEY }}
           PI_MODEL: ${{ vars.PI_MODEL }}
+          NOTES_LIMIT: ${{ inputs.notes_limit }}
         run: |
           # 仅当存在新转写稿且缺笔记时才会调用 LLM；无待生成则秒退，不消耗额度
-          node scripts/generate_notes_via_pi.mjs --daily-dir "${{ steps.ddir.outputs.dir }}"
+          node scripts/generate_notes_via_pi.mjs --daily-dir "${{ steps.ddir.outputs.dir }}" ${NOTES_LIMIT:+--limit $NOTES_LIMIT}
 
       - name: Generate daily summary (deterministic copy of core conclusions)
         run: |
