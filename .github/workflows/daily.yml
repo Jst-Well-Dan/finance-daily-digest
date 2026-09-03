@@ -9,6 +9,7 @@ permissions:
   contents: write
   pages: write
   id-token: write
+  issues: write
 
 concurrency:
   group: daily
@@ -58,6 +59,11 @@ jobs:
           cat content_paths.json
 
       - name: Download channel (incremental 14d window)
+        id: dl
+        # YouTube 对 runner 的 Azure IP 可能触发会话级反爬（SABR / PO Token 墙），
+        # 单个视频 403 已由脚本容忍；若整体失败则不阻断当天后续步骤（转写/笔记/HTML 依旧跑），
+        # 并在失败时建 Issue 提醒介入（配套 cookies 后即可稳定）。
+        continue-on-error: true
         env:
           TZ: Asia/Shanghai
         run: |
@@ -142,7 +148,7 @@ jobs:
           path: .
 
       - name: Create issue on failure
-        if: failure()
+        if: ${{ failure() || steps.dl.outcome == 'failure' }}
         uses: peter-evans/create-issue-from-file@v5
         with:
           title: "daily workflow failed: ${{ github.run_id }}"
