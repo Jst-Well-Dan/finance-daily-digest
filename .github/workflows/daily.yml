@@ -67,12 +67,23 @@ jobs:
         continue-on-error: true
         env:
           TZ: Asia/Shanghai
+          YT_COOKIES_B64: ${{ secrets.YT_COOKIES }}
         run: |
+          # 若配置了 YT_COOKIES（导出的 cookies.txt Base64），解码后供 yt-dlp 使用以绕过会话级反爬
+          COOKIES_ARG=""
+          if [ -n "$YT_COOKIES_B64" ]; then
+            echo "$YT_COOKIES_B64" | base64 -d > "$RUNNER_TEMP/cookies.txt"
+            echo "yt cookies decoded: $(wc -l < "$RUNNER_TEMP/cookies.txt") lines"
+            COOKIES_ARG="--cookies $RUNNER_TEMP/cookies.txt"
+          else
+            echo "yt cookies: not configured (create an Issue if downloads keep failing)"
+          fi
           python .pi/skills/youtube-digest/scripts/download_youtube_channel.py \
             --run-dir "${{ steps.ddir.outputs.dir }}" \
             --dateafter $(date -d "14 days ago" +%Y%m%d) \
             --datebefore $(date -d "tomorrow" +%Y%m%d) \
-            --archive .pi/skills/youtube-digest/.youtube_download_archive.txt
+            --archive .pi/skills/youtube-digest/.youtube_download_archive.txt \
+            $COOKIES_ARG
           echo "archive lines: $(wc -l < .pi/skills/youtube-digest/.youtube_download_archive.txt)"
 
       - name: Transcribe

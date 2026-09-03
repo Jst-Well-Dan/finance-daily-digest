@@ -141,6 +141,9 @@ def build_command(args: argparse.Namespace, yt_dlp_cmd: list[str], node: str | N
         "-o",
         output_template,
     ]
+    if args.cookies and args.cookies.is_file():
+        command.extend(["--cookies", str(args.cookies)])
+        print(f"cookies: 使用 {args.cookies}（{args.cookies.stat().st_size} bytes）")
     # 注意：已移除 --trim-filenames 120，避免与 %(title).120B 双重裁剪导致文件名被过度截断为 "大摩.md"
     # Windows 长路径问题已由 120B 限制覆盖，如需额外限制请设为 240 而非 120
     if node:
@@ -180,6 +183,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--channel-url", default=CHANNEL_URL)
     parser.add_argument("--yt-dlp", help="yt-dlp 可执行文件路径；默认从 PATH 查找，找不到则回退至 python -m")
     parser.add_argument("--node", help="Node.js 可执行文件路径；默认从 PATH 查找")
+    parser.add_argument("--cookies", type=Path, help="cookies.txt 路径（推荐用于云端解决 YouTube 会话级反爬）；文件不存在时自动忽略")
     return parser.parse_args()
 
 
