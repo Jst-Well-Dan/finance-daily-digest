@@ -17,7 +17,7 @@ run_daily.py — 本地一键运行「解读君视频日报」全链路，随后
 
 环境变量:
     SILICONFLOW_API_KEY   转写必需（已配置）
-    PI_MODEL              笔记 LLM 模型，默认 muse-spark-1.2-contributor
+    PI_MODEL              笔记 LLM 模型，默认 muse-spark-1.3-contributor
 
 退出码: 0=完全成功, 2=部分步骤失败(已容错), 1=致命错误
 """
@@ -34,7 +34,7 @@ ROOT = Path(__file__).resolve().parents[0]
 SKILLS = ROOT / ".pi" / "skills"
 DAILY = ROOT / "daily"
 
-DEFAULT_PI_MODEL = "muse-spark-1.2-contributor"
+DEFAULT_PI_MODEL = "muse-spark-1.3-contributor"
 VID_DIR_RE = re.compile(r"^(.+)\s*\[([A-Za-z0-9_-]{6,})\]$")
 
 
