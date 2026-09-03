@@ -29,3 +29,8 @@ node_modules/
 !.pi/skills/youtube-digest/
 !.pi/skills/video-transcriber/
 .pi/skills/youtube-digest/**/__pycache__/
+
+# youtube cookies (contains login session — secret, never commit)
+cookies.txt
+*.cookies.txt
+
