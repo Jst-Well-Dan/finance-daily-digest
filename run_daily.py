@@ -137,12 +137,12 @@ def run_tx_notes_summary(date_dirs: list[str], notes_limit: int) -> None:
             print(f"  ※ --notes-limit 只作用于首个日期，跳过 {date_name} 的笔记生成")
         else:
             notes_cmd = [
-                "node", str(ROOT / "scripts" / "generate_notes_via_pi.mjs"),
+                sys.executable, str(ROOT / "scripts" / "generate_notes_via_pi_print.py"),
                 "--daily-dir", str(d),
             ]
             if notes_limit > 0:
                 notes_cmd += ["--limit", str(notes_limit)]
-            sh(notes_cmd, f"③ 生成结构化笔记 {date_name}（pi, model={env_notes['PI_MODEL']}）",
+            sh(notes_cmd, f"③ 生成结构化笔记 {date_name}（pi -p, model={env_notes['PI_MODEL']}）",
                env_extra=env_notes, allow_fail_ok=True)
 
         # ④ 每日总结（有笔记才生成）
