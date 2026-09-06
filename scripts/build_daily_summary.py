@@ -10,8 +10,8 @@ for i,p in enumerate(notes,1):
     title=(re.search(r"^# 结构化笔记｜(.+)",txt,re.M) or [None, p.parent.name])[1]
     m=re.search(r"## 1\. 核心结论(.*?)(?=\n## \d+\.)",txt,re.S)
     core=m.group(0).strip() if m else txt[:3000]
-    # 去掉标题行，保留核心结论内容
-    core = re.sub(r"^## 1\. 核心结论\s*\n","",core).strip()
+    # 去掉标题行（含模型自带的括号说明），保留核心结论内容
+    core = re.sub(r"^## 1\. 核心结论[^\n]*\n?", "", core, count=1).strip()
     out.append(f"## {i}. {title}\n\n{core}\n")
 target = daily / f"{daily.name}_解读君视频总结.md"
 target.write_text("\n".join(out), encoding="utf-8")

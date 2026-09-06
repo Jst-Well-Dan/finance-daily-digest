@@ -53,7 +53,7 @@ _VP_SPLIT_RE = re.compile(
     r"(premise前提事实|前提事实|推导逻辑|推导|隐含假设|反例\s*/\s*证伪条件|反例|证伪条件|原文位置|结论)[：:]",
     flags=re.I,
 )
-_VP_ORDER = ["结论", "前提", "推导", "假设", "证伪", "原文", "说明"]
+_VP_ORDER = ["结论", "前提", "推导", "假设", "证伪", "说明"]
 _VP_PROSE_RE = re.compile(r"^观点\s*(\d+)\s*[，,、:：]?\s*(.*)$")
 _VP_HEAD_RE = re.compile(r"^\*\*观点\s*(\d+)\s*[：:](.+?)\*\*\s*$")
 _VP_BULLET_RE = re.compile(r"^[-*+]\s+(?:\*\*)?([^：:]+?)(?:\*\*)?[：:]\s*(.*)$")
@@ -184,6 +184,8 @@ def normalize_viewpoints(text):
             out.append("\n".join(b))
     if not cards:
         return text
+    # 统一小节标题（去掉模型自带的括号说明，保持卡片页清爽）
+    lines[start] = "## 2. 专家观点与逻辑链"
     return "\n".join(lines[:start + 1] + ["", "\n\n".join(out), ""] + lines[end:])
 
 
