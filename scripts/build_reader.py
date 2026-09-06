@@ -15,7 +15,180 @@ except:
 root = pathlib.Path(__file__).resolve().parents[1]
 daily_root = root / "daily"
 
+def _inline_md(text):
+    """行内 markdown 转 HTML（剥掉外层 <p>），用于卡片字段值。"""
+    text = (text or "").strip()
+    if not text:
+        return ""
+    if HAS_MD:
+        h = markdown.markdown(text).strip()
+        m = re.fullmatch(r"<p>(.*)</p>", h, flags=re.S)
+        return m.group(1) if m else h
+    import html as _html
+    return _html.escape(text)
+
+
+_LIST_RE = re.compile(r"^([-*+]|\d{1,3}[.)])\s+\S")
+_SKIP_PREV_RE = re.compile(r"^(?:[-*+]|\d{1,3}[.)])\s+\S|#{1,6}\s|>\||<")
+
+
+def fix_loose_lists(text):
+    """在紧贴段落的列表行前补空行（Python-Markdown 要求，否则 `- ` 被吞进 <p>）。
+    跳过围栏代码块；有序/无序统一处理。"""
+    out, in_fence = [], False
+    for line in text.split("\n"):
+        s = line.strip()
+        if s.startswith("```"):
+            in_fence = not in_fence
+            out.append(line)
+            continue
+        if (not in_fence and _LIST_RE.match(s) and out
+                and out[-1].strip() != "" and not _SKIP_PREV_RE.match(out[-1].strip())):
+            out.append("")
+        out.append(line)
+    return "\n".join(out)
+
+
+_VP_SPLIT_RE = re.compile(
+    r"(premise前提事实|前提事实|推导逻辑|推导|隐含假设|反例\s*/\s*证伪条件|反例|证伪条件|原文位置|结论)[：:]",
+    flags=re.I,
+)
+_VP_ORDER = ["结论", "前提", "推导", "假设", "证伪", "原文", "说明"]
+_VP_PROSE_RE = re.compile(r"^观点\s*(\d+)\s*[，,、:：]?\s*(.*)$")
+_VP_HEAD_RE = re.compile(r"^\*\*观点\s*(\d+)\s*[：:](.+?)\*\*\s*$")
+_VP_BULLET_RE = re.compile(r"^[-*+]\s+(?:\*\*)?([^：:]+?)(?:\*\*)?[：:]\s*(.*)$")
+_VP_BULLET_MAP = {
+    "观点归属": "owner", "结论": "结论", "前提事实": "前提",
+    "推导逻辑": "推导", "推导": "推导", "隐含假设": "假设",
+    "反例/证伪条件": "证伪", "反例": "证伪", "证伪条件": "证伪",
+    "原文位置": "原文",
+}
+_VP_OWNER_IN_TITLE_RE = re.compile(r"(?:｜|——)\s*归属[：:]?\s*(.+)$")
+
+
+def _vp_norm_key(label):
+    label = re.sub(r"(?i)^premise", "", label).replace(" ", "")
+    for raw, key in _VP_BULLET_MAP.items():
+        if label == raw.replace(" ", ""):
+            return key
+    # 散文切分出的 label 映射到展示名
+    return {"结论": "结论", "前提事实": "前提", "推导逻辑": "推导", "推导": "推导",
+            "隐含假设": "假设", "反例": "证伪", "证伪条件": "证伪",
+            "原文位置": "原文"}.get(label)
+
+
+def _split_vp_fields(text):
+    """把 `结论：…前提事实：…` 散文切成 {展示名: 值}；返回 (首段残留, fields)。"""
+    parts = _VP_SPLIT_RE.split(text)
+    head, fields = parts[0].strip(), {}
+    for i in range(1, len(parts) - 1, 2):
+        key = _vp_norm_key(parts[i])
+        val = parts[i + 1].strip()
+        if key and key != "owner" and val and key not in fields:
+            fields[key] = val
+    return head, fields
+
+
+def _vp_card(num, title, owner, fields):
+    head = f'<div class="vp-head"><span class="vp-num">{num}</span>'
+    if title:
+        head += f'<span class="vp-title">{_inline_md(title)}</span>'
+    if owner:
+        head += f'<span class="vp-owner">归属：{_inline_md(owner)}</span>'
+    head += "</div>"
+    rows = "".join(
+        f'<div class="vp-row"><span class="vp-label">{k}</span>'
+        f'<span class="vp-val">{_inline_md(fields[k])}</span></div>'
+        for k in _VP_ORDER if k in fields
+    )
+    return f'<div class="viewpoint">\n{head}\n{rows}\n</div>'
+
+
+def _parse_vp_block(block):
+    """识别一个观点块（散文式 / 标题+列表式），返回卡片 HTML；不是则返回 None。"""
+    first = block[0].strip()
+    # A. 散文式：观点1，归属：X。结论：…前提事实：…
+    m = _VP_PROSE_RE.match(first)
+    if m:
+        text = first if len(block) == 1 else "".join(block)
+        m2 = _VP_PROSE_RE.match(text.strip())
+        num, rest = m2.group(1), m2.group(2)
+        owner = ""
+        mo = re.match(r"归属[：:]\s*([^。，；;]+)[。，；;]?\s*(.*)$", rest, flags=re.S)
+        if mo:
+            owner, rest = mo.group(1).strip(), mo.group(2).strip()
+        head, fields = _split_vp_fields(rest)
+        if head and not fields:
+            fields = {"说明": head}
+        elif head and fields:
+            fields.setdefault("说明", head)
+        if not fields:
+            return None
+        return _vp_card(f"观点{num}", "", owner, fields)
+    # B. 标题+列表式：**观点1：标题** + 若干 `- 字段：值`
+    h = _VP_HEAD_RE.match(first)
+    if h:
+        num, title = h.group(1), h.group(2).strip()
+        owner = ""
+        mo = _VP_OWNER_IN_TITLE_RE.search(title)
+        if mo:
+            owner, title = mo.group(1).strip(), _VP_OWNER_IN_TITLE_RE.sub("", title).strip()
+        fields, last_key = {}, None
+        for bl in block[1:]:
+            bm = _VP_BULLET_RE.match(bl.strip())
+            if not bm:
+                if last_key and bl.strip():
+                    fields[last_key] += bl.strip()
+                continue
+            key = _vp_norm_key(bm.group(1).strip())
+            if key == "owner":
+                owner = owner or bm.group(2).strip()
+                last_key = None
+            elif key:
+                last_key = key
+                fields[key] = bm.group(2).strip() if key not in fields else fields[key] + bm.group(2).strip()
+            else:
+                last_key = None
+        if not fields:
+            return None
+        return _vp_card(f"观点{num}", title, owner, fields)
+    return None
+
+
+def normalize_viewpoints(text):
+    """把 `## 2. 专家观点与逻辑链` 小节内的观点块改写成字段卡片 HTML。
+    解析不到任何观点卡时原样返回（总结文件等不受影响）。"""
+    lines = text.split("\n")
+    start = next((i for i, l in enumerate(lines)
+                  if re.match(r"^##\s*2\.\s*专家观点与逻辑链", l.strip())), None)
+    if start is None:
+        return text
+    end = next((i for i in range(start + 1, len(lines))
+                if re.match(r"^##\s*\d", lines[i].strip())), len(lines))
+    blocks, cur = [], []
+    for l in lines[start + 1:end]:
+        if l.strip():
+            cur.append(l)
+        elif cur:
+            blocks.append(cur)
+            cur = []
+    if cur:
+        blocks.append(cur)
+    out, cards = [], 0
+    for b in blocks:
+        card = _parse_vp_block(b)
+        if card:
+            out.append(card)
+            cards += 1
+        else:
+            out.append("\n".join(b))
+    if not cards:
+        return text
+    return "\n".join(lines[:start + 1] + ["", "\n\n".join(out), ""] + lines[end:])
+
+
 def md_to_html(text):
+    text = fix_loose_lists(normalize_viewpoints(text))
     if HAS_MD:
         return markdown.markdown(text, extensions=["tables", "fenced_code", "toc"])
     import html
@@ -323,10 +496,98 @@ body {
 }
 
 .content ul, .content ol {
-  margin: 12px 0 18px 24px;
+  margin: 12px 0 18px 6px;
+  padding-left: 22px;
 }
 .content li {
-  margin-bottom: 6px;
+  margin-bottom: 8px;
+  line-height: 1.8;
+}
+.content ul > li::marker {
+  content: "▪ ";
+  color: var(--accent-burgundy);
+}
+.content ol > li::marker {
+  color: var(--accent-burgundy);
+  font-weight: 700;
+  font-family: var(--font-mono);
+}
+.content li > ul, .content li > ol {
+  margin: 8px 0 8px 6px;
+}
+
+.viewpoint {
+  border: 1px solid var(--border-main);
+  border-radius: 6px;
+  margin: 16px 0 20px;
+  overflow: hidden;
+  background: #FFFDF8;
+}
+.vp-head {
+  background: var(--bg-header);
+  padding: 10px 16px;
+  border-bottom: 1px solid var(--border-main);
+  display: flex;
+  gap: 10px;
+  align-items: baseline;
+  flex-wrap: wrap;
+}
+.vp-num {
+  font-family: var(--font-serif);
+  font-weight: 700;
+  font-size: 14.5px;
+  color: var(--accent-burgundy);
+  white-space: nowrap;
+}
+.vp-title {
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--text-main);
+}
+.vp-owner {
+  margin-left: auto;
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+.vp-row {
+  display: grid;
+  grid-template-columns: 46px 1fr;
+  gap: 12px;
+  padding: 8px 16px;
+  font-size: 13.5px;
+  line-height: 1.8;
+}
+.vp-row + .vp-row {
+  border-top: 1px dashed var(--border-main);
+}
+.vp-label {
+  font-weight: 700;
+  font-size: 12.5px;
+  color: var(--accent-burgundy);
+  white-space: nowrap;
+  padding-top: 1px;
+}
+.vp-val {
+  color: #2D2726;
+  text-align: justify;
+  min-width: 0;
+}
+.vp-val p {
+  margin: 0;
+  text-align: justify;
+}
+.vp-val code {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  background: #EDE6D8;
+  padding: 2px 6px;
+  border-radius: 3px;
+  color: var(--accent-burgundy);
+}
+@media (max-width: 768px) {
+  .vp-row { grid-template-columns: 40px 1fr; padding: 7px 12px; }
 }
 
 .content blockquote {

@@ -275,10 +275,98 @@ body {
 }
 
 .content ul, .content ol {
-  margin: 12px 0 18px 24px;
+  margin: 12px 0 18px 6px;
+  padding-left: 22px;
 }
 .content li {
-  margin-bottom: 6px;
+  margin-bottom: 8px;
+  line-height: 1.8;
+}
+.content ul > li::marker {
+  content: "▪ ";
+  color: var(--accent-burgundy);
+}
+.content ol > li::marker {
+  color: var(--accent-burgundy);
+  font-weight: 700;
+  font-family: var(--font-mono);
+}
+.content li > ul, .content li > ol {
+  margin: 8px 0 8px 6px;
+}
+
+.viewpoint {
+  border: 1px solid var(--border-main);
+  border-radius: 6px;
+  margin: 16px 0 20px;
+  overflow: hidden;
+  background: #FFFDF8;
+}
+.vp-head {
+  background: var(--bg-header);
+  padding: 10px 16px;
+  border-bottom: 1px solid var(--border-main);
+  display: flex;
+  gap: 10px;
+  align-items: baseline;
+  flex-wrap: wrap;
+}
+.vp-num {
+  font-family: var(--font-serif);
+  font-weight: 700;
+  font-size: 14.5px;
+  color: var(--accent-burgundy);
+  white-space: nowrap;
+}
+.vp-title {
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--text-main);
+}
+.vp-owner {
+  margin-left: auto;
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+.vp-row {
+  display: grid;
+  grid-template-columns: 46px 1fr;
+  gap: 12px;
+  padding: 8px 16px;
+  font-size: 13.5px;
+  line-height: 1.8;
+}
+.vp-row + .vp-row {
+  border-top: 1px dashed var(--border-main);
+}
+.vp-label {
+  font-weight: 700;
+  font-size: 12.5px;
+  color: var(--accent-burgundy);
+  white-space: nowrap;
+  padding-top: 1px;
+}
+.vp-val {
+  color: #2D2726;
+  text-align: justify;
+  min-width: 0;
+}
+.vp-val p {
+  margin: 0;
+  text-align: justify;
+}
+.vp-val code {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  background: #EDE6D8;
+  padding: 2px 6px;
+  border-radius: 3px;
+  color: var(--accent-burgundy);
+}
+@media (max-width: 768px) {
+  .vp-row { grid-template-columns: 40px 1fr; padding: 7px 12px; }
 }
 
 .content blockquote {
@@ -436,13 +524,41 @@ body {
 <li>外资是否真金白银加码A股取决于两个契机。结论是一是AI投资从上半场卖铲子转向下半场扩散应用，中国多元生态链机会变多；二是出现类似2024年924/926式的打破思维定势、聚焦K型分化和低物价循环的一揽子政策；适用条件是外资已认可中国先进制造与科创提升，但仍担忧内需不足反噬大厂盈利与融资能力，边界是若无超预期政策，仅靠科技亮点只能带来涓涓细流式回流。</li>
 </ol>
 <h2 id="2-ab">2. 专家观点与逻辑链（每个观点含：观点归属/结论/前提事实/推导逻辑 前提A→变化B→结论/隐含假设/反例证伪条件/原文位置）</h2>
-<p>观点1，归属：邢自强。结论：财政应就业优先，支持服务业消费而非只补大件。 premise前提事实：上半年新三样出口超1000亿美元、新兴AI算力相关出口超千亿增50%，总量有支撑，但消费地产就业弱；以旧换新只覆盖大件，服务业劳动密集却缺乏支持。推导：前提A新智生产力已挣到钱→变化B对其出口退税退坡省出财力→结论转向服务消费券与服务业减税降费可带动就业。隐含假设：财政总量有限、转移支付有效且不产生大浪费。证伪条件：若服务消费券乘数极低或退税退坡重创出口，则逻辑不成立。原文位置：开场回应二季度4.3%与K型分化段。</p>
-<p>观点2，归属：邢自强。结论：中美AI路径不同，中国开源低成本扩散足以分庭抗礼。 premise前提事实：美国投天文数字算力中心做封闭高收费AGI，中国token成本约美国1/10且多开源。推导：前提A美国重前沿突破→变化B中国重好用便宜快速落地至企业百姓与第三方国家→结论全球版图如手机与电动车一样各占一席。隐含假设：扩散价值不低于前沿突破价值、第三方市场足够大。证伪条件：若AGI短期实现并形成绝对代差与封闭垄断，则中国路径被证伪。原文位置：回应“财政顾民生会否耽误AI”段。</p>
-<p>观点3，归属：主持人提问+邢自强回应。结论：追税与对外投资管制短期偏收缩，现阶段不宜收紧。 premise前提事实：18-21年减税降费叠加23年以来低物价致税收/GDP下降，地方强化征管补海外与历史欠税。推导：前提A经济处转型压力与低物价循环→变化B加税与审查直接加重负担并打击预期→结论增速更慢、分母分子算不过来、低物价更持久。隐含假设：信心效应大于补税增收效应。证伪条件：若追税规模极小且财政收入明显改善而信心未受损，则不成立。原文位置：讨论三处与宏观取向不一致段。</p>
-<p>观点4，归属：邢自强。结论：应以中央财政发力投向社保来打破循环，而非投基建。 premise前提事实：中国有强主权资产负债表、国资、外储与资本账户管理能力；过去债投基建因有全球化与城市化红利，现在两者放缓。推导：前提A债务用途决定生产率→变化B从形成资产转向夯实保障解决后顾之忧→结论企业盈利雇人恢复、收入预期好转后财政自然好转。隐含假设：社保支出能有效转化为消费率提升，如其引用省份案例。证伪条件：若社保投入后居民仍超额储蓄、消费率至2030年无提升，则失效。原文位置：讨论债怎么还、用在哪段；含日本失落20年教训类比。</p>
-<p>观点5，归属：邢自强。结论：政策仍在924/926延续线上，不悲观但需凝聚共识后加码。 premise前提事实：924/926是9月非常规会议+股市与特别国债创新工具+部分投向消费民生，提振信心；两年后科技与一级市场信心恢复但内需地产仍弱。推导：前提A问题复杂难以一蹴而就→变化B试错与认知深化→结论未来还会有更大支持信心政策。隐含假设：决策层能从辩论中形成就业与社保优先共识。证伪条件：若一年后两会仍无考核与预算转向，则延续论被证伪。原文位置：回应是否还有拐点性政策段；另提政绩考核淡化唯GDP论、居民消费率与农民补贴从200多元提至近1000元设想段。</p>
-<p>观点6，归属：邢自强。结论：中国AI最大约束是先进算力与出海全球化两条腿。 premise前提事实：推理应用端可用国产卡提升良率，但训练端仍需国际芯片；token出海需海外算力中心，而6月以来对外投资新规让企业适应不良。推导：前提A美国大厂明年上万亿融资全球布算力→变化B中国企业钱出不去、银行难配资→结论资本战中天然劣势。隐含假设：中美博弈缓和可允许两条腿走路、数据跨境限制下必须本地部署。证伪条件：若国产训练芯片快速补齐或海外限制解除，则约束减弱。原文位置：回应AI板块大跌与中美AI制约段。</p>
-<p>观点7，归属：整理说明，非嘉宾观点。转写尾部自“PPI通缩收窄至-1%”起，大段IMF3.3%、世界银行2.6%、美国大豆采购、APEC/G20等内容，与前文访谈问答文风、人物口径明显脱节，疑为其他宏观节目串入或字幕拼接错误，已从上述结论中剔除，不作为邢自强观点引用。</p>
+<div class="viewpoint">
+<div class="vp-head"><span class="vp-num">观点1</span><span class="vp-owner">归属：邢自强</span></div>
+<div class="vp-row"><span class="vp-label">结论</span><span class="vp-val">财政应就业优先，支持服务业消费而非只补大件。</span></div><div class="vp-row"><span class="vp-label">前提</span><span class="vp-val">上半年新三样出口超1000亿美元、新兴AI算力相关出口超千亿增50%，总量有支撑，但消费地产就业弱；以旧换新只覆盖大件，服务业劳动密集却缺乏支持。</span></div><div class="vp-row"><span class="vp-label">推导</span><span class="vp-val">前提A新智生产力已挣到钱→变化B对其出口退税退坡省出财力→结论转向服务消费券与服务业减税降费可带动就业。</span></div><div class="vp-row"><span class="vp-label">假设</span><span class="vp-val">财政总量有限、转移支付有效且不产生大浪费。</span></div><div class="vp-row"><span class="vp-label">证伪</span><span class="vp-val">若服务消费券乘数极低或退税退坡重创出口，则逻辑不成立。</span></div><div class="vp-row"><span class="vp-label">原文</span><span class="vp-val">开场回应二季度4.3%与K型分化段。</span></div>
+</div>
+
+<div class="viewpoint">
+<div class="vp-head"><span class="vp-num">观点2</span><span class="vp-owner">归属：邢自强</span></div>
+<div class="vp-row"><span class="vp-label">结论</span><span class="vp-val">中美AI路径不同，中国开源低成本扩散足以分庭抗礼。</span></div><div class="vp-row"><span class="vp-label">前提</span><span class="vp-val">美国投天文数字算力中心做封闭高收费AGI，中国token成本约美国1/10且多开源。</span></div><div class="vp-row"><span class="vp-label">推导</span><span class="vp-val">前提A美国重前沿突破→变化B中国重好用便宜快速落地至企业百姓与第三方国家→结论全球版图如手机与电动车一样各占一席。</span></div><div class="vp-row"><span class="vp-label">假设</span><span class="vp-val">扩散价值不低于前沿突破价值、第三方市场足够大。</span></div><div class="vp-row"><span class="vp-label">证伪</span><span class="vp-val">若AGI短期实现并形成绝对代差与封闭垄断，则中国路径被证伪。</span></div><div class="vp-row"><span class="vp-label">原文</span><span class="vp-val">回应“财政顾民生会否耽误AI”段。</span></div>
+</div>
+
+<div class="viewpoint">
+<div class="vp-head"><span class="vp-num">观点3</span><span class="vp-owner">归属：主持人提问+邢自强回应</span></div>
+<div class="vp-row"><span class="vp-label">结论</span><span class="vp-val">追税与对外投资管制短期偏收缩，现阶段不宜收紧。</span></div><div class="vp-row"><span class="vp-label">前提</span><span class="vp-val">18-21年减税降费叠加23年以来低物价致税收/GDP下降，地方强化征管补海外与历史欠税。</span></div><div class="vp-row"><span class="vp-label">推导</span><span class="vp-val">前提A经济处转型压力与低物价循环→变化B加税与审查直接加重负担并打击预期→结论增速更慢、分母分子算不过来、低物价更持久。</span></div><div class="vp-row"><span class="vp-label">假设</span><span class="vp-val">信心效应大于补税增收效应。</span></div><div class="vp-row"><span class="vp-label">证伪</span><span class="vp-val">若追税规模极小且财政收入明显改善而信心未受损，则不成立。</span></div><div class="vp-row"><span class="vp-label">原文</span><span class="vp-val">讨论三处与宏观取向不一致段。</span></div>
+</div>
+
+<div class="viewpoint">
+<div class="vp-head"><span class="vp-num">观点4</span><span class="vp-owner">归属：邢自强</span></div>
+<div class="vp-row"><span class="vp-label">结论</span><span class="vp-val">应以中央财政发力投向社保来打破循环，而非投基建。</span></div><div class="vp-row"><span class="vp-label">前提</span><span class="vp-val">中国有强主权资产负债表、国资、外储与资本账户管理能力；过去债投基建因有全球化与城市化红利，现在两者放缓。</span></div><div class="vp-row"><span class="vp-label">推导</span><span class="vp-val">前提A债务用途决定生产率→变化B从形成资产转向夯实保障解决后顾之忧→结论企业盈利雇人恢复、收入预期好转后财政自然好转。</span></div><div class="vp-row"><span class="vp-label">假设</span><span class="vp-val">社保支出能有效转化为消费率提升，如其引用省份案例。</span></div><div class="vp-row"><span class="vp-label">证伪</span><span class="vp-val">若社保投入后居民仍超额储蓄、消费率至2030年无提升，则失效。</span></div><div class="vp-row"><span class="vp-label">原文</span><span class="vp-val">讨论债怎么还、用在哪段；含日本失落20年教训类比。</span></div>
+</div>
+
+<div class="viewpoint">
+<div class="vp-head"><span class="vp-num">观点5</span><span class="vp-owner">归属：邢自强</span></div>
+<div class="vp-row"><span class="vp-label">结论</span><span class="vp-val">政策仍在924/926延续线上，不悲观但需凝聚共识后加码。</span></div><div class="vp-row"><span class="vp-label">前提</span><span class="vp-val">924/926是9月非常规会议+股市与特别国债创新工具+部分投向消费民生，提振信心；两年后科技与一级市场信心恢复但内需地产仍弱。</span></div><div class="vp-row"><span class="vp-label">推导</span><span class="vp-val">前提A问题复杂难以一蹴而就→变化B试错与认知深化→结论未来还会有更大支持信心政策。</span></div><div class="vp-row"><span class="vp-label">假设</span><span class="vp-val">决策层能从辩论中形成就业与社保优先共识。</span></div><div class="vp-row"><span class="vp-label">证伪</span><span class="vp-val">若一年后两会仍无考核与预算转向，则延续论被证伪。</span></div><div class="vp-row"><span class="vp-label">原文</span><span class="vp-val">回应是否还有拐点性政策段；另提政绩考核淡化唯GDP论、居民消费率与农民补贴从200多元提至近1000元设想段。</span></div>
+</div>
+
+<div class="viewpoint">
+<div class="vp-head"><span class="vp-num">观点6</span><span class="vp-owner">归属：邢自强</span></div>
+<div class="vp-row"><span class="vp-label">结论</span><span class="vp-val">中国AI最大约束是先进算力与出海全球化两条腿。</span></div><div class="vp-row"><span class="vp-label">前提</span><span class="vp-val">推理应用端可用国产卡提升良率，但训练端仍需国际芯片；token出海需海外算力中心，而6月以来对外投资新规让企业适应不良。</span></div><div class="vp-row"><span class="vp-label">推导</span><span class="vp-val">前提A美国大厂明年上万亿融资全球布算力→变化B中国企业钱出不去、银行难配资→结论资本战中天然劣势。</span></div><div class="vp-row"><span class="vp-label">假设</span><span class="vp-val">中美博弈缓和可允许两条腿走路、数据跨境限制下必须本地部署。</span></div><div class="vp-row"><span class="vp-label">证伪</span><span class="vp-val">若国产训练芯片快速补齐或海外限制解除，则约束减弱。</span></div><div class="vp-row"><span class="vp-label">原文</span><span class="vp-val">回应AI板块大跌与中美AI制约段。</span></div>
+</div>
+
+<div class="viewpoint">
+<div class="vp-head"><span class="vp-num">观点7</span><span class="vp-owner">归属：整理说明</span></div>
+<div class="vp-row"><span class="vp-label">说明</span><span class="vp-val">非嘉宾观点。转写尾部自“PPI通缩收窄至-1%”起，大段IMF3.3%、世界银行2.6%、美国大豆采购、APEC/G20等内容，与前文访谈问答文风、人物口径明显脱节，疑为其他宏观节目串入或字幕拼接错误，已从上述结论中剔除，不作为邢自强观点引用。</span></div>
+</div>
+
 <h2 id="3">3. 投资研究指引（表格：主题/方向/为什么/正向验证信号/风险失效信号/需补证据；无明确方向如实写“未给出可执行指引”，不得伪造）</h2>
 <table>
 <thead>
