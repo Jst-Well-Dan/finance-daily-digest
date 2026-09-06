@@ -4,7 +4,7 @@
 run_daily.py — 本地一键运行「解读君视频日报」全链路，随后自动提交并推送 GitHub。
 
 流程: ① 增量下载 → ①.5 按【发布日期(upload_date)】归档分发到 daily/YYYYMMDD
-      → ② 转写(补全部缺档日期) → ③ pi 结构化笔记 → ④ 确定性总结 → ⑤ HTML → ⑥ git push
+      → ② 转写(补全部缺档日期) → ③ pi 结构化笔记 → ③.5 一句话 TL;DR → ④ 确定性总结 → ⑤ HTML → ⑥ git push
 
 特点：支持【隔几天补一次】。上次更新是 9/3，今天 9/5 运行，将自动把 9/4、9/5 的视频
 按发布日期落进各自 daily 目录，并逐日补转写/笔记/总结，全部日期一起生成。
@@ -143,6 +143,14 @@ def run_tx_notes_summary(date_dirs: list[str], notes_limit: int) -> None:
             if notes_limit > 0:
                 notes_cmd += ["--limit", str(notes_limit)]
             sh(notes_cmd, f"③ 生成结构化笔记 {date_name}（pi -p, model={env_notes['PI_MODEL']}）",
+               env_extra=env_notes, allow_fail_ok=True)
+
+        # ③.5 一句话 TL;DR（有笔记才生成；缺失不阻塞，总结时跳过，下次补）
+        if list(d.glob("*/*_结构化笔记.md")):
+            sh([
+                sys.executable, str(ROOT / "scripts" / "generate_tldr_via_pi_print.py"),
+                "--daily-dir", str(d),
+            ], f"③.5 生成一句话 TL;DR {date_name}（pi -p）",
                env_extra=env_notes, allow_fail_ok=True)
 
         # ④ 每日总结（有笔记才生成）

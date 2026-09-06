@@ -189,6 +189,31 @@ def normalize_viewpoints(text):
     return "\n".join(lines[:start + 1] + ["", "\n\n".join(out), ""] + lines[end:])
 
 
+_COND_RE = re.compile(r"([，。；\n])(适用条件/边界[：:]|适用条件[是：:]|边界[是：:])")
+
+
+def split_conditions(html):
+    """总结长结论中的适用条件/边界另起一行并加粗 label（纯渲染层，原文字不动）。"""
+    # 先处理块首（真正的段落开头），再处理行中；此顺序保证行中规则不会误伤块首规则插入的 <span>
+    html = re.sub(">(适用条件/边界[：:])", r'"> <span class="cond-label">\g<1></span>', html)
+    return _COND_RE.sub(r'\1<br><span class="cond-label">\2</span>', html)
+
+
+def make_excerpt(html, budget=1400):
+    """根页摘录：按块级标签凑足 budget（不断句中截断），并剥掉本页锚点链接。"""
+    clean = re.sub(r"</?a[^>]*>", "", html)
+    blocks = re.findall(r"<(?:h2|p|ol|ul)[^>]*>.*?</(?:h2|p|ol|ul)>", clean, flags=re.S)
+    if not blocks:
+        return clean[:budget]
+    out, total = [], 0
+    for b in blocks:
+        out.append(b)
+        total += len(re.sub(r"<[^>]+>", "", b))
+        if total >= budget:
+            break
+    return "".join(out)
+
+
 def md_to_html(text):
     text = fix_loose_lists(normalize_viewpoints(text))
     if HAS_MD:
@@ -216,7 +241,8 @@ def collect_day(d):
         date = date_m.group(1) if date_m else d.name
         items.append({"path": p, "title": title, "vid": vid, "date": date, "html": h})
     items.sort(key=lambda x: x["date"], reverse=True)
-    summary_html = md_to_html(summary.read_text(encoding="utf-8")) if summary and summary.exists() else "<p>暂无总结</p>"
+    raw_summary = summary.read_text(encoding="utf-8") if summary and summary.exists() else ""
+    summary_html = split_conditions(md_to_html(raw_summary)) if raw_summary else "<p>暂无总结</p>"
     summary_path = summary.relative_to(root).as_posix() if summary and summary.exists() else ""
     return {"dir": d, "notes": items, "summary_html": summary_html, "summary_path": summary_path, "count": len(items)}
 
@@ -517,6 +543,16 @@ body {
 .content li > ul, .content li > ol {
   margin: 8px 0 8px 6px;
 }
+.cond-label {
+  color: var(--accent-burgundy);
+  font-weight: 700;
+}
+.content li > p {
+  margin-bottom: 6px;
+}
+.content li > p:last-child {
+  margin-bottom: 0;
+}
 
 .viewpoint {
   border: 1px solid var(--border-main);
@@ -794,6 +830,8 @@ for d_item in days_desc_data:
 </div>
 """
 
+latest_excerpt = make_excerpt(latest["summary_html"])
+
 latest_block = f"""
 <div class="article">
   <div class="article-head">
@@ -803,7 +841,7 @@ latest_block = f"""
     </div>
   </div>
   <div class="content">
-    {latest["summary_html"][:1400]}
+    {latest_excerpt}
     <p style="margin-top:16px"><a class="btn primary" href="daily/{latest["dir"].name}/index.html">进入 {latest["dir"].name} 全量阅读 →</a></p>
   </div>
 </div>
