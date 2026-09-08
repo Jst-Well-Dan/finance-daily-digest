@@ -104,6 +104,18 @@ YouTube 下载归档（跨运行去重，按视频 ID）：
 7. 主 Agent 真实阅读全部结构化笔记的“核心结论”；对核心结论中关键、矛盾、含糊或高影响判断回查原始转写稿，并用标题、视频 ID、发布日期和来源 URL 核验来源。
 8. 按下面的“固定每日总结结构”撰写 `<daily_dir>/YYYYMMDD/YYYYMMDD_解读君视频总结.md`。本地管线中一句话提炼由 `scripts/generate_tldr_via_pi_print.py` 生成并缓存于同目录 `.tldr.json`，再由 `scripts/build_daily_summary.py` 拼入；交互式执行时主 Agent 可亲写一句话，但须遵守同样的“严格基于本视频核心结论”约束。
 9. 保存后回复用户：新视频数、成功转写数、结构化笔记数、总结路径、主要结论；下载或转写失败时列出失败项，说明已保留原始文件供下次重试。
+10. GitHub 上传与 GitHub Pages 部署：
+   - 先构建全站静态页面：`python scripts/build_reader.py`。该命令会更新根目录 `index.html`、各日期目录的 `index.html`，并把最新日期加入历史导航。
+   - 检查 `git status --short` 和 `git diff --stat`，确认只包含本次日报、下载归档、结构化笔记/总结、静态页面及本技能必要变更；不要提交原始视频、音频或 `.info.json`（这些由 `.gitignore` 排除）。
+   - 提交并推送到主分支：
+     ```bash
+     git add daily/ .pi/skills/youtube-digest/.youtube_download_archive.txt index.html .pi/skills/youtube-digest/SKILL.md
+     git commit -m "daily: YYYYMMDD local update"
+     git push origin main
+     ```
+     若没有变更则跳过 commit/push；若 `git push` 失败，保留本地现场并向用户报告，不得用 `|| true` 吞掉错误。
+   - 本仓库的 GitHub Pages 当前从 `main` 分支根目录发布；推送成功后等待 Pages 构建，再核验 `https://jst-well-dan.github.io/finance-daily-digest/` 及 `.../daily/YYYYMMDD/index.html` 可访问。可用 `gh api repos/Jst-Well-Dan/finance-daily-digest/pages` 查看 Pages 状态；若无 `gh`，至少用远程 commit 和网页 HTTP 响应核验。
+   - `.github/workflows.disabled/daily.yml` 是停用的实验性全链路工作流，不应在未确认所需 Secrets、模型与脚本路径前直接启用；当前日报的上传与部署以本地生成 HTML 后 `git push origin main` 触发仓库既有 Pages 发布为准。
 
 ## 固定结构化笔记结构及写作要求
 
