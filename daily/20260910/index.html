@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>解读君视频日报 · 20260910</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@400;600;700;900&display=swap" rel="stylesheet">
+  <style>
+:root {
+  --bg-page: #FBF8F2;
+  --bg-surface: #FFFDF9;
+  --bg-header: #F4EFE6;
+  --bg-subtle: #F0EADF;
+  --border-main: #E5DDCD;
+  --border-dark: #2B2625;
+  --text-main: #231F20;
+  --text-muted: #5C554E;
+  --text-light: #8E8478;
+  --accent-burgundy: #8B261D;
+  --accent-amber: #B45309;
+  --font-serif: 'Noto Serif SC', Georgia, 'Times New Roman', serif;
+  --font-sans: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'IBM Plex Mono', monospace;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 15px; }
+body {
+  background: var(--bg-page);
+  color: var(--text-main);
+  font-family: var(--font-sans);
+  line-height: 1.85;
+  -webkit-font-smoothing: antialiased;
+}
+
+.wrap {
+  max-width: 1300px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 290px 1fr;
+  min-height: 100vh;
+  border-left: 2px solid var(--border-dark);
+  border-right: 2px solid var(--border-dark);
+  background: var(--bg-surface);
+}
+
+@media (max-width: 1024px) {
+  .wrap { grid-template-columns: 1fr; border: none; }
+}
+
+/* Sidebar */
+.nav {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow-y: auto;
+  padding: 32px 24px;
+  background: #F7F3EB;
+  border-right: 1px solid var(--border-main);
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+@media (max-width: 1024px) {
+  .nav { position: relative; height: auto; border-right: none; border-bottom: 2px solid var(--border-dark); }
+}
+
+.brand {
+  padding-bottom: 18px;
+  border-bottom: 2px solid var(--border-dark);
+}
+.brand h1 {
+  font-family: var(--font-serif);
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: var(--border-dark);
+}
+.brand h1 span {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent-burgundy);
+  margin-top: 4px;
+}
+
+.toc h2 {
+  font-family: var(--font-serif);
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--border-dark);
+  border-bottom: 1px solid var(--border-main);
+  padding-bottom: 6px;
+  margin: 16px 0 10px;
+}
+
+.toc a {
+  display: flex;
+  flex-direction: column;
+  padding: 8px 10px;
+  text-decoration: none;
+  color: var(--text-main);
+  border: 1px solid transparent;
+  border-radius: 4px;
+  transition: all 0.15s;
+  font-size: 13px;
+  line-height: 1.4;
+  margin-bottom: 4px;
+}
+.toc a:hover {
+  background: var(--bg-subtle);
+  border-color: var(--border-main);
+}
+.toc a.active {
+  background: #EFE8DA;
+  border-color: var(--border-main);
+  color: var(--accent-burgundy);
+  font-weight: 600;
+}
+.toc a span {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+.nav-desc {
+  font-size: 11px;
+  font-family: var(--font-mono);
+  color: var(--text-muted);
+  line-height: 1.6;
+  padding: 4px 6px;
+}
+
+/* Main Area */
+.main {
+  padding: 40px 48px 80px;
+  max-width: 960px;
+}
+
+@media (max-width: 768px) {
+  .main { padding: 24px 18px 40px; }
+}
+
+.gazette-header {
+  border-top: 3px double var(--border-dark);
+  border-bottom: 1px solid var(--border-dark);
+  padding: 20px 0;
+  margin-bottom: 36px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+.gazette-header h1 {
+  font-family: var(--font-serif);
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--border-dark);
+}
+.gazette-header .gazette-meta {
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.summary-card, .article {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-main);
+  margin-bottom: 40px;
+}
+
+.summary-head, .article-head {
+  background: var(--bg-header);
+  padding: 20px 26px;
+  border-bottom: 1px solid var(--border-main);
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+}
+.article-head h3, .summary-head h3 {
+  font-family: var(--font-serif);
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text-main);
+  line-height: 1.35;
+}
+.article-head h3 a, .summary-head h3 a {
+  color: inherit;
+  text-decoration: none;
+}
+.article-head h3 a:hover, .summary-head h3 a:hover {
+  color: var(--accent-burgundy);
+}
+
+.meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-top: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.meta a {
+  color: var(--accent-burgundy);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.content {
+  padding: 32px 36px;
+  font-size: 14.5px;
+  line-height: 1.9;
+  color: #2D2726;
+}
+
+@media (max-width: 768px) {
+  .content { padding: 20px 18px; }
+  .summary-head, .article-head { padding: 16px 18px; }
+}
+
+.content h1 {
+  font-family: var(--font-serif);
+  font-size: 22px;
+  font-weight: 700;
+  margin: 0 0 18px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border-dark);
+}
+
+.content h2 {
+  font-family: var(--font-serif);
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--accent-burgundy);
+  background: var(--bg-header);
+  border: 1px solid var(--border-main);
+  border-radius: 4px;
+  padding: 8px 14px;
+  margin: 32px 0 14px;
+  letter-spacing: 0.02em;
+}
+
+.content h3 {
+  font-family: var(--font-serif);
+  font-size: 14.5px;
+  font-weight: 700;
+  margin: 22px 0 10px;
+  color: var(--text-main);
+}
+
+.content p {
+  margin-bottom: 16px;
+  text-align: justify;
+}
+
+.content strong {
+  font-weight: 700;
+  color: #1A1616;
+}
+
+.content ul, .content ol {
+  margin: 12px 0 18px 6px;
+  padding-left: 22px;
+}
+.content li {
+  margin-bottom: 8px;
+  line-height: 1.8;
+}
+.content ul > li::marker {
+  content: "▪ ";
+  color: var(--accent-burgundy);
+}
+.content ol > li::marker {
+  color: var(--accent-burgundy);
+  font-weight: 700;
+  font-family: var(--font-mono);
+}
+.content li > ul, .content li > ol {
+  margin: 8px 0 8px 6px;
+}
+.cond-label {
+  color: var(--accent-burgundy);
+  font-weight: 700;
+}
+.content li > p {
+  margin-bottom: 6px;
+}
+.content li > p:last-child {
+  margin-bottom: 0;
+}
+
+.viewpoint {
+  border: 1px solid var(--border-main);
+  border-radius: 6px;
+  margin: 16px 0 20px;
+  overflow: hidden;
+  background: #FFFDF8;
+}
+.vp-head {
+  background: var(--bg-header);
+  padding: 10px 16px;
+  border-bottom: 1px solid var(--border-main);
+  display: flex;
+  gap: 10px;
+  align-items: baseline;
+  flex-wrap: wrap;
+}
+.vp-num {
+  font-family: var(--font-serif);
+  font-weight: 700;
+  font-size: 14.5px;
+  color: var(--accent-burgundy);
+  white-space: nowrap;
+}
+.vp-title {
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--text-main);
+}
+.vp-owner {
+  margin-left: auto;
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+.vp-row {
+  display: grid;
+  grid-template-columns: 46px 1fr;
+  gap: 12px;
+  padding: 8px 16px;
+  font-size: 13.5px;
+  line-height: 1.8;
+}
+.vp-row + .vp-row {
+  border-top: 1px dashed var(--border-main);
+}
+.vp-label {
+  font-weight: 700;
+  font-size: 12.5px;
+  color: var(--accent-burgundy);
+  white-space: nowrap;
+  padding-top: 1px;
+}
+.vp-val {
+  color: #2D2726;
+  text-align: justify;
+  min-width: 0;
+}
+.vp-val p {
+  margin: 0;
+  text-align: justify;
+}
+.vp-val code {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  background: #EDE6D8;
+  padding: 2px 6px;
+  border-radius: 3px;
+  color: var(--accent-burgundy);
+}
+@media (max-width: 768px) {
+  .vp-row { grid-template-columns: 40px 1fr; padding: 7px 12px; }
+}
+
+.content blockquote {
+  background: #F3ECE0;
+  border: 1px solid var(--border-main);
+  border-radius: 4px;
+  padding: 14px 20px;
+  margin: 20px 0;
+  font-size: 13.5px;
+  font-style: italic;
+  color: #523E3B;
+}
+
+.content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 24px 0;
+  font-size: 13px;
+  border: 1px solid var(--border-main);
+}
+.content th {
+  background: #ECE4D6;
+  font-family: var(--font-serif);
+  font-weight: 700;
+  color: var(--border-dark);
+  text-align: left;
+  padding: 10px 14px;
+  border: 1px solid var(--border-main);
+}
+.content td {
+  padding: 9px 14px;
+  border: 1px solid var(--border-main);
+}
+.content tr:nth-child(even) {
+  background: #F8F4EC;
+}
+
+.content code {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  background: #EDE6D8;
+  padding: 2px 6px;
+  border-radius: 3px;
+  color: var(--accent-burgundy);
+}
+
+.day-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-main);
+  padding: 20px 24px;
+  margin-bottom: 18px;
+}
+.day-card h3 {
+  font-family: var(--font-serif);
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+.day-card h3 a {
+  color: var(--text-main);
+  text-decoration: none;
+}
+.day-card h3 a:hover {
+  color: var(--accent-burgundy);
+}
+.day-card p {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+.btn {
+  display: inline-flex;
+  padding: 8px 14px;
+  border: 1px solid var(--border-dark);
+  background: var(--bg-surface);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  text-decoration: none;
+  color: var(--text-main);
+  font-weight: 600;
+  transition: all 0.15s;
+}
+.btn:hover {
+  background: var(--bg-subtle);
+}
+.btn.primary {
+  background: var(--border-dark);
+  color: #FFFFFF;
+}
+.btn.primary:hover {
+  background: var(--accent-burgundy);
+  border-color: var(--accent-burgundy);
+}
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <nav class="nav">
+      <div class="brand">
+        <h1>解读君视频日报<span>JIEDU DAILY · 20260910</span></h1>
+      </div>
+      <div class="toc">
+        <h2>全量原文</h2>
+        <a href="#summary" class="active">每日核心总结<span>20260910</span></a>
+        <a href="#note-rSJXF_umwy4">大摩周期论剑闭门会（2026-9-9）深入地分析当前整体市场具体细分板块的投资策略解析<span>20260910 · rSJXF_umwy4</span></a>
+        <h2>历史归档</h2>
+        <a href="../../index.html">← 返回历史总览</a>
+        <a href="../20260910/index.html" class="active">20260910 <span>1 篇 · 当日归档</span></a><a href="../20260908/index.html" class="">20260908 <span>2 篇 · 当日归档</span></a><a href="../20260907/index.html" class="">20260907 <span>2 篇 · 当日归档</span></a><a href="../20260906/index.html" class="">20260906 <span>1 篇 · 当日归档</span></a><a href="../20260905/index.html" class="">20260905 <span>1 篇 · 当日归档</span></a><a href="../20260904/index.html" class="">20260904 <span>2 篇 · 当日归档</span></a><a href="../20260903/index.html" class="">20260903 <span>2 篇 · 当日归档</span></a><a href="../20260902/index.html" class="">20260902 <span>3 篇 · 当日归档</span></a><a href="../20260831/index.html" class="">20260831 <span>2 篇 · 当日归档</span></a><a href="../20260829/index.html" class="">20260829 <span>1 篇 · 当日归档</span></a><a href="../20260828/index.html" class="">20260828 <span>1 篇 · 当日归档</span></a><a href="../20260825/index.html" class="">20260825 <span>1 篇 · 当日归档</span></a><a href="../20260824/index.html" class="">20260824 <span>2 篇 · 当日归档</span></a><a href="../20260823/index.html" class="">20260823 <span>1 篇 · 当日归档</span></a><a href="../20260821/index.html" class="">20260821 <span>3 篇 · 当日归档</span></a>
+      </div>
+    </nav>
+    <main class="main">
+      <div class="gazette-header">
+        <div>
+          <h1>金融经纬 · 每日纪要</h1>
+          <div class="gazette-meta">JIEDU DAILY FINANCIAL GAZETTE · VOL. 20260910</div>
+        </div>
+        <div class="gazette-meta">1 ARTICLES ARCHIVED</div>
+      </div>
+      
+<section id="summary" class="summary-card">
+  <div class="summary-head">
+    <div>
+      <h3>每日总结 · 20260910</h3>
+      <div class="meta">daily/20260910/20260910_解读君视频总结.md</div>
+    </div>
+  </div>
+  <div class="content"><h1 id="_1">解读君视频摘要</h1>
+<h2 id="1-2026-9-9">1. 大摩周期论剑闭门会（2026-9-9）深入地分析当前整体市场具体细分板块的投资策略解析</h2>
+<blockquote>
+<p>一句话：本期大摩周期论剑聚焦金融预防性注资、保险头部集中、集运2027年供给压力与现房销售重构开发商逻辑，整体偏谨慎。</p>
+</blockquote>
+<ul>
+<li>国有大行注资是预防性、更平衡的安排：在信贷理性放缓、隐债严控背景下，监管不鼓励大行扩张信贷，本轮对大行摊薄更小并分流至保险与政策性金融机构；若基建融资回暖或结构性货币工具加码，结论需修正。</li>
+<li>保险注资与保险法大修指向头部集中：嘉宾认为资本补充摊薄可控、利好长期资金入市与风险抵御，监管转向风险导向将强化分化；若定增定价大幅折价或细则放松，摊薄与分化逻辑会被削弱。</li>
+<li>集运维持相对谨慎，2027年供给压力难消化：2026年因战争扰动、高油价减速、备库存与港口拥堵而偏紧，但2027年新增交付叠加红海复航的有效运力增幅远超需求增速；若复航停滞或拆解超预期，观点不成立。</li>
+<li>现房销售是慢变量的供给侧改革：有助于长期房价企稳但短期关键仍看需求端，一线企稳早于二线与低线；若需求端刺激明显加码，企稳时点可能提前。</li>
+<li>开发商分析框架需从利润率转向“净利润率×IRR”：嘉宾测算周转放缓将使销售与长期规模明显收缩，利润修复难对冲，幸存者集中但面临估值下修风险；若地价大幅下调或房价持续上涨，结论需重估。</li>
+</ul></div>
+</section>
+
+      
+<article id="note-rSJXF_umwy4" class="article">
+  <div class="article-head">
+    <div>
+      <h3><a href="https://www.youtube.com/watch?v=rSJXF_umwy4" target="_blank" rel="noreferrer">大摩周期论剑闭门会（2026-9-9）深入地分析当前整体市场具体细分板块的投资策略解析</a></h3>
+      <div class="meta">20260910 · rSJXF_umwy4 · <a href="https://www.youtube.com/watch?v=rSJXF_umwy4" target="_blank" rel="noreferrer">观看 YouTube 原片 ↗</a></div>
+    </div>
+  </div>
+  <div class="content"><h1 id="2026-9-9">结构化笔记｜大摩周期论剑闭门会（2026-9-9）深入地分析当前整体市场具体细分板块的投资策略解析</h1>
+<h2 id="1">1. 核心结论</h2>
+<ul>
+<li>国有大行注资是预防性、更平衡的安排：在信贷理性放缓、隐债严控背景下，监管不鼓励大行扩张信贷，本轮对大行摊薄更小并分流至保险与政策性金融机构；若基建融资回暖或结构性货币工具加码，结论需修正。</li>
+<li>保险注资与保险法大修指向头部集中：嘉宾认为资本补充摊薄可控、利好长期资金入市与风险抵御，监管转向风险导向将强化分化；若定增定价大幅折价或细则放松，摊薄与分化逻辑会被削弱。</li>
+<li>集运维持相对谨慎，2027年供给压力难消化：2026年因战争扰动、高油价减速、备库存与港口拥堵而偏紧，但2027年新增交付叠加红海复航的有效运力增幅远超需求增速；若复航停滞或拆解超预期，观点不成立。</li>
+<li>现房销售是慢变量的供给侧改革：有助于长期房价企稳但短期关键仍看需求端，一线企稳早于二线与低线；若需求端刺激明显加码，企稳时点可能提前。</li>
+<li>开发商分析框架需从利润率转向“净利润率×IRR”：嘉宾测算周转放缓将使销售与长期规模明显收缩，利润修复难对冲，幸存者集中但面临估值下修风险；若地价大幅下调或房价持续上涨，结论需重估。</li>
+</ul>
+<h2 id="2">2. 专家观点与逻辑链</h2>
+<h3 id="1_1">观点 1：金融注资更理性、更平衡，意在防风险而非刺激信贷</h3>
+<ul>
+<li><strong>观点归属：</strong> 嘉宾：中国金融行业首席（转写记为“ri/Ricature”等，待核验）。</li>
+<li><strong>结论：</strong> 对金融整体偏中性稳健；不认为注资会带来大行信贷扩张，看好长期可持续发展。</li>
+<li><strong>前提事实：</strong> 转写称2024年9月末宣布大行注资，去年已注资5000亿元（待核验）；年初财政部称用3000亿元特别国债注资（待核验）；本轮为最后一段，除大行外还包括保险和政策性金融机构；嘉宾称去年市场预期1万亿元、实际不足8000亿元（待核验）。</li>
+<li><strong>推导逻辑：</strong> <code>预防性注资信号 → 大行信贷仍理性放缓 → 本轮规模更小且分散 → 工行摊薄约3%多、农行约6%（待核验），低于去年建行约4%、他行约10%—20%（待核验） → 监管定位转向理性经营与股东平衡 → 保险获注资支持长期储蓄与资本市场稳定，政策性机构支持海内外平衡 → 观点结论</code></li>
+<li><strong>隐含假设：</strong> 我对其逻辑的整理是：资本充足已够、无需信贷脉冲；保险自然保费维持双位数增长可消化注资；政策性项目利润低需财政支持。</li>
+<li><strong>反例 / 证伪条件：</strong> 大行贷款增速重新加速、保险保费失速导致摊薄超预期、政策性机构风险暴露上升，则“理性平衡”判断被证伪。</li>
+</ul>
+<h3 id="2_1">观点 2：保险注资摊薄可控，保险法大修利好头部合规公司</h3>
+<ul>
+<li><strong>观点归属：</strong> 嘉宾：保险行业分析师（转写记为“瑞”，待核验）。</li>
+<li><strong>结论：</strong> 对保险注资偏正面，对大型资本充足、治理透明公司偏乐观，对合规基础弱公司偏谨慎。</li>
+<li><strong>前提事实：</strong> 转写称财政部注资国寿、人保集团、太平集团（待核验）；人保已公告A股定增，按过去20日均价测算摊薄约4%多（待核验），中期DPS增速近50%（待核验）；极端假设下注资全进上市主体，国寿摊薄约3%出头、太平约9%—10%（待核验）；保险法自1995年发布、经4次小修，本次85条增至214条、征求意见至10月初（待核验）。</li>
+<li><strong>推导逻辑：</strong> <code>低利率与偿付能力环境趋紧 → 前瞻性补充资本夯实资产负债表 → 实际注资多在集团层面、用途分散至养老财险海外等子公司 → 真实摊薄小于极端测算 → 法修订强化资负管理法制化、股东穿透、中介准入与有限救助 → 头部份额与估值优势扩大 → 观点结论</code></li>
+<li><strong>隐含假设：</strong> 我对其逻辑的整理是：中报强劲可持续；集团层面资金不会一次性压向上市股东；“有限救助”能真正打破隐性兜底预期。</li>
+<li><strong>反例 / 证伪条件：</strong> 定增大幅折价、集团资金大部注入上市主体致摊薄接近上限，或财险取消4倍杠杆后中小公司加杠杆冒进，则判断失效。</li>
+</ul>
+<h3 id="3">观点 3：集运上调短期盈利但维持相对谨慎，海丰国际降至低配</h3>
+<ul>
+<li><strong>观点归属：</strong> 嘉宾：中国交运行业首席（转写记为“倩磊”，待核验）。</li>
+<li><strong>结论：</strong> 海运子板块中继续超配油运与干散货、低配集运；将海丰国际由平配下调至低配。</li>
+<li><strong>前提事实：</strong> 转写称年初至今油运干散货股价近翻倍，中远海控、东方海外涨约20%—30%，海丰国际近翻倍（待核验）；三季度盈利超预期；2027年名义交付近10%、有效运力约+7%，完全复航再增约7%供给，需求仅与全球GDP同步约3%—4%（均待核验）。</li>
+<li><strong>推导逻辑：</strong> <code>中东扰动超预期＋高油价减速＋备库存＋天气拥堵 → 2026年有效运力+6%被1—2个点减速与1—2个点扰动对冲至约+3%，供需偏紧运价上行 → 上调2026—2027年盈利 → 2027年新增与复航合计有效增幅超10%，远超需求 → 估值已满 → 观点结论</code></li>
+<li><strong>隐含假设：</strong> 我对其逻辑的整理是：红海将现“羊群效应”式复航；海丰历史均值约9倍PE、股息约7%、±1倍标准差约6—12倍的估值锚仍有效（待核验）；市场已计入四季度旺季与特别股息。</li>
+<li><strong>反例 / 证伪条件：</strong> 红海持续绕行、高油价长期维持减速、拆解量大增，或需求因补库超3—4%假设，则供给过剩推迟；四季度运价显著再超预期也会挑战低配时点。</li>
+</ul>
+<h3 id="4">观点 4：现房销售重构开发商逻辑，短期股价或低估周转冲击</h3>
+<ul>
+<li><strong>观点归属：</strong> 嘉宾：中国房地产行业首席（转写记为“teven/Steven”，待核验）。</li>
+<li><strong>结论：</strong> 对纯开发房企保持谨慎；相对看好二手成交链与有经营性现金流缓冲的标的。</li>
+<li><strong>前提事实：</strong> 转写称新政后地产平均回调中高单位数，绿城、建发、经贸等除外（待核验）；已获施工许可项目仍可预售，新规主要针对新出让及未获规划项目；嘉宾一线mass项目IRR由20%出头降至中单位数，拿地到开盘由6—9个月延至24—30个月、现金转正再加12—18个月，周期由约2年延至3—4年（均待核验）；测算覆盖房企销售2027年降约17%、2028年降约35%、两年复合约-24%（待核验）。</li>
+<li><strong>推导逻辑：</strong> <code>现房销售属供给侧改革而非需求刺激 → 新增供给下降慢＋工程量降拖累财政就业收入＋存量新房难去化 → 房价企稳慢且分化 → 周转放缓经复利传导为拿地与可售资源收缩 → 利润率改善难抵周转下降 → 流动性分化但不重演大面积违约 → 行业集中但幸存者估值仍有下修压力 → 观点结论</code></li>
+<li><strong>隐含假设：</strong> 我对其逻辑的整理是：地方细则不会大幅放松土地付款、开盘与税款节奏；一线地价难大降、弱二线低线才可能调整；银行对民企风险偏好维持低位。</li>
+<li><strong>反例 / 证伪条件：</strong> 地方给出极友好细则、地价大幅下调、房价年涨2%—3%以上持续兑现，或需求端强刺激提前拉动成交，则销售降幅与估值下修判断需修正；流动性方面若公开债或应付账款集中违约超预期，则“不重演危机”被证伪。</li>
+</ul>
+<h2 id="3_1">3. 投资研究指引</h2>
+<blockquote>
+<p>记录视频所表达的研究方向，不构成买卖建议；没有明确投资含义时如实写“未给出可执行指引”。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>主题 / 对象</th>
+<th>视频隐含或明确的方向</th>
+<th>为什么</th>
+<th>正向验证信号</th>
+<th>风险 / 失效信号</th>
+<th>需补的证据</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>国有大行</td>
+<td>偏理性经营跟踪，不隐含扩张逻辑</td>
+<td>注资预防性、摊薄低于往轮，贷款增速放缓</td>
+<td>信贷增速平稳、基建融资温和回暖</td>
+<td>信贷脉冲或净息差大跌</td>
+<td>分行层面信贷投放与资本充足率</td>
+</tr>
+<tr>
+<td>保险集团</td>
+<td>偏关注头部资本管理与长期资金角色</td>
+<td>摊薄可控、偿付能力与资负管理强化</td>
+<td>保费双位数增长、中长期资金入市</td>
+<td>定增折价、偿付能力恶化</td>
+<td>定增定价与集团资金投向细则</td>
+</tr>
+<tr>
+<td>保险法修订</td>
+<td>偏关注合规头部、中介与财险渠道格局</td>
+<td>监管风险导向、分化与渠道理性化</td>
+<td>大公司份额提升、渠道费率理性</td>
+<td>中小机构风险事件</td>
+<td>征求意见终稿与执行时间表</td>
+</tr>
+<tr>
+<td>集运整体</td>
+<td>相对谨慎，跑输油运干散货</td>
+<td>2027年供给远超需求</td>
+<td>复航加速、交付集中</td>
+<td>绕行延续、拆解大增</td>
+<td>船公司航线调整与拆解数据</td>
+</tr>
+<tr>
+<td>海丰国际</td>
+<td>嘉宾下调至低配，提示旺季渐减配</td>
+<td>估值超+1倍标准差、隐含目标下跌约20%（待核验）</td>
+<td>亚洲区内旺季结束、特息不及预期</td>
+<td>四季度运价再超预期</td>
+<td>运价、盈利一致预期与分红公告</td>
+</tr>
+<tr>
+<td>纯开发房企</td>
+<td>保持谨慎</td>
+<td>周转与IRR框架下规模收缩</td>
+<td>地价下调、需求刺激加码</td>
+<td>房价持续上涨</td>
+<td>地方现房销售细则与拿地溢价</td>
+</tr>
+<tr>
+<td>二手成交链、商场运营商（转写提及贝壳、华润置地、新城控股，待核验）</td>
+<td>相对更稳健的研究方向</td>
+<td>受益二手占比提升与经营现金流缓冲</td>
+<td>二手成交占比上升、租金稳健</td>
+<td>新房成交回暖分流、消费走弱</td>
+<td>公司经营与土储开工结构</td>
+</tr>
+</tbody>
+</table></div>
+</article>
+
+      <div class="day-card">
+        <p>归档路径 <code>daily/20260910/</code> · <a href="../../index.html">返回历史总览</a> · <a href="./index.html">本日目录</a></p>
+      </div>
+    </main>
+  </div>
+</body>
+</html>
