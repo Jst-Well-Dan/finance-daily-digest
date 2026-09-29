@@ -1,3 +1,6 @@
+# temp downloads — never commit (git add -A 会把大二进制推进仓库)
+Temp/
+
 # media — never commit (daily downloads are large)
 daily/**/*.mp4
 daily/**/*.webm

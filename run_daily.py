@@ -207,6 +207,16 @@ def main() -> int:
         date_dirs = sorted(date_dirs)
     print(f"◆ 需处理的日期目录: {date_dirs}")
 
+    # 本次新增基线（结尾诚实播报用：只统计本轮真正新增的日期与笔记，已有复用单独计数）
+    def _count_notes() -> int:
+        n = 0
+        for _dn in sorted(existing_daily_dates()):
+            n += len(list((DAILY / _dn).glob("*/*_结构化笔记.md")))
+        return n
+
+    dates_before = set(existing_daily_dates())
+    notes_before = _count_notes()
+
     # ②③④ 逐日转写 / 笔记 / 总结
     run_tx_notes_summary(date_dirs, args.notes_limit)
 
@@ -220,13 +230,17 @@ def main() -> int:
             print("\n◆ 无任何变化，无需推送")
             return 0
         sh(["git", "add", "-A"], "⑥ git add")
-        sh(["git", "commit", "-m", f"daily: {date_str} local update (补 {len(date_dirs)} 日)"], "⑥ git commit")
+        _new_dates = sorted(set(existing_daily_dates()) - dates_before)
+        _scope = f"新增 {','.join(_new_dates)}" if _new_dates else "无新增日期，例行重建"
+        sh(["git", "commit", "-m", f"daily: {date_str} local update（{_scope}）"], "⑥ git commit")
         sh(["git", "push", "origin", "main"], "⑥ git push 到 GitHub（Pages 自动更新）", check=True)
 
-    total_notes = 0
-    for dn in date_dirs:
-        total_notes += len(list((DAILY / dn).glob("*/*_结构化笔记.md")))
-    print(f"\n{'='*72}\n✔ 完成。共处理 {len(date_dirs)} 个日期目录，结构化笔记 {total_notes} 篇")
+    total_notes = _count_notes()
+    new_notes = max(0, total_notes - notes_before)
+    new_dates = sorted(set(existing_daily_dates()) - dates_before)
+    print(f"\n{'='*72}\n✔ 完成。遍历 {len(date_dirs)} 个日期目录；"
+          f"本次新增日期 {new_dates if new_dates else '无'}，新增笔记 {new_notes} 篇，"
+          f"复用已有 {total_notes - new_notes} 篇（共 {total_notes} 篇）")
     print("打开: file://" + str((ROOT / "index.html").resolve()).replace("\\", "/"))
     return 0
 
