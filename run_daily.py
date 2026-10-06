@@ -17,7 +17,9 @@ run_daily.py — 本地一键运行「解读君视频日报」全链路，随后
 
 环境变量:
     SILICONFLOW_API_KEY   转写必需（已配置）
-    PI_MODEL              笔记 LLM 模型，默认 muse-spark-1.3-contributor
+    YOUTUBE_NOTES_MODEL   笔记 LLM 模型，默认 muse-spark-1.3-contributor
+                          （不要用 PI_MODEL：那是 pi 运行时注入的“当前会话模型”，
+                            常与笔记需求无关，且多 provider 同名歧义时会让 pi 直接报错）
 
 退出码: 0=完全成功, 2=部分步骤失败(已容错), 1=致命错误
 """
@@ -35,6 +37,8 @@ SKILLS = ROOT / ".pi" / "skills"
 DAILY = ROOT / "daily"
 
 DEFAULT_PI_MODEL = "muse-spark-1.3-contributor"
+# 专用变量名：刻意不复用 PI_MODEL（见顶部说明）
+NOTES_MODEL_ENV = "YOUTUBE_NOTES_MODEL"
 VID_DIR_RE = re.compile(r"^(.+)\s*\[([A-Za-z0-9_-]{6,})\]$")
 
 
@@ -129,7 +133,12 @@ def distribute_by_upload_date(dd: Path) -> list[Path]:
 
 def run_tx_notes_summary(date_dirs: list[str], notes_limit: int) -> None:
     """对每个日期目录依次：转写 → 笔记 → 总结（全部幂等，可重复跑）。"""
-    env_notes = {"PI_MODEL": os.environ.get("PI_MODEL", DEFAULT_PI_MODEL)}
+    # 刻意不继承环境里的 PI_MODEL：它是 pi 运行时注入的“当前会话模型”，
+    # 若恰好是在多个 provider 下同名的模型（如 deepseek-v4.1-flash 同时存在于
+    # opencode 与 opencode-go），pi -p --model 会因歧义直接报错，导致当天笔记全部生成失败。
+    # 只认本技能专用的 YOUTUBE_NOTES_MODEL，否则回落到技能默认模型。
+    notes_model = os.environ.get(NOTES_MODEL_ENV, "").strip() or DEFAULT_PI_MODEL
+    env_notes = {"PI_MODEL": notes_model}
     for idx, date_name in enumerate(date_dirs):
         d = DAILY / date_name
         print(f"\n{'#'*72}\n# 处理日期 {date_name}  ({d})")
