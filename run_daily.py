@@ -106,9 +106,19 @@ def distribute_by_upload_date(dd: Path) -> list[Path]:
             target.mkdir(parents=True, exist_ok=True)
             dest = target / d.name
             if dest.exists():
-                # 目标已存在同名目录（重复下载）→ 保现有，删除本次冗余
+                # 目标目录已存在，通常是上一轮下载失败只留下 info.json 的残留目录。
+                # 必须逐个文件合并覆盖，绝不能整目录 rmtree —— 否则会连同本轮刚下好的
+                # 媒体文件一起删掉，导致归档已记录、媒体却永久丢失（无法再自动重下）。
                 import shutil
-                shutil.rmtree(d, ignore_errors=True)
+                for item in list(d.iterdir()):
+                    dest_item = dest / item.name
+                    if dest_item.exists():
+                        if dest_item.is_dir():
+                            shutil.rmtree(dest_item, ignore_errors=True)
+                        else:
+                            dest_item.unlink()
+                    item.rename(dest_item)
+                d.rmdir()
             else:
                 d.rename(dest)
             print(f"  ↳ {d.name[:44]}… → daily/{target.name}/")
