@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>解读君视频日报 · 20261016</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@400;600;700;900&display=swap" rel="stylesheet">
+  <style>
+:root {
+  --bg-page: #FBF8F2;
+  --bg-surface: #FFFDF9;
+  --bg-header: #F4EFE6;
+  --bg-subtle: #F0EADF;
+  --border-main: #E5DDCD;
+  --border-dark: #2B2625;
+  --text-main: #231F20;
+  --text-muted: #5C554E;
+  --text-light: #8E8478;
+  --accent-burgundy: #8B261D;
+  --accent-amber: #B45309;
+  --font-serif: 'Noto Serif SC', Georgia, 'Times New Roman', serif;
+  --font-sans: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'IBM Plex Mono', monospace;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 15px; }
+body {
+  background: var(--bg-page);
+  color: var(--text-main);
+  font-family: var(--font-sans);
+  line-height: 1.85;
+  -webkit-font-smoothing: antialiased;
+}
+
+.wrap {
+  max-width: 1300px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 290px 1fr;
+  min-height: 100vh;
+  border-left: 2px solid var(--border-dark);
+  border-right: 2px solid var(--border-dark);
+  background: var(--bg-surface);
+}
+
+@media (max-width: 1024px) {
+  .wrap { grid-template-columns: 1fr; border: none; }
+}
+
+/* Sidebar */
+.nav {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow-y: auto;
+  padding: 32px 24px;
+  background: #F7F3EB;
+  border-right: 1px solid var(--border-main);
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+@media (max-width: 1024px) {
+  .nav { position: relative; height: auto; border-right: none; border-bottom: 2px solid var(--border-dark); }
+}
+
+.brand {
+  padding-bottom: 18px;
+  border-bottom: 2px solid var(--border-dark);
+}
+.brand h1 {
+  font-family: var(--font-serif);
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: var(--border-dark);
+}
+.brand h1 span {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent-burgundy);
+  margin-top: 4px;
+}
+
+.toc h2 {
+  font-family: var(--font-serif);
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--border-dark);
+  border-bottom: 1px solid var(--border-main);
+  padding-bottom: 6px;
+  margin: 16px 0 10px;
+}
+
+.toc a {
+  display: flex;
+  flex-direction: column;
+  padding: 8px 10px;
+  text-decoration: none;
+  color: var(--text-main);
+  border: 1px solid transparent;
+  border-radius: 4px;
+  transition: all 0.15s;
+  font-size: 13px;
+  line-height: 1.4;
+  margin-bottom: 4px;
+}
+.toc a:hover {
+  background: var(--bg-subtle);
+  border-color: var(--border-main);
+}
+.toc a.active {
+  background: #EFE8DA;
+  border-color: var(--border-main);
+  color: var(--accent-burgundy);
+  font-weight: 600;
+}
+.toc a span {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+.nav-desc {
+  font-size: 11px;
+  font-family: var(--font-mono);
+  color: var(--text-muted);
+  line-height: 1.6;
+  padding: 4px 6px;
+}
+
+/* Main Area */
+.main {
+  padding: 40px 48px 80px;
+  max-width: 960px;
+}
+
+@media (max-width: 768px) {
+  .main { padding: 24px 18px 40px; }
+}
+
+.gazette-header {
+  border-top: 3px double var(--border-dark);
+  border-bottom: 1px solid var(--border-dark);
+  padding: 20px 0;
+  margin-bottom: 36px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+.gazette-header h1 {
+  font-family: var(--font-serif);
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--border-dark);
+}
+.gazette-header .gazette-meta {
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.summary-card, .article {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-main);
+  margin-bottom: 40px;
+}
+
+.summary-head, .article-head {
+  background: var(--bg-header);
+  padding: 20px 26px;
+  border-bottom: 1px solid var(--border-main);
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+}
+.article-head h3, .summary-head h3 {
+  font-family: var(--font-serif);
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text-main);
+  line-height: 1.35;
+}
+.article-head h3 a, .summary-head h3 a {
+  color: inherit;
+  text-decoration: none;
+}
+.article-head h3 a:hover, .summary-head h3 a:hover {
+  color: var(--accent-burgundy);
+}
+
+.meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-top: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.meta a {
+  color: var(--accent-burgundy);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.content {
+  padding: 32px 36px;
+  font-size: 14.5px;
+  line-height: 1.9;
+  color: #2D2726;
+}
+
+@media (max-width: 768px) {
+  .content { padding: 20px 18px; }
+  .summary-head, .article-head { padding: 16px 18px; }
+}
+
+.content h1 {
+  font-family: var(--font-serif);
+  font-size: 22px;
+  font-weight: 700;
+  margin: 0 0 18px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border-dark);
+}
+
+.content h2 {
+  font-family: var(--font-serif);
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--accent-burgundy);
+  background: var(--bg-header);
+  border: 1px solid var(--border-main);
+  border-radius: 4px;
+  padding: 8px 14px;
+  margin: 32px 0 14px;
+  letter-spacing: 0.02em;
+}
+
+.content h3 {
+  font-family: var(--font-serif);
+  font-size: 14.5px;
+  font-weight: 700;
+  margin: 22px 0 10px;
+  color: var(--text-main);
+}
+
+.content p {
+  margin-bottom: 16px;
+  text-align: justify;
+}
+
+.content strong {
+  font-weight: 700;
+  color: #1A1616;
+}
+
+.content ul, .content ol {
+  margin: 12px 0 18px 6px;
+  padding-left: 22px;
+}
+.content li {
+  margin-bottom: 8px;
+  line-height: 1.8;
+}
+.content ul > li::marker {
+  content: "▪ ";
+  color: var(--accent-burgundy);
+}
+.content ol > li::marker {
+  color: var(--accent-burgundy);
+  font-weight: 700;
+  font-family: var(--font-mono);
+}
+.content li > ul, .content li > ol {
+  margin: 8px 0 8px 6px;
+}
+.cond-label {
+  color: var(--accent-burgundy);
+  font-weight: 700;
+}
+.content li > p {
+  margin-bottom: 6px;
+}
+.content li > p:last-child {
+  margin-bottom: 0;
+}
+
+.viewpoint {
+  border: 1px solid var(--border-main);
+  border-radius: 6px;
+  margin: 16px 0 20px;
+  overflow: hidden;
+  background: #FFFDF8;
+}
+.vp-head {
+  background: var(--bg-header);
+  padding: 10px 16px;
+  border-bottom: 1px solid var(--border-main);
+  display: flex;
+  gap: 10px;
+  align-items: baseline;
+  flex-wrap: wrap;
+}
+.vp-num {
+  font-family: var(--font-serif);
+  font-weight: 700;
+  font-size: 14.5px;
+  color: var(--accent-burgundy);
+  white-space: nowrap;
+}
+.vp-title {
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--text-main);
+}
+.vp-owner {
+  margin-left: auto;
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+.vp-row {
+  display: grid;
+  grid-template-columns: 46px 1fr;
+  gap: 12px;
+  padding: 8px 16px;
+  font-size: 13.5px;
+  line-height: 1.8;
+}
+.vp-row + .vp-row {
+  border-top: 1px dashed var(--border-main);
+}
+.vp-label {
+  font-weight: 700;
+  font-size: 12.5px;
+  color: var(--accent-burgundy);
+  white-space: nowrap;
+  padding-top: 1px;
+}
+.vp-val {
+  color: #2D2726;
+  text-align: justify;
+  min-width: 0;
+}
+.vp-val p {
+  margin: 0;
+  text-align: justify;
+}
+.vp-val code {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  background: #EDE6D8;
+  padding: 2px 6px;
+  border-radius: 3px;
+  color: var(--accent-burgundy);
+}
+@media (max-width: 768px) {
+  .vp-row { grid-template-columns: 40px 1fr; padding: 7px 12px; }
+}
+
+.content blockquote {
+  background: #F3ECE0;
+  border: 1px solid var(--border-main);
+  border-radius: 4px;
+  padding: 14px 20px;
+  margin: 20px 0;
+  font-size: 13.5px;
+  font-style: italic;
+  color: #523E3B;
+}
+
+.content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 24px 0;
+  font-size: 13px;
+  border: 1px solid var(--border-main);
+}
+.content th {
+  background: #ECE4D6;
+  font-family: var(--font-serif);
+  font-weight: 700;
+  color: var(--border-dark);
+  text-align: left;
+  padding: 10px 14px;
+  border: 1px solid var(--border-main);
+}
+.content td {
+  padding: 9px 14px;
+  border: 1px solid var(--border-main);
+}
+.content tr:nth-child(even) {
+  background: #F8F4EC;
+}
+
+.content code {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  background: #EDE6D8;
+  padding: 2px 6px;
+  border-radius: 3px;
+  color: var(--accent-burgundy);
+}
+
+.day-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-main);
+  padding: 20px 24px;
+  margin-bottom: 18px;
+}
+.day-card h3 {
+  font-family: var(--font-serif);
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+.day-card h3 a {
+  color: var(--text-main);
+  text-decoration: none;
+}
+.day-card h3 a:hover {
+  color: var(--accent-burgundy);
+}
+.day-card p {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+.btn {
+  display: inline-flex;
+  padding: 8px 14px;
+  border: 1px solid var(--border-dark);
+  background: var(--bg-surface);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  text-decoration: none;
+  color: var(--text-main);
+  font-weight: 600;
+  transition: all 0.15s;
+}
+.btn:hover {
+  background: var(--bg-subtle);
+}
+.btn.primary {
+  background: var(--border-dark);
+  color: #FFFFFF;
+}
+.btn.primary:hover {
+  background: var(--accent-burgundy);
+  border-color: var(--accent-burgundy);
+}
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <nav class="nav">
+      <div class="brand">
+        <h1>解读君视频日报<span>JIEDU DAILY · 20261016</span></h1>
+      </div>
+      <div class="toc">
+        <h2>全量原文</h2>
+        <a href="#summary" class="active">每日核心总结<span>20261016</span></a>
+        <a href="#note-Ig0WAYyl79g">大摩内部闭门会（2026-10-16最新附文稿）AI下一个缺货王曝光！大摩：台积电2纳米明年翻倍，ABF载板缺到2028，腾讯AI单季烧掉150亿<span>20261016 · Ig0WAYyl79g</span></a>
+        <h2>历史归档</h2>
+        <a href="../../index.html">← 返回历史总览</a>
+        <a href="../20261018/index.html" class="">20261018 <span>0 篇 · 当日归档</span></a><a href="../20261016/index.html" class="active">20261016 <span>1 篇 · 当日归档</span></a><a href="../20261015/index.html" class="">20261015 <span>0 篇 · 当日归档</span></a><a href="../20261014/index.html" class="">20261014 <span>3 篇 · 当日归档</span></a><a href="../20261013/index.html" class="">20261013 <span>2 篇 · 当日归档</span></a><a href="../20261012/index.html" class="">20261012 <span>1 篇 · 当日归档</span></a><a href="../20261010/index.html" class="">20261010 <span>9 篇 · 当日归档</span></a><a href="../20261006/index.html" class="">20261006 <span>2 篇 · 当日归档</span></a><a href="../20261005/index.html" class="">20261005 <span>2 篇 · 当日归档</span></a><a href="../20261004/index.html" class="">20261004 <span>1 篇 · 当日归档</span></a><a href="../20260929/index.html" class="">20260929 <span>0 篇 · 当日归档</span></a><a href="../20260928/index.html" class="">20260928 <span>0 篇 · 当日归档</span></a><a href="../20260927/index.html" class="">20260927 <span>6 篇 · 当日归档</span></a><a href="../20260921/index.html" class="">20260921 <span>8 篇 · 当日归档</span></a><a href="../20260914/index.html" class="">20260914 <span>5 篇 · 当日归档</span></a><a href="../20260910/index.html" class="">20260910 <span>1 篇 · 当日归档</span></a><a href="../20260908/index.html" class="">20260908 <span>2 篇 · 当日归档</span></a><a href="../20260907/index.html" class="">20260907 <span>2 篇 · 当日归档</span></a><a href="../20260906/index.html" class="">20260906 <span>1 篇 · 当日归档</span></a><a href="../20260905/index.html" class="">20260905 <span>1 篇 · 当日归档</span></a><a href="../20260904/index.html" class="">20260904 <span>2 篇 · 当日归档</span></a><a href="../20260903/index.html" class="">20260903 <span>2 篇 · 当日归档</span></a><a href="../20260902/index.html" class="">20260902 <span>3 篇 · 当日归档</span></a><a href="../20260831/index.html" class="">20260831 <span>2 篇 · 当日归档</span></a><a href="../20260829/index.html" class="">20260829 <span>1 篇 · 当日归档</span></a><a href="../20260828/index.html" class="">20260828 <span>1 篇 · 当日归档</span></a><a href="../20260825/index.html" class="">20260825 <span>1 篇 · 当日归档</span></a><a href="../20260824/index.html" class="">20260824 <span>2 篇 · 当日归档</span></a><a href="../20260823/index.html" class="">20260823 <span>1 篇 · 当日归档</span></a><a href="../20260821/index.html" class="">20260821 <span>3 篇 · 当日归档</span></a>
+      </div>
+    </nav>
+    <main class="main">
+      <div class="gazette-header">
+        <div>
+          <h1>金融经纬 · 每日纪要</h1>
+          <div class="gazette-meta">JIEDU DAILY FINANCIAL GAZETTE · VOL. 20261016</div>
+        </div>
+        <div class="gazette-meta">1 ARTICLES ARCHIVED</div>
+      </div>
+      
+<section id="summary" class="summary-card">
+  <div class="summary-head">
+    <div>
+      <h3>每日总结 · 20261016</h3>
+      <div class="meta">daily/20261016/20261016_解读君视频总结.md</div>
+    </div>
+  </div>
+  <div class="content"><h1 id="_1">解读君视频摘要</h1>
+<h2 id="1-2026-10-16ai2abf2028ai150">1. <a href="#note-Ig0WAYyl79g">大摩内部闭门会（2026-10-16最新附文稿）AI下一个缺货王曝光！大摩：台积电2纳米明年翻倍，ABF载板缺到2028，腾讯AI单季烧掉150亿</a></h2>
+<blockquote>
+<p>一句话：台积电2纳米明年底翻倍，ABF缺到2028涨价25%，腾讯AI单季烧150亿进入负增长。</p>
+</blockquote>
+<ul>
+<li><strong>台积电2纳米激进扩张确认AI需求远超供给：</strong> 考虑融资成本、电力、ABF缺货后仍判断客户需求远大于供应，明年底2纳米产能more than double；适用条件为AI代工需求不出现断崖式下修且美国德州、台湾新厂环评与设备交付如期，仅适用于2026-2028年供给紧张窗口。</li>
+<li><strong>ABF载板27-28年缺口扩大、涨价由材料转供给驱动：</strong> 计入全部已宣布扩产后27年供给缺口约9%、28年约14%（较前估6%/9%扩大），27年like-for-like涨幅25%以上；适用条件为两年至两年半建厂周期+设备排队不变，且ASIC/中国AI芯片与server CPU尺寸假设成立，不适用于扩产大幅提前或需求证伪情形。</li>
+<li><strong>腾讯进入AI投入期，Q3为利润负增长起点：</strong> Q3收入+8.9%放缓、剔除AI后经营利润可+10%，但新AI产品单季亏损约150亿元致报表OP约-3%，H2两季均为负增长、2027年模型仅flat；适用条件为游戏维持增长以托住top line且AI capex/opex节奏不进一步加速，若回报visibility提前则结论上修。</li>
+<li><strong>京东便宜但为价值陷阱、三星存储更看供给而非当季数字：</strong> 京东Q4零售仅中个位数增长、履约研发高企+新业务全年亏损拖累，明年核心利润最多稳住；三星应对长存竞争靠技术投入抢份额、HBM不签LTA赌涨价；以上仅适用于消费偏弱+竞争投入不收缩环境，若外卖/海外投入收敛则需重估。</li>
+</ul></div>
+</section>
+
+      
+<article id="note-Ig0WAYyl79g" class="article">
+  <div class="article-head">
+    <div>
+      <h3><a href="https://www.youtube.com/watch?v=Ig0WAYyl79g" target="_blank" rel="noreferrer">大摩内部闭门会（2026-10-16最新附文稿）AI下一个缺货王曝光！大摩：台积电2纳米明年翻倍，ABF载板缺到2028，腾讯AI单季烧掉150亿</a></h3>
+      <div class="meta">20261016 · Ig0WAYyl79g · <a href="https://www.youtube.com/watch?v=Ig0WAYyl79g" target="_blank" rel="noreferrer">观看 YouTube 原片 ↗</a></div>
+    </div>
+  </div>
+  <div class="content"><h1 id="2026-10-16ai2abf2028ai150">结构化笔记｜大摩内部闭门会（2026-10-16最新附文稿）AI下一个缺货王曝光！大摩：台积电2纳米明年翻倍，ABF载板缺到2028，腾讯AI单季烧掉150亿</h1>
+<h2 id="1">1. 核心结论</h2>
+<ul>
+<li><strong>台积电2纳米激进扩张确认AI需求远超供给：</strong> 考虑融资成本、电力、ABF缺货后仍判断客户需求远大于供应，明年底2纳米产能more than double；适用条件为AI代工需求不出现断崖式下修且美国德州、台湾新厂环评与设备交付如期，仅适用于2026-2028年供给紧张窗口。</li>
+<li><strong>ABF载板27-28年缺口扩大、涨价由材料转供给驱动：</strong> 计入全部已宣布扩产后27年供给缺口约9%、28年约14%（较前估6%/9%扩大），27年like-for-like涨幅25%以上；适用条件为两年至两年半建厂周期+设备排队不变，且ASIC/中国AI芯片与server CPU尺寸假设成立，不适用于扩产大幅提前或需求证伪情形。</li>
+<li><strong>腾讯进入AI投入期，Q3为利润负增长起点：</strong> Q3收入+8.9%放缓、剔除AI后经营利润可+10%，但新AI产品单季亏损约150亿元致报表OP约-3%，H2两季均为负增长、2027年模型仅flat；适用条件为游戏维持增长以托住top line且AI capex/opex节奏不进一步加速，若回报visibility提前则结论上修。</li>
+<li><strong>京东便宜但为价值陷阱、三星存储更看供给而非当季数字：</strong> 京东Q4零售仅中个位数增长、履约研发高企+新业务全年亏损拖累，明年核心利润最多稳住；三星应对长存竞争靠技术投入抢份额、HBM不签LTA赌涨价；以上仅适用于消费偏弱+竞争投入不收缩环境，若外卖/海外投入收敛则需重估。</li>
+</ul>
+<h2 id="2">2. 专家观点与逻辑链</h2>
+<h3 id="1_1">观点 1：台积电法说会传递超强扩张信号</h3>
+<ul>
+<li><strong>观点归属：</strong> 大摩大中华科技团队 Charlie（台积电法说会点评）</li>
+<li><strong>结论：</strong> AI半导体需求远大于供应，台积电决定继续激进扩张，上调明后年资本开支与2028年EUV交付预期，维持买入评级。</li>
+<li><strong>前提事实：</strong> 已考虑代工外变数（financing cost、电力供应、ABF缺货）；2纳米今年底约10万片/月，大摩原估明年底16万片，台积电指引more than double即约20万片；2028年EUV交付量比2027年多20-30%；当季毛利率66.4%为指引上缘。</li>
+<li><strong>推导逻辑：</strong> <code>需求远超供给确认 → 美国德州看地+台湾新3纳米fab+2纳米翻倍 → 上调topline与CapEx模型，margin短期稀释但无基本面问题 → 维持目标价与买入</code></li>
+<li><strong>隐含假设：</strong> 客户愿意承担海外2纳米dilution与适度涨价；美国客户需求持续强劲；Intel外包与先进封装合作不冲击台积电定价权。</li>
+<li><strong>反例 / 证伪条件：</strong> 若明年海外厂dilution超预期致毛利率持续低于指引区间，或Intel/MediaTek先进制程回流失败致需求下修，则激进扩张逻辑证伪。</li>
+</ul>
+<h3 id="2abf">观点 2：ABF载板新增投资不改变看多，缺口反而扩大</h3>
+<ul>
+<li><strong>观点归属：</strong> 大摩 Irene（ABF substrate update报告）</li>
+<li><strong>结论：</strong> YTD约140亿美元资本支出宣布不改变上行周期判断，27年缺9%、28年缺14%，偏好欣兴 over 南电。</li>
+<li><strong>前提事实：</strong> 三星电机越南厂2028年9月才量产；南电嘉义新厂2029年下半年才放量，为集团史上最大ABF投资；今年新宣布扩产要2-2.5年后才开出；需求端上修ASIC及中国AI芯片、更新server CPU/网通芯片form factor。</li>
+<li><strong>推导逻辑：</strong> <code>设备排队+土建找地耗时 → 新产能来不及解27-28年缺口 → 缺口从6%/9%扩大至9%/14% → 涨价从今年转嫁T-glass/CCL转为明年载板自身吃紧 → 产能增速成为分化因子 → 偏好欣兴</code></li>
+<li><strong>隐含假设：</strong> 所有厂商均在大陆以外扩产致建厂更慢；每芯片尺寸与层数假设稳定向上；报价能见度虽低但吃紧必然传导。</li>
+<li><strong>反例 / 证伪条件：</strong> 若设备交期大幅缩短、新厂提前放量，或AI ASIC需求下修/尺寸缩小致面积需求下降，则缺口与25%+涨价假设失效。</li>
+</ul>
+<h3 id="3ramphbm">观点 3：三星存储看供给ramp与股东回报，不签HBM长约</h3>
+<ul>
+<li><strong>观点归属：</strong> 大摩 Cassy转述伦敦与三星管理层交流</li>
+<li><strong>结论：</strong> 当季业绩数字本身不重要，关键是供给ramp速度、应对长存竞争与股东回报mix，HBM不签LTA、foundry目标做老二。</li>
+<li><strong>前提事实：</strong> 管理层承认长存为不容忽视对手且已具备自主设计能力；应对为坚定投入技术+增供给抢份额；股东回报在现金分红/普通股回购注销/优先股回购注销间平衡，明年1月给mix；HBM认为未来涨价空间大故不签LTA，通用LTA为5年滚动续签。</li>
+<li><strong>推导逻辑：</strong> <code>长存扩产+自研能力上升 → 三星以技术与份额优先而非控价 → HBM涨价预期下拒绝锁价 → 以滚动长约观察需求 → 资金流向computing networking</code></li>
+<li><strong>隐含假设：</strong> 存储周期信仰仍在，技术领先可抵消中国供给冲击；HBM价格上行持续；foundry第二名可见度高不需大幅降价抢单。</li>
+<li><strong>反例 / 证伪条件：</strong> 若长存良率与产能超预期提前进入主流HBM且成本具竞争力，或HBM价格反转下跌，则不签LTA与增供给策略受损。</li>
+</ul>
+<h3 id="4q4underweight">观点 4：京东Q4零售转弱+新业务持续烧钱，维持Underweight</h3>
+<ul>
+<li><strong>观点归属：</strong> 大摩 Cassy（京东三季度preview）</li>
+<li><strong>结论：</strong> Q3收入利润指引in line但无意义，Q4零售收入仅中个位数、OP margin承压，全年non-GAAP净利约300亿元，估值便宜是价值陷阱。</li>
+<li><strong>前提事实：</strong> 去年Q4 3C家电基数不低，日百与3P从双位数下调至高个位数；毛利扩张放缓+研发履约费用高企；Q3新业务亏损95-96亿元，其中外卖环比减亏至略低于60亿元，Q4外卖亏损指引收窄至50亿元以下，但Joybuy跨境投入扩大；无退出外卖打算、海外投入坚定。</li>
+<li><strong>推导逻辑：</strong> <code>核心零售增速下修+费用刚性 → Q4及明年OP margin承压 → 外卖减亏被跨境投入抵消 → 新业务亏损可见度低 → 低估值无法兑现 → 维持underweight</code></li>
+<li><strong>隐含假设：</strong> 整体消费需求持续偏弱；外卖效率优化无法弥补单量与补贴压力；市场此前预期为高个位数增长。</li>
+<li><strong>反例 / 证伪条件：</strong> 若Q4零售重回高个位数、或外卖亏损收窄超预期且海外投入放缓致新业务亏损明显低于预期，则价值陷阱判断证伪。</li>
+</ul>
+<h3 id="5q32027">观点 5：腾讯Q3利润负增长，2027年由能否增长转向跌多少</h3>
+<ul>
+<li><strong>观点归属：</strong> 大摩互联网团队 Rebecca（腾讯preview）</li>
+<li><strong>结论：</strong> Q3收入+8.9%、报表OP约-3%，新AI单季亏约150亿元，下半年持续承压，2027年暂估flat，维持Overweight、目标价550港元，催化为混元4与10月29日生态大会。</li>
+<li><strong>前提事实：</strong> 游戏+7.8%（本土+13%、国际因高基数低个位数下滑）、广告+18%、金融科技与企业服务+8.7%；剔除AI后OP可+10%；2026全年non-IFRS OP仍可正增长；2027年模型约2200多亿元，buy side担忧下滑幅度；年化Q2 capex推算2027年约2400亿元。</li>
+<li><strong>推导逻辑：</strong> <code>收入放缓+AI capex折旧与opex加速 → 150亿亏损抵消核心盈利 → Q3/Q4各-3% → 全年勉强正增长 → 2027年取决于游戏新游pipeline与AI投入节奏 → 回报期visibility低但core无忧 → 维持买入等微信AI Agent落地</code></li>
+<li><strong>隐含假设：</strong> 游戏能维持增长托底top line；混元4能力与开发者采用达预期；市场已price-in下半年负增长，分歧只在幅度与时长。</li>
+<li><strong>反例 / 证伪条件：</strong> 若Q3实际OP下滑远超3%、或2027年top line失速+AI投入再加码致flat无法守住，或微信AI Agent无实质进展，则买入逻辑与550港元目标需下修。</li>
+</ul>
+<h3 id="6euvoverhang">观点 6：长存无EUV路径短期难撼主流市场，属长期overhang</h3>
+<ul>
+<li><strong>观点归属：</strong> 大摩 Charlie（回应CXMT无EUV为何市场反应强烈）</li>
+<li><strong>结论：</strong> DUV多重曝光与4F squared架构均存在良率/cycle time未知数，HBM主流商业化1-2年内至多有限替代，2-3年后才谈成本竞争，当前更多是情绪面卖出借口。</li>
+<li><strong>前提事实：</strong> 广州工博会称DUV实现约7纳米节点；行业专家称做得到但cycle time与良率未知；4F squared能否完全避开EUV不确定，最快量产节奏不明；HBM通过新法先叠后通孔可达6.4Gbps，未到7.2Gbps。</li>
+<li><strong>推导逻辑：</strong> <code>无EUV只能靠DUV多重曝光或改架构 → 良率与设备卡点未知 → 主流HBM竞争力不足 → 市场此前低估其HBM能力，现修正预期 → 短期情绪冲击、长期才有基本面冲击</code></li>
+<li><strong>隐含假设：</strong> 设备瓶颈位置与良率爬坡需2-3年验证；国产替代先从HBM小批量切入；成本竞争是最终裁决因子。</li>
+<li><strong>反例 / 证伪条件：</strong> 若CXMT以DUV实现高良率低成本量产并通过主流客户验证，或国产HBM速率达7.2Gbps以上规模出货，则长期overhang提前变现为短期冲击。</li>
+</ul>
+<h2 id="3">3. 投资研究指引</h2>
+<blockquote>
+<p>记录视频所表达的研究方向，不构成买卖建议；没有明确投资含义时如实写“未给出可执行指引”。
+| 主题 / 对象 | 视频隐含或明确的方向 | 为什么 | 正向验证信号 | 风险 / 失效信号 | 需补的证据 |
+|---|---|---|---|---|---|
+| 台积电 / EUV链 / 先进封装 | 偏多、维持买入，上调topline与CapEx模型 | 2纳米翻倍+EUV 2028年交付+20-30%，需求远超供给 | 月度营收、2纳米良率与订单、EUV交机、美国德州拿地进展 | 海外dilution致毛利率持续低于指引、Intel outsourcing不及预期 | 分季度2纳米产能、价格调整幅度、Intel/MediaTek订单回流电话会表态 |
+| ABF载板：欣兴&gt;南电 | 明确偏多欣兴，维持两家Overweight | 欣兴27年产能+10-11%且未来5年每年开一新厂，南电仅个位数去瓶颈 | ABF like-for-like报价逐季上调、稼动率满载、设备订单 | 新增产能提前开出、ASIC需求下修 | 各家扩产capex落地时点、27年长约价格谈判结果 |
+| 三星 / 存储 | 未给出可执行指引，仅研究供给ramp与股东回报 | 业绩符合预期不重要，关键看扩产速度与明年1月回报mix | 供给ramp指引、HBM价格上行、分红回购公告 | 长存份额快速提升、HBM价格反转 | 三星月度供给、长存技术节点与良率第三方验证 |
+| 京东 | 明确看空，维持Underweight | Q4零售中个位数+利润率承压+新业务亏损可见度低 | Q3新业务亏损是否≤95亿、外卖亏损是否&lt;50亿、零售增速 | 外卖亏损大幅收窄、海外投入放缓 | Q4零售分品类增速、履约研发费用率、新业务分项亏损 |
+| 腾讯 | 维持Overweight，等待混元4与生态大会催化 | 核心无忧但AI投入期利润承压，回报visibility低 | 混元4正式版能力与开发者采用、10/29生态大会产品协同、微信AI Agent进展 | Q3 OP下滑超3%、2027年指引下修至负增长 | Q3分业务收入、AI亏损150亿拆分、2027年游戏pipeline与capex折旧测算 |
+| 长存CXMT概念 / 全球Memory | 短期情绪扰动、长期跟踪，不过早做空/做多 | DUV与4F squared良率未知，2-3年后才决定主流HBM成本竞争 | DUV良率、HBM 6.4Gbps向7.2Gbps收敛、国产替代订单 | 高良率低成本量产提前、主流客户认证通过 | 设备商访谈、良率与cycle time数据、HBM客户验证进展 |</p>
+</blockquote></div>
+</article>
+
+      <div class="day-card">
+        <p>归档路径 <code>daily/20261016/</code> · <a href="../../index.html">返回历史总览</a> · <a href="./index.html">本日目录</a></p>
+      </div>
+    </main>
+  </div>
+</body>
+</html>
