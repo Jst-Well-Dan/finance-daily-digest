@@ -37,6 +37,11 @@ SKILLS = ROOT / ".pi" / "skills"
 DAILY = ROOT / "daily"
 
 DEFAULT_PI_MODEL = "muse-spark-1.3-contributor"
+# 要抓的频道。新增频道只需在这里加一行（use --channels 可临时覆盖）。
+CHANNELS = [
+    "https://www.youtube.com/@JIEDU369/videos",
+    "https://www.youtube.com/@TMT_%E8%B0%83%E6%9F%A5%E7%BB%84/videos",
+]
 # 专用变量名：刻意不复用 PI_MODEL（见顶部说明）
 NOTES_MODEL_ENV = "YOUTUBE_NOTES_MODEL"
 VID_DIR_RE = re.compile(r"^(.+)\s*\[([A-Za-z0-9_-]{6,})\]$")
@@ -192,6 +197,12 @@ def main() -> int:
         help="下载窗口下界兜底天数（默认 45，防止窗口外的漏片永远补不回来）",
     )
     ap.add_argument("--cookies", type=Path, help="cookies.txt 路径（可选）")
+    ap.add_argument(
+        "--channels",
+        nargs="+",
+        default=CHANNELS,
+        help="要抓取的频道 URL 列表，默认内置 JIEDU369 + TMT调查组",
+    )
     args = ap.parse_args()
 
     date_str = args.date or datetime.now().strftime("%Y%m%d")
@@ -216,16 +227,21 @@ def main() -> int:
         window_start = min(window_start, _date_days_ago(args.backfill_days))
     else:
         window_start = _date_days_ago(max(args.backfill_days, 14))
-    dl_cmd = [
-        sys.executable, str(SKILLS / "youtube-digest" / "scripts" / "download_youtube_channel.py"),
-        "--run-dir", str(dd),
-        "--dateafter", window_start,
-        "--datebefore", _date_days_ago(-1),
-        "--archive", str(SKILLS / "youtube-digest" / ".youtube_download_archive.txt"),
-    ]
-    if args.cookies and args.cookies.is_file():
-        dl_cmd += ["--cookies", str(args.cookies)]
-    sh(dl_cmd, f"① 增量下载频道视频（窗口 {window_start} → {_date_days_ago(-1)}）", allow_fail_ok=True)
+    # 每个频道一轮下载，共用同一份 archive（视频 ID 全局唯一，不会互相遮蔽）
+    # 与同一个 run-dir；落盘后由 ①.5 统一按 upload_date 分发到 daily/YYYYMMDD。
+    for ch_url in args.channels:
+        dl_cmd = [
+            sys.executable, str(SKILLS / "youtube-digest" / "scripts" / "download_youtube_channel.py"),
+            "--run-dir", str(dd),
+            "--dateafter", window_start,
+            "--datebefore", _date_days_ago(-1),
+            "--channel-url", ch_url,
+            "--archive", str(SKILLS / "youtube-digest" / ".youtube_download_archive.txt"),
+        ]
+        if args.cookies and args.cookies.is_file():
+            dl_cmd += ["--cookies", str(args.cookies)]
+        label = ch_url.rstrip("/").rsplit("@", 1)[-1]
+        sh(dl_cmd, f"① 增量下载频道 {label}（窗口 {window_start} → {_date_days_ago(-1)}）", allow_fail_ok=True)
 
     # ①.5 按 upload_date 归档分发（核心：隔几天补时自动补齐中间日期）
     distributed = distribute_by_upload_date(dd)
