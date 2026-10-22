@@ -185,6 +185,12 @@ def main() -> int:
     ap.add_argument("--date", help="YYYYMMDD，默认今天（仅作下载暂存目录起点）")
     ap.add_argument("--notes-limit", type=int, default=0, help="本次最多生成笔记篇数（0=不限）")
     ap.add_argument("--skip-push", action="store_true", help="只生成不外推")
+    ap.add_argument(
+        "--backfill-days",
+        type=int,
+        default=45,
+        help="下载窗口下界兜底天数（默认 45，防止窗口外的漏片永远补不回来）",
+    )
     ap.add_argument("--cookies", type=Path, help="cookies.txt 路径（可选）")
     args = ap.parse_args()
 
@@ -199,12 +205,17 @@ def main() -> int:
     last_updated = max(existing) if existing else None
     print(f"◆ 上次更新日: {last_updated or '（无，全量初始化）'}")
 
-    # ① 增量下载：窗口从「上次更新日-2 天」到今天（保 1 天余量），不再固定 14 天
+    # ① 增量下载：窗口 = min(上次更新日-2 天, 今天-backfill_days)，到今天（保 1 天余量）。
+    # 为什么要下界兜底：只按「上次更新日」开窗时，任何早于窗口但 archive 里缺的片
+    #（当天发布晚于运行时刻、或那次下载失败没写 archive）都永远补不回来，
+    # 因为 --break-match-filter 一碰到窗口外的条目就中止整轮扫描。
+    # 已下载的条目由 --archive 去重，所以放宽窗口只是多扫几页列表，不会重复下载。
     if last_updated:
         last_dt = datetime.strptime(last_updated, "%Y%m%d")
         window_start = (last_dt - timedelta(days=2)).strftime("%Y%m%d")
+        window_start = min(window_start, _date_days_ago(args.backfill_days))
     else:
-        window_start = _date_days_ago(14)
+        window_start = _date_days_ago(max(args.backfill_days, 14))
     dl_cmd = [
         sys.executable, str(SKILLS / "youtube-digest" / "scripts" / "download_youtube_channel.py"),
         "--run-dir", str(dd),
