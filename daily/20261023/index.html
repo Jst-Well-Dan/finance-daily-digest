@@ -1,0 +1,953 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>解读君视频日报 · 20261023</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@400;600;700;900&display=swap" rel="stylesheet">
+  <style>
+:root {
+  --bg-page: #FBF8F2;
+  --bg-surface: #FFFDF9;
+  --bg-header: #F4EFE6;
+  --bg-subtle: #F0EADF;
+  --border-main: #E5DDCD;
+  --border-dark: #2B2625;
+  --text-main: #231F20;
+  --text-muted: #5C554E;
+  --text-light: #8E8478;
+  --accent-burgundy: #8B261D;
+  --accent-amber: #B45309;
+  --font-serif: 'Noto Serif SC', Georgia, 'Times New Roman', serif;
+  --font-sans: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'IBM Plex Mono', monospace;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 15px; }
+body {
+  background: var(--bg-page);
+  color: var(--text-main);
+  font-family: var(--font-sans);
+  line-height: 1.85;
+  -webkit-font-smoothing: antialiased;
+}
+
+.wrap {
+  max-width: 1300px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 290px 1fr;
+  min-height: 100vh;
+  border-left: 2px solid var(--border-dark);
+  border-right: 2px solid var(--border-dark);
+  background: var(--bg-surface);
+}
+
+@media (max-width: 1024px) {
+  .wrap { grid-template-columns: 1fr; border: none; }
+}
+
+/* Sidebar */
+.nav {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow-y: auto;
+  padding: 32px 24px;
+  background: #F7F3EB;
+  border-right: 1px solid var(--border-main);
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+@media (max-width: 1024px) {
+  .nav { position: relative; height: auto; border-right: none; border-bottom: 2px solid var(--border-dark); }
+}
+
+.brand {
+  padding-bottom: 18px;
+  border-bottom: 2px solid var(--border-dark);
+}
+.brand h1 {
+  font-family: var(--font-serif);
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: var(--border-dark);
+}
+.brand h1 span {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent-burgundy);
+  margin-top: 4px;
+}
+
+.toc h2 {
+  font-family: var(--font-serif);
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--border-dark);
+  border-bottom: 1px solid var(--border-main);
+  padding-bottom: 6px;
+  margin: 16px 0 10px;
+}
+
+.toc a {
+  display: flex;
+  flex-direction: column;
+  padding: 8px 10px;
+  text-decoration: none;
+  color: var(--text-main);
+  border: 1px solid transparent;
+  border-radius: 4px;
+  transition: all 0.15s;
+  font-size: 13px;
+  line-height: 1.4;
+  margin-bottom: 4px;
+}
+.toc a:hover {
+  background: var(--bg-subtle);
+  border-color: var(--border-main);
+}
+.toc a.active {
+  background: #EFE8DA;
+  border-color: var(--border-main);
+  color: var(--accent-burgundy);
+  font-weight: 600;
+}
+.toc a span {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+.nav-desc {
+  font-size: 11px;
+  font-family: var(--font-mono);
+  color: var(--text-muted);
+  line-height: 1.6;
+  padding: 4px 6px;
+}
+
+/* Main Area */
+.main {
+  padding: 40px 48px 80px;
+  max-width: 960px;
+}
+
+@media (max-width: 768px) {
+  .main { padding: 24px 18px 40px; }
+}
+
+.gazette-header {
+  border-top: 3px double var(--border-dark);
+  border-bottom: 1px solid var(--border-dark);
+  padding: 20px 0;
+  margin-bottom: 36px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+.gazette-header h1 {
+  font-family: var(--font-serif);
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--border-dark);
+}
+.gazette-header .gazette-meta {
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.summary-card, .article {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-main);
+  margin-bottom: 40px;
+}
+
+.summary-head, .article-head {
+  background: var(--bg-header);
+  padding: 20px 26px;
+  border-bottom: 1px solid var(--border-main);
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+}
+.article-head h3, .summary-head h3 {
+  font-family: var(--font-serif);
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text-main);
+  line-height: 1.35;
+}
+.article-head h3 a, .summary-head h3 a {
+  color: inherit;
+  text-decoration: none;
+}
+.article-head h3 a:hover, .summary-head h3 a:hover {
+  color: var(--accent-burgundy);
+}
+
+.meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-top: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.meta a {
+  color: var(--accent-burgundy);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.content {
+  padding: 32px 36px;
+  font-size: 14.5px;
+  line-height: 1.9;
+  color: #2D2726;
+}
+
+@media (max-width: 768px) {
+  .content { padding: 20px 18px; }
+  .summary-head, .article-head { padding: 16px 18px; }
+}
+
+.content h1 {
+  font-family: var(--font-serif);
+  font-size: 22px;
+  font-weight: 700;
+  margin: 0 0 18px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border-dark);
+}
+
+.content h2 {
+  font-family: var(--font-serif);
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--accent-burgundy);
+  background: var(--bg-header);
+  border: 1px solid var(--border-main);
+  border-radius: 4px;
+  padding: 8px 14px;
+  margin: 32px 0 14px;
+  letter-spacing: 0.02em;
+}
+
+.content h3 {
+  font-family: var(--font-serif);
+  font-size: 14.5px;
+  font-weight: 700;
+  margin: 22px 0 10px;
+  color: var(--text-main);
+}
+
+.content p {
+  margin-bottom: 16px;
+  text-align: justify;
+}
+
+.content strong {
+  font-weight: 700;
+  color: #1A1616;
+}
+
+.content ul, .content ol {
+  margin: 12px 0 18px 6px;
+  padding-left: 22px;
+}
+.content li {
+  margin-bottom: 8px;
+  line-height: 1.8;
+}
+.content ul > li::marker {
+  content: "▪ ";
+  color: var(--accent-burgundy);
+}
+.content ol > li::marker {
+  color: var(--accent-burgundy);
+  font-weight: 700;
+  font-family: var(--font-mono);
+}
+.content li > ul, .content li > ol {
+  margin: 8px 0 8px 6px;
+}
+.cond-label {
+  color: var(--accent-burgundy);
+  font-weight: 700;
+}
+.content li > p {
+  margin-bottom: 6px;
+}
+.content li > p:last-child {
+  margin-bottom: 0;
+}
+
+.viewpoint {
+  border: 1px solid var(--border-main);
+  border-radius: 6px;
+  margin: 16px 0 20px;
+  overflow: hidden;
+  background: #FFFDF8;
+}
+.vp-head {
+  background: var(--bg-header);
+  padding: 10px 16px;
+  border-bottom: 1px solid var(--border-main);
+  display: flex;
+  gap: 10px;
+  align-items: baseline;
+  flex-wrap: wrap;
+}
+.vp-num {
+  font-family: var(--font-serif);
+  font-weight: 700;
+  font-size: 14.5px;
+  color: var(--accent-burgundy);
+  white-space: nowrap;
+}
+.vp-title {
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--text-main);
+}
+.vp-owner {
+  margin-left: auto;
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+.vp-row {
+  display: grid;
+  grid-template-columns: 46px 1fr;
+  gap: 12px;
+  padding: 8px 16px;
+  font-size: 13.5px;
+  line-height: 1.8;
+}
+.vp-row + .vp-row {
+  border-top: 1px dashed var(--border-main);
+}
+.vp-label {
+  font-weight: 700;
+  font-size: 12.5px;
+  color: var(--accent-burgundy);
+  white-space: nowrap;
+  padding-top: 1px;
+}
+.vp-val {
+  color: #2D2726;
+  text-align: justify;
+  min-width: 0;
+}
+.vp-val p {
+  margin: 0;
+  text-align: justify;
+}
+.vp-val code {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  background: #EDE6D8;
+  padding: 2px 6px;
+  border-radius: 3px;
+  color: var(--accent-burgundy);
+}
+@media (max-width: 768px) {
+  .vp-row { grid-template-columns: 40px 1fr; padding: 7px 12px; }
+}
+
+.content blockquote {
+  background: #F3ECE0;
+  border: 1px solid var(--border-main);
+  border-radius: 4px;
+  padding: 14px 20px;
+  margin: 20px 0;
+  font-size: 13.5px;
+  font-style: italic;
+  color: #523E3B;
+}
+
+.content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 24px 0;
+  font-size: 13px;
+  border: 1px solid var(--border-main);
+}
+.content th {
+  background: #ECE4D6;
+  font-family: var(--font-serif);
+  font-weight: 700;
+  color: var(--border-dark);
+  text-align: left;
+  padding: 10px 14px;
+  border: 1px solid var(--border-main);
+}
+.content td {
+  padding: 9px 14px;
+  border: 1px solid var(--border-main);
+}
+.content tr:nth-child(even) {
+  background: #F8F4EC;
+}
+
+.content code {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  background: #EDE6D8;
+  padding: 2px 6px;
+  border-radius: 3px;
+  color: var(--accent-burgundy);
+}
+
+.day-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-main);
+  padding: 20px 24px;
+  margin-bottom: 18px;
+}
+.day-card h3 {
+  font-family: var(--font-serif);
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+.day-card h3 a {
+  color: var(--text-main);
+  text-decoration: none;
+}
+.day-card h3 a:hover {
+  color: var(--accent-burgundy);
+}
+.day-card p {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+.btn {
+  display: inline-flex;
+  padding: 8px 14px;
+  border: 1px solid var(--border-dark);
+  background: var(--bg-surface);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  text-decoration: none;
+  color: var(--text-main);
+  font-weight: 600;
+  transition: all 0.15s;
+}
+.btn:hover {
+  background: var(--bg-subtle);
+}
+.btn.primary {
+  background: var(--border-dark);
+  color: #FFFFFF;
+}
+.btn.primary:hover {
+  background: var(--accent-burgundy);
+  border-color: var(--accent-burgundy);
+}
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <nav class="nav">
+      <div class="brand">
+        <h1>解读君视频日报<span>JIEDU DAILY · 20261023</span></h1>
+      </div>
+      <div class="toc">
+        <h2>全量原文</h2>
+        <a href="#summary" class="active">每日核心总结<span>20261023</span></a>
+        <a href="#note-0HMwR5raGew">【2026-10-23最新重要内容】但斌谈当下投资机遇重点 《错失一个时代比泡沫更贵》【文字稿件发布于解读君推特X】<span>20261023 · 0HMwR5raGew</span></a><a href="#note--xC_nnbGJSU">【最新】大摩闭门会（2026-10-23最新）创新科技机会前瞻：中国创新药四季度三道关<span>20261023 · -xC_nnbGJSU</span></a><a href="#note-i0tIFDXcaIo">（2026-10-22）重磅大咖深度对话：谈当前市场周期，接下来的走向以及对于杠杆的理解！<span>20261023 · i0tIFDXcaIo</span></a>
+        <h2>历史归档</h2>
+        <a href="../../index.html">← 返回历史总览</a>
+        <a href="../20261026/index.html" class="">20261026 <span>3 篇 · 当日归档</span></a><a href="../20261024/index.html" class="">20261024 <span>1 篇 · 当日归档</span></a><a href="../20261023/index.html" class="active">20261023 <span>3 篇 · 当日归档</span></a><a href="../20261022/index.html" class="">20261022 <span>2 篇 · 当日归档</span></a><a href="../20261021/index.html" class="">20261021 <span>2 篇 · 当日归档</span></a><a href="../20261020/index.html" class="">20261020 <span>1 篇 · 当日归档</span></a><a href="../20261019/index.html" class="">20261019 <span>1 篇 · 当日归档</span></a><a href="../20261018/index.html" class="">20261018 <span>2 篇 · 当日归档</span></a><a href="../20261016/index.html" class="">20261016 <span>1 篇 · 当日归档</span></a><a href="../20261015/index.html" class="">20261015 <span>1 篇 · 当日归档</span></a><a href="../20261014/index.html" class="">20261014 <span>3 篇 · 当日归档</span></a><a href="../20261013/index.html" class="">20261013 <span>2 篇 · 当日归档</span></a><a href="../20261012/index.html" class="">20261012 <span>2 篇 · 当日归档</span></a><a href="../20261011/index.html" class="">20261011 <span>3 篇 · 当日归档</span></a><a href="../20261010/index.html" class="">20261010 <span>9 篇 · 当日归档</span></a><a href="../20261006/index.html" class="">20261006 <span>2 篇 · 当日归档</span></a><a href="../20261005/index.html" class="">20261005 <span>3 篇 · 当日归档</span></a><a href="../20261004/index.html" class="">20261004 <span>1 篇 · 当日归档</span></a><a href="../20260929/index.html" class="">20260929 <span>0 篇 · 当日归档</span></a><a href="../20260928/index.html" class="">20260928 <span>1 篇 · 当日归档</span></a><a href="../20260927/index.html" class="">20260927 <span>6 篇 · 当日归档</span></a><a href="../20260922/index.html" class="">20260922 <span>1 篇 · 当日归档</span></a><a href="../20260921/index.html" class="">20260921 <span>8 篇 · 当日归档</span></a><a href="../20260914/index.html" class="">20260914 <span>6 篇 · 当日归档</span></a><a href="../20260910/index.html" class="">20260910 <span>1 篇 · 当日归档</span></a><a href="../20260908/index.html" class="">20260908 <span>2 篇 · 当日归档</span></a><a href="../20260907/index.html" class="">20260907 <span>2 篇 · 当日归档</span></a><a href="../20260906/index.html" class="">20260906 <span>1 篇 · 当日归档</span></a><a href="../20260905/index.html" class="">20260905 <span>1 篇 · 当日归档</span></a><a href="../20260904/index.html" class="">20260904 <span>2 篇 · 当日归档</span></a><a href="../20260903/index.html" class="">20260903 <span>2 篇 · 当日归档</span></a><a href="../20260902/index.html" class="">20260902 <span>3 篇 · 当日归档</span></a><a href="../20260831/index.html" class="">20260831 <span>2 篇 · 当日归档</span></a><a href="../20260829/index.html" class="">20260829 <span>1 篇 · 当日归档</span></a><a href="../20260828/index.html" class="">20260828 <span>1 篇 · 当日归档</span></a><a href="../20260825/index.html" class="">20260825 <span>1 篇 · 当日归档</span></a><a href="../20260824/index.html" class="">20260824 <span>2 篇 · 当日归档</span></a><a href="../20260823/index.html" class="">20260823 <span>1 篇 · 当日归档</span></a><a href="../20260821/index.html" class="">20260821 <span>3 篇 · 当日归档</span></a>
+      </div>
+    </nav>
+    <main class="main">
+      <div class="gazette-header">
+        <div>
+          <h1>金融经纬 · 每日纪要</h1>
+          <div class="gazette-meta">JIEDU DAILY FINANCIAL GAZETTE · VOL. 20261023</div>
+        </div>
+        <div class="gazette-meta">3 ARTICLES ARCHIVED</div>
+      </div>
+      
+<section id="summary" class="summary-card">
+  <div class="summary-head">
+    <div>
+      <h3>每日总结 · 20261023</h3>
+      <div class="meta">daily/20261023/20261023_解读君视频总结.md</div>
+    </div>
+  </div>
+  <div class="content"><h1 id="_1">解读君视频摘要</h1>
+<h2 id="1-2026-10-23-x">1. <a href="#note-0HMwR5raGew">【2026-10-23最新重要内容】但斌谈当下投资机遇重点 《错失一个时代比泡沫更贵》【文字稿件发布于解读君推特X】</a></h2>
+<blockquote>
+<p>一句话：但斌称错失AI时代比泡沫更贵，认同者应以自有资金长期持有龙头且绝不加杠杆。</p>
+</blockquote>
+<ul>
+<li><strong>结论1：错失一个伟大时代的风险远大于泡沫回撤的风险，认同AI时代者应全力以赴、知行合一。</strong> 适用条件/边界：仅适用于认同AI为跨世纪技术革命、能承受大幅波动且用自有资金长期投资的人；若不认同大时代逻辑或需短期流动性，则不应跟随。</li>
+<li><strong>结论2：选股主线始终是“改变世界的公司 vs 行业改变不了的公司”，财富核心源泉是技术进步。</strong> 适用条件/边界：适用于以3-10年维度做股权投资、能跟踪基本面迭代的人；若企业基本面证伪或技术路线被替代，主线即失效须放弃坚守。</li>
+<li><strong>结论3：未来3-5年AI产业链最确定的是硬件“卖铲子”环节，软件与应用比翼齐飞但分化极大。</strong> 适用条件/边界：仅在云订单、资本开支、推理需求维持高增长且巨头持续投入时成立；若资本开支骤停、订单取消或出现颠覆性低成本路线，则判断失效。</li>
+<li><strong>结论4：纪律只有两条：绝不加杠杆；无系统性风险时靠底层资产质量穿越波动，有系统性风险时才风控。</strong> 适用条件/边界：适用于组合持有茅台、英伟达、谷歌等已验证现金流/订单的龙头；若持仓为伪AI概念股或杠杆盘，此纪律不适用。</li>
+</ul>
+<h2 id="2-2026-10-23">2. <a href="#note--xC_nnbGJSU">【最新】大摩闭门会（2026-10-23最新）创新科技机会前瞻：中国创新药四季度三道关</a></h2>
+<blockquote>
+<p>一句话：四季度三道关是临床数据验证恒瑞业绩与首付款康方生存期压力优选现金充足平台公司</p>
+</blockquote>
+<ol>
+<li>ESMO常规摘要已落地、LBA在10月23-27日密集读出，科伦博泰肺癌一线与恒瑞/豪森/康方等LBA是四季度首道验证关。<br><span class="cond-label">适用条件/边界：</span>仅在LBA细节（OS曲线维持度、安全性拆分、全球与中国数据一致性）符合预期时成立，不以早期ORR单点外推。</li>
+<li>恒瑞三季度创新药销售环比二季度迷你反腐阶段复苏、全年192亿目标大概率达成，叠加GSK/BMS首付款年内确认，构成业绩+BD双支撑。<br><span class="cond-label">适用条件/边界：</span>仅适用于BD确认节奏不延后、降价与放量假设不变的情形，若首付款确认跨年则当年利润预期下修。</li>
+<li>康方Harmony-3全球三期大概率PFS显著，但OS趋势承压是全球化验证的关键分歧。<br><span class="cond-label">适用条件/边界：</span>该判断基于对照组换为K药、≥75岁及非亚裔VEGF相关不良反应更高导致停药率上升的假设；若停药率可控或随访延长后OS HR≤0.75，则悲观假设被证伪。</li>
+<li>板块维持选择性增持，优先具备现金+商业化+license-in资金的风险承担能力与全球差异化资产稀缺性的平台型公司。<br><span class="cond-label">适用条件/边界：</span>仅在授权首付款占比维持高位、现金跑道延长逻辑延续时成立；若高利率/弱风险偏好持续压制成长股估值，买入节奏需放缓，不改变基本面改善方向本身。</li>
+</ol>
+<h2 id="3-2026-10-22">3. <a href="#note-i0tIFDXcaIo">（2026-10-22）重磅大咖深度对话：谈当前市场周期，接下来的走向以及对于杠杆的理解！</a></h2>
+<blockquote>
+<p>一句话：散户须认清弱者定位，只买低价高分红真现金流，远离地产下行与高杠杆热门抱团。</p>
+</blockquote>
+<ul>
+<li><strong>结论1：摆正极度弱者位置，只赚小股东的钱。</strong> 适用条件：A股多重博弈（国家、地方政府、大股东、管理层、机构先于散户）结构未改变时；若误以强者心态追宏大叙事、不看价格追高，则必为炮灰。</li>
+<li><strong>结论2：只买价格合理+真实现金流高分红，不买下行周期。</strong> 适用条件：适用于普通散户与非专业投资者；以分红验证财报真实性，以退出/破产验证行业出清，未见出清前只做哨兵仓或空仓。</li>
+<li><strong>结论3：地产见底不买地产股，债务未彻底重组前仍不可碰，乐观者应看银行。</strong> 适用条件：只要存量地产企业仍背负巨额奔跑债务且未彻底重组；仅当债务彻底出清或有全新主体出现时逻辑才反转。</li>
+<li><strong>结论4：热门抱团必须控杠杆、控增量、查风格漂移，否则波动放大成危机。</strong> 适用条件：针对涨幅过大、成交集中、融资盘密集的热门股与科技抱团阶段；用自有资金参与不受限，但借钱买入必须受限。</li>
+<li><strong>结论5：金融已进入低负债成本新周期起点，宽基ETF应做成公共产品。</strong> 适用条件：存款约1%、两融约4.5%、保险预定1.5%左右的低利率环境持续，且地产虚假高无风险收益不再提供锚时；前提是指数编制不被套利塞入差公司、保持均衡估值水位。</li>
+</ul></div>
+</section>
+
+      
+<article id="note-0HMwR5raGew" class="article">
+  <div class="article-head">
+    <div>
+      <h3><a href="https://www.youtube.com/watch?v=0HMwR5raGew" target="_blank" rel="noreferrer">【2026-10-23最新重要内容】但斌谈当下投资机遇重点 《错失一个时代比泡沫更贵》【文字稿件发布于解读君推特X】</a></h3>
+      <div class="meta">20261023 · 0HMwR5raGew · <a href="https://www.youtube.com/watch?v=0HMwR5raGew" target="_blank" rel="noreferrer">观看 YouTube 原片 ↗</a></div>
+    </div>
+  </div>
+  <div class="content"><h1 id="2026-10-23-x">结构化笔记｜【2026-10-23最新重要内容】但斌谈当下投资机遇重点 《错失一个时代比泡沫更贵》【文字稿件发布于解读君推特X】</h1>
+<h2 id="1">1. 核心结论</h2>
+<ul>
+<li><strong>结论1：错失一个伟大时代的风险远大于泡沫回撤的风险，认同AI时代者应全力以赴、知行合一。</strong> 适用条件/边界：仅适用于认同AI为跨世纪技术革命、能承受大幅波动且用自有资金长期投资的人；若不认同大时代逻辑或需短期流动性，则不应跟随。</li>
+<li><strong>结论2：选股主线始终是“改变世界的公司 vs 行业改变不了的公司”，财富核心源泉是技术进步。</strong> 适用条件/边界：适用于以3-10年维度做股权投资、能跟踪基本面迭代的人；若企业基本面证伪或技术路线被替代，主线即失效须放弃坚守。</li>
+<li><strong>结论3：未来3-5年AI产业链最确定的是硬件“卖铲子”环节，软件与应用比翼齐飞但分化极大。</strong> 适用条件/边界：仅在云订单、资本开支、推理需求维持高增长且巨头持续投入时成立；若资本开支骤停、订单取消或出现颠覆性低成本路线，则判断失效。</li>
+<li><strong>结论4：纪律只有两条：绝不加杠杆；无系统性风险时靠底层资产质量穿越波动，有系统性风险时才风控。</strong> 适用条件/边界：适用于组合持有茅台、英伟达、谷歌等已验证现金流/订单的龙头；若持仓为伪AI概念股或杠杆盘，此纪律不适用。</li>
+</ul>
+<h2 id="2">2. 专家观点与逻辑链</h2>
+<h3 id="1_1">观点 1：错失时代比泡沫更贵</h3>
+<ul>
+<li><strong>观点归属：</strong> 但斌</li>
+<li><strong>结论：</strong> 普通人对AI应克服担惊受怕，全力以赴参与伟大时代，否则一生短暂、事后终身后悔。</li>
+<li><strong>前提事实：</strong> 从业34年经历互联网、移动互联网，真正赚到钱者极少；比特币、2000年搜狐新浪网易、腾讯等案例显示时代红利稍纵即逝；ChatGPT在2022年底发布开启新时代。</li>
+<li><strong>推导逻辑：</strong> <code>重大技术革命出现 → 早期参与者获得指数级财富 → 犹豫只看泡沫者错过0到1 → 结论：宁可承担波动也要在正确方向坚持</code></li>
+<li><strong>隐含假设：</strong> AI是堪比甚至超越互联网的跨世纪革命；个人有能力选对方向或买指数跟住时代。</li>
+<li><strong>反例 / 证伪条件：</strong> 若AI资本开支长期无法转化为利润、巨头集体削减投入、通用人工智能证伪，则“全力以赴”将造成永久性亏损。</li>
+</ul>
+<h3 id="2_1">观点 2：从茅台到英伟达，标准没变：投创造巨大财富的伟大公司</h3>
+<ul>
+<li><strong>观点归属：</strong> 但斌</li>
+<li><strong>结论：</strong> 投资要投改变世界商业模式的公司，都有清晰价值线，不能刻舟求剑。</li>
+<li><strong>前提事实：</strong> 2003年茅台市值180亿低于库存价值220亿，5年酿造+茅台镇稀缺+产量扩张+草根调研显示价格终超五粮液；2015-2016年已研究英伟达，《时间的玫瑰》再版已论及；谷歌2000亿资本支出对应5000亿云订单。</li>
+<li><strong>推导逻辑：</strong> <code>发现被低估的好企业基本面 → 伴随其成长为伟大公司 → 获得高回报 → 结论：茅台逻辑与英伟达谷歌逻辑同源，只是载体从消费变为技术</code></li>
+<li><strong>隐含假设：</strong> 财务报表、订单、产能扩张能真实反映价值创造；研究者能持续学习迭代。</li>
+<li><strong>反例 / 证伪条件：</strong> 若茅台中产消费、提价能力瓦解，或英伟达需求系虚假订单、推理需求100倍增长落空，则伟大叙事不成立。</li>
+</ul>
+<h3 id="3">观点 3：白酒逻辑曾成立，现在必须正视需求变迁</h3>
+<ul>
+<li><strong>观点归属：</strong> 但斌</li>
+<li><strong>结论：</strong> 12-13年塑化剂反腐时坚持因认定是中产需求且基本面未变；现在年轻人结构、年龄、社交方式变了，不能死守。</li>
+<li><strong>前提事实：</strong> 08年金融危机、12-13年塑化剂反腐一股没卖；近期观察到60岁前后酒量骤降、独生子女就业心态变化、掼蛋等新社交挤占酒局。</li>
+<li><strong>推导逻辑：</strong> <code>当年基本面未变 → 坚持20年正确 → 现在人口结构与文化出现变化 → 结论：需迭代认知而非无条件坚守白酒</code></li>
+<li><strong>隐含假设：</strong> 草根观察到的饮酒行为变化代表长期趋势而非周期波动。</li>
+<li><strong>反例 / 证伪条件：</strong> 若商务宴请与中年转化恢复、白酒提价与销量回升，则“需求走弱”判断被证伪。</li>
+</ul>
+<h3 id="4ai">观点 4：AI不是互联网泡沫重演，是巨头重资产推动的更大革命</h3>
+<ul>
+<li><strong>观点归属：</strong> 但斌</li>
+<li><strong>结论：</strong> AI革命比互联网更伟大、更颠覆，重资产即护城河，质疑者应去沽空而非嘴炮。</li>
+<li><strong>前提事实：</strong> 当年互联网是从小公司从无到有；这次是谷歌、微软、亚马逊、台积电等巨头每年数千亿投入；台积电魏哲家称调研上下游需求确定、美光黄仁勋称供给受限、巴菲特亲购谷歌800亿债并成第三大重仓。</li>
+<li><strong>推导逻辑：</strong> <code>只有巨头投得起万亿级投入 → 建成他人无法复制的算力护城河 → 先实现AI者达10万亿至30万亿市值 → 结论：这是大公司推动的革命，泡沫论不改变产业趋势</code></li>
+<li><strong>隐含假设：</strong> 巨头管理层表态与订单真实可信；资本开支能形成有效护城河而非过剩产能。</li>
+<li><strong>反例 / 证伪条件：</strong> 若巨头大幅削减资本开支、云增速断崖、做空AI者大赚，则革命叙事证伪。</li>
+</ul>
+<h3 id="5ai">观点 5：中国AI仍有机会，优势在制造与应用</h3>
+<ul>
+<li><strong>观点归属：</strong> 但斌</li>
+<li><strong>结论：</strong> 中国在AI领域全力以赴，硬件产业链与应用场景最可能全球领先。</li>
+<li><strong>前提事实：</strong> DeepSeek、Kimi、字节、腾讯、阿里资本开支接近上千亿；硅谷华人工程师占比高，华人创业融资5000万美元案例；美国企业采购中心在东莞深圳、速度快；伯克利博士成果直接创业。</li>
+<li><strong>推导逻辑：</strong> <code>工程师红利+拼搏精神+国家支持+丰富应用场景 → 制造与应用环节承接英伟达谷歌机器人链 → 结论：中国公司可在配套硬件与应用上竞争</code></li>
+<li><strong>隐含假设：</strong> 中美技术融合不彻底脱钩；A股波动可通过高位卖出应对。</li>
+<li><strong>反例 / 证伪条件：</strong> 若核心算力被卡死、A股相关公司只有估值无订单利润，或人才回流创业失败率极高，则机会判断失效。</li>
+</ul>
+<h3 id="6">观点 6：投资是比远见和人性的行业</h3>
+<ul>
+<li><strong>观点归属：</strong> 但斌</li>
+<li><strong>结论：</strong> 投资比谁看得远、看得准、敢重仓、能坚持；唯一铁律是不加杠杆；最大错误是想的和做的不一致。</li>
+<li><strong>前提事实：</strong> 08年高仓位大亏没卖，15年6月预判类87年股灾卖到只剩茅台10%+平安，16年2月满仓回；25年贸易战误判系统性风险减仓AI后发现是次要矛盾，不计成本买回；中概私有化套利因政策跌破清盘线自掏数千万补仓。</li>
+<li><strong>推导逻辑：</strong> <code>主因是AI大时代、次因是贸易战等扰动 → 次因不改变主因即纠错买回 → 结论：将军赶路不追小兔，短期价差回看无意义</code></li>
+<li><strong>隐含假设：</strong> 投资者能区分主因与次因；自有资金、无杠杆才能承受回撤并纠错。</li>
+<li><strong>反例 / 证伪条件：</strong> 若所谓次要风险演变为长期系统性衰退，或重仓标的基本面恶化仍不卖，则远见+坚持变为巨亏根源。</li>
+</ul>
+<h2 id="3_1">3. 投资研究指引</h2>
+<blockquote>
+<p>记录视频所表达的研究方向，不构成买卖建议；没有明确投资含义时如实写“未给出可执行指引”。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>主题 / 对象</th>
+<th>视频隐含或明确的方向</th>
+<th>为什么</th>
+<th>正向验证信号</th>
+<th>风险 / 失效信号</th>
+<th>需补的证据</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AI巨头及算力硬件（英伟达、谷歌、微软、亚马逊、台积电、美光等）</td>
+<td>全力以赴持有伟大公司，不因泡沫论下车</td>
+<td>云订单5000亿、推理需求百倍、供给受限仍增70%、重资产建护城河</td>
+<td>季报资本开支维持2000亿级、云订单增长、黄仁勋魏哲家持续确认需求</td>
+<td>削减开支、订单取消、毛利率崩塌</td>
+<td>分季度资本开支、云 backlog、GPU交付与价格、产业链库存</td>
+</tr>
+<tr>
+<td>AI软件与应用、无人驾驶、机器人</td>
+<td>硬件与应用比翼齐飞，关注已落地应用</td>
+<td>软件股错杀后因AI增效暴涨、Meta新模型创新高、无人驾驶经14年终实现</td>
+<td>无人驾驶全球推广、机器人进亚马逊分拣等多行业、模型效果突破</td>
+<td>仅讲故事无收入、推广停滞</td>
+<td>应用收入占比、续费率、接管率、机器人出货与单位经济</td>
+</tr>
+<tr>
+<td>中国AI链（字节、腾讯、阿里、DeepSeek、Kimi概念及制造配套）</td>
+<td>积极研究制造配套与应用，A股波动大需高位止盈</td>
+<td>上千亿开支跟进、制造业大国采购在东莞深圳、应用场景丰富</td>
+<td>国内大厂开支上千亿、订单落地、博士创业公司融资放量</td>
+<td>只有预期无业绩、政策反复</td>
+<td>本土订单、资本开支明细、供应链份额、利润兑现节奏</td>
+</tr>
+<tr>
+<td>白酒（茅台为代表）</td>
+<td>过去逻辑已充分兑现，现在需迭代观察，未给出加仓指引</td>
+<td>年轻化、老龄化酒量下降、社交方式变迁可能削弱需求</td>
+<td>提价顺利、库存去化、中年转化恢复</td>
+<td>提价失败、销量持续下滑、年轻人转化率走低</td>
+<td>分渠道销量、价格、库存、年龄结构饮酒 survey</td>
+</tr>
+<tr>
+<td>指数与普通人参与方式</td>
+<td>没能力选股感知时代者买指数，克服人性弱点</td>
+<td>时代红利大于个股 alpha，担惊受怕必错失</td>
+<td>指数长期跟住时代涨幅、持有不追涨杀跌</td>
+<td>杠杆、频繁交易、重仓单一概念股</td>
+<td>指数成分 AI 暴露度、费率、最大回撤承受测算</td>
+</tr>
+<tr>
+<td>泡沫论与沽空</td>
+<td>不认同即远离或沽空，不要既看空又持有</td>
+<td>资本市场聪明，嘴炮无意义，真金白银才验证</td>
+<td>看空者敢于做空并获利</td>
+<td>看空正确却未执行、或做空被轧空</td>
+<td>做空持仓、借券费率、波动率</td>
+</tr>
+</tbody>
+</table></div>
+</article>
+
+<article id="note--xC_nnbGJSU" class="article">
+  <div class="article-head">
+    <div>
+      <h3><a href="https://www.youtube.com/watch?v=-xC_nnbGJSU" target="_blank" rel="noreferrer">【最新】大摩闭门会（2026-10-23最新）创新科技机会前瞻：中国创新药四季度三道关</a></h3>
+      <div class="meta">20261023 · -xC_nnbGJSU · <a href="https://www.youtube.com/watch?v=-xC_nnbGJSU" target="_blank" rel="noreferrer">观看 YouTube 原片 ↗</a></div>
+    </div>
+  </div>
+  <div class="content"><h1 id="2026-10-23">结构化笔记｜【最新】大摩闭门会（2026-10-23最新）创新科技机会前瞻：中国创新药四季度三道关</h1>
+<h2 id="1">1. 核心结论</h2>
+<ol>
+<li>ESMO常规摘要已落地、LBA在10月23-27日密集读出，科伦博泰肺癌一线与恒瑞/豪森/康方等LBA是四季度首道验证关。适用条件/边界：仅在LBA细节（OS曲线维持度、安全性拆分、全球与中国数据一致性）符合预期时成立，不以早期ORR单点外推。</li>
+<li>恒瑞三季度创新药销售环比二季度迷你反腐阶段复苏、全年192亿目标大概率达成，叠加GSK/BMS首付款年内确认，构成业绩+BD双支撑。适用条件/边界：仅适用于BD确认节奏不延后、降价与放量假设不变的情形，若首付款确认跨年则当年利润预期下修。</li>
+<li>康方Harmony-3全球三期大概率PFS显著，但OS趋势承压是全球化验证的关键分歧。适用条件/边界：该判断基于对照组换为K药、≥75岁及非亚裔VEGF相关不良反应更高导致停药率上升的假设；若停药率可控或随访延长后OS HR≤0.75，则悲观假设被证伪。</li>
+<li>板块维持选择性增持，优先具备现金+商业化+license-in资金的风险承担能力与全球差异化资产稀缺性的平台型公司。适用条件/边界：仅在授权首付款占比维持高位、现金跑道延长逻辑延续时成立；若高利率/弱风险偏好持续压制成长股估值，买入节奏需放缓，不改变基本面改善方向本身。</li>
+</ol>
+<h2 id="2">2. 专家观点与逻辑链</h2>
+<h3 id="1esmo-lba">观点 1：ESMO LBA是四季度首道关，科伦博泰数据关注度最高</h3>
+<ul>
+<li><strong>观点归属：</strong> 摩根士丹利 Alex闫肖一</li>
+<li><strong>结论：</strong> 科伦博泰与默沙东合作的肺癌一线数据及二线子宫内膜癌全球首次数据是最值得关注的LBA，其次是恒瑞3个LBA、豪森B7-H3 ADC骨肉瘤中国三期等。</li>
+<li><strong>前提事实：</strong> 10月19日常规摘要已公布，LBA在10月23-27日陆续公布；已公布常规摘要中石药PD-1/IL-15双抗后线HCC ORR约40%、CRC约20%+，豪森B7-H3 ADC全球Ⅱ期二线小细胞肺癌8mg/kg ORR达61%，科伦博泰精致三阴乳腺癌中国三期final OS HR约0.60。</li>
+<li><strong>推导逻辑：</strong> <code>常规摘要多为早期/确证性更新 → LBA集中承载一线大适应症与全球首发数据 → 科伦博泰一线NSCLC有效性+全球试验读出决定估值弹性最大</code></li>
+<li><strong>隐含假设：</strong> LBA数据质量与市场预期的差值仍是股价主要驱动；中国数据可部分外推至全球。</li>
+<li><strong>反例 / 证伪条件：</strong> 若LBA仅为安全性更新、无PFS/OS细节，或全球数据与中国数据不一致导致可比性下降，则关注度逻辑失效。</li>
+</ul>
+<h3 id="2os">观点 2：康方依沃西胆道癌OS成功支持肺癌外适应症扩张</h3>
+<ul>
+<li><strong>观点归属：</strong> 摩根士丹利 Jack廖志全</li>
+<li><strong>结论：</strong> 依沃西单抗胆道癌三期OS成功意义超预期，看好其在肺癌以外适应症扩张，市场对该部分预期不足。</li>
+<li><strong>前提事实：</strong> 胆道癌Ⅱ期中位OS 16.8个月，对照历史IMbrave151约13个月；既往贝伐珠单抗加入PD-L1方案改善PFS但未转化为OS；现三期OS已宣布成功，待公布曲线细节；已有Harmony-2/Harmony-6 OS证据。</li>
+<li><strong>推导逻辑：</strong> <code>既往同适应症PFS获益未能转化OS → 依沃西此次实现OS获益 → 说明双抗机制在该领域具差异化生存获益能力 → 可外推至其他非肺癌适应症</code></li>
+<li><strong>隐含假设：</strong> Ⅱ期至Ⅲ期人群可比；OS获益主要来自药物机制而非后线治疗偏倚；安全性代价可接受。</li>
+<li><strong>反例 / 证伪条件：</strong> 若周末公布的OS曲线后期收敛、HR边际显著，或≥3级不良反应显著高于对照导致获益风险比恶化，则扩张逻辑不成立。</li>
+</ul>
+<h3 id="3ibi343">观点 3：信达IBI343靠胃肠道耐受优势打开预期上调空间</h3>
+<ul>
+<li><strong>观点归属：</strong> 摩根士丹利 Jack廖志全</li>
+<li><strong>结论：</strong> Claudin18.2 ADC IBI343后线胃癌三期若OS具竞争力，有望连同耐受性优势推动投资者上调目前有限的资产贡献预期。</li>
+<li><strong>前提事实：</strong> 三期针对Claudin高表达三线后胃癌，PFS已宣布成功；早期确认ORR约32%、PFS 5.5个月；重度恶心呕吐各约1.6%，低于同靶点竞品CMG901历史约6%。</li>
+<li><strong>推导逻辑：</strong> <code>胃肠耐受更好 → 持续用药依从性更高、联合空间更大 → 若OS再具竞争力 → 三期价值+耐受性形成双击 → 估值贡献上调</code></li>
+<li><strong>隐含假设：</strong> 早期耐受数据可在三期复现；OS与PFS方向一致；投资者当前计入贡献确实偏低。</li>
+<li><strong>反例 / 证伪条件：</strong> 若三期OS未达统计显著或仅边际获益，或恶心呕吐在更大样本中上升，则上调逻辑失效。</li>
+</ul>
+<h3 id="4adc">观点 4：再鼎ADC+双抗一线小细胞肺癌双药方案有望替代化疗</h3>
+<ul>
+<li><strong>观点归属：</strong> 摩根士丹利 Jack廖志全</li>
+<li><strong>结论：</strong> 偏好Zai Lab ZL-1310 ADC+免疫双药一线方案，有机会以更高缓解+更低化疗负担替代依托泊苷+铂化疗。</li>
+<li><strong>前提事实：</strong> 历史免疫+化疗一线小细胞肺癌缓解率约60%、PFS约5.2个月；双药15例ORR达80%；管理层指引PFS增长50%以上、约8个月；双药≥3级治疗相关不良事件约27%，传统方案约67%。</li>
+<li><strong>推导逻辑：</strong> <code>ORR 80%+预期PFS延长 → 疗效占优 + 严重不良事件减半 → 双药联用具备替代化疗基础 → 并为三药联用留出空间</code></li>
+<li><strong>隐含假设：</strong> 小样本ORR可外推；PFS指引可兑现；安全性在扩大样本中不恶化。</li>
+<li><strong>反例 / 证伪条件：</strong> 若周末公布的PFS远低于8个月，或长期随访毒性累积、停药率上升，则替代逻辑不成立。</li>
+</ul>
+<h3 id="5bd">观点 5：恒瑞业绩复苏+BD确认节奏明确</h3>
+<ul>
+<li><strong>观点归属：</strong> 摩根士丹利 Alex闫肖一</li>
+<li><strong>结论：</strong> 恒瑞三季度创新药销售环比改善，全年目标与BD收入确认节奏均偏正面。</li>
+<li><strong>前提事实：</strong> 二季度受迷你反腐影响；公司全年创新药销售目标192亿；GSK合作预计约2.5亿美元首付款计入今年，BMS合作约2-2.5亿美元，诺和诺德口服GLP-1周制剂合作年内关闭但确认节奏未定；自免MIR124 UCⅡ期、SHR-1905银屑病Ⅱ期数据具竞争力。</li>
+<li><strong>推导逻辑：</strong> <code>二季度低基数+临床需求恢复 → 三季度销售环比改善 → 叠加BD首付款年内集中确认 → 全年收入与利润支撑增强</code></li>
+<li><strong>隐含假设：</strong> 集采/谈判降价不超预期；BD里程碑确认会计处理符合预期；自免POC数据可延续至全球Ⅱ期。</li>
+<li><strong>反例 / 证伪条件：</strong> 若三季报创新药增速未环比改善，或GSK/BMS首付款递延至2027年确认，则全年达标判断下修。</li>
+</ul>
+<h3 id="6harmony-3pfsos">观点 6：Harmony-3全球验证：PFS成功概率高，OS是主要风险</h3>
+<ul>
+<li><strong>观点归属：</strong> 摩根士丹利 Jack廖志全、Vanessa</li>
+<li><strong>结论：</strong> 预计Harmony-3 PFS达统计显著，但相对中国Harmony-6优势幅度收窄，OS随访短、主要看趋势；FDA 11月14日对三代EGFR-TKI经治肺癌适应症审批仍要求PFS与OS双显著，OS HR 0.79-0.76未达显著是主要风险，但仍有获批可能。</li>
+<li><strong>前提事实：</strong> Harmony-6中国PFS 11.1 vs 6.9个月、HR 0.6，OS HR约0.66；Harmony-3对照为K药+化疗，可用白蛋白紫杉醇，美国专家认为OS HR 0.7-0.75具说服力；全球Harmony研究PFS达标、首次OS HR 0.79未显著、更新约0.76；亚裔占比从30%提至50%仅改善总体HR约0.01。</li>
+<li><strong>推导逻辑：</strong> <code>对照换K药+≥75岁占比高+非亚裔VEGF毒性及停药管理差异 → PD-1暴露下降 → PFS影响小、OS稀释大 → PFS成功但OS需更长随访验证</code></li>
+<li><strong>隐含假设：</strong> K药OS优于特瑞普利单抗；75岁以上及白人出血/血栓风险更高且停药更多；中国医生不良反应管理使停药率更低。</li>
+<li><strong>反例 / 证伪条件：</strong> 若Harmony-3 PFS未显著，或OS HR≤0.7且随访成熟后显著，则稀释担忧被证伪；FDA若明确不坚持OS双显著，审批风险逻辑亦重估。</li>
+</ul>
+<h3 id="7">观点 7：四季度选择性增持，沿双主线配置</h3>
+<ul>
+<li><strong>观点归属：</strong> 摩根士丹利 Jack廖志全</li>
+<li><strong>结论：</strong> 市场情绪偏弱但基本面持续改善，建议沿核心平台+明确催化剂新兴创新两条线选择性增持，核心偏好信达、康诺亚。</li>
+<li><strong>前提事实：</strong> 授权首付款已占资金来源约16%+，现金跑道中位数从2023年2.6年延至2025年4.9年，更多公司1-2年内走向盈利；创新药支付CAGR 2025-2030年约21% vs仿制药2%，占比有望29%提至53%；医保谈判9月完成、11月14日公布结果。</li>
+<li><strong>推导逻辑：</strong> <code>license首付款+商业化放量 → 融资依赖下降、现金延长 → 有能力将临床推更远再谈合作、保留更多海外权益 → 具备风险承担力+稀缺资产的平台最受益</code></li>
+<li><strong>隐含假设：</strong> 政策支持真正落到支付端、医保降幅温和；BD市场持续活跃；盈利改善可持续。</li>
+<li><strong>反例 / 证伪条件：</strong> 若医保平均降幅仍达50-60%未收窄，或BD首付款大幅下滑、再融资依赖回升，则增持框架失效。</li>
+</ul>
+<h2 id="3">3. 投资研究指引</h2>
+<blockquote>
+<p>记录视频所表达的研究方向，不构成买卖建议；没有明确投资含义时如实写“未给出可执行指引”。
+| 主题 / 对象 | 视频隐含或明确的方向 | 为什么 | 正向验证信号 | 风险 / 失效信号 | 需补的证据 |
+|---|---|---|---|---|---|
+| 科伦博泰 / 默沙东 Trop2 ADC | 重点跟踪LBA读出 | 一线PD-L1阴性NSCLC细节+二线子宫内膜癌全球首发数据决定大适应症预期 | ORR/PFS/OS HR符合预期、安全性可控 | 数据不及预期或毒性导致停药高 | LBA全文、発表幻灯片、管理层解读会 |
+| 恒瑞 HERO2/HER3 ADC、KGL12B 等3个LBA | 跟踪LBA | 验证多资产全球竞争力 | 数据超预期、剂量安全性占优 | 同类ADC竞争下差异化不足 | LBA细节、后续全球开发计划 |
+| 豪森 B7-H3 ADC + EGFR/cMET双抗ADC | 偏积极跟踪 | 全球Ⅱ期与中国数据一致、EGFR突变NSCLC早期ORR 50%+ | 骨肉瘤中国三期LBA延续高ORR、8mg/kg安全性可接受 | 3级以上TRAE 42%扩大、竞争格局恶化 | 骨肉瘤三期LBA、管理层全球策略 |
+| 康方 依沃西胆道癌/ H3全球三期 / FDA 11-14审批 | 事件驱动跟踪 | 胆道癌OS外推+ H3 PFS/OS趋势+ FDA决定三重催化 | 胆道癌曲线维持、H3 PFS显著且OS趋势向好、获批 | OS HR未显著导致CRL、停药率高 | ESMO口头报告、H3 PFS+中期OS、FDA函件 |
+| 信达 IBI343 Claudin18.2 ADC | 偏积极，待OS验证后上调 | 耐受优势+三期PFS成功，OS待公布 | OS具竞争力、恶心呕吐维持低位 | OS边际、毒性上升 | ESMO OS细节、联合用药计划 |
+| 康诺亚 CMG901 / CM512 | 跟踪CMG901低表达与二线扩展、CM512呼吸疾病长效给药 | 低表达有效可扩人群、CM512每24周给药具差异化 | 低表达亚组疗效优异、哮喘FEV1+鼻息肉24周维持 | 特应性皮炎同类失败类比、呼吸数据不持久 | ESMO亚组、哮喘/鼻息肉三期设计 |
+| 再鼎 ZL-1310+免疫、云顶 EVER-16 mRNA疫苗 | 小仓位参与明确催化 | 双药替代化疗潜力、疫苗跨癌种外推 | PFS~8个月、疫苗HR&lt;0.6且低突变负荷亦获益 | 样本小外推失败、随访毒性累积 | ESMO PFS随访、Moderna/MSD肾癌辅助三期对照 |
+| 恒瑞、石药三季报 / 迈瑞、联影、新产业器械 | 业绩验证 | 创新药复苏、器械20%增长与IVD定价温和 | 收入利润超预期、IVD降幅温和延续 | 业绩miss、集采降价超预期 | 三季报电话会、分省IVD价格文件 |
+| 医保谈判（信达玛仕度肽、云顶等） | 观察支付端落实 | 检验支持政策是否传导至盈利 | 平均降幅明显收窄、新增适应症纳入 | 降幅仍50-60%、报销受限 | 11月14日结果、正式目录 |
+| 出口管制 / 美国COINS法案 | 未给出可执行指引 | 常规BD明确不在管辖，法案仍处起草，方向不明 | 官方澄清常规BD豁免 | 投资限制加严波及BD | 政策终稿、团队后续分析 |</p>
+</blockquote></div>
+</article>
+
+<article id="note-i0tIFDXcaIo" class="article">
+  <div class="article-head">
+    <div>
+      <h3><a href="https://www.youtube.com/watch?v=i0tIFDXcaIo" target="_blank" rel="noreferrer">（2026-10-22）重磅大咖深度对话：谈当前市场周期，接下来的走向以及对于杠杆的理解！</a></h3>
+      <div class="meta">20261023 · i0tIFDXcaIo · <a href="https://www.youtube.com/watch?v=i0tIFDXcaIo" target="_blank" rel="noreferrer">观看 YouTube 原片 ↗</a></div>
+    </div>
+  </div>
+  <div class="content"><h1 id="2026-10-22">结构化笔记｜（2026-10-22）重磅大咖深度对话：谈当前市场周期，接下来的走向以及对于杠杆的理解！</h1>
+<h2 id="1">1. 核心结论</h2>
+<ul>
+<li><strong>结论1：摆正极度弱者位置，只赚小股东的钱。</strong> 适用条件：A股多重博弈（国家、地方政府、大股东、管理层、机构先于散户）结构未改变时；若误以强者心态追宏大叙事、不看价格追高，则必为炮灰。</li>
+<li><strong>结论2：只买价格合理+真实现金流高分红，不买下行周期。</strong> 适用条件：适用于普通散户与非专业投资者；以分红验证财报真实性，以退出/破产验证行业出清，未见出清前只做哨兵仓或空仓。</li>
+<li><strong>结论3：地产见底不买地产股，债务未彻底重组前仍不可碰，乐观者应看银行。</strong> 适用条件：只要存量地产企业仍背负巨额奔跑债务且未彻底重组；仅当债务彻底出清或有全新主体出现时逻辑才反转。</li>
+<li><strong>结论4：热门抱团必须控杠杆、控增量、查风格漂移，否则波动放大成危机。</strong> 适用条件：针对涨幅过大、成交集中、融资盘密集的热门股与科技抱团阶段；用自有资金参与不受限，但借钱买入必须受限。</li>
+<li><strong>结论5：金融已进入低负债成本新周期起点，宽基ETF应做成公共产品。</strong> 适用条件：存款约1%、两融约4.5%、保险预定1.5%左右的低利率环境持续，且地产虚假高无风险收益不再提供锚时；前提是指数编制不被套利塞入差公司、保持均衡估值水位。</li>
+</ul>
+<h2 id="2">2. 专家观点与逻辑链</h2>
+<h3 id="1a">观点 1：A股回报不差但波动极大，散户难赚钱</h3>
+<ul>
+<li><strong>观点归属：</strong> 主嘉宾</li>
+<li><strong>结论：</strong> 上证从100点到3900点约39倍，加回约2%分红复合约10%，与美股平均回报相近，但承担数倍波动率，故多数人赚不到钱。</li>
+<li><strong>前提事实：</strong> 人口与股民规模特别大，极端行为更厉害；偏离基本面的时间与程度远超其他市场；波动率越大赚钱概率越小。</li>
+<li><strong>推导逻辑：</strong> <code>人口股民基数大 → 乌合之众行为放大 → 偏离基本面更久更深 → 高波动吞噬10%均值回报 → 普通人难赚钱</code></li>
+<li><strong>隐含假设：</strong> 指数点位可比且分红再投资假设成立；波动主要来自散户集体行为而非基本面本身。</li>
+<li><strong>反例 / 证伪条件：</strong> 若剔除分红口径、指数编制偏差后长期回报显著低于10%，或波动率经测算并不高于成熟市场，则结论不成立。</li>
+</ul>
+<h3 id="2a">观点 2：A股是多重博弈市场，散户是最后顺位</h3>
+<ul>
+<li><strong>观点归属：</strong> 主嘉宾</li>
+<li><strong>结论：</strong> 国家、地方政府、大股东、管理层、社保公募等利益均在散户之前，散户必须认清弱者位置，只追求小股东利益。</li>
+<li><strong>前提事实：</strong> 科技新股高估值背后是国家战略引导资金；巴菲特只研究企业在美国可行，在A股不只看基本面；中石油48元、好公司买贵仍亏是常态。</li>
+<li><strong>推导逻辑：</strong> <code>多层强势利益叠加 → 价格不只由基本面决定 → 弱者以强者心态下注 → 必然踩坑输大钱</code></li>
+<li><strong>隐含假设：</strong> 各利益方行为持续影响定价且信息不对称无法消除；散户无法通过专业能力逆转顺位。</li>
+<li><strong>反例 / 证伪条件：</strong> 若散户能长期靠择时战胜多重博弈主体，或注册制+法治使中小股东保护达到成熟市场水平，则弱者论减弱。</li>
+</ul>
+<h3 id="3">观点 3：真钱标准——价格合理+现金流+分红</h3>
+<ul>
+<li><strong>观点归属：</strong> 主嘉宾</li>
+<li><strong>结论：</strong> 第一价格要合理，第二必须有真金白银现金流和分红；无现金流的低PE是陷阱，赚了还得全投回去的是GDP公司。</li>
+<li><strong>前提事实：</strong> 环保垫资股、地产产业链靠垫资无真实现金流后跌90%；重资产企业利润全变厂房设备，遇下行无回报；分红要缴税故难造假。</li>
+<li><strong>推导逻辑：</strong> <code>无真实现金流 → 利润为假 → PE崩塌 → 低估值是陷阱；有现金流但被迫再投入 → 股东无分文 → 对投资者无价值</code></li>
+<li><strong>隐含假设：</strong> 会计真实性虽进步但仍需分红验证；现金流可持续且可分配。</li>
+<li><strong>反例 / 证伪条件：</strong> 若无分红、无现金流公司长期靠成长兑现高回报，或高分红公司出现财务造假，则标准失效。</li>
+</ul>
+<h3 id="4">观点 4：不买下行周期，等退出出清</h3>
+<ul>
+<li><strong>观点归属：</strong> 主嘉宾，主持人认同补充</li>
+<li><strong>结论：</strong> 绝不在行业下行周期下重注，最大亏损来自低估下行的时间长度与惨烈程度，必须看到退出、破产、出清。</li>
+<li><strong>前提事实：</strong> 资本过剩→回报率下降→股价下跌；钢厂、电解铝因退出难易不同反转分化；光伏、养猪退出难故难反转；金融地产下行超预期惨烈。</li>
+<li><strong>推导逻辑：</strong> <code>资本涌入过剩 → 回报率下降 → 股价下跌亏损 → 无人退出则供过于求持续 → 贸然抄底加剧过剩</code></li>
+<li><strong>隐含假设：</strong> 周期可观察且退出是供需再平衡的必要信号；地方政府输血等非经济因素不会无限延续。</li>
+<li><strong>反例 / 证伪条件：</strong> 若行业靠技术跃迁未经历退出即反转，或政策强力出清一夜完成，则等待退出会错过底部。</li>
+</ul>
+<h3 id="5">观点 5：地产见底不等于出清，大概率永远不买地产股</h3>
+<ul>
+<li><strong>观点归属：</strong> 主嘉宾</li>
+<li><strong>结论：</strong> 地产价格止跌不代表出清，因债务仍在奔跑；原有高负债房企难获超生，看好见底应买银行而非地产。</li>
+<li><strong>前提事实：</strong> 2021年清仓地产在历史高位；银行股价先跌而业绩增长是市场提前计提坏账，坏账预期改善后银行上涨；房企债务未彻底重组。</li>
+<li><strong>推导逻辑：</strong> <code>资产价格止跌 + 债务利息奔跑 → 资不抵债持续 → 外部股东分不到增量 → 银行坏账预期改善先受益</code></li>
+<li><strong>隐含假设：</strong> 银行拨备与估值已充分反映坏账；房企无整体债务豁免或重组。</li>
+<li><strong>反例 / 证伪条件：</strong> 若美元债等债务获彻底减免重组，或房价持续回升覆盖债务缺口，地产股可重估。</li>
+</ul>
+<h3 id="6t1">观点 6：新股首日冲天是散户买上去的，T+1与涨跌停是保护</h3>
+<ul>
+<li><strong>观点归属：</strong> 主嘉宾，依据交易所数据</li>
+<li><strong>结论：</strong> 多只科技新股首日暴涨主力是散户而非机构，是T+1无做空下形成的投机盈利模式；放开T+0散户死更快，大陆保护好于港股。</li>
+<li><strong>前提事实：</strong> 上市首日基金被限制买入；T+1当天不能卖，多头连续拉升胜率高；比亚迪式一天38元到18元再回38元在港股消灭融资盘；港股本地散户已被坑怕、流动性差。</li>
+<li><strong>推导逻辑：</strong> <code>散户数量巨大且信念一致 → 首日合力抬价 → T+1锁定卖盘+无空方 → 短线打新投机胜率高 → 若改T+0+无涨跌停 → 强者碾压更快</code></li>
+<li><strong>隐含假设：</strong> 交易所披露的账户类型数据准确；散户行为模式稳定可重复。</li>
+<li><strong>反例 / 证伪条件：</strong> 若穿透数据显示实为机构分仓马甲，或T+0试点后散户生存率反而提高，则结论推翻。</li>
+</ul>
+<h3 id="7">观点 7：市场失衡源于过度抱团，需控增量、控两融、查漂移</h3>
+<ul>
+<li><strong>观点归属：</strong> 主嘉宾</li>
+<li><strong>结论：</strong> 今年3倍到300倍畸形估值与价值股被抛弃加剧投机；应保持均衡水位，并用平准基金逐年增持不净退出、热门股提保证金限两融总量、新资金限投低迷方向、严查风格漂移。</li>
+<li><strong>前提事实：</strong> 早年8-30倍区间跌到8倍大概率见底，现5倍仍可跌到3倍；4-6月科技抱团后7月腰斩，价值经理被迫砍仓追高左右打脸；2015年高杠杆教训与韩国教训；头部股日成交几百亿含大量融资盘。</li>
+<li><strong>推导逻辑：</strong> <code>过度倡导单一方向 → 价值股估值塌陷亏损 → 价值派被迫投机 → 抱团更极端 → 波动失安全感被迫救市；控杠杆+锁增量+守契约 → 降低烈度与示范效应</code></li>
+<li><strong>隐含假设：</strong> 监管有能力识别热门股与漂移并执行；平准基金操作公开透明不制造新不公。</li>
+<li><strong>反例 / 证伪条件：</strong> 若严控两融与漂移后抱团依旧、流动性枯竭，或平准基金增持反而固化扭曲，则机制无效。</li>
+</ul>
+<h3 id="8">观点 8：金融新消费与偏见投资、时间复利</h3>
+<ul>
+<li><strong>观点归属：</strong> 主嘉宾</li>
+<li><strong>结论：</strong> 地产泡沫破灭终结虚假高无风险收益，全行业负债成本大降但更安全，是新周期起点；只参与偏见造成的低估，做正确因、结果随缘，时间越长价值越大。</li>
+<li><strong>前提事实：</strong> 过去存款4%需配6-7%资产赚利差，两融8.5%、险资成本3%，今存款约1%、贷款2.5-3%、两融约4.5%、寿险预定1.5-1.75%；当年煤炭6倍PE因碳中和、ESG、周期股三重偏见被抛弃后反转；茅台从8-25倍到奢侈品35倍+增速超预期。</li>
+<li><strong>推导逻辑：</strong> <code>地产刚兑打破 → 无风险收益下行 → 低成本配低风险资产仍盈利且更安全 → 股东视角不卷；偏见压估值 → 基本面未坏 → 偏见消除估值修复 → 先50%熬三年、后50%三月完成</code></li>
+<li><strong>隐含假设：</strong> 低利率持续且金融机构不重走高风险追收益老路；所认定的偏见确为认知错而非基本面恶化。</li>
+<li><strong>反例 / 证伪条件：</strong> 若利率重回高位或金融机构风险反而上升，或低估实为需求永久消失，则新周期与偏见论不成立。</li>
+</ul>
+<h2 id="3_1">3. 投资研究指引</h2>
+<table>
+<thead>
+<tr>
+<th>主题 / 对象</th>
+<th>视频隐含或明确的方向</th>
+<th>为什么</th>
+<th>正向验证信号</th>
+<th>风险 / 失效信号</th>
+<th>需补的证据</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>宽基ETF（沪深300、A500）</td>
+<td>隐含长期做多、打造成公共产品、无脑定投持有</td>
+<td>均衡配置熨平行业风险，让普通人分享约10%均值回报</td>
+<td>指数长期上行、分红稳定、赚钱文化形成、居民增配</td>
+<td>指数编制掺入差公司被动接盘、长期不涨失公信</td>
+<td>指数编制规则、换仓历史、被动资金占比与缺陷</td>
+</tr>
+<tr>
+<td>银行股</td>
+<td>明确相对看好 resting on 地产见底预期</td>
+<td>坏账已在低PB中计提，预期不再恶化即估值修复，优于地产股</td>
+<td>不良生成见顶、拨备覆盖稳、股息持续、股价先于基本面企稳</td>
+<td>地产债务超预期蔓延、净息差大幅压缩、隐性坏账暴露</td>
+<td>分银行不良率、地产敞口、拨备、PB分位</td>
+</tr>
+<tr>
+<td>房地产股（老房企）</td>
+<td>明确回避，大概率永远不买</td>
+<td>债务奔跑 vs 资产止跌，增量先还债，外部股东分不到</td>
+<td>未给出可执行指引（反向指引：不碰）</td>
+<td>债务彻底重组豁免后重估，踏空新主体</td>
+<td>美元债重组进展、现金流覆盖倍数、土储质量</td>
+</tr>
+<tr>
+<td>高现金流高分红红利价值股</td>
+<td>明确坚守，符合低估值高现金流高分红才买</td>
+<td>分红验证真钱，避免陷阱，在波动市提供安全垫</td>
+<td>股息率稳定、分红连续增长、自由现金流覆盖分红</td>
+<td>增速转负、砍分红、伪现金流暴露</td>
+<td>分红率、FCF、派息连续性、在手订单</td>
+</tr>
+<tr>
+<td>热门科技抱团股、新股首日暴涨股</td>
+<td>明确不追高、估值上天绝对不买</td>
+<td>3-300倍畸形区间、散户合力+融资盘易腰斩，已现7月式股灾</td>
+<td>换手冷静、融资余额下降、估值回落到可研究区间</td>
+<td>产业趋势兑现、龙头走出持续业绩消化估值而踏空</td>
+<td>融资余额占比、首日换手、解禁减持、业绩兑现度</td>
+</tr>
+<tr>
+<td>光伏、电动车、养猪等过剩行业</td>
+<td>明确不买下行周期，只观察等出清</td>
+<td>退出难、地方输血难出清，抄底加剧过剩</td>
+<td>破产退出增多、产能利用率回升、价格企稳</td>
+<td>政策补贴再刺激产能、无退出下假反弹</td>
+<td>产能、开工率、退出案例数、应收与现金流</td>
+</tr>
+<tr>
+<td>茅台等高端白酒</td>
+<td>未给出可执行指引，仅为连续跟踪样板</td>
+<td>当前销量受禁酒令、老龄健康少喝 vs 新增富人多喝，此消彼长无法判断</td>
+<td>批价与库存去化、直营占比提升、增速重回15%左右</td>
+<td>增速转负、渠道库存积压、年轻人群替代</td>
+<td>批价、中转库库存、箱号重复率、报表增速与渠道验证</td>
+</tr>
+<tr>
+<td>加杠杆（两融）买热门股</td>
+<td>明确反对加杠杆</td>
+<td>风险资产+杠杆=连锁砍仓引发危机，2015年教训</td>
+<td>未给出可执行指引</td>
+<td>波动放大爆仓、强平连锁</td>
+<td>两融利率、保证金比例、热门股融资集中度</td>
+</tr>
+</tbody>
+</table></div>
+</article>
+
+      <div class="day-card">
+        <p>归档路径 <code>daily/20261023/</code> · <a href="../../index.html">返回历史总览</a> · <a href="./index.html">本日目录</a></p>
+      </div>
+    </main>
+  </div>
+</body>
+</html>

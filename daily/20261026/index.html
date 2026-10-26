@@ -1,0 +1,924 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>解读君视频日报 · 20261026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@400;600;700;900&display=swap" rel="stylesheet">
+  <style>
+:root {
+  --bg-page: #FBF8F2;
+  --bg-surface: #FFFDF9;
+  --bg-header: #F4EFE6;
+  --bg-subtle: #F0EADF;
+  --border-main: #E5DDCD;
+  --border-dark: #2B2625;
+  --text-main: #231F20;
+  --text-muted: #5C554E;
+  --text-light: #8E8478;
+  --accent-burgundy: #8B261D;
+  --accent-amber: #B45309;
+  --font-serif: 'Noto Serif SC', Georgia, 'Times New Roman', serif;
+  --font-sans: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'IBM Plex Mono', monospace;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 15px; }
+body {
+  background: var(--bg-page);
+  color: var(--text-main);
+  font-family: var(--font-sans);
+  line-height: 1.85;
+  -webkit-font-smoothing: antialiased;
+}
+
+.wrap {
+  max-width: 1300px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 290px 1fr;
+  min-height: 100vh;
+  border-left: 2px solid var(--border-dark);
+  border-right: 2px solid var(--border-dark);
+  background: var(--bg-surface);
+}
+
+@media (max-width: 1024px) {
+  .wrap { grid-template-columns: 1fr; border: none; }
+}
+
+/* Sidebar */
+.nav {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow-y: auto;
+  padding: 32px 24px;
+  background: #F7F3EB;
+  border-right: 1px solid var(--border-main);
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+@media (max-width: 1024px) {
+  .nav { position: relative; height: auto; border-right: none; border-bottom: 2px solid var(--border-dark); }
+}
+
+.brand {
+  padding-bottom: 18px;
+  border-bottom: 2px solid var(--border-dark);
+}
+.brand h1 {
+  font-family: var(--font-serif);
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: var(--border-dark);
+}
+.brand h1 span {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent-burgundy);
+  margin-top: 4px;
+}
+
+.toc h2 {
+  font-family: var(--font-serif);
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--border-dark);
+  border-bottom: 1px solid var(--border-main);
+  padding-bottom: 6px;
+  margin: 16px 0 10px;
+}
+
+.toc a {
+  display: flex;
+  flex-direction: column;
+  padding: 8px 10px;
+  text-decoration: none;
+  color: var(--text-main);
+  border: 1px solid transparent;
+  border-radius: 4px;
+  transition: all 0.15s;
+  font-size: 13px;
+  line-height: 1.4;
+  margin-bottom: 4px;
+}
+.toc a:hover {
+  background: var(--bg-subtle);
+  border-color: var(--border-main);
+}
+.toc a.active {
+  background: #EFE8DA;
+  border-color: var(--border-main);
+  color: var(--accent-burgundy);
+  font-weight: 600;
+}
+.toc a span {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+.nav-desc {
+  font-size: 11px;
+  font-family: var(--font-mono);
+  color: var(--text-muted);
+  line-height: 1.6;
+  padding: 4px 6px;
+}
+
+/* Main Area */
+.main {
+  padding: 40px 48px 80px;
+  max-width: 960px;
+}
+
+@media (max-width: 768px) {
+  .main { padding: 24px 18px 40px; }
+}
+
+.gazette-header {
+  border-top: 3px double var(--border-dark);
+  border-bottom: 1px solid var(--border-dark);
+  padding: 20px 0;
+  margin-bottom: 36px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+.gazette-header h1 {
+  font-family: var(--font-serif);
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--border-dark);
+}
+.gazette-header .gazette-meta {
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.summary-card, .article {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-main);
+  margin-bottom: 40px;
+}
+
+.summary-head, .article-head {
+  background: var(--bg-header);
+  padding: 20px 26px;
+  border-bottom: 1px solid var(--border-main);
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+}
+.article-head h3, .summary-head h3 {
+  font-family: var(--font-serif);
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text-main);
+  line-height: 1.35;
+}
+.article-head h3 a, .summary-head h3 a {
+  color: inherit;
+  text-decoration: none;
+}
+.article-head h3 a:hover, .summary-head h3 a:hover {
+  color: var(--accent-burgundy);
+}
+
+.meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-top: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.meta a {
+  color: var(--accent-burgundy);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.content {
+  padding: 32px 36px;
+  font-size: 14.5px;
+  line-height: 1.9;
+  color: #2D2726;
+}
+
+@media (max-width: 768px) {
+  .content { padding: 20px 18px; }
+  .summary-head, .article-head { padding: 16px 18px; }
+}
+
+.content h1 {
+  font-family: var(--font-serif);
+  font-size: 22px;
+  font-weight: 700;
+  margin: 0 0 18px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border-dark);
+}
+
+.content h2 {
+  font-family: var(--font-serif);
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--accent-burgundy);
+  background: var(--bg-header);
+  border: 1px solid var(--border-main);
+  border-radius: 4px;
+  padding: 8px 14px;
+  margin: 32px 0 14px;
+  letter-spacing: 0.02em;
+}
+
+.content h3 {
+  font-family: var(--font-serif);
+  font-size: 14.5px;
+  font-weight: 700;
+  margin: 22px 0 10px;
+  color: var(--text-main);
+}
+
+.content p {
+  margin-bottom: 16px;
+  text-align: justify;
+}
+
+.content strong {
+  font-weight: 700;
+  color: #1A1616;
+}
+
+.content ul, .content ol {
+  margin: 12px 0 18px 6px;
+  padding-left: 22px;
+}
+.content li {
+  margin-bottom: 8px;
+  line-height: 1.8;
+}
+.content ul > li::marker {
+  content: "▪ ";
+  color: var(--accent-burgundy);
+}
+.content ol > li::marker {
+  color: var(--accent-burgundy);
+  font-weight: 700;
+  font-family: var(--font-mono);
+}
+.content li > ul, .content li > ol {
+  margin: 8px 0 8px 6px;
+}
+.cond-label {
+  color: var(--accent-burgundy);
+  font-weight: 700;
+}
+.content li > p {
+  margin-bottom: 6px;
+}
+.content li > p:last-child {
+  margin-bottom: 0;
+}
+
+.viewpoint {
+  border: 1px solid var(--border-main);
+  border-radius: 6px;
+  margin: 16px 0 20px;
+  overflow: hidden;
+  background: #FFFDF8;
+}
+.vp-head {
+  background: var(--bg-header);
+  padding: 10px 16px;
+  border-bottom: 1px solid var(--border-main);
+  display: flex;
+  gap: 10px;
+  align-items: baseline;
+  flex-wrap: wrap;
+}
+.vp-num {
+  font-family: var(--font-serif);
+  font-weight: 700;
+  font-size: 14.5px;
+  color: var(--accent-burgundy);
+  white-space: nowrap;
+}
+.vp-title {
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--text-main);
+}
+.vp-owner {
+  margin-left: auto;
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+.vp-row {
+  display: grid;
+  grid-template-columns: 46px 1fr;
+  gap: 12px;
+  padding: 8px 16px;
+  font-size: 13.5px;
+  line-height: 1.8;
+}
+.vp-row + .vp-row {
+  border-top: 1px dashed var(--border-main);
+}
+.vp-label {
+  font-weight: 700;
+  font-size: 12.5px;
+  color: var(--accent-burgundy);
+  white-space: nowrap;
+  padding-top: 1px;
+}
+.vp-val {
+  color: #2D2726;
+  text-align: justify;
+  min-width: 0;
+}
+.vp-val p {
+  margin: 0;
+  text-align: justify;
+}
+.vp-val code {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  background: #EDE6D8;
+  padding: 2px 6px;
+  border-radius: 3px;
+  color: var(--accent-burgundy);
+}
+@media (max-width: 768px) {
+  .vp-row { grid-template-columns: 40px 1fr; padding: 7px 12px; }
+}
+
+.content blockquote {
+  background: #F3ECE0;
+  border: 1px solid var(--border-main);
+  border-radius: 4px;
+  padding: 14px 20px;
+  margin: 20px 0;
+  font-size: 13.5px;
+  font-style: italic;
+  color: #523E3B;
+}
+
+.content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 24px 0;
+  font-size: 13px;
+  border: 1px solid var(--border-main);
+}
+.content th {
+  background: #ECE4D6;
+  font-family: var(--font-serif);
+  font-weight: 700;
+  color: var(--border-dark);
+  text-align: left;
+  padding: 10px 14px;
+  border: 1px solid var(--border-main);
+}
+.content td {
+  padding: 9px 14px;
+  border: 1px solid var(--border-main);
+}
+.content tr:nth-child(even) {
+  background: #F8F4EC;
+}
+
+.content code {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  background: #EDE6D8;
+  padding: 2px 6px;
+  border-radius: 3px;
+  color: var(--accent-burgundy);
+}
+
+.day-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-main);
+  padding: 20px 24px;
+  margin-bottom: 18px;
+}
+.day-card h3 {
+  font-family: var(--font-serif);
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+.day-card h3 a {
+  color: var(--text-main);
+  text-decoration: none;
+}
+.day-card h3 a:hover {
+  color: var(--accent-burgundy);
+}
+.day-card p {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+.btn {
+  display: inline-flex;
+  padding: 8px 14px;
+  border: 1px solid var(--border-dark);
+  background: var(--bg-surface);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  text-decoration: none;
+  color: var(--text-main);
+  font-weight: 600;
+  transition: all 0.15s;
+}
+.btn:hover {
+  background: var(--bg-subtle);
+}
+.btn.primary {
+  background: var(--border-dark);
+  color: #FFFFFF;
+}
+.btn.primary:hover {
+  background: var(--accent-burgundy);
+  border-color: var(--accent-burgundy);
+}
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <nav class="nav">
+      <div class="brand">
+        <h1>解读君视频日报<span>JIEDU DAILY · 20261026</span></h1>
+      </div>
+      <div class="toc">
+        <h2>全量原文</h2>
+        <a href="#summary" class="active">每日核心总结<span>20261026</span></a>
+        <a href="#note-upC7pUWuBWA">【2026-10-26最新】华创张瑜旬度策略：张瑜——迷雾中的事实 五年消费下行周期到头<span>20261026 · upC7pUWuBWA</span></a><a href="#note-QmzTipigWwo">【最新出炉】大摩内部闭门会（2026-10-26附文稿）这次的二次探底是巨大的战略机遇，当前市场深度判断和思考！【文字稿件已经发布于解读君推特X】<span>20261026 · QmzTipigWwo</span></a><a href="#note-xexGJyT852M">【重磅内容】大摩闭门会议（10-26）｜全球三大宏观风险和向中国传导，中国市场1个月可能有技术反弹<span>20261026 · xexGJyT852M</span></a>
+        <h2>历史归档</h2>
+        <a href="../../index.html">← 返回历史总览</a>
+        <a href="../20261026/index.html" class="active">20261026 <span>3 篇 · 当日归档</span></a><a href="../20261024/index.html" class="">20261024 <span>1 篇 · 当日归档</span></a><a href="../20261023/index.html" class="">20261023 <span>3 篇 · 当日归档</span></a><a href="../20261022/index.html" class="">20261022 <span>2 篇 · 当日归档</span></a><a href="../20261021/index.html" class="">20261021 <span>2 篇 · 当日归档</span></a><a href="../20261020/index.html" class="">20261020 <span>1 篇 · 当日归档</span></a><a href="../20261019/index.html" class="">20261019 <span>1 篇 · 当日归档</span></a><a href="../20261018/index.html" class="">20261018 <span>2 篇 · 当日归档</span></a><a href="../20261016/index.html" class="">20261016 <span>1 篇 · 当日归档</span></a><a href="../20261015/index.html" class="">20261015 <span>1 篇 · 当日归档</span></a><a href="../20261014/index.html" class="">20261014 <span>3 篇 · 当日归档</span></a><a href="../20261013/index.html" class="">20261013 <span>2 篇 · 当日归档</span></a><a href="../20261012/index.html" class="">20261012 <span>2 篇 · 当日归档</span></a><a href="../20261011/index.html" class="">20261011 <span>3 篇 · 当日归档</span></a><a href="../20261010/index.html" class="">20261010 <span>9 篇 · 当日归档</span></a><a href="../20261006/index.html" class="">20261006 <span>2 篇 · 当日归档</span></a><a href="../20261005/index.html" class="">20261005 <span>3 篇 · 当日归档</span></a><a href="../20261004/index.html" class="">20261004 <span>1 篇 · 当日归档</span></a><a href="../20260929/index.html" class="">20260929 <span>0 篇 · 当日归档</span></a><a href="../20260928/index.html" class="">20260928 <span>1 篇 · 当日归档</span></a><a href="../20260927/index.html" class="">20260927 <span>6 篇 · 当日归档</span></a><a href="../20260922/index.html" class="">20260922 <span>1 篇 · 当日归档</span></a><a href="../20260921/index.html" class="">20260921 <span>8 篇 · 当日归档</span></a><a href="../20260914/index.html" class="">20260914 <span>6 篇 · 当日归档</span></a><a href="../20260910/index.html" class="">20260910 <span>1 篇 · 当日归档</span></a><a href="../20260908/index.html" class="">20260908 <span>2 篇 · 当日归档</span></a><a href="../20260907/index.html" class="">20260907 <span>2 篇 · 当日归档</span></a><a href="../20260906/index.html" class="">20260906 <span>1 篇 · 当日归档</span></a><a href="../20260905/index.html" class="">20260905 <span>1 篇 · 当日归档</span></a><a href="../20260904/index.html" class="">20260904 <span>2 篇 · 当日归档</span></a><a href="../20260903/index.html" class="">20260903 <span>2 篇 · 当日归档</span></a><a href="../20260902/index.html" class="">20260902 <span>3 篇 · 当日归档</span></a><a href="../20260831/index.html" class="">20260831 <span>2 篇 · 当日归档</span></a><a href="../20260829/index.html" class="">20260829 <span>1 篇 · 当日归档</span></a><a href="../20260828/index.html" class="">20260828 <span>1 篇 · 当日归档</span></a><a href="../20260825/index.html" class="">20260825 <span>1 篇 · 当日归档</span></a><a href="../20260824/index.html" class="">20260824 <span>2 篇 · 当日归档</span></a><a href="../20260823/index.html" class="">20260823 <span>1 篇 · 当日归档</span></a><a href="../20260821/index.html" class="">20260821 <span>3 篇 · 当日归档</span></a>
+      </div>
+    </nav>
+    <main class="main">
+      <div class="gazette-header">
+        <div>
+          <h1>金融经纬 · 每日纪要</h1>
+          <div class="gazette-meta">JIEDU DAILY FINANCIAL GAZETTE · VOL. 20261026</div>
+        </div>
+        <div class="gazette-meta">3 ARTICLES ARCHIVED</div>
+      </div>
+      
+<section id="summary" class="summary-card">
+  <div class="summary-head">
+    <div>
+      <h3>每日总结 · 20261026</h3>
+      <div class="meta">daily/20261026/20261026_解读君视频总结.md</div>
+    </div>
+  </div>
+  <div class="content"><h1 id="_1">解读君视频摘要</h1>
+<h2 id="1-2026-10-26">1. <a href="#note-upC7pUWuBWA">【2026-10-26最新】华创张瑜旬度策略：张瑜——迷雾中的事实 五年消费下行周期到头</a></h2>
+<blockquote>
+<p>一句话：五年消费下行周期基本结束，可开始自下而上挑选龙头。</p>
+</blockquote>
+<ul>
+<li><strong>结论1：2021年以来持续5年的消费板块绝对收益下行周期基本结束，可开始自下而上挑选。</strong> 适用条件/边界：仅在供需均衡度（需求增速-投资增速差值）回到2021年水平且供给出清快于需求走弱时成立；是供需双弱、供给更弱下的纯自下而上+龙头红利修复逻辑，无贝塔涨价行情。</li>
+<li><strong>结论2：居民部门再现保守化，若无财政及时对冲将压制远期盈利预期与当下市场活跃度。</strong> 适用条件/边界：适用于收入增速~3%跟不上名义GDP~6%、房价未全面企稳、资本市场波动率偏高环境；将影响2027年Q2后PPI与上市公司利润预期，以及当期交易量与估值扩张。</li>
+<li><strong>结论3：金融市场流动性偏紧呈存量博弈，央行在不可能三角下仅能艰难平衡，降息与大幅投放均需观察。</strong> 适用条件/边界：适用于非银存款连续5个月同比负增、5年定存利率~1.3%已接近核心CPI~1.0%、10年国债~1.6%与7天回购~1.4%曲线过平阶段；工业企业利润同比仍为正时降息概率低。</li>
+<li><strong>结论4：2026年全球温和修复共识高度依赖能源供应恢复与AI投资延续两条主线，前提脆弱需折价看待。</strong> 适用条件/边界：仅在IMF假设（霍尔木兹海峡2026年3月起逐步恢复至10月复常、厄尔尼诺冲击未纳入）兑现且AI硬件基建开支不降温时成立；IMF对中美次年增速历史平均绝对偏差达1.4-2.3个百分点，具体数字不可直接采用。</li>
+</ul>
+<h2 id="2-2026-10-26x">2. <a href="#note-QmzTipigWwo">【最新出炉】大摩内部闭门会（2026-10-26附文稿）这次的二次探底是巨大的战略机遇，当前市场深度判断和思考！【文字稿件已经发布于解读君推特X】</a></h2>
+<blockquote>
+<p>一句话：二次探底是战略机遇，美股总量未失守，A股港股仍有一成多下跌空间不宜抄底</p>
+</blockquote>
+<ul>
+<li><strong>美股高利率已从最脆弱环节起杀伤，总量尚未失守，<br><span class="cond-label">适用条件/边界：</span></strong> 仅在财政赤字+财富效应+AI大厂资本开支对利率钝感三支柱延续且美债曲线未深度倒挂时成立，若油价再冲高叠加美联储12月及明年3月加息至4.375%并刺破信用，则总量逻辑失效。</li>
+<li><strong>A股港股距历史极值底仍有10-15%估值下调空间，不宜机械抄底，<br><span class="cond-label">适用条件/边界：</span></strong> 以MSCI中国8倍、沪深300的10-11倍前瞻PE为锚且全球风险溢价体系不重构为前提，若国家队持续高调买入+联储转鸽/AI信用风险解除，则可能提前触底反弹。</li>
+<li><strong>A股相对优于港股，国家队本轮托底更可持续，<br><span class="cond-label">适用条件/边界：</span></strong> 仅在10月9-20日约150亿美元买入规模延续、科创/创业ETF占比维持30-40%、政策协同喊话不变且A股情绪指数维持低位反弹区间时成立，若买入缩量或仅口头维稳则失效。</li>
+<li><strong>中国4.5%GDP达标靠外需掩盖准通缩与K型分化，年内无超预期大刺激，转向看明年三E，<br><span class="cond-label">适用条件/边界：</span></strong> 在累计同比4.6%、预算三成未用、卖地跌28%约束下成立，若出口意外失速、就业社保挤压致裁员潮、A股无序暴跌伤及科技融资任一触发，则政策可能提前转向。</li>
+</ul>
+<h2 id="3-10-261">3. <a href="#note-xexGJyT852M">【重磅内容】大摩闭门会议（10-26）｜全球三大宏观风险和向中国传导，中国市场1个月可能有技术反弹</a></h2>
+<blockquote>
+<p>一句话：大摩认为A股距历史底部仍有10%-15%空间，未来一两月或有技术反弹且优于港股。</p>
+</blockquote>
+<ul>
+<li><strong>结论1：美国高利率并非无冲击，而是选择性杀伤脆弱环节，宏观总量暂被撑住。</strong> 适用条件/边界：仅在财政赤字+AI资本开支+财富效应三支柱不坍塌、2Y-10Y曲线未深度倒挂时成立；若AI资本开支证伪或信用全面冻结则失效。</li>
+<li><strong>结论2：中期选举难改关税收紧与高油价，关键边际变量是地方对数据中心的落地限制。</strong> 适用条件/边界：适用于民主党至少夺回一院、国会分裂的基准情形；若出现超预期的地缘缓和带来原油供给快速恢复则油价判断需修正。</li>
+<li><strong>结论3：中国4.5% GDP达标与体感分化源于外需独强、内需通缩未破，不一致性是市场秋意凉主因。</strong> 适用条件/边界：适用于出口集中于资本密集行业、家庭信贷收缩约1.5%、社保征缴等隐性紧缩叠加的当前组合；若社融、名义GDP、企业盈利明显回暖则分化逻辑弱化。</li>
+<li><strong>结论4：港股、A股距历史极值底部仍有约10%-15%估值下调空间，不宜机械抄底。</strong> 适用条件/边界：以MSCI中国8倍、沪深300为10-11倍前瞻市盈率为历史底部锚，适用于估值体系与风险溢价未发生系统性重构时；若盈利预期大幅下修则底部位置下移。</li>
+<li><strong>结论5：未来1-2个月A股出现触底技术反弹概率上升，相对优于港股。</strong> 适用条件/边界：依赖国家队高调协同进场持续、A股情绪指数进入超卖反弹区；若全球收益率继续飙升、AI叙事继续恶化或国家队购买不可持续则反弹夭折。</li>
+</ul></div>
+</section>
+
+      
+<article id="note-upC7pUWuBWA" class="article">
+  <div class="article-head">
+    <div>
+      <h3><a href="https://www.youtube.com/watch?v=upC7pUWuBWA" target="_blank" rel="noreferrer">【2026-10-26最新】华创张瑜旬度策略：张瑜——迷雾中的事实 五年消费下行周期到头</a></h3>
+      <div class="meta">20261026 · upC7pUWuBWA · <a href="https://www.youtube.com/watch?v=upC7pUWuBWA" target="_blank" rel="noreferrer">观看 YouTube 原片 ↗</a></div>
+    </div>
+  </div>
+  <div class="content"><h1 id="2026-10-26">结构化笔记｜【2026-10-26最新】华创张瑜旬度策略：张瑜——迷雾中的事实 五年消费下行周期到头</h1>
+<h2 id="1">1. 核心结论</h2>
+<ul>
+<li><strong>结论1：2021年以来持续5年的消费板块绝对收益下行周期基本结束，可开始自下而上挑选。</strong> 适用条件/边界：仅在供需均衡度（需求增速-投资增速差值）回到2021年水平且供给出清快于需求走弱时成立；是供需双弱、供给更弱下的纯自下而上+龙头红利修复逻辑，无贝塔涨价行情。</li>
+<li><strong>结论2：居民部门再现保守化，若无财政及时对冲将压制远期盈利预期与当下市场活跃度。</strong> 适用条件/边界：适用于收入增速~3%跟不上名义GDP~6%、房价未全面企稳、资本市场波动率偏高环境；将影响2027年Q2后PPI与上市公司利润预期，以及当期交易量与估值扩张。</li>
+<li><strong>结论3：金融市场流动性偏紧呈存量博弈，央行在不可能三角下仅能艰难平衡，降息与大幅投放均需观察。</strong> 适用条件/边界：适用于非银存款连续5个月同比负增、5年定存利率~1.3%已接近核心CPI~1.0%、10年国债~1.6%与7天回购~1.4%曲线过平阶段；工业企业利润同比仍为正时降息概率低。</li>
+<li><strong>结论4：2026年全球温和修复共识高度依赖能源供应恢复与AI投资延续两条主线，前提脆弱需折价看待。</strong> 适用条件/边界：仅在IMF假设（霍尔木兹海峡2026年3月起逐步恢复至10月复常、厄尔尼诺冲击未纳入）兑现且AI硬件基建开支不降温时成立；IMF对中美次年增速历史平均绝对偏差达1.4-2.3个百分点，具体数字不可直接采用。</li>
+</ul>
+<h2 id="2">2. 专家观点与逻辑链</h2>
+<h3 id="1_1">观点 1：居民消费与消费板块不是一回事</h3>
+<ul>
+<li><strong>观点归属：</strong> 张瑜</li>
+<li><strong>结论：</strong> 宏观消费需求偏弱，但消费板块供需均衡度自今年4-5月快速改善至2021年水平，绝对收益价值开始显现。</li>
+<li><strong>前提事实：</strong> 居民消费贷、按揭贷、经营贷12个月加总年化增量持续下行，Q2以来居民部门绝对缩表；居民收入增速~3%与名义GDP~6%裂口扩大；上中下游供需均衡度5月以来上行很快。</li>
+<li><strong>推导逻辑：</strong> <code>需求走弱但供给出清更快 → 需求增速-投资增速差值扩大 → 产能利用率/供需均衡改善 → 头部利润企稳</code></li>
+<li><strong>隐含假设：</strong> 行业并购重组、关店、亏损出清为真实供给收缩而非报表腾挪；需求增速不出现断崖式二次探底。</li>
+<li><strong>反例 / 证伪条件：</strong> 若供给重新扩张或需求加速下滑导致均衡度掉头；若龙头现金流无法稳住则逻辑失效。</li>
+</ul>
+<h3 id="2_1">观点 2：居民风险偏好回落：又爱定存、又不爱消费</h3>
+<ul>
+<li><strong>观点归属：</strong> 张瑜</li>
+<li><strong>结论：</strong> 居民预期波动再起，消费倾向低迷，若无财政对冲将传导至远期PPI、2027年Q2后利润及当下交易量估值。</li>
+<li><strong>前提事实：</strong> 新增存款中居民定期比重自今年5月起连续4个月上升；9月消费倾向仅高于2020年同期，低于2019、2021-2024所有同期；股票波动率上行、房价未稳、收入增速下行。</li>
+<li><strong>推导逻辑：</strong> <code>收入跟不上GDP+资产波动 → 风险偏好下降 → 多存少消费 → 经济循环走弱+市场新增资金减少 → 远期盈利预期不明朗+当期估值承压</code></li>
+<li><strong>隐含假设：</strong> 信贷与存款行为可作为风险偏好有效代理；收入增速锚定必选消费增速~3%上下。</li>
+<li><strong>反例 / 证伪条件：</strong> 若财政大举对冲、房价全面企稳或收入增速回升，则保守化逆转；若9月消费倾向低迷仅为单月扰动则不成立。</li>
+</ul>
+<h3 id="3">观点 3：六张网是未来几年基建主要拉动</h3>
+<ul>
+<li><strong>观点归属：</strong> 银波（华创宏观）</li>
+<li><strong>结论：</strong> 六张网整体落地概率高、资金不断加力、协调力度大，合计25-30万亿、年均5-6万亿、年均增速~10%，值得持续跟踪。</li>
+<li><strong>前提事实：</strong> 全部来自十五五规划109项重大工程，参照十四五102项全部完成；资金从预算内投资→特别国债→金融工具→9月底PSL不断加力；7月会议部署后8月底至9月中旬发改委牵头连续4周协调；估算占基建总量40-45%。</li>
+<li><strong>推导逻辑：</strong> <code>写入五年规划+中央加钱+专人推进 → 落地概率高于城中村改造等旧抓手 → 若整体实现10%以上增长 → 对基建拉动可观</code></li>
+<li><strong>隐含假设：</strong> 基建口径总量估算大致准确；不同年份间进度波动可用跨年平均熨平；物流网按航运+都市圈运窄口径约1-2万亿。</li>
+<li><strong>反例 / 证伪条件：</strong> 若资金投放效果不佳后不再加钱、或水利、市政等今年负增长延续至明年，则增速不及预期；若物流网边界证伪则总量高估。</li>
+</ul>
+<h3 id="4910">观点 4：9月消费超预期主因假期错位，10月需谨慎</h3>
+<ul>
+<li><strong>观点归属：</strong> 银波（华创宏观）</li>
+<li><strong>结论：</strong> 9月社零、服务业生产、餐饮交运偏强不可外推，居民必选消费回升至3.6%为今年最高但无收入支撑，10月社零可能转弱。</li>
+<li><strong>前提事实：</strong> 今年中秋在9月、去年在10月且紧邻国庆形成连休；农民工月均收入、居民人均可支配收入均未回升；三季度居民消费倾向、农民工就业收入仍微微走弱；10月高频汽车偏弱。</li>
+<li><strong>推导逻辑：</strong> <code>收入未回升+消费回升 → 非趋势性因素 → 假期错位解释 → 10月基数反转走弱</code></li>
+<li><strong>隐含假设：</strong> 工资锚定必选消费的关系依然稳定；上市公司Q3人均薪酬数据将延续疲弱。</li>
+<li><strong>反例 / 证伪条件：</strong> 若10月底三季报人均薪酬回升或10月社零、汽车高频走强，则错位解释被证伪。</li>
+</ul>
+<h3 id="5">观点 5：货币政策不可能三角与艰难平衡</h3>
+<ul>
+<li><strong>观点归属：</strong> 陆宇（华创宏观）</li>
+<li><strong>结论：</strong> 流动性即非银存款已连续5个月同比负增，央行无法在不降息下同时实现流动性投放与维持向上收益率曲线，只能以缩短久期（7天逆回购缩至隔夜）微放短端流动性+预备流动性投放工具兜底。</li>
+<li><strong>前提事实：</strong> 5月至9月每月非银存款同比负增，上次连续5个月以上为2022年4-10月；政策利率偏高时降息有效，但当下小幅降息难带动转型期+成本冲击下信贷；5年定存~1.3% vs 核心CPI~1.0%，再降息致存款实际回报转负；10年国债~1.6% vs 7天回购~1.4%曲线过平；工业企业利润同比仍为正。</li>
+<li><strong>推导逻辑：</strong> <code>非银流出股市债市→存量博弈 → 盼央行放水 → 放水压低长端致曲线过平埋踩踏风险 → 只能短久期微调平衡预期</code></li>
+<li><strong>隐含假设：</strong> 二级市场股债互换不消灭非银存款，只有实体借款或居民赎回才抽离流动性；越短利率传导货币政策效果越好。</li>
+<li><strong>反例 / 证伪条件：</strong> 若信贷大幅回升、非银存款同比转正，或工业利润转负触发降息周期，则三角约束解除；若经济预期骤然改善引发债市抛售，则兜底工具有效性被检验。</li>
+</ul>
+<h3 id="6imf">观点 6：IMF全球展望的框架与局限</h3>
+<ul>
+<li><strong>观点归属：</strong> 夏雪（华创宏观）</li>
+<li><strong>结论：</strong> IMF预计2026全球实际GDP从3.1%回升至3.4%，但数字需水分看待；核心矛盾是供给端能源冲击缓冲收窄 vs 需求端AI投资能否延续，呈现高度分化与通胀粘性。</li>
+<li><strong>前提事实：</strong> 基准假设霍尔木兹海峡2026年3月起恢复、10月复常，厄尔尼诺外生冲击未纳入；近5年IMF每年10月对次年中美增速预测平均绝对偏差1.4和2.3个百分点；今年韧性来自非冲突区增产+库存释放+能效提升；AI拉动主要来自硬件基建而非生产率兑现；全球总体通胀从4.7%回落至4.1%（较7月上调0.2pp），美欧核心通胀至2028年中才回2%；增速低于2%概率从4月20%降至10%，通胀超5%概率从30%升至35%。</li>
+<li><strong>推导逻辑：</strong> <code>能源缓冲收窄+AI开支集中 → 台湾、韩国等深度参与AI且能源冲击小者有支撑，法国等进口依赖高且AI参与低者承压 → 全球总量小幅修复但结构分化+通胀制约货币政策</code></li>
+<li><strong>隐含假设：</strong> WTO货物贸易量2026年~3.1%微加速、IEA/EIA预计石油供需由缺转余可作为交叉验证；中东冲突缓和时间表外生给定。</li>
+<li><strong>反例 / 证伪条件：</strong> 若霍尔木兹恢复不及预期、AI投资降温、贸易摩擦与债务压力发酵，则修复落空；若能源替代路线畅通、AI生产率超预期兑现，则上行超预期。</li>
+</ul>
+<h2 id="3_1">3. 投资研究指引</h2>
+<blockquote>
+<p>记录视频所表达的研究方向，不构成买卖建议；没有明确投资含义时如实写“未给出可执行指引”。
+| 主题 / 对象 | 视频隐含或明确的方向 | 为什么 | 正向验证信号 | 风险 / 失效信号 | 需补的证据 |
+|---|---|---|---|---|---|
+| 消费板块头部/红利资产 | 自下而上挑选、看绝对收益修复，非贝塔估值逻辑 | 供需均衡度回到2021年，供给出清快于需求，龙头现金流可稳住 | 供需均衡度继续改善、龙头利润与现金流企稳、分红维持 | 供给重新扩张、需求二次探底、无涨价基础下拔估值失败 | 上中下游分行业供需差值、关店并购出清清单、Q3利润与现金流 |
+| 六张网整体（基建链） | 跟踪并重视未来几年增长空间，研究重心而非短期交易 | 落地概率高、资金加力、占基建40-45%、年均10%左右 | PSL/特别国债/金融工具继续加码、明年进度快于今年、水利市政负增长收窄 | 效果不佳不再加钱、进度持续慢于预期 | 分网投资完成额月度跟踪、资金投放明细 |
+| 水网/管网/电网 | 关注引调水、排水改造、特高压西电东送 | 对应各网明确重心：水网6万亿持平、管网5万亿20-30%增长、电网5万亿6.7%增长 | 招标与开工放量、特高压核准提速 | 基数测算偏差、财政落地慢 | 115年1.2万亿、2025年管网400亿、电网8200亿基数复核 |
+| 物流网航运+都市圈运 / 信息通信万兆光网 / 算力国产替代与存储 | 结构性关注高增速细分 | 航运去年基数~1000亿，未来或翻倍；算力网5年4万亿、年均17%；信通3.8万亿增速~0 | 航运6500公里待建启动、算力国产化订单、万兆招标 | 物流网边界模糊致总量高估、信通零增长 | 自下而上项目库、2035规划航运里程、算力投资结构 |
+| 债券长端 | 提示过平曲线下踩踏风险，维持谨慎 | 短端放水压低长端至1.6%，经济预期改善即引发抛售 | 收益率曲线重新陡峭化、央行流动性工具落地细节 | 利率继续下压至更平、波动放大 | 央行投放工具操作细则、非银存款同比是否转正 |
+| 全球分化链（台湾、韩国 vs 法国等） | 未给出可执行指引，仅为分析框架 | 视频只讲AI贸易占比与能源依赖导致的增长分化，未提仓位方向 | AI硬件开支延续、能源供应恢复 | AI降温、霍尔木兹恢复不及预期 | AI贸易净额占GDP比重、能源进口依赖度更新 |</p>
+</blockquote></div>
+</article>
+
+<article id="note-QmzTipigWwo" class="article">
+  <div class="article-head">
+    <div>
+      <h3><a href="https://www.youtube.com/watch?v=QmzTipigWwo" target="_blank" rel="noreferrer">【最新出炉】大摩内部闭门会（2026-10-26附文稿）这次的二次探底是巨大的战略机遇，当前市场深度判断和思考！【文字稿件已经发布于解读君推特X】</a></h3>
+      <div class="meta">20261026 · QmzTipigWwo · <a href="https://www.youtube.com/watch?v=QmzTipigWwo" target="_blank" rel="noreferrer">观看 YouTube 原片 ↗</a></div>
+    </div>
+  </div>
+  <div class="content"><h1 id="2026-10-26x">结构化笔记｜【最新出炉】大摩内部闭门会（2026-10-26附文稿）这次的二次探底是巨大的战略机遇，当前市场深度判断和思考！【文字稿件已经发布于解读君推特X】</h1>
+<h2 id="1">1. 核心结论</h2>
+<ul>
+<li><strong>美股高利率已从最脆弱环节起杀伤，总量尚未失守，适用条件/边界：</strong> 仅在财政赤字+财富效应+AI大厂资本开支对利率钝感三支柱延续且美债曲线未深度倒挂时成立，若油价再冲高叠加美联储12月及明年3月加息至4.375%并刺破信用，则总量逻辑失效。</li>
+<li><strong>A股港股距历史极值底仍有10-15%估值下调空间，不宜机械抄底，适用条件/边界：</strong> 以MSCI中国8倍、沪深300的10-11倍前瞻PE为锚且全球风险溢价体系不重构为前提，若国家队持续高调买入+联储转鸽/AI信用风险解除，则可能提前触底反弹。</li>
+<li><strong>A股相对优于港股，国家队本轮托底更可持续，适用条件/边界：</strong> 仅在10月9-20日约150亿美元买入规模延续、科创/创业ETF占比维持30-40%、政策协同喊话不变且A股情绪指数维持低位反弹区间时成立，若买入缩量或仅口头维稳则失效。</li>
+<li><strong>中国4.5%GDP达标靠外需掩盖准通缩与K型分化，年内无超预期大刺激，转向看明年三E，适用条件/边界：</strong> 在累计同比4.6%、预算三成未用、卖地跌28%约束下成立，若出口意外失速、就业社保挤压致裁员潮、A股无序暴跌伤及科技融资任一触发，则政策可能提前转向。</li>
+</ul>
+<h2 id="2">2. 专家观点与逻辑链</h2>
+<h3 id="12005">观点 1：美国高利率如2005年翻版——总量撑住、水下先崩</h3>
+<ul>
+<li><strong>观点归属：</strong> 辛子强Robin，大摩宏观策略</li>
+<li><strong>结论：</strong> 高利率非无毒，正精准淘汰弱者，宏观大盘靠三支柱勉强撑住如2005年撑两年，但信贷底层已现崩盘迹象。</li>
+<li><strong>前提事实：</strong> 10年美债近5%、实际利率近2.7%，Q3 GDP 3.1%，AI大厂单季capex直接贡献GDP 0.5-0.6pp，曲线仍+35bp陡峭；但投资级发债暴增25%内部分化，数据中心ABS/CMBS萎缩、借贷成本大升，5000亿美元芯片融资转向短租+复杂SPV，neocloud面临重签违约，罗素3000半数自6月跌超20%，CCC利差走阔400bp，BDC跌至谷底，地产近衰退，法国主权利差2012欧债以来最阔。</li>
+<li><strong>推导逻辑：</strong> <code>高赤字+财富效应+AI capex钝感 → 总量增长预期跑赢资金成本 → 高利率是热度结果 → 但资金成本从最脆弱融资结构先引爆</code></li>
+<li><strong>隐含假设：</strong> AI投资回报率能持续覆盖资金成本，财政赤字可持续，历史2005类比有效。</li>
+<li><strong>反例 / 证伪条件：</strong> 若AI大厂capex放缓或2s10s转深度倒挂，或高质量77%以外风险传染至大厂，则总量撑住证伪。</li>
+</ul>
+<h3 id="2_1">观点 2：中期选举改变不了关税脱钩与高油价，能改变数据中心落地节奏</h3>
+<ul>
+<li><strong>观点归属：</strong> 辛子强Robin，大摩宏观策略</li>
+<li><strong>结论：</strong> 共和守参院概率&lt;10%、民主党夺众院90%、大赢约2/3致国会分裂；对外关税审查、AI芯片大模型出口管制趋严及高油价滞胀风险延续，唯一变量是30+州限制法案后地方对数据中心水电并网审批分化为欢迎vs抵制两半。</li>
+<li><strong>前提事实：</strong> 白宫主导关税贸易科技管制，中美IMF/G20会晤后仅非敏感缓和、敏感脱钩延续；中东缓和难即时复供，需等2027丰水期+明年春全球炼厂检修，布油难大跌；美调研显示居民极度反感数据中心抢水电推高电费。</li>
+<li><strong>推导逻辑：</strong> <code>白宫行政权+州权分治 → 国会分裂不改对外强硬与供给刚性 → 仅州长州议会公用事业委员会能卡并网电价水资源 → 落地节奏受地方政治物理约束</code></li>
+<li><strong>隐含假设：</strong> 预测数据有效，地方审批为主要瓶颈而非芯片供给，油价供给弹性极低。</li>
+<li><strong>反例 / 证伪条件：</strong> 若选举后出现中东实质复供致油价大跌，或联邦层面强行统一数据中心审批，则判断失效。</li>
+</ul>
+<h3 id="3k">观点 3：中国K型分化与政策不一致心结</h3>
+<ul>
+<li><strong>观点归属：</strong> 辛子强Robin，大摩宏观策略</li>
+<li><strong>结论：</strong> 表面4.5%达标但出口独秀未转内需利润收入，决策层自洽转型逻辑缺大消费刺激紧迫性，但微观顺周期共振逼近临界点。</li>
+<li><strong>前提事实：</strong> 出口贡献史无前例强，科技出口占增量近半；但进口能源原材料涨价挤压利润，出口集中资本密集少雇人，存量家庭信贷年缩1.5%提前还贷，税收倒查社保实缴相当于GDP1-2%隐性紧缩，明年化债高峰结束卖地仍跌，中欧新能源汽车后工程机械化工中间品摩擦扩散。</li>
+<li><strong>推导逻辑：</strong> <code>外需+先进制造保底线 → 决策层缺刺激紧迫性 → 内需消费走弱+预防性储蓄+地方紧缩共振 → 微观体感与宏观数据背离秋意凉</code></li>
+<li><strong>隐含假设：</strong> 名义GDP回暖是企业盈利决定项，社保税收执行严格，去杠杆泥潭理论成立。</li>
+<li><strong>反例 / 证伪条件：</strong> 若社零服务通胀回升或居民信贷转正增长，或大规模民生消费政策出台，则分化缓解证伪。</li>
+</ul>
+<h3 id="4ai">观点 4：中国AI融资比美国更安全，管制影响极低，首选阿里</h3>
+<ul>
+<li><strong>观点归属：</strong> Gary，AI科技互联网首席</li>
+<li><strong>结论：</strong> 美国77% capex来自hyperscaler现金流仅10-15%有融资风险，中国超80%来自hyperscaler更安全，风险在AI原生模型公司OPEX算力融资；出口管制因跨境API与现存开源豁免+未来开源仅报备自动批而影响极低；首选阿里、次选腾讯、暂避模型公司。</li>
+<li><strong>前提事实：</strong> 美剩余23%含spaces/neocloud风险；国内阿里腾讯百度等主导capex，Q3 preview多符合或下调仅阿里上调电商云margin有望beat+千问新模型+11月业绩催化对标美hyperscaler outperform，腾讯AI落后回报需半年-1年Q3下调2%，MiniMax M3 Pro/智谱GLM6.0在10月底11月初发布但前者7月融21亿美元后或再融资、后者明年1月解禁。</li>
+<li><strong>推导逻辑：</strong> <code>现有业务现金流支撑capex → 市场情绪差时抗融资风险 → 开源+API豁免隔离管制 → 基本面+催化定排序阿里&gt;腾讯&gt;模型公司</code></li>
+<li><strong>隐含假设：</strong> hyperscaler现金流持续，报备自动批执行不走样，海外云部署收入当前占比小未来大。</li>
+<li><strong>反例 / 证伪条件：</strong> 若阿里云增速margin不及preview或管制扩大至API/开源执行收紧，或模型公司发布后无融资解禁压力，则排序失效。</li>
+</ul>
+<h3 id="5a1-2">观点 5：港A暴跌三因+估值未到底+国家队高调托底1-2月或反弹</h3>
+<ul>
+<li><strong>观点归属：</strong> Laura，首席策略</li>
+<li><strong>结论：</strong> 上周暴跌主因10/22离岸信托补税误读避险+10/21约谈电商质检致margin忧+全球收益率联储中期选举致港股流动性撤出及A股AI主题联动美股；MSCI中国现10倍距8倍底、沪深300距10-11倍底各需10-15%；但国家队10/9-10/20买约150亿美元、科创50创业板ETF占30-40%、10/15协同鼓励回购险资不计提、10/19吴清称稳定第一要务，预示1-2月触底反弹。</li>
+<li><strong>前提事实：</strong> 7月信托欠税90天缴清规则，机构不熟细则提前避险；电商提质检叠加低迷需求；9/3已下调所有中国指数目标价提示紧缩+AI多空+外资分红CRS收紧；历史8倍底4次（08/15/20初/22底/24）有效，A股情绪指数已入反弹区间；上半年5个月卖超千亿量级后现买回约1/10。</li>
+<li><strong>推导逻辑：</strong> <code>事件误读+基本面弱+全球紧缩 → 波动放大 → 估值未至极值不宜抄底 → 高调真金白银+喊话协同 → 1-2月触底反弹概率升</code></li>
+<li><strong>隐含假设：</strong> 历史估值锚成分变迁后仍有效，国家队买卖监测指标准确，高调=可持续，港股看联储、A股看AI叙事分开定价。</li>
+<li><strong>反例 / 证伪条件：</strong> 若MSCI中国跌破8倍无反弹或国家队买入不可持续缩量，或联储超预期紧缩/AI信用爆雷，则反弹逻辑证伪。</li>
+</ul>
+<h3 id="692420282-3">观点 6：年内难有超9·24大刺激，2028年出准通缩但难回2-3%</h3>
+<ul>
+<li><strong>观点归属：</strong> 建理，经济学家</li>
+<li><strong>结论：</strong> 三季度4.3%到4.5%靠净出口贡献0.8到1.8pp+9月预算加速，四季度tracking 4.5-4.6%，但社零1.1%系中秋错位、服务通缩、3%存量按揭未解，年内小作文超9·24概率小，人民币续升及退税退坡可控，破局看明年出口民生股市，长期靠工业5.0+一二线房价明年底稳而不悲观如日本。</li>
+<li><strong>前提事实：</strong> 出口从AI向非科技扩散仅带产能过剩不大AI投资占制造1/5；税收前9月+6%超预算3%但基金卖地-28%整体-近2成缺优质项目致支出慢，降准降息空间小隔夜常态化非新降息；每年2万亿置换债今年收官央行再贷款lowoff未证实；USDCNY看年底6.65明年底6.6，一篮子近历史高位，退税聚焦过剩有竞争力高污染间隔一年；人均追赶空间泡沫小汇率未被动升。</li>
+<li><strong>推导逻辑：</strong> <code>外需填投资坑+预算余三成+达标压力小 → 托底为主不强刺激 → 明年出口走弱或地方流动性缺口致民生负反馈或股市无序跌伤新质融资 → 才触发转向 → 工业智能升级+反内卷+房价稳 → 2028入低通胀</code></li>
+<li><strong>隐含假设：</strong> 全球投资大周期撑外需3-5年结构走强，工业5.0以升级存量非扩产，一线房价已稳。</li>
+<li><strong>反例 / 证伪条件：</strong> 若年内出台降息降准特别国债超预期组合，或人民币大幅升破预测、退税大范围提前，或服务通胀持续为负，则判断失效。</li>
+</ul>
+<h2 id="3">3. 投资研究指引</h2>
+<blockquote>
+<p>记录视频所表达的研究方向，不构成买卖建议；没有明确投资含义时如实写“未给出可执行指引”。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>主题 / 对象</th>
+<th>视频隐含或明确的方向</th>
+<th>为什么</th>
+<th>正向验证信号</th>
+<th>风险 / 失效信号</th>
+<th>需补的证据</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>阿里巴巴 hyperscaler</td>
+<td>首选维持，调整中配置</td>
+<td>现金流撑capex抗融资风险，Q3上调有望beat，千问将发</td>
+<td>云收入margin上调兑现、11月业绩beat、美hyperscaler outperform延续</td>
+<td>电商margin恶化、云增速不及preview、AI capex回报证伪</td>
+<td>Q3 preview明细、千问发布时间、capex现金流覆盖率</td>
+</tr>
+<tr>
+<td>腾讯</td>
+<td>行业第二，落后阿里，需等盈利见底回升</td>
+<td>AI投入落后，回报可见性半年-1年，Q3下调2%</td>
+<td>模型能力追赶、应用变现加速、盈利重拾上调</td>
+<td>质检约谈致margin进一步侵蚀、需求持续低迷</td>
+<td>电商质检执行细则、游戏广告电商margin拆分</td>
+</tr>
+<tr>
+<td>MiniMax M3 Pro / 智谱GLM6.0 模型公司</td>
+<td>短期波动大，建议暂避、放在hyperscaler</td>
+<td>发布后或有neg catalyst：再融资需求、明年1月解禁liquidity风险+AI financing担忧</td>
+<td>模型发布超预期且无融资、API跨境收入放量</td>
+<td>融资开启、解禁抛压、需求不及预期</td>
+<td>融资计划公告、解禁股东结构、API收入占比</td>
+</tr>
+<tr>
+<td>A股整体 vs 港股</td>
+<td>聚焦A股，国家队托底1-2月或触底反弹</td>
+<td>高调买入150亿美元+科创创业占比升+协同喊话+情绪指数入反弹区，A股有基本盘</td>
+<td>买入规模延续、成交企稳、宽基+科创ETF持续净流入</td>
+<td>仅口头维稳买入缩量、成交再萎缩伤直接融资</td>
+<td>国家队日度买卖跟踪、ETF申赎、成交量</td>
+</tr>
+<tr>
+<td>港股</td>
+<td>等联储承认紧缩、通胀可控再受益更大</td>
+<td>港币盯美元+零管制致对收益率流动性最敏感</td>
+<td>美通胀回落、联储转鸽、港币波动收敛、外资回流</td>
+<td>油价再冲高、联储再加息至4.375%、美元强势延续</td>
+<td>联储会议指引、港币汇率、资金流</td>
+</tr>
+<tr>
+<td>高成长AI链/A股科技主题</td>
+<td>降低敞口，待credit风险解除再联动</td>
+<td>与美股高成长联动提升，受高利率+地方政治+信用分化压制</td>
+<td>美AI信用利差收窄、数据中心落地审批放行</td>
+<td>CCC走阔、ABS萎缩、neocloud违约扩散</td>
+<td>美信用利差、BDC股价、数据中心ABS发行</td>
+</tr>
+<tr>
+<td>红利稳定现金流 Swire Property/恒瑞/中行替换宁德/MiniMax</td>
+<td>加红利、加医药银行，减AI敞口，追求盈利确定性</td>
+<td>全球不确定尘埃未定前降波动</td>
+<td>高股息抗跌、盈利预测稳定</td>
+<td>成长反转时跑输、政策转向消费科技</td>
+<td>Focus list持仓变化、分红率、盈利修订</td>
+</tr>
+<tr>
+<td>韩国及新兴市场</td>
+<td>短期谨慎，不抄底，等11月下旬</td>
+<td>美元强+联储不确定+中期选举扰动对高贝塔冲击大</td>
+<td>美元走弱、中期选举落地、FOMC转鸽</td>
+<td>美元续强、油价高企</td>
+<td>美元指数、韩国团队评级变化、外资流</td>
+</tr>
+<tr>
+<td>债券地产薄弱环节 美小盘CCC BDC 法国主权</td>
+<td>规避，观察尾部风险</td>
+<td>已现崩盘迹象：小盘半数跌20%+、利差阔400bp</td>
+<td>利差企稳、发行恢复</td>
+<td>违约率跳升、利差再阔</td>
+<td>违约率、利差、ABS发行量</td>
+</tr>
+<tr>
+<td>政策博弈三E：出口/就业/股市</td>
+<td>跟踪出口增速、社保裁员、股市融资功能定转向时点</td>
+<td>年内预算余量+达标压力小不刺激，明年三者任一恶化触发</td>
+<td>出口失速、裁员反馈、成交萎缩后政策加码</td>
+<td>出口持续强致延后转向、地方流动性补足</td>
+<td>出口结构、居民信贷、地方置换再贷款证实、USDCNY</td>
+</tr>
+</tbody>
+</table></div>
+</article>
+
+<article id="note-xexGJyT852M" class="article">
+  <div class="article-head">
+    <div>
+      <h3><a href="https://www.youtube.com/watch?v=xexGJyT852M" target="_blank" rel="noreferrer">【重磅内容】大摩闭门会议（10-26）｜全球三大宏观风险和向中国传导，中国市场1个月可能有技术反弹</a></h3>
+      <div class="meta">20261026 · xexGJyT852M · <a href="https://www.youtube.com/watch?v=xexGJyT852M" target="_blank" rel="noreferrer">观看 YouTube 原片 ↗</a></div>
+    </div>
+  </div>
+  <div class="content"><h1 id="10-261">结构化笔记｜【重磅内容】大摩闭门会议（10-26）｜全球三大宏观风险和向中国传导，中国市场1个月可能有技术反弹</h1>
+<h2 id="1">1. 核心结论</h2>
+<ul>
+<li><strong>结论1：美国高利率并非无冲击，而是选择性杀伤脆弱环节，宏观总量暂被撑住。</strong> 适用条件/边界：仅在财政赤字+AI资本开支+财富效应三支柱不坍塌、2Y-10Y曲线未深度倒挂时成立；若AI资本开支证伪或信用全面冻结则失效。</li>
+<li><strong>结论2：中期选举难改关税收紧与高油价，关键边际变量是地方对数据中心的落地限制。</strong> 适用条件/边界：适用于民主党至少夺回一院、国会分裂的基准情形；若出现超预期的地缘缓和带来原油供给快速恢复则油价判断需修正。</li>
+<li><strong>结论3：中国4.5% GDP达标与体感分化源于外需独强、内需通缩未破，不一致性是市场秋意凉主因。</strong> 适用条件/边界：适用于出口集中于资本密集行业、家庭信贷收缩约1.5%、社保征缴等隐性紧缩叠加的当前组合；若社融、名义GDP、企业盈利明显回暖则分化逻辑弱化。</li>
+<li><strong>结论4：港股、A股距历史极值底部仍有约10%-15%估值下调空间，不宜机械抄底。</strong> 适用条件/边界：以MSCI中国8倍、沪深300为10-11倍前瞻市盈率为历史底部锚，适用于估值体系与风险溢价未发生系统性重构时；若盈利预期大幅下修则底部位置下移。</li>
+<li><strong>结论5：未来1-2个月A股出现触底技术反弹概率上升，相对优于港股。</strong> 适用条件/边界：依赖国家队高调协同进场持续、A股情绪指数进入超卖反弹区；若全球收益率继续飙升、AI叙事继续恶化或国家队购买不可持续则反弹夭折。</li>
+</ul>
+<h2 id="2">2. 专家观点与逻辑链</h2>
+<h3 id="12005">观点 1：美国高利率精准淘汰弱者，类似2005年翻版</h3>
+<ul>
+<li><strong>观点归属：</strong> 宏观主讲人</li>
+<li><strong>结论：</strong> 总量坚挺但底层已现崩盘迹象，高利率毒性从最脆弱环节发作</li>
+<li><strong>前提事实：</strong> 10Y美债逼近5%，实际利率约2.7%；三季度GDP增长3.1%；AI大厂单季资本开支直接贡献GDP 0.5-0.6个百分点；投资级债券发行暴增25%但内部分化，数据中心ABS/CMBS萎缩、借贷成本上升；罗素3000半数以上公司自6月跌超20%，CCC利差走阔400bp，BDC跌至年内低谷</li>
+<li><strong>推导逻辑：</strong> <code>财政赤字+财富效应+AI开支撑住总量 → 高利率未引发总量衰退预期 → 资金成本分化淘汰芯片租赁、neocloud、新创地产等脆弱融资链</code></li>
+<li><strong>隐含假设：</strong> AI投资回报率跑赢资金成本上行；曲线维持+35bp陡峭即代表市场未定价衰退；2005年类比适用于当前赤字+资本开支狂潮结构</li>
+<li><strong>反例 / 证伪条件：</strong> 若2Y-10Y深度倒挂、AI大厂下调capex指引、投资级发行冻结或就业从不裁员转为大规模裁员，则总量撑住逻辑证伪</li>
+</ul>
+<h3 id="2ai">观点 2：中期选举改变不了两件事，能改变的是AI落地节奏</h3>
+<ul>
+<li><strong>观点归属：</strong> 宏观主讲人</li>
+<li><strong>结论：</strong> 对外关税/科技出口管制更严、中东高油价延续；地方政治将切分数据中心可建与抵制两类州</li>
+<li><strong>前提事实：</strong> 市场预期共和党守住两院概率低于10%，民主党至少夺回一院概率高达90%；30多个州已提交限制数据中心法案；居民担忧抢水抢电推高电费；布伦特油价约117美元，明年炼厂检修、中东供给实质恢复要到2027年</li>
+<li><strong>推导逻辑：</strong> <code>白宫主导关税与出口管制不受国会分裂影响 + 地方掌握并网/电价/水资源审批 → 对外脱钩延续 + 对内AI落地受地方选举约束</code></li>
+<li><strong>隐含假设：</strong> 选举后形成分裂国会；APEC/G20会晤仅缓冲非敏感贸易，AI半导体脱钩延续；民调对地方反数据中心情绪的传导是准确的</li>
+<li><strong>反例 / 证伪条件：</strong> 若共和党守住两院并大幅转向宽松、或中东停火带来原油供给立即恢复、或地方限制法案未落地，则判断失效</li>
+</ul>
+<h3 id="3k">观点 3：中国K型分化与政策不一致症结</h3>
+<ul>
+<li><strong>观点归属：</strong> 宏观主讲人</li>
+<li><strong>结论：</strong> 出口一枝独秀保住4.5%底线，但未转化为利润与收入，需靠出口、就业反馈、股市三E破局</li>
+<li><strong>前提事实：</strong> 三季度GDP约4.5%；科技出口占出口增长近半；内需消费三季度弱于二季度；家庭信贷以年化1.5%萎缩；税收倒查、社保实缴等隐性顺周期紧缩约GDP1%-2%；卖地收入弱、化债高峰将过；中欧新能源汽车后或扩散至工程机械化工等</li>
+<li><strong>推导逻辑：</strong> <code>出口集中于不雇人的资本密集行业 + 高油价挤压制造业利润 + 家庭去杠杆 → GDP达标但企业盈利与就业无溢出 → 市场担忧政策缺乏促内需紧迫性</code></li>
+<li><strong>隐含假设：</strong> 通缩未破是体感差的根本，名义GDP回暖才能改善盈利；就业仍是政策底线，社会反馈系数有效；官方资金买入治标不治本</li>
+<li><strong>反例 / 证伪条件：</strong> 若PPI/名义GDP持续回正、居民信贷转正、社保征缴节奏缓和或出台大规模消费民生支持，则症结缓解逻辑需修正</li>
+</ul>
+<h3 id="4a">观点 4：本轮港股A股巨幅调整归因与估值位置</h3>
+<ul>
+<li><strong>观点归属：</strong> 首席策略师</li>
+<li><strong>结论：</strong> 宏观弱是背景音乐，直接触发是信托补税误读+电商质检担忧+全球流动性紧缩共振；当前估值未到历史极值底</li>
+<li><strong>前提事实：</strong> 10月22日离岸信托补税到期、10月21日电商集体会议要求提升质检；全球高收益率、油价、美联储紧缩预期、中期选举叠加；MSCI中国现约10倍前瞻市盈率，历史底部约8倍；沪深300历史下限10-11倍；9月3日已下调全部中国指数目标价</li>
+<li><strong>推导逻辑：</strong> <code>机构对CRS细则不熟悉引发预防性减仓 + 弱需求下担忧电商margin再被侵蚀 + 港股对美元流动性敏感、A股与美股AI主题联动上升 → 超跌但仍未到历史底部</code></li>
+<li><strong>隐含假设：</strong> 8倍与10-11倍历史底部在成分大变后仍有效；9月初提示的海外账户监管、CRS、分红税等资金面压力持续；补税卖出本应在前期完成，本轮是情绪误读</li>
+<li><strong>反例 / 证伪条件：</strong> 若盈利大幅上修使前瞻分母下降、或全球估值体系风险溢价系统性下移、或证实补税带来真实持续抛售而非情绪，则估值判断失效</li>
+</ul>
+<h3 id="5a1">观点 5：国家队高调进场指向A股1个月技术反弹</h3>
+<ul>
+<li><strong>观点归属：</strong> 首席策略师</li>
+<li><strong>结论：</strong> A股相对港股更值得聚焦，技术性反弹窗口在未来1-2个月</li>
+<li><strong>前提事实：</strong> 10月9-20日国家队 proxy购买约150亿美元，为上半年卖出超500亿美元的约十分之一；其中科创50/创业板ETF占比升至30%-40%；10月15日监管鼓励回购、不计提浮亏，吴清10月19日强调稳定第一；自有A股情绪指数跌至反弹区间</li>
+<li><strong>推导逻辑：</strong> <code>真金白银规模放量 + 投向科技主题ETF倾斜 + 跨部门协同喊话 → 历史上高调进场后1-2个月多现可持续反弹</code></li>
+<li><strong>隐含假设：</strong> 本轮购买可持续且规模可扩大，非脉冲式操作；2024年7-8月经验可复制；情绪指数对底部判断有效</li>
+<li><strong>反例 / 证伪条件：</strong> 若购买量迅速萎缩、转向仅买宽基护盘、成交量继续萎缩致科技融资功能受损，或美债收益率与AI信用风险再恶化，则反弹不出现或不可持续</li>
+</ul>
+<h2 id="3">3. 投资研究指引</h2>
+<blockquote>
+<p>记录视频所表达的研究方向，不构成买卖建议；没有明确投资含义时如实写“未给出可执行指引”。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>主题 / 对象</th>
+<th>视频隐含或明确的方向</th>
+<th>为什么</th>
+<th>正向验证信号</th>
+<th>风险 / 失效信号</th>
+<th>需补的证据</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A股相对港股</td>
+<td>聚焦A股而非港股</td>
+<td>国家队进场+自有资金基本盘，港股受美元收益率流动性冲击更直接</td>
+<td>国家队持续净买入、成交企稳回升</td>
+<td>美债收益率破5%并维持、港币波动加剧拖累A股情绪</td>
+<td>国家队分日购买数据、北向与ETF申赎</td>
+</tr>
+<tr>
+<td>高贝塔AI主题 / 科技成长</td>
+<td>降低贝塔敞口，等待AI叙事与信用风险解除后再定</td>
+<td>AI融资分化、地方审批约束、与美股高成长联动波动大</td>
+<td>大厂capex指引维持、信用利差收窄、租约违约担忧缓解</td>
+<td>SPV融资爆雷、neocloud违约、大厂下调开支</td>
+<td>大厂财报电话会、ABS/CMBS发行与成本、地方限制法案进展</td>
+</tr>
+<tr>
+<td>红利稳定现金流</td>
+<td>转向红利与盈利确定性，例调入港股收租股、银行，调出高贝塔</td>
+<td>弱需求+质检成本下margin承压，需确定性对冲</td>
+<td>红利股跑赢、恒瑞/银行等focus list稳定</td>
+<td>利率上行杀红利估值、消费需求再走弱</td>
+<td>电商margin、银行息差、红利股息覆盖率</td>
+</tr>
+<tr>
+<td>韩国及广义新兴市场</td>
+<td>短期不抄底，等11月下旬扰动落地后再介入</td>
+<td>美元强、美联储不确定性、中期选举压制高贝塔市场</td>
+<td>美元回落、FOMC偏鸽、中期选举尘埃落定</td>
+<td>美元新高、美债实际利率再上行</td>
+<td>美元指数、FOMC点阵图、韩国外资流向</td>
+</tr>
+<tr>
+<td>原油/滞胀链</td>
+<td>未给出可执行做多指引，仅提示滞胀尾部风险跟踪</td>
+<td>供给恢复慢但价格已高，波动大</td>
+<td>中东缓和+供给恢复证伪高油价</td>
+<td>油价再冲高传导通胀致美联储再加息两次</td>
+<td>布伦特远期曲线、炼厂检修与库存、美联储12月/明年3月指引</td>
+</tr>
+</tbody>
+</table></div>
+</article>
+
+      <div class="day-card">
+        <p>归档路径 <code>daily/20261026/</code> · <a href="../../index.html">返回历史总览</a> · <a href="./index.html">本日目录</a></p>
+      </div>
+    </main>
+  </div>
+</body>
+</html>

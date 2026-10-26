@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>解读君视频日报 · 20261024</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@400;600;700;900&display=swap" rel="stylesheet">
+  <style>
+:root {
+  --bg-page: #FBF8F2;
+  --bg-surface: #FFFDF9;
+  --bg-header: #F4EFE6;
+  --bg-subtle: #F0EADF;
+  --border-main: #E5DDCD;
+  --border-dark: #2B2625;
+  --text-main: #231F20;
+  --text-muted: #5C554E;
+  --text-light: #8E8478;
+  --accent-burgundy: #8B261D;
+  --accent-amber: #B45309;
+  --font-serif: 'Noto Serif SC', Georgia, 'Times New Roman', serif;
+  --font-sans: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'IBM Plex Mono', monospace;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 15px; }
+body {
+  background: var(--bg-page);
+  color: var(--text-main);
+  font-family: var(--font-sans);
+  line-height: 1.85;
+  -webkit-font-smoothing: antialiased;
+}
+
+.wrap {
+  max-width: 1300px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 290px 1fr;
+  min-height: 100vh;
+  border-left: 2px solid var(--border-dark);
+  border-right: 2px solid var(--border-dark);
+  background: var(--bg-surface);
+}
+
+@media (max-width: 1024px) {
+  .wrap { grid-template-columns: 1fr; border: none; }
+}
+
+/* Sidebar */
+.nav {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow-y: auto;
+  padding: 32px 24px;
+  background: #F7F3EB;
+  border-right: 1px solid var(--border-main);
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+@media (max-width: 1024px) {
+  .nav { position: relative; height: auto; border-right: none; border-bottom: 2px solid var(--border-dark); }
+}
+
+.brand {
+  padding-bottom: 18px;
+  border-bottom: 2px solid var(--border-dark);
+}
+.brand h1 {
+  font-family: var(--font-serif);
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: var(--border-dark);
+}
+.brand h1 span {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent-burgundy);
+  margin-top: 4px;
+}
+
+.toc h2 {
+  font-family: var(--font-serif);
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--border-dark);
+  border-bottom: 1px solid var(--border-main);
+  padding-bottom: 6px;
+  margin: 16px 0 10px;
+}
+
+.toc a {
+  display: flex;
+  flex-direction: column;
+  padding: 8px 10px;
+  text-decoration: none;
+  color: var(--text-main);
+  border: 1px solid transparent;
+  border-radius: 4px;
+  transition: all 0.15s;
+  font-size: 13px;
+  line-height: 1.4;
+  margin-bottom: 4px;
+}
+.toc a:hover {
+  background: var(--bg-subtle);
+  border-color: var(--border-main);
+}
+.toc a.active {
+  background: #EFE8DA;
+  border-color: var(--border-main);
+  color: var(--accent-burgundy);
+  font-weight: 600;
+}
+.toc a span {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+.nav-desc {
+  font-size: 11px;
+  font-family: var(--font-mono);
+  color: var(--text-muted);
+  line-height: 1.6;
+  padding: 4px 6px;
+}
+
+/* Main Area */
+.main {
+  padding: 40px 48px 80px;
+  max-width: 960px;
+}
+
+@media (max-width: 768px) {
+  .main { padding: 24px 18px 40px; }
+}
+
+.gazette-header {
+  border-top: 3px double var(--border-dark);
+  border-bottom: 1px solid var(--border-dark);
+  padding: 20px 0;
+  margin-bottom: 36px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+.gazette-header h1 {
+  font-family: var(--font-serif);
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--border-dark);
+}
+.gazette-header .gazette-meta {
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.summary-card, .article {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-main);
+  margin-bottom: 40px;
+}
+
+.summary-head, .article-head {
+  background: var(--bg-header);
+  padding: 20px 26px;
+  border-bottom: 1px solid var(--border-main);
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+}
+.article-head h3, .summary-head h3 {
+  font-family: var(--font-serif);
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text-main);
+  line-height: 1.35;
+}
+.article-head h3 a, .summary-head h3 a {
+  color: inherit;
+  text-decoration: none;
+}
+.article-head h3 a:hover, .summary-head h3 a:hover {
+  color: var(--accent-burgundy);
+}
+
+.meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-top: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.meta a {
+  color: var(--accent-burgundy);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.content {
+  padding: 32px 36px;
+  font-size: 14.5px;
+  line-height: 1.9;
+  color: #2D2726;
+}
+
+@media (max-width: 768px) {
+  .content { padding: 20px 18px; }
+  .summary-head, .article-head { padding: 16px 18px; }
+}
+
+.content h1 {
+  font-family: var(--font-serif);
+  font-size: 22px;
+  font-weight: 700;
+  margin: 0 0 18px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border-dark);
+}
+
+.content h2 {
+  font-family: var(--font-serif);
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--accent-burgundy);
+  background: var(--bg-header);
+  border: 1px solid var(--border-main);
+  border-radius: 4px;
+  padding: 8px 14px;
+  margin: 32px 0 14px;
+  letter-spacing: 0.02em;
+}
+
+.content h3 {
+  font-family: var(--font-serif);
+  font-size: 14.5px;
+  font-weight: 700;
+  margin: 22px 0 10px;
+  color: var(--text-main);
+}
+
+.content p {
+  margin-bottom: 16px;
+  text-align: justify;
+}
+
+.content strong {
+  font-weight: 700;
+  color: #1A1616;
+}
+
+.content ul, .content ol {
+  margin: 12px 0 18px 6px;
+  padding-left: 22px;
+}
+.content li {
+  margin-bottom: 8px;
+  line-height: 1.8;
+}
+.content ul > li::marker {
+  content: "▪ ";
+  color: var(--accent-burgundy);
+}
+.content ol > li::marker {
+  color: var(--accent-burgundy);
+  font-weight: 700;
+  font-family: var(--font-mono);
+}
+.content li > ul, .content li > ol {
+  margin: 8px 0 8px 6px;
+}
+.cond-label {
+  color: var(--accent-burgundy);
+  font-weight: 700;
+}
+.content li > p {
+  margin-bottom: 6px;
+}
+.content li > p:last-child {
+  margin-bottom: 0;
+}
+
+.viewpoint {
+  border: 1px solid var(--border-main);
+  border-radius: 6px;
+  margin: 16px 0 20px;
+  overflow: hidden;
+  background: #FFFDF8;
+}
+.vp-head {
+  background: var(--bg-header);
+  padding: 10px 16px;
+  border-bottom: 1px solid var(--border-main);
+  display: flex;
+  gap: 10px;
+  align-items: baseline;
+  flex-wrap: wrap;
+}
+.vp-num {
+  font-family: var(--font-serif);
+  font-weight: 700;
+  font-size: 14.5px;
+  color: var(--accent-burgundy);
+  white-space: nowrap;
+}
+.vp-title {
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--text-main);
+}
+.vp-owner {
+  margin-left: auto;
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+.vp-row {
+  display: grid;
+  grid-template-columns: 46px 1fr;
+  gap: 12px;
+  padding: 8px 16px;
+  font-size: 13.5px;
+  line-height: 1.8;
+}
+.vp-row + .vp-row {
+  border-top: 1px dashed var(--border-main);
+}
+.vp-label {
+  font-weight: 700;
+  font-size: 12.5px;
+  color: var(--accent-burgundy);
+  white-space: nowrap;
+  padding-top: 1px;
+}
+.vp-val {
+  color: #2D2726;
+  text-align: justify;
+  min-width: 0;
+}
+.vp-val p {
+  margin: 0;
+  text-align: justify;
+}
+.vp-val code {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  background: #EDE6D8;
+  padding: 2px 6px;
+  border-radius: 3px;
+  color: var(--accent-burgundy);
+}
+@media (max-width: 768px) {
+  .vp-row { grid-template-columns: 40px 1fr; padding: 7px 12px; }
+}
+
+.content blockquote {
+  background: #F3ECE0;
+  border: 1px solid var(--border-main);
+  border-radius: 4px;
+  padding: 14px 20px;
+  margin: 20px 0;
+  font-size: 13.5px;
+  font-style: italic;
+  color: #523E3B;
+}
+
+.content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 24px 0;
+  font-size: 13px;
+  border: 1px solid var(--border-main);
+}
+.content th {
+  background: #ECE4D6;
+  font-family: var(--font-serif);
+  font-weight: 700;
+  color: var(--border-dark);
+  text-align: left;
+  padding: 10px 14px;
+  border: 1px solid var(--border-main);
+}
+.content td {
+  padding: 9px 14px;
+  border: 1px solid var(--border-main);
+}
+.content tr:nth-child(even) {
+  background: #F8F4EC;
+}
+
+.content code {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  background: #EDE6D8;
+  padding: 2px 6px;
+  border-radius: 3px;
+  color: var(--accent-burgundy);
+}
+
+.day-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-main);
+  padding: 20px 24px;
+  margin-bottom: 18px;
+}
+.day-card h3 {
+  font-family: var(--font-serif);
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+.day-card h3 a {
+  color: var(--text-main);
+  text-decoration: none;
+}
+.day-card h3 a:hover {
+  color: var(--accent-burgundy);
+}
+.day-card p {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+.btn {
+  display: inline-flex;
+  padding: 8px 14px;
+  border: 1px solid var(--border-dark);
+  background: var(--bg-surface);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  text-decoration: none;
+  color: var(--text-main);
+  font-weight: 600;
+  transition: all 0.15s;
+}
+.btn:hover {
+  background: var(--bg-subtle);
+}
+.btn.primary {
+  background: var(--border-dark);
+  color: #FFFFFF;
+}
+.btn.primary:hover {
+  background: var(--accent-burgundy);
+  border-color: var(--accent-burgundy);
+}
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <nav class="nav">
+      <div class="brand">
+        <h1>解读君视频日报<span>JIEDU DAILY · 20261024</span></h1>
+      </div>
+      <div class="toc">
+        <h2>全量原文</h2>
+        <a href="#summary" class="active">每日核心总结<span>20261024</span></a>
+        <a href="#note-C7PFOzRo6gE">【最新重磅】付鹏对谈年轻人深度节目（2026-10-24附文稿）告诫年轻人当下不要太焦虑人工智能AI，应该思考和找到下一步的机遇【文字稿件已经发布于解读君推特X】<span>20261024 · C7PFOzRo6gE</span></a>
+        <h2>历史归档</h2>
+        <a href="../../index.html">← 返回历史总览</a>
+        <a href="../20261026/index.html" class="">20261026 <span>3 篇 · 当日归档</span></a><a href="../20261024/index.html" class="active">20261024 <span>1 篇 · 当日归档</span></a><a href="../20261023/index.html" class="">20261023 <span>3 篇 · 当日归档</span></a><a href="../20261022/index.html" class="">20261022 <span>2 篇 · 当日归档</span></a><a href="../20261021/index.html" class="">20261021 <span>2 篇 · 当日归档</span></a><a href="../20261020/index.html" class="">20261020 <span>1 篇 · 当日归档</span></a><a href="../20261019/index.html" class="">20261019 <span>1 篇 · 当日归档</span></a><a href="../20261018/index.html" class="">20261018 <span>2 篇 · 当日归档</span></a><a href="../20261016/index.html" class="">20261016 <span>1 篇 · 当日归档</span></a><a href="../20261015/index.html" class="">20261015 <span>1 篇 · 当日归档</span></a><a href="../20261014/index.html" class="">20261014 <span>3 篇 · 当日归档</span></a><a href="../20261013/index.html" class="">20261013 <span>2 篇 · 当日归档</span></a><a href="../20261012/index.html" class="">20261012 <span>2 篇 · 当日归档</span></a><a href="../20261011/index.html" class="">20261011 <span>3 篇 · 当日归档</span></a><a href="../20261010/index.html" class="">20261010 <span>9 篇 · 当日归档</span></a><a href="../20261006/index.html" class="">20261006 <span>2 篇 · 当日归档</span></a><a href="../20261005/index.html" class="">20261005 <span>3 篇 · 当日归档</span></a><a href="../20261004/index.html" class="">20261004 <span>1 篇 · 当日归档</span></a><a href="../20260929/index.html" class="">20260929 <span>0 篇 · 当日归档</span></a><a href="../20260928/index.html" class="">20260928 <span>1 篇 · 当日归档</span></a><a href="../20260927/index.html" class="">20260927 <span>6 篇 · 当日归档</span></a><a href="../20260922/index.html" class="">20260922 <span>1 篇 · 当日归档</span></a><a href="../20260921/index.html" class="">20260921 <span>8 篇 · 当日归档</span></a><a href="../20260914/index.html" class="">20260914 <span>6 篇 · 当日归档</span></a><a href="../20260910/index.html" class="">20260910 <span>1 篇 · 当日归档</span></a><a href="../20260908/index.html" class="">20260908 <span>2 篇 · 当日归档</span></a><a href="../20260907/index.html" class="">20260907 <span>2 篇 · 当日归档</span></a><a href="../20260906/index.html" class="">20260906 <span>1 篇 · 当日归档</span></a><a href="../20260905/index.html" class="">20260905 <span>1 篇 · 当日归档</span></a><a href="../20260904/index.html" class="">20260904 <span>2 篇 · 当日归档</span></a><a href="../20260903/index.html" class="">20260903 <span>2 篇 · 当日归档</span></a><a href="../20260902/index.html" class="">20260902 <span>3 篇 · 当日归档</span></a><a href="../20260831/index.html" class="">20260831 <span>2 篇 · 当日归档</span></a><a href="../20260829/index.html" class="">20260829 <span>1 篇 · 当日归档</span></a><a href="../20260828/index.html" class="">20260828 <span>1 篇 · 当日归档</span></a><a href="../20260825/index.html" class="">20260825 <span>1 篇 · 当日归档</span></a><a href="../20260824/index.html" class="">20260824 <span>2 篇 · 当日归档</span></a><a href="../20260823/index.html" class="">20260823 <span>1 篇 · 当日归档</span></a><a href="../20260821/index.html" class="">20260821 <span>3 篇 · 当日归档</span></a>
+      </div>
+    </nav>
+    <main class="main">
+      <div class="gazette-header">
+        <div>
+          <h1>金融经纬 · 每日纪要</h1>
+          <div class="gazette-meta">JIEDU DAILY FINANCIAL GAZETTE · VOL. 20261024</div>
+        </div>
+        <div class="gazette-meta">1 ARTICLES ARCHIVED</div>
+      </div>
+      
+<section id="summary" class="summary-card">
+  <div class="summary-head">
+    <div>
+      <h3>每日总结 · 20261024</h3>
+      <div class="meta">daily/20261024/20261024_解读君视频总结.md</div>
+    </div>
+  </div>
+  <div class="content"><h1 id="_1">解读君视频摘要</h1>
+<h2 id="1-2026-10-24aix">1. <a href="#note-C7PFOzRo6gE">【最新重磅】付鹏对谈年轻人深度节目（2026-10-24附文稿）告诫年轻人当下不要太焦虑人工智能AI，应该思考和找到下一步的机遇【文字稿件已经发布于解读君推特X】</a></h2>
+<blockquote>
+<p>一句话：人工智能投资仍在上游确定期，聚焦能源芯片基建大模型，防杠杆闪崩不追小票</p>
+</blockquote>
+<ul>
+<li><strong>结论1：当下不必为AI替代过度焦虑，普通人策略应是比别人早迈一步、用工具放大自身优势；<br><span class="cond-label">适用条件/边界：</span>仅适用于AI仍是工具、未达完全智能体阶段，且红利可复制性强、越早时间差越大，大众普及时红利已薄。</strong></li>
+<li><strong>结论2：AI提高效率导致商品便宜不等于通缩、可直接降息，服务价格与人的单位价值才是通胀核心变量；<br><span class="cond-label">适用条件/边界：</span>仅在不内卷、效率收益转化为收入与服务溢价时成立，若劳动成果价格被卷成通缩则结论失效。</strong></li>
+<li><strong>结论3：AI投资仍处上游最确定、中游重构、应用缺位的衔接真空期，当前可交易性集中在能源、芯片、基础设施、基模等前段；<br><span class="cond-label">适用条件/边界：</span>适用于以佩雷斯产业生命周期与基建类比框架看问题，26年被判断为大厂自由现金流耗尽转外部融资的窗口，需等下一个ChatGPT级应用信号来打通链条。</strong></li>
+<li><strong>结论4：上游最确定资产的最大风险不是产业转折而是杠杆与红吸，需防闪崩式去杠杆与追高小票末端炒作；<br><span class="cond-label">适用条件/边界：</span>仅适用于高杠杆、资金集中、流动性收紧环境，参照英伟达2024年7月闪崩逻辑，长期看好者也须承受科技股60-70%量级剧烈回调而不爆仓。</strong></li>
+</ul></div>
+</section>
+
+      
+<article id="note-C7PFOzRo6gE" class="article">
+  <div class="article-head">
+    <div>
+      <h3><a href="https://www.youtube.com/watch?v=C7PFOzRo6gE" target="_blank" rel="noreferrer">【最新重磅】付鹏对谈年轻人深度节目（2026-10-24附文稿）告诫年轻人当下不要太焦虑人工智能AI，应该思考和找到下一步的机遇【文字稿件已经发布于解读君推特X】</a></h3>
+      <div class="meta">20261024 · C7PFOzRo6gE · <a href="https://www.youtube.com/watch?v=C7PFOzRo6gE" target="_blank" rel="noreferrer">观看 YouTube 原片 ↗</a></div>
+    </div>
+  </div>
+  <div class="content"><h1 id="2026-10-24aix">结构化笔记｜【最新重磅】付鹏对谈年轻人深度节目（2026-10-24附文稿）告诫年轻人当下不要太焦虑人工智能AI，应该思考和找到下一步的机遇【文字稿件已经发布于解读君推特X】</h1>
+<h2 id="1">1. 核心结论</h2>
+<ul>
+<li><strong>结论1：当下不必为AI替代过度焦虑，普通人策略应是比别人早迈一步、用工具放大自身优势；适用条件/边界：仅适用于AI仍是工具、未达完全智能体阶段，且红利可复制性强、越早时间差越大，大众普及时红利已薄。</strong></li>
+<li><strong>结论2：AI提高效率导致商品便宜不等于通缩、可直接降息，服务价格与人的单位价值才是通胀核心变量；适用条件/边界：仅在不内卷、效率收益转化为收入与服务溢价时成立，若劳动成果价格被卷成通缩则结论失效。</strong></li>
+<li><strong>结论3：AI投资仍处上游最确定、中游重构、应用缺位的衔接真空期，当前可交易性集中在能源、芯片、基础设施、基模等前段；适用条件/边界：适用于以佩雷斯产业生命周期与基建类比框架看问题，26年被判断为大厂自由现金流耗尽转外部融资的窗口，需等下一个ChatGPT级应用信号来打通链条。</strong></li>
+<li><strong>结论4：上游最确定资产的最大风险不是产业转折而是杠杆与红吸，需防闪崩式去杠杆与追高小票末端炒作；适用条件/边界：仅适用于高杠杆、资金集中、流动性收紧环境，参照英伟达2024年7月闪崩逻辑，长期看好者也须承受科技股60-70%量级剧烈回调而不爆仓。</strong></li>
+</ul>
+<h2 id="2">2. 专家观点与逻辑链</h2>
+<h3 id="1ai">观点 1：AI不担责决定机构研究员不会消失</h3>
+<ul>
+<li><strong>观点归属：</strong> 付鹏</li>
+<li><strong>结论：</strong> 个人做学习库、分享无问题，但金融机构对外发布必须AI化合规，研究员最大剩余价值是从业资格与拍板担责。</li>
+<li><strong>前提事实：</strong> AI今年可蒸馏个人研报思维、工作流、可视化迭代，替代一年经验内研究员与实习生工作；AI仍有幻觉，蒸馏输出直接投放市场会产生责任问题。</li>
+<li><strong>推导逻辑：</strong> <code>AI效率可替代中间流程 → 对外发布涉及合规与担责 → AI不担责 → 机构必须保留持牌人审核拍板</code></li>
+<li><strong>隐含假设：</strong> 监管必然跟上技术；责任最终需自然人/持牌机构承担；AI短期内达不到可独立担责的智能体。</li>
+<li><strong>反例 / 证伪条件：</strong> 若监管允许AI独立署名发布且承担法律责任，或AI幻觉归零且责任规则重写，则该壁垒消失。</li>
+</ul>
+<h3 id="2ai">观点 2：AI原生公司的本质是小飞轮而非无人公司</h3>
+<ul>
+<li><strong>观点归属：</strong> 林超</li>
+<li><strong>结论：</strong> 未来是越来越多数据到算法到使用者的强化学习小飞轮，销售、研发、供应链各成闭环；规模扩张不再同比例加人，但只有短流程才可能微型化，长链条仍需几十人。</li>
+<li><strong>前提事实：</strong> 谷歌擅多模态、Anthropic专注Coding Agent、各家基模路线分化；用员工工作流蒸馏skill替代岗位仍处早期，替代真实物理世界与客户关系距离远。</li>
+<li><strong>推导逻辑：</strong> <code>数据飞轮泛化到小实体 → 单位劳动产出与迭代速度大增 → 10倍规模无需10倍人手 → 但链条长短决定能否压缩到几人</code></li>
+<li><strong>隐含假设：</strong> 飞轮能持续形成闭环；商业生态与物理约束不发生突变；效率提升主要省人而不创造同等新环节。</li>
+<li><strong>反例 / 证伪条件：</strong> 若一人公司可跑通长链条交付，或飞轮无法闭环、数据优势不带来成本收益改善，则判断失效。</li>
+</ul>
+<h3 id="3">观点 3：商品便宜不等于通缩</h3>
+<ul>
+<li><strong>观点归属：</strong> 付鹏</li>
+<li><strong>结论：</strong> AI带来商品效率提升与产能增加，但只要不卷，人的单位价值与收入提高，服务价格上涨将成为通胀中最核心变量。</li>
+<li><strong>前提事实：</strong> 通胀由商品与服务共同构成；AI漫剧已占中文token约55%、软件固化仅约15%，剧集从数月缩到一两周但同质化、挣钱难；美国硅谷幸存者收入高、人工服务依然贵。</li>
+<li><strong>推导逻辑：</strong> <code>AI效率提升 → 商品变多变便宜 → 若不卷则人的单位价值与收入上升 → 服务价格上涨对冲 → 合在一起才是真正通胀</code></li>
+<li><strong>隐含假设：</strong> 效率红利不被完全卷掉；劳动力仍是重要生产要素或紧缺；服务定价能兑现效率溢价。</li>
+<li><strong>反例 / 证伪条件：</strong> 若全面内卷使劳动成果通缩，或AI彻底颠覆劳动力要素地位使人的价值归零，则商品通缩主导。</li>
+</ul>
+<h3 id="4">观点 4：美联储旧框架过时</h3>
+<ul>
+<li><strong>观点归属：</strong> 林超、付鹏</li>
+<li><strong>结论：</strong> 1977-1978年形成的通胀与就业双目标框架衡量的是原子主导的工业时代，已不适应比特世界丰裕、非稀缺、K型分化与赢家通吃，沃什上任代表重构通胀定义与决策框架的漫长周期开启。</li>
+<li><strong>前提事实：</strong> 信息可复制共享、放水后资金不均匀流动；互联网时代谷歌、头条已现数据飞轮；格林斯潘、巴菲特退场被视为旧时代结束。</li>
+<li><strong>推导逻辑：</strong> <code>比特世界丰裕非均衡 → 稀缺与均衡假设失效 → 正态分布假设下的放水与菲利普斯框架失灵 → 需重新定义通胀影响要素与央行角色</code></li>
+<li><strong>隐含假设：</strong> AI生产力爆炸延续10-20年；K型分化持续；央行仍试图用统一框架管理分化经济。</li>
+<li><strong>反例 / 证伪条件：</strong> 若AI未改变稀缺性、资金传导恢复均匀，或新框架仍能用旧通胀就业关系解释，则过时论不成立。</li>
+</ul>
+<h3 id="5">观点 5：产业链处于上游确定、中游断裂的真空衔接期</h3>
+<ul>
+<li><strong>观点归属：</strong> 付鹏、林超</li>
+<li><strong>结论：</strong> 十二层蛋糕中二三十年视角下后半段暂无投资价值，现在能交易的是前段；基模命中率提升、以存代算使推理利润率达70%量级，但中游软件层持续下跌重构，缺一个堪比ChatGPT的打通信号，2030年前后才可能进入应用层泡沫。</li>
+<li><strong>前提事实：</strong> 黄仁勋五层蛋糕：能源、芯片、基础设施、模型、应用；基模虹吸数据、skill、人才并实现代码自写迭代；2002-2020年中国基建类比：钱到项目先买水泥钢筋机械。</li>
+<li><strong>推导逻辑：</strong> <code>资本支出已花到上游硬件 → 上游最确定 → 中游需重构、应用无爆款 → 左口袋掏完转发债IPO → 收入跟不上形成2-3季度真空</code></li>
+<li><strong>隐含假设：</strong> 历史上中下游衔接必有真空；AI范式革命底子延续到2032-2035年；当前缺的只是应用而非算力证伪。</li>
+<li><strong>反例 / 证伪条件：</strong> 若年内出现可付费、可规模化的杀手级应用，或上游资本开支证伪需求，则真空期判断失效。</li>
+</ul>
+<h3 id="6">观点 6：上游最大风险是杠杆而非产业转折</h3>
+<ul>
+<li><strong>观点归属：</strong> 付鹏</li>
+<li><strong>结论：</strong> 三星、海力士等存储上游可能复制英伟达2024年7月闪崩：行业产业公司没问题，但高杠杆会被一两周甚至几天洗掉，波动极大；市场已现红吸，最后接棒者耗尽即见顶。</li>
+<li><strong>前提事实：</strong> 英伟达2024年5月调研发现约3万亿市值对应约8000亿场外杠杆，7月闪崩去杠杆后变稳如老狗；韩国散户平均约5倍杠杆；5月中下旬已现红吸分化。</li>
+<li><strong>推导逻辑：</strong> <code>最确定资产吸引杠杆与资金红吸 → 流动性收紧下边缘资产失血 → 无承接时高杠杆先爆 → 闪崩去杠杆后V型修复</code></li>
+<li><strong>隐含假设：</strong> 流动性整体偏紧；杠杆数据与集中度判断准确；产业需求未反转。</li>
+<li><strong>反例 / 证伪条件：</strong> 若杠杆实际不高、流动性重回宽松，或上游出现基本面反转，则不会以闪崩形式出清。</li>
+</ul>
+<h3 id="7">观点 7：炒作已到末端小票，风口里找避风港</h3>
+<ul>
+<li><strong>观点归属：</strong> 林超、付鹏</li>
+<li><strong>结论：</strong> 从光模块磷化铟炒到电容、气体等原材料与十几二十人小公司，类比iPhone拆机炒到喇叭电池末端即泡沫尾声；交易风格应找10倍级确定性龙头，涨一倍不买、涨两三倍再吃中间，敢下重注吃确定性而非10倍梦。</li>
+<li><strong>前提事实：</strong> 小公司规模小、不确定性多、无行业报告；水泥、重工从高科技稀缺资产走出0708年戴维斯双击，094万亿后应用层房地产汽车接棒。</li>
+<li><strong>推导逻辑：</strong> <code>炒作沿链条从大到小抠到原材料 → 质地越来越差 → 泡沫风险上升 → 龙头确定性与现金流抗跌 → 掐头去尾吃中间</code></li>
+<li><strong>隐含假设：</strong> 本轮仍是工业革命式产业链投资；龙头格局稳定；应用端最终能买单修好的高速。</li>
+<li><strong>反例 / 证伪条件：</strong> 若最小票持续跑出真业绩成长为新龙头，或龙头被自研芯片、CUDA替代颠覆，则龙头策略失效。</li>
+</ul>
+<h3 id="8">观点 8：普通人与未来稀缺：经验拍板与热爱创造</h3>
+<ul>
+<li><strong>观点归属：</strong> 付鹏、林超</li>
+<li><strong>结论：</strong> 知识分析变便宜后，财富奖励经验、组织能力、真实场景与信任，拍板那一刻仍需老医生老法师；普通人应把HR改简历等优势做成工作流与skill放量获客，先吃时间差，艺高人胆大，多承受可控微风险；AI只模拟大脑部分功能，品味、热情、执着未被建模，UBI普及后驱动将是热爱探索与独特创造。</li>
+<li><strong>前提事实：</strong> 初级重复研究可被替代；大脑视觉、认脸、运动小脑远大于语言区；技术早期只有限精英感知，到生产关系阶段普通人才被倒逼感知。</li>
+<li><strong>推导逻辑：</strong> <code>AI替代中间流程 → 决策经验仍稀缺 → 普通人提前一步放大优势获时间差 → 基本生存满足后转向热爱创造</code></li>
+<li><strong>隐含假设：</strong> AI短期仍是工具非智能体；UBI/税收再分配可行；人愿意为精神与服务需求付费。</li>
+<li><strong>反例 / 证伪条件：</strong> 若AI实现贾维斯式智能体使经验亦不稀缺，或基本收入长期不到位、生存压力不减，则该路径不成立。</li>
+</ul>
+<h2 id="3_1">3. 投资研究指引</h2>
+<blockquote>
+<p>记录视频所表达的研究方向，不构成买卖建议；没有明确投资含义时如实写“未给出可执行指引”。
+| 主题 / 对象 | 视频隐含或明确的方向 | 为什么 | 正向验证信号 | 风险 / 失效信号 | 需补的证据 |
+|---|---|---|---|---|---|
+| 基模公司 | 相对看好头部，推理利润率改善 | 命中率提升、以存代算省算力与能源 | 推理利用率与利润率维持高位 | 命中率见顶、价格战 | 各家推理成本与命中率拆分 |
+| 英伟达/GPU | 由暴涨转老登稳健，不追暴涨，防生态与自研挑战 | 客户自研推理芯片、更亲民编程层分流CUDA，向垄断金元与整机柜要份额 | 机柜出货与金元锁定延续 | 大厂自研替代加速 | 自研芯片渗透率、CUDA替代进展 |
+| 存储/内存 | 未到顶但分化，内存优于存储商品 | 内存贴近计算走向存算一体、PIM与低延迟封装，非标定制；存储仍是标品 | HBM/DDR价格与封装招标延续 | 下游砍单、价格崩 | 库存、价格、资本开支指引 |
+| 光模块 | 处早期凭想象阶段，未到利润释放稳健段 | 对标英伟达21年前早期高估值阶段 | 利润增速兑现 | 估值杀 | 订单与利润兑现度 |
+| 上游硬件龙头 | 风口中找避风港，吃中间 | 确定性高、现金流抗跌 | 自由现金流与市占稳定 | 杠杆闪崩20%量级 | 杠杆率、散户保证金数据 |
+| 中游软件 | 暂避，正重构下跌中 | 佩雷斯周期重构段 | 止跌与新收费模式出现 | 继续阴跌 | SaaS续费与ARPU |
+| AI应用/自动驾驶机器人内容制作 | 等下一个ChatGPT级信号，不提前下重注 | 当前无让市场相信能挣钱的打通点 | 出现付费放量爆款 | 一直讲故事无收入 | 付费用户与单位经济模型 |
+| 电力能源 | 作为算力尽头的底层约束持续跟踪 | GW级数据中心耗电如三四线城市，美资本投入远超电力 | 电力投资周期启动 | 电网与审批瓶颈证伪需求 | 电力资本开支与签约电量 |
+| 末端小票原材料 | 不碰或只短线，炒无可炒是尾部特征 | 公司小、不确定性多 | 无 | 连续20倍后崩 | 业绩与出货真实性 |
+| 年轻人加杠杆买科技股 | 未给出可执行指引，仅风险提示 | 科技回调剧烈，生活钱勿上杠杆 | 无 | 爆仓 | 无 |</p>
+</blockquote></div>
+</article>
+
+      <div class="day-card">
+        <p>归档路径 <code>daily/20261024/</code> · <a href="../../index.html">返回历史总览</a> · <a href="./index.html">本日目录</a></p>
+      </div>
+    </main>
+  </div>
+</body>
+</html>
