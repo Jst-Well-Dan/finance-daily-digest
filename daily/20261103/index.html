@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>解读君视频日报 · 20261103</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@400;600;700;900&display=swap" rel="stylesheet">
+  <style>
+:root {
+  --bg-page: #FBF8F2;
+  --bg-surface: #FFFDF9;
+  --bg-header: #F4EFE6;
+  --bg-subtle: #F0EADF;
+  --border-main: #E5DDCD;
+  --border-dark: #2B2625;
+  --text-main: #231F20;
+  --text-muted: #5C554E;
+  --text-light: #8E8478;
+  --accent-burgundy: #8B261D;
+  --accent-amber: #B45309;
+  --font-serif: 'Noto Serif SC', Georgia, 'Times New Roman', serif;
+  --font-sans: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'IBM Plex Mono', monospace;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 15px; }
+body {
+  background: var(--bg-page);
+  color: var(--text-main);
+  font-family: var(--font-sans);
+  line-height: 1.85;
+  -webkit-font-smoothing: antialiased;
+}
+
+.wrap {
+  max-width: 1300px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 290px 1fr;
+  min-height: 100vh;
+  border-left: 2px solid var(--border-dark);
+  border-right: 2px solid var(--border-dark);
+  background: var(--bg-surface);
+}
+
+@media (max-width: 1024px) {
+  .wrap { grid-template-columns: 1fr; border: none; }
+}
+
+/* Sidebar */
+.nav {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow-y: auto;
+  padding: 32px 24px;
+  background: #F7F3EB;
+  border-right: 1px solid var(--border-main);
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+@media (max-width: 1024px) {
+  .nav { position: relative; height: auto; border-right: none; border-bottom: 2px solid var(--border-dark); }
+}
+
+.brand {
+  padding-bottom: 18px;
+  border-bottom: 2px solid var(--border-dark);
+}
+.brand h1 {
+  font-family: var(--font-serif);
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: var(--border-dark);
+}
+.brand h1 span {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent-burgundy);
+  margin-top: 4px;
+}
+
+.toc h2 {
+  font-family: var(--font-serif);
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--border-dark);
+  border-bottom: 1px solid var(--border-main);
+  padding-bottom: 6px;
+  margin: 16px 0 10px;
+}
+
+.toc a {
+  display: flex;
+  flex-direction: column;
+  padding: 8px 10px;
+  text-decoration: none;
+  color: var(--text-main);
+  border: 1px solid transparent;
+  border-radius: 4px;
+  transition: all 0.15s;
+  font-size: 13px;
+  line-height: 1.4;
+  margin-bottom: 4px;
+}
+.toc a:hover {
+  background: var(--bg-subtle);
+  border-color: var(--border-main);
+}
+.toc a.active {
+  background: #EFE8DA;
+  border-color: var(--border-main);
+  color: var(--accent-burgundy);
+  font-weight: 600;
+}
+.toc a span {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+.nav-desc {
+  font-size: 11px;
+  font-family: var(--font-mono);
+  color: var(--text-muted);
+  line-height: 1.6;
+  padding: 4px 6px;
+}
+
+/* Main Area */
+.main {
+  padding: 40px 48px 80px;
+  max-width: 960px;
+}
+
+@media (max-width: 768px) {
+  .main { padding: 24px 18px 40px; }
+}
+
+.gazette-header {
+  border-top: 3px double var(--border-dark);
+  border-bottom: 1px solid var(--border-dark);
+  padding: 20px 0;
+  margin-bottom: 36px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+.gazette-header h1 {
+  font-family: var(--font-serif);
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--border-dark);
+}
+.gazette-header .gazette-meta {
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.summary-card, .article {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-main);
+  margin-bottom: 40px;
+}
+
+.summary-head, .article-head {
+  background: var(--bg-header);
+  padding: 20px 26px;
+  border-bottom: 1px solid var(--border-main);
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+}
+.article-head h3, .summary-head h3 {
+  font-family: var(--font-serif);
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text-main);
+  line-height: 1.35;
+}
+.article-head h3 a, .summary-head h3 a {
+  color: inherit;
+  text-decoration: none;
+}
+.article-head h3 a:hover, .summary-head h3 a:hover {
+  color: var(--accent-burgundy);
+}
+
+.meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-top: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.meta a {
+  color: var(--accent-burgundy);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.content {
+  padding: 32px 36px;
+  font-size: 14.5px;
+  line-height: 1.9;
+  color: #2D2726;
+}
+
+@media (max-width: 768px) {
+  .content { padding: 20px 18px; }
+  .summary-head, .article-head { padding: 16px 18px; }
+}
+
+.content h1 {
+  font-family: var(--font-serif);
+  font-size: 22px;
+  font-weight: 700;
+  margin: 0 0 18px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border-dark);
+}
+
+.content h2 {
+  font-family: var(--font-serif);
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--accent-burgundy);
+  background: var(--bg-header);
+  border: 1px solid var(--border-main);
+  border-radius: 4px;
+  padding: 8px 14px;
+  margin: 32px 0 14px;
+  letter-spacing: 0.02em;
+}
+
+.content h3 {
+  font-family: var(--font-serif);
+  font-size: 14.5px;
+  font-weight: 700;
+  margin: 22px 0 10px;
+  color: var(--text-main);
+}
+
+.content p {
+  margin-bottom: 16px;
+  text-align: justify;
+}
+
+.content strong {
+  font-weight: 700;
+  color: #1A1616;
+}
+
+.content ul, .content ol {
+  margin: 12px 0 18px 6px;
+  padding-left: 22px;
+}
+.content li {
+  margin-bottom: 8px;
+  line-height: 1.8;
+}
+.content ul > li::marker {
+  content: "▪ ";
+  color: var(--accent-burgundy);
+}
+.content ol > li::marker {
+  color: var(--accent-burgundy);
+  font-weight: 700;
+  font-family: var(--font-mono);
+}
+.content li > ul, .content li > ol {
+  margin: 8px 0 8px 6px;
+}
+.cond-label {
+  color: var(--accent-burgundy);
+  font-weight: 700;
+}
+.content li > p {
+  margin-bottom: 6px;
+}
+.content li > p:last-child {
+  margin-bottom: 0;
+}
+
+.viewpoint {
+  border: 1px solid var(--border-main);
+  border-radius: 6px;
+  margin: 16px 0 20px;
+  overflow: hidden;
+  background: #FFFDF8;
+}
+.vp-head {
+  background: var(--bg-header);
+  padding: 10px 16px;
+  border-bottom: 1px solid var(--border-main);
+  display: flex;
+  gap: 10px;
+  align-items: baseline;
+  flex-wrap: wrap;
+}
+.vp-num {
+  font-family: var(--font-serif);
+  font-weight: 700;
+  font-size: 14.5px;
+  color: var(--accent-burgundy);
+  white-space: nowrap;
+}
+.vp-title {
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--text-main);
+}
+.vp-owner {
+  margin-left: auto;
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+.vp-row {
+  display: grid;
+  grid-template-columns: 46px 1fr;
+  gap: 12px;
+  padding: 8px 16px;
+  font-size: 13.5px;
+  line-height: 1.8;
+}
+.vp-row + .vp-row {
+  border-top: 1px dashed var(--border-main);
+}
+.vp-label {
+  font-weight: 700;
+  font-size: 12.5px;
+  color: var(--accent-burgundy);
+  white-space: nowrap;
+  padding-top: 1px;
+}
+.vp-val {
+  color: #2D2726;
+  text-align: justify;
+  min-width: 0;
+}
+.vp-val p {
+  margin: 0;
+  text-align: justify;
+}
+.vp-val code {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  background: #EDE6D8;
+  padding: 2px 6px;
+  border-radius: 3px;
+  color: var(--accent-burgundy);
+}
+@media (max-width: 768px) {
+  .vp-row { grid-template-columns: 40px 1fr; padding: 7px 12px; }
+}
+
+.content blockquote {
+  background: #F3ECE0;
+  border: 1px solid var(--border-main);
+  border-radius: 4px;
+  padding: 14px 20px;
+  margin: 20px 0;
+  font-size: 13.5px;
+  font-style: italic;
+  color: #523E3B;
+}
+
+.content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 24px 0;
+  font-size: 13px;
+  border: 1px solid var(--border-main);
+}
+.content th {
+  background: #ECE4D6;
+  font-family: var(--font-serif);
+  font-weight: 700;
+  color: var(--border-dark);
+  text-align: left;
+  padding: 10px 14px;
+  border: 1px solid var(--border-main);
+}
+.content td {
+  padding: 9px 14px;
+  border: 1px solid var(--border-main);
+}
+.content tr:nth-child(even) {
+  background: #F8F4EC;
+}
+
+.content code {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  background: #EDE6D8;
+  padding: 2px 6px;
+  border-radius: 3px;
+  color: var(--accent-burgundy);
+}
+
+.day-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-main);
+  padding: 20px 24px;
+  margin-bottom: 18px;
+}
+.day-card h3 {
+  font-family: var(--font-serif);
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+.day-card h3 a {
+  color: var(--text-main);
+  text-decoration: none;
+}
+.day-card h3 a:hover {
+  color: var(--accent-burgundy);
+}
+.day-card p {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+.btn {
+  display: inline-flex;
+  padding: 8px 14px;
+  border: 1px solid var(--border-dark);
+  background: var(--bg-surface);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  text-decoration: none;
+  color: var(--text-main);
+  font-weight: 600;
+  transition: all 0.15s;
+}
+.btn:hover {
+  background: var(--bg-subtle);
+}
+.btn.primary {
+  background: var(--border-dark);
+  color: #FFFFFF;
+}
+.btn.primary:hover {
+  background: var(--accent-burgundy);
+  border-color: var(--accent-burgundy);
+}
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <nav class="nav">
+      <div class="brand">
+        <h1>解读君视频日报<span>JIEDU DAILY · 20261103</span></h1>
+      </div>
+      <div class="toc">
+        <h2>全量原文</h2>
+        <a href="#summary" class="active">每日核心总结<span>20261103</span></a>
+        <a href="#note-NRYS0_k4JiI">华创7位首席深夜会 消费股5年下跌结束 双创反弹20 30 华发债雷 CoreWeave 原油做空 11月A股怎么走<span>20261103 · NRYS0_k4JiI</span></a>
+        <h2>历史归档</h2>
+        <a href="../../index.html">← 返回历史总览</a>
+        <a href="../20261103/index.html" class="active">20261103 <span>1 篇 · 当日归档</span></a><a href="../20261102/index.html" class="">20261102 <span>2 篇 · 当日归档</span></a><a href="../20261101/index.html" class="">20261101 <span>1 篇 · 当日归档</span></a><a href="../20261031/index.html" class="">20261031 <span>1 篇 · 当日归档</span></a><a href="../20261030/index.html" class="">20261030 <span>2 篇 · 当日归档</span></a><a href="../20261028/index.html" class="">20261028 <span>1 篇 · 当日归档</span></a><a href="../20261027/index.html" class="">20261027 <span>1 篇 · 当日归档</span></a><a href="../20261026/index.html" class="">20261026 <span>3 篇 · 当日归档</span></a><a href="../20261024/index.html" class="">20261024 <span>1 篇 · 当日归档</span></a><a href="../20261023/index.html" class="">20261023 <span>3 篇 · 当日归档</span></a><a href="../20261022/index.html" class="">20261022 <span>2 篇 · 当日归档</span></a><a href="../20261021/index.html" class="">20261021 <span>2 篇 · 当日归档</span></a><a href="../20261020/index.html" class="">20261020 <span>1 篇 · 当日归档</span></a><a href="../20261019/index.html" class="">20261019 <span>1 篇 · 当日归档</span></a><a href="../20261018/index.html" class="">20261018 <span>2 篇 · 当日归档</span></a><a href="../20261016/index.html" class="">20261016 <span>1 篇 · 当日归档</span></a><a href="../20261015/index.html" class="">20261015 <span>1 篇 · 当日归档</span></a><a href="../20261014/index.html" class="">20261014 <span>3 篇 · 当日归档</span></a><a href="../20261013/index.html" class="">20261013 <span>2 篇 · 当日归档</span></a><a href="../20261012/index.html" class="">20261012 <span>2 篇 · 当日归档</span></a><a href="../20261011/index.html" class="">20261011 <span>3 篇 · 当日归档</span></a><a href="../20261010/index.html" class="">20261010 <span>9 篇 · 当日归档</span></a><a href="../20261006/index.html" class="">20261006 <span>2 篇 · 当日归档</span></a><a href="../20261005/index.html" class="">20261005 <span>3 篇 · 当日归档</span></a><a href="../20261004/index.html" class="">20261004 <span>1 篇 · 当日归档</span></a><a href="../20260929/index.html" class="">20260929 <span>0 篇 · 当日归档</span></a><a href="../20260928/index.html" class="">20260928 <span>1 篇 · 当日归档</span></a><a href="../20260927/index.html" class="">20260927 <span>6 篇 · 当日归档</span></a><a href="../20260922/index.html" class="">20260922 <span>1 篇 · 当日归档</span></a><a href="../20260921/index.html" class="">20260921 <span>8 篇 · 当日归档</span></a><a href="../20260914/index.html" class="">20260914 <span>6 篇 · 当日归档</span></a><a href="../20260910/index.html" class="">20260910 <span>1 篇 · 当日归档</span></a><a href="../20260908/index.html" class="">20260908 <span>2 篇 · 当日归档</span></a><a href="../20260907/index.html" class="">20260907 <span>2 篇 · 当日归档</span></a><a href="../20260906/index.html" class="">20260906 <span>1 篇 · 当日归档</span></a><a href="../20260905/index.html" class="">20260905 <span>1 篇 · 当日归档</span></a><a href="../20260904/index.html" class="">20260904 <span>2 篇 · 当日归档</span></a><a href="../20260903/index.html" class="">20260903 <span>2 篇 · 当日归档</span></a><a href="../20260902/index.html" class="">20260902 <span>3 篇 · 当日归档</span></a><a href="../20260831/index.html" class="">20260831 <span>2 篇 · 当日归档</span></a><a href="../20260829/index.html" class="">20260829 <span>1 篇 · 当日归档</span></a><a href="../20260828/index.html" class="">20260828 <span>1 篇 · 当日归档</span></a><a href="../20260825/index.html" class="">20260825 <span>1 篇 · 当日归档</span></a><a href="../20260824/index.html" class="">20260824 <span>2 篇 · 当日归档</span></a><a href="../20260823/index.html" class="">20260823 <span>1 篇 · 当日归档</span></a><a href="../20260821/index.html" class="">20260821 <span>3 篇 · 当日归档</span></a>
+      </div>
+    </nav>
+    <main class="main">
+      <div class="gazette-header">
+        <div>
+          <h1>金融经纬 · 每日纪要</h1>
+          <div class="gazette-meta">JIEDU DAILY FINANCIAL GAZETTE · VOL. 20261103</div>
+        </div>
+        <div class="gazette-meta">1 ARTICLES ARCHIVED</div>
+      </div>
+      
+<section id="summary" class="summary-card">
+  <div class="summary-head">
+    <div>
+      <h3>每日总结 · 20261103</h3>
+      <div class="meta">daily/20261103/20261103_解读君视频总结.md</div>
+    </div>
+  </div>
+  <div class="content"><h1 id="_1">解读君视频摘要</h1>
+<h2 id="1-7-5-20-30-coreweave-11a">1. <a href="#note-NRYS0_k4JiI">华创7位首席深夜会 消费股5年下跌结束 双创反弹20 30 华发债雷 CoreWeave 原油做空 11月A股怎么走</a></h2>
+<blockquote>
+<p>一句话：消费板块五年下行结束龙头进入可重视阶段，11月双创或迎20%到30%估值修复</p>
+</blockquote>
+<ul>
+<li><strong>1.宏观消费弱但消费板块5年下行结束：</strong> 居民消费倾向次低、定存占比回升、不借贷、收入预期仅3%左右，宏观消费增速明年或仅2%上下难有弹性；但上游投资出清使供需均衡度回到2021年水平，尾部出清结束头部龙头进入可重视阶段。<br><span class="cond-label">适用条件：</span>供给出清持续、无价格弹性，仅为精选龙头行情而非板块贝塔。</li>
+<li><strong>2.11月A股或迎双创20%-30%短期估值修复：</strong> 跌幅已触历史最大回撤区、美债利率回落预期、宽基ETF放量+央行支持工具托底，定性为流动性压力缓和下的修复窗口而非反转。<br><span class="cond-label">适用条件：</span>未来1-2个月美债通胀预期收窄、中选后美债企稳；操作需借势均衡、趁反弹降锐度补红利防御。</li>
+<li><strong>3.华发债舆情冲击有限、非系统性：</strong> 存量上千亿但为渐进暴露非突发违约，加上有宽松资金+化债后预期稳定+非银流动性支持工具，与永煤时不可比。<br><span class="cond-label">适用条件：</span>主体与地方政府平稳表态落地、赎回停留在理财赎基金层面未演变为理财破净赎回；利率债3-5BP调整已到位，信用债需等利率企稳后再修复。</li>
+<li><strong>4.CoreWeave暴跌不证伪AI资本开支：</strong> 无抵押债收益率15%+暴跌仅反映自身现金流为负的流动性风险，有算力合同抵押债稳定，科技投资级/垃圾级实际融资成本仅从上半年低点回正常水平。<br><span class="cond-label">适用条件：</span>核心云厂商维持投资级评级、算力合同现金流兑现；风险集中在外围高杠杆NewCloud而非核心云厂商。</li>
+<li><strong>5.原油中长期择机做空胜率大于做多：</strong> 2019-2025年产能年增约100万桶/日远超需求年增约50万桶/日，冗余超400万桶/日，2027年冗余或更大，中东9月出口已恢复至战前水平将继续补库。<br><span class="cond-label">适用条件：</span>美伊冲突不升级切断运输通道、出口量维持；若冲突升级短期油价仍可冲高，做空需择时。</li>
+</ul></div>
+</section>
+
+      
+<article id="note-NRYS0_k4JiI" class="article">
+  <div class="article-head">
+    <div>
+      <h3><a href="https://www.youtube.com/watch?v=NRYS0_k4JiI" target="_blank" rel="noreferrer">华创7位首席深夜会 消费股5年下跌结束 双创反弹20 30 华发债雷 CoreWeave 原油做空 11月A股怎么走</a></h3>
+      <div class="meta">20261103 · NRYS0_k4JiI · <a href="https://www.youtube.com/watch?v=NRYS0_k4JiI" target="_blank" rel="noreferrer">观看 YouTube 原片 ↗</a></div>
+    </div>
+  </div>
+  <div class="content"><h1 id="7-5-20-30-coreweave-11a">结构化笔记｜华创7位首席深夜会 消费股5年下跌结束 双创反弹20 30 华发债雷 CoreWeave 原油做空 11月A股怎么走</h1>
+<h2 id="1">1. 核心结论</h2>
+<ul>
+<li><strong>1.宏观消费弱但消费板块5年下行结束：</strong> 居民消费倾向次低、定存占比回升、不借贷、收入预期仅3%左右，宏观消费增速明年或仅2%上下难有弹性；但上游投资出清使供需均衡度回到2021年水平，尾部出清结束头部龙头进入可重视阶段。适用条件：供给出清持续、无价格弹性，仅为精选龙头行情而非板块贝塔。</li>
+<li><strong>2.11月A股或迎双创20%-30%短期估值修复：</strong> 跌幅已触历史最大回撤区、美债利率回落预期、宽基ETF放量+央行支持工具托底，定性为流动性压力缓和下的修复窗口而非反转。适用条件：未来1-2个月美债通胀预期收窄、中选后美债企稳；操作需借势均衡、趁反弹降锐度补红利防御。</li>
+<li><strong>3.华发债舆情冲击有限、非系统性：</strong> 存量上千亿但为渐进暴露非突发违约，加上有宽松资金+化债后预期稳定+非银流动性支持工具，与永煤时不可比。适用条件：主体与地方政府平稳表态落地、赎回停留在理财赎基金层面未演变为理财破净赎回；利率债3-5BP调整已到位，信用债需等利率企稳后再修复。</li>
+<li><strong>4.CoreWeave暴跌不证伪AI资本开支：</strong> 无抵押债收益率15%+暴跌仅反映自身现金流为负的流动性风险，有算力合同抵押债稳定，科技投资级/垃圾级实际融资成本仅从上半年低点回正常水平。适用条件：核心云厂商维持投资级评级、算力合同现金流兑现；风险集中在外围高杠杆NewCloud而非核心云厂商。</li>
+<li><strong>5.原油中长期择机做空胜率大于做多：</strong> 2019-2025年产能年增约100万桶/日远超需求年增约50万桶/日，冗余超400万桶/日，2027年冗余或更大，中东9月出口已恢复至战前水平将继续补库。适用条件：美伊冲突不升级切断运输通道、出口量维持；若冲突升级短期油价仍可冲高，做空需择时。</li>
+</ul>
+<h2 id="2">2. 专家观点与逻辑链</h2>
+<h3 id="1_1">观点 1：宏观消费不等于消费板块</h3>
+<ul>
+<li><strong>观点归属：</strong> 华创宏观</li>
+<li><strong>结论：</strong> 宏观消费增速谨慎、难超3%，但消费板块5年绝对收益下行基本结束，转入头部标的可重视阶段，无贝塔只有供给出清下的龙头结构机会。</li>
+<li><strong>前提事实：</strong> 居民消费倾向为过去6年次低；新增存款中定存比例5月以来连续回升；居民消费贷经营贷按揭贷加总对社融拉动转负；上市公司与农民工收入增速2.9%-3.0%仅为名义GDP一半；上游消费制造业投资5-6月以来快速出清，关店闭店并购重组加速。</li>
+<li><strong>推导逻辑：</strong> <code>居民预期不稳+收入3%+补贴退坡 → 宏观消费增速仅2%上下 → 但供给出清更快 → 供需均衡度回2021年水平 → 悲观出清转为乐观的阴阳反转</code></li>
+<li><strong>隐含假设：</strong> 用供需均衡度衡量投资价值有效；出清持续且龙头份额提升能稳净利率；需求不再二次塌陷。</li>
+<li><strong>反例 / 证伪条件：</strong> 若定存占比再度下降、消费倾向回升带来需求强复苏，则转为供需双强贝塔逻辑；若供给再度扩张或龙头净利率失守，则均衡改善证伪。</li>
+</ul>
+<h3 id="211">观点 2：11月市场短期修复与铁三角配置</h3>
+<ul>
+<li><strong>观点归属：</strong> 华创策略</li>
+<li><strong>结论：</strong> 未来1-2个月双创指数或有20%-30%修复，反弹初期成长科技领先，但应借势均衡降锐度，低估值价值为1-2年配置区间，后期再补红利防御。</li>
+<li><strong>前提事实：</strong> 科创50、创业板指触及历史最大回撤区附近，假期后估值压缩充分；美债利率回落，关键看11月变化与通胀预期收窄；过去两周宽基ETF放量买入+央行召开金融支持资本市场工具会议。</li>
+<li><strong>推导逻辑：</strong> <code>跌深跌快+外部估值压制放松+国家资金托底 → 流动性压力缓和 → 短期估值修复窗口启动</code></li>
+<li><strong>隐含假设：</strong> 美债实际利率之外通胀预期能收窄；国家资金持续托底；红利与成长盈利增速差在今明年到拐点。</li>
+<li><strong>反例 / 证伪条件：</strong> 若美债利率不回落反升、托底资金不及预期或成长盈利增速不回落，则反弹幅度与均衡操作证伪。</li>
+</ul>
+<h3 id="3">观点 3：公募低仓位高集中与企业盈利韧性但单一</h3>
+<ul>
+<li><strong>观点归属：</strong> 华创策略（基金与财报整理）</li>
+<li><strong>结论：</strong> 公募仓位降至924以来低位但TMT持仓仍高配，上市公司三季报非金融利润同比16.6%有韧性但靠AI+周期上游贡献，毛利率传导不畅，峰值后一年或下行。</li>
+<li><strong>前提事实：</strong> 普通偏股与灵活配置权益仓位显著下行；TMT持仓从62%降至50%仍高，电子36%超配16个点、计算机15%超配7个点，加仓医药、低配银行煤炭交运公用；非金融剔除石油石化Q2 15%到Q3 16.6%，ROE TTM 6.9%到7.3%靠净利率，毛利率18.7%到18.8%，上游有色煤炭改善、下游家电零售承压。</li>
+<li><strong>推导逻辑：</strong> <code>仓位低+集中度高+盈利靠单一上游 → 反弹有仓位回补空间但持续性依赖PPI与AI → 传导不畅隐忧来年盈利下行</code></li>
+<li><strong>隐含假设：</strong> 公募仓位与超配数据能指示反弹弹性；ROE改善可持续性依赖PPI高位。</li>
+<li><strong>反例 / 证伪条件：</strong> 若下游毛利率修复、盈利扩散到消费中下游，或TMT集中度快速降至基准，则单一贡献判断证伪。</li>
+</ul>
+<h3 id="4">观点 4：华发舆情与赎回扰动分级</h3>
+<ul>
+<li><strong>观点归属：</strong> 华创固收周冠南</li>
+<li><strong>结论：</strong> 华发冲击小于永煤，大概率短期事件性小幅影响；当前仅为理财预防性赎基金的小级别扰动，利率债已调整到位有小机会，信用债需等官方表态与利率企稳。</li>
+<li><strong>前提事实：</strong> 华发体系内存量债上千亿，估值调整向珠海其他主体与利率债传染，理财净值上周五单日跌6BP创25年新高，二级债基单日跌0.5%；央行降政策利率释放友好信号、有非银流动性支持工具、2023年后化债预期稳；历史小级别扰动利率调整3-5BP。</li>
+<li><strong>推导逻辑：</strong> <code>渐进暴露非突发违约+宽松资金与化债环境 → 预期冲击小于永煤 → 赎回停留理财赎基金层面 → 仅摩擦成本、利率先稳信用后修</code></li>
+<li><strong>隐含假设：</strong> 主体与政府将平稳表态缓释；理财负债端稳定、钱还在理财内会再配置；以6月规律理财净值上涨即扰动结束。</li>
+<li><strong>反例 / 证伪条件：</strong> 若出现实质违约定论、理财净值持续破净引发居民赎理财，或二永债等流动性持续恶化，则小级别判断证伪。</li>
+</ul>
+<h3 id="5coreweaveai">观点 5：CoreWeave与数据中心债下跌并非AI融资收紧</h3>
+<ul>
+<li><strong>观点归属：</strong> 华创海外/资管配置</li>
+<li><strong>结论：</strong> CoreWeave无抵押债暴跌是自身流动性问题非偿付能力问题，数据中心债跌主因利率风险，科技整体实际融资成本仅回正常水平，AI资本开支可持续性未被证伪。</li>
+<li><strong>前提事实：</strong> 10月30日2031年无抵押债收益率15.2%，以Meta合同抵押债5.3%持平上周五、以OpenAI合同抵押债8.4%低于上周五；QTS 2049年到期A级债6月以来跌11.5%、2036年到期跌5.2%，期限越长跌越多；科技投资级到期收益率6%减CPI 3.7%实际2.3%，垃圾级9.4%实际5.7%，仅从5月低点回升。</li>
+<li><strong>推导逻辑：</strong> <code>有抵押债稳+无抵押债跌 → 认可算力合同现金流 → 长久期跌更多 → 利率风险而非信用风险 → 外围高杠杆承压、核心云厂商无恙</code></li>
+<li><strong>隐含假设：</strong> 算力合同现金流真实可执行；云厂商维持投资级评级；CPI口径衡量实际成本有效。</li>
+<li><strong>反例 / 证伪条件：</strong> 若有抵押债收益率也大幅上行、科技投资级实际收益率超2月高点2.5%，或云厂商评级下调，则结论证伪。</li>
+</ul>
+<h3 id="6">观点 6：金工量化短期看空、中期中性</h3>
+<ul>
+<li><strong>观点归属：</strong> 华创金工王小川</li>
+<li><strong>结论：</strong> A股短期看空/中性、中期全中性、长期仅上证50和沪深300看多，维持弱势震荡，港股谨慎看空；下周推荐综合金融、交运、电力公用、通信。</li>
+<li><strong>前提事实：</strong> 上周上证单周跌2.48%、创业板大跌，涨银行石油石化煤炭食品饮料交运、跌通信电子计算机建材国防军工；主力流入食品饮料汽车轻工医药纺服、流出电子计算机通信新能源有色；偏债混合-0.88%好于股ETF约-3%；新发68只404.4亿；短期仅成交量上证50与智能算法中证500看多、中期全中性、长期50和300看多、港股全看空；股票基金+35BP、混基+90BP但指数大跌。</li>
+<li><strong>推导逻辑：</strong> <code>普跌+资金流出成长+模型多看空看中性 → 情绪未修复 → 弱势震荡格局短期不改</code></li>
+<li><strong>隐含假设：</strong> 量价与仓位模型信号有效；基金加仓未能止跌反映弱势。</li>
+<li><strong>反例 / 证伪条件：</strong> 若成交量模型与波动模型转多、成长资金回流并站上关键均线，则弱震荡判断证伪。</li>
+</ul>
+<h3 id="7">观点 7：大金融三季报分化与政策止跌期待</h3>
+<ul>
+<li><strong>观点归属：</strong> 华创金融徐康</li>
+<li><strong>结论：</strong> 银行盈利韧性分红稳固红利标签，保险受权益波动单季利润大回撤但营运利润与4%-5%股息仍反映基本面，券商去自营后经营稳健分化，政策敏感度提升期待回购增持再贷款与互换便利止跌，大金融配置重要性高。</li>
+<li><strong>前提事实：</strong> 大行股份行稳定性强头部提高分红，城农商分化但不良拨备健康；保险年内增配权益，三季报OCI与FVTPL分化大，10月以来指数下挫压制四季度展望；券商利润下滑主因自营，资管经纪投行稳健，年化优质公司或仍正增；央行证监将开会涉回购增持再贷款与互换便利。</li>
+<li><strong>推导逻辑：</strong> <code>权益大波动 → 保险券商报表受自营/FVTPL冲击 → 但银行分红稳+保险营运利润稳+券商主业稳 → 红利防守相对收益+政策干预止跌</code></li>
+<li><strong>隐含假设：</strong> 分红可持续；营运利润指标被市场认可；政策工具能实质提振信心。</li>
+<li><strong>反例 / 证伪条件：</strong> 若银行分红下调、不良大幅暴露，或权益继续大跌致保险净资产持续侵蚀、政策落地不及预期，则相对优势证伪。</li>
+</ul>
+<h3 id="8">观点 8：原油中长期看空</h3>
+<ul>
+<li><strong>观点归属：</strong> 华创地产链/多元资产</li>
+<li><strong>结论：</strong> 尽管美伊冲突升级推高油价，中长期做空机会大于做多，不应赌冲突升级做多。</li>
+<li><strong>前提事实：</strong> 2019年供需均衡，2019-2025年产能年均增约100万桶/日、需求年均增约50万桶/日，2025年冗余超400万桶/日，与70年代紧平衡不同；2025-2027年产能仍年增约100万桶/日，2026年需求或明显下降、2027年补回持平2025年；9月中东出口恢复至战前周度水平、海上浮仓恢复、在途因运期拉长未恢复，若通道维持将补库压价。</li>
+<li><strong>推导逻辑：</strong> <code>产能增速持续超需求增速 → 冗余扩大 → 中东出口恢复补库 → 高油价不可维持 → 缓解后冲击大</code></li>
+<li><strong>隐含假设：</strong> 主流需求预测准确；欧佩克稳价作用在过剩期有限；运输通道能维持。</li>
+<li><strong>反例 / 证伪条件：</strong> 若需求超预期大增、产能增速不及预期，或冲突升级实质切断运输致出口大降库存去化，则看空证伪。</li>
+</ul>
+<h2 id="3_1">3. 投资研究指引</h2>
+<blockquote>
+<p>记录视频所表达的研究方向，不构成买卖建议；没有明确投资含义时如实写“未给出可执行指引”。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>主题 / 对象</th>
+<th>视频隐含或明确的方向</th>
+<th>为什么</th>
+<th>正向验证信号</th>
+<th>风险 / 失效信号</th>
+<th>需补的证据</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>消费龙头（供给出清受益者）</td>
+<td>关注头部、可重视、可选可看，非板块贝塔</td>
+<td>均衡度回2021年靠供给更弱，无涨价弹性，只能选剩者稳净利率</td>
+<td>关店出清加速、龙头份额与净利率企稳</td>
+<td>供给重扩张、需求二次探底、价格战再起</td>
+<td>龙头关店数、CR提升、净利率与分红</td>
+</tr>
+<tr>
+<td>双创/成长科技反弹</td>
+<td>借反弹均衡、趁反弹降锐度而非追高</td>
+<td>定性短期估值修复，成长盈利增速或回落</td>
+<td>美债利率回落、宽基ETF持续放量、回撤修复20%-30%</td>
+<td>美债反升、托底减弱、反弹不放量</td>
+<td>美债通胀预期、国家资金净买入、盈利增速差拐点</td>
+</tr>
+<tr>
+<td>低估值价值：汽车电信交运机械大金融</td>
+<td>未来1-2年适宜配置区间</td>
+<td>估值盈利筛选占优、红利防守</td>
+<td>盈利稳、分红提升、估值低位</td>
+<td>盈利下行、利率大幅波动</td>
+<td>股息率、分红率、盈利兑现</td>
+</tr>
+<tr>
+<td>红利防御（银行煤炭交运公用）</td>
+<td>反弹后补仓防御，当前低配</td>
+<td>公募低配11个点、中期赔率变化后恢复防御</td>
+<td>利率下行、红利赔率改善、政策托底</td>
+<td>成长持续强势、利率上行</td>
+<td>公募加仓、利率与赔率数据</td>
+</tr>
+<tr>
+<td>医药</td>
+<td>三季报加仓方向，需结合基本面</td>
+<td>公募三季报主要加仓方向</td>
+<td>持仓回升、基本面改善</td>
+<td>估值仓位拥挤回落</td>
+<td>业绩与估值匹配度</td>
+</tr>
+<tr>
+<td>利率债</td>
+<td>小级别扰动后投资机会</td>
+<td>3-5BP调整已到位，再配置将稳利率</td>
+<td>理财净值企稳上涨、理财净买入放大</td>
+<td>理财持续破净、居民赎理财扩散</td>
+<td>每日理财净值、二级债基净值连续两日+0.1%</td>
+</tr>
+<tr>
+<td>信用债/二永债</td>
+<td>等利率稳+官方表态后再抓被动调整机会</td>
+<td>流动性冲击大、舆情未落地</td>
+<td>官方解决方案、利差收窄、赎回缓释</td>
+<td>实质违约、流动性持续恶化</td>
+<td>华发主体表态、利差与成交</td>
+</tr>
+<tr>
+<td>AI核心云厂商 vs 外围NewCloud</td>
+<td>未给出可执行指引，区分看待：核心无恙、外围高压杆回避</td>
+<td>有抵押债稳、无抵押暴跌，整体实际融资成本正常</td>
+<td>有抵押债稳定、投资级利差不扩</td>
+<td>有抵押债也跌、评级下调</td>
+<td>算力合同执行、融资成本与评级</td>
+</tr>
+<tr>
+<td>原油</td>
+<td>中长期择机做空大于做多，短期不追多</td>
+<td>产能冗余大、出口恢复将补库</td>
+<td>冲突缓解、库存累库、出口维持高位</td>
+<td>冲突升级断供、库存去化</td>
+<td>产能产量、需求预测、中东出口与库存</td>
+</tr>
+<tr>
+<td>港股</td>
+<td>谨慎看空</td>
+<td>金工模型全看空</td>
+<td>模型转多、资金回流</td>
+<td>跌势延续</td>
+<td>成交额与波动模型信号</td>
+</tr>
+</tbody>
+</table></div>
+</article>
+
+      <div class="day-card">
+        <p>归档路径 <code>daily/20261103/</code> · <a href="../../index.html">返回历史总览</a> · <a href="./index.html">本日目录</a></p>
+      </div>
+    </main>
+  </div>
+</body>
+</html>
