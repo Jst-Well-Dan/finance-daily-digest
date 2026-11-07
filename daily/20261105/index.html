@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>解读君视频日报 · 20261105</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@400;600;700;900&display=swap" rel="stylesheet">
+  <style>
+:root {
+  --bg-page: #FBF8F2;
+  --bg-surface: #FFFDF9;
+  --bg-header: #F4EFE6;
+  --bg-subtle: #F0EADF;
+  --border-main: #E5DDCD;
+  --border-dark: #2B2625;
+  --text-main: #231F20;
+  --text-muted: #5C554E;
+  --text-light: #8E8478;
+  --accent-burgundy: #8B261D;
+  --accent-amber: #B45309;
+  --font-serif: 'Noto Serif SC', Georgia, 'Times New Roman', serif;
+  --font-sans: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'IBM Plex Mono', monospace;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 15px; }
+body {
+  background: var(--bg-page);
+  color: var(--text-main);
+  font-family: var(--font-sans);
+  line-height: 1.85;
+  -webkit-font-smoothing: antialiased;
+}
+
+.wrap {
+  max-width: 1300px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 290px 1fr;
+  min-height: 100vh;
+  border-left: 2px solid var(--border-dark);
+  border-right: 2px solid var(--border-dark);
+  background: var(--bg-surface);
+}
+
+@media (max-width: 1024px) {
+  .wrap { grid-template-columns: 1fr; border: none; }
+}
+
+/* Sidebar */
+.nav {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow-y: auto;
+  padding: 32px 24px;
+  background: #F7F3EB;
+  border-right: 1px solid var(--border-main);
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+@media (max-width: 1024px) {
+  .nav { position: relative; height: auto; border-right: none; border-bottom: 2px solid var(--border-dark); }
+}
+
+.brand {
+  padding-bottom: 18px;
+  border-bottom: 2px solid var(--border-dark);
+}
+.brand h1 {
+  font-family: var(--font-serif);
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: var(--border-dark);
+}
+.brand h1 span {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent-burgundy);
+  margin-top: 4px;
+}
+
+.toc h2 {
+  font-family: var(--font-serif);
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--border-dark);
+  border-bottom: 1px solid var(--border-main);
+  padding-bottom: 6px;
+  margin: 16px 0 10px;
+}
+
+.toc a {
+  display: flex;
+  flex-direction: column;
+  padding: 8px 10px;
+  text-decoration: none;
+  color: var(--text-main);
+  border: 1px solid transparent;
+  border-radius: 4px;
+  transition: all 0.15s;
+  font-size: 13px;
+  line-height: 1.4;
+  margin-bottom: 4px;
+}
+.toc a:hover {
+  background: var(--bg-subtle);
+  border-color: var(--border-main);
+}
+.toc a.active {
+  background: #EFE8DA;
+  border-color: var(--border-main);
+  color: var(--accent-burgundy);
+  font-weight: 600;
+}
+.toc a span {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+.nav-desc {
+  font-size: 11px;
+  font-family: var(--font-mono);
+  color: var(--text-muted);
+  line-height: 1.6;
+  padding: 4px 6px;
+}
+
+/* Main Area */
+.main {
+  padding: 40px 48px 80px;
+  max-width: 960px;
+}
+
+@media (max-width: 768px) {
+  .main { padding: 24px 18px 40px; }
+}
+
+.gazette-header {
+  border-top: 3px double var(--border-dark);
+  border-bottom: 1px solid var(--border-dark);
+  padding: 20px 0;
+  margin-bottom: 36px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+.gazette-header h1 {
+  font-family: var(--font-serif);
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--border-dark);
+}
+.gazette-header .gazette-meta {
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.summary-card, .article {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-main);
+  margin-bottom: 40px;
+}
+
+.summary-head, .article-head {
+  background: var(--bg-header);
+  padding: 20px 26px;
+  border-bottom: 1px solid var(--border-main);
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+}
+.article-head h3, .summary-head h3 {
+  font-family: var(--font-serif);
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text-main);
+  line-height: 1.35;
+}
+.article-head h3 a, .summary-head h3 a {
+  color: inherit;
+  text-decoration: none;
+}
+.article-head h3 a:hover, .summary-head h3 a:hover {
+  color: var(--accent-burgundy);
+}
+
+.meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-top: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.meta a {
+  color: var(--accent-burgundy);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.content {
+  padding: 32px 36px;
+  font-size: 14.5px;
+  line-height: 1.9;
+  color: #2D2726;
+}
+
+@media (max-width: 768px) {
+  .content { padding: 20px 18px; }
+  .summary-head, .article-head { padding: 16px 18px; }
+}
+
+.content h1 {
+  font-family: var(--font-serif);
+  font-size: 22px;
+  font-weight: 700;
+  margin: 0 0 18px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border-dark);
+}
+
+.content h2 {
+  font-family: var(--font-serif);
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--accent-burgundy);
+  background: var(--bg-header);
+  border: 1px solid var(--border-main);
+  border-radius: 4px;
+  padding: 8px 14px;
+  margin: 32px 0 14px;
+  letter-spacing: 0.02em;
+}
+
+.content h3 {
+  font-family: var(--font-serif);
+  font-size: 14.5px;
+  font-weight: 700;
+  margin: 22px 0 10px;
+  color: var(--text-main);
+}
+
+.content p {
+  margin-bottom: 16px;
+  text-align: justify;
+}
+
+.content strong {
+  font-weight: 700;
+  color: #1A1616;
+}
+
+.content ul, .content ol {
+  margin: 12px 0 18px 6px;
+  padding-left: 22px;
+}
+.content li {
+  margin-bottom: 8px;
+  line-height: 1.8;
+}
+.content ul > li::marker {
+  content: "▪ ";
+  color: var(--accent-burgundy);
+}
+.content ol > li::marker {
+  color: var(--accent-burgundy);
+  font-weight: 700;
+  font-family: var(--font-mono);
+}
+.content li > ul, .content li > ol {
+  margin: 8px 0 8px 6px;
+}
+.cond-label {
+  color: var(--accent-burgundy);
+  font-weight: 700;
+}
+.content li > p {
+  margin-bottom: 6px;
+}
+.content li > p:last-child {
+  margin-bottom: 0;
+}
+
+.viewpoint {
+  border: 1px solid var(--border-main);
+  border-radius: 6px;
+  margin: 16px 0 20px;
+  overflow: hidden;
+  background: #FFFDF8;
+}
+.vp-head {
+  background: var(--bg-header);
+  padding: 10px 16px;
+  border-bottom: 1px solid var(--border-main);
+  display: flex;
+  gap: 10px;
+  align-items: baseline;
+  flex-wrap: wrap;
+}
+.vp-num {
+  font-family: var(--font-serif);
+  font-weight: 700;
+  font-size: 14.5px;
+  color: var(--accent-burgundy);
+  white-space: nowrap;
+}
+.vp-title {
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--text-main);
+}
+.vp-owner {
+  margin-left: auto;
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+.vp-row {
+  display: grid;
+  grid-template-columns: 46px 1fr;
+  gap: 12px;
+  padding: 8px 16px;
+  font-size: 13.5px;
+  line-height: 1.8;
+}
+.vp-row + .vp-row {
+  border-top: 1px dashed var(--border-main);
+}
+.vp-label {
+  font-weight: 700;
+  font-size: 12.5px;
+  color: var(--accent-burgundy);
+  white-space: nowrap;
+  padding-top: 1px;
+}
+.vp-val {
+  color: #2D2726;
+  text-align: justify;
+  min-width: 0;
+}
+.vp-val p {
+  margin: 0;
+  text-align: justify;
+}
+.vp-val code {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  background: #EDE6D8;
+  padding: 2px 6px;
+  border-radius: 3px;
+  color: var(--accent-burgundy);
+}
+@media (max-width: 768px) {
+  .vp-row { grid-template-columns: 40px 1fr; padding: 7px 12px; }
+}
+
+.content blockquote {
+  background: #F3ECE0;
+  border: 1px solid var(--border-main);
+  border-radius: 4px;
+  padding: 14px 20px;
+  margin: 20px 0;
+  font-size: 13.5px;
+  font-style: italic;
+  color: #523E3B;
+}
+
+.content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 24px 0;
+  font-size: 13px;
+  border: 1px solid var(--border-main);
+}
+.content th {
+  background: #ECE4D6;
+  font-family: var(--font-serif);
+  font-weight: 700;
+  color: var(--border-dark);
+  text-align: left;
+  padding: 10px 14px;
+  border: 1px solid var(--border-main);
+}
+.content td {
+  padding: 9px 14px;
+  border: 1px solid var(--border-main);
+}
+.content tr:nth-child(even) {
+  background: #F8F4EC;
+}
+
+.content code {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  background: #EDE6D8;
+  padding: 2px 6px;
+  border-radius: 3px;
+  color: var(--accent-burgundy);
+}
+
+.day-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-main);
+  padding: 20px 24px;
+  margin-bottom: 18px;
+}
+.day-card h3 {
+  font-family: var(--font-serif);
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+.day-card h3 a {
+  color: var(--text-main);
+  text-decoration: none;
+}
+.day-card h3 a:hover {
+  color: var(--accent-burgundy);
+}
+.day-card p {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+.btn {
+  display: inline-flex;
+  padding: 8px 14px;
+  border: 1px solid var(--border-dark);
+  background: var(--bg-surface);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  text-decoration: none;
+  color: var(--text-main);
+  font-weight: 600;
+  transition: all 0.15s;
+}
+.btn:hover {
+  background: var(--bg-subtle);
+}
+.btn.primary {
+  background: var(--border-dark);
+  color: #FFFFFF;
+}
+.btn.primary:hover {
+  background: var(--accent-burgundy);
+  border-color: var(--accent-burgundy);
+}
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <nav class="nav">
+      <div class="brand">
+        <h1>解读君视频日报<span>JIEDU DAILY · 20261105</span></h1>
+      </div>
+      <div class="toc">
+        <h2>全量原文</h2>
+        <a href="#summary" class="active">每日核心总结<span>20261105</span></a>
+        <a href="#note-Bt4HZ4ezdwc">【2026-11-4最新】大摩周期论剑策略会：《 银行保险油运 三位首席把三季报后的账重算了一遍》【文字稿件发布于解读君推特X】<span>20261105 · Bt4HZ4ezdwc</span></a><a href="#note-7paxTA8u1kY">【付鹏谈香港】 东西方两头抽水 北水顾不上南下<span>20261105 · 7paxTA8u1kY</span></a>
+        <h2>历史归档</h2>
+        <a href="../../index.html">← 返回历史总览</a>
+        <a href="../20261107/index.html" class="">20261107 <span>1 篇 · 当日归档</span></a><a href="../20261106/index.html" class="">20261106 <span>1 篇 · 当日归档</span></a><a href="../20261105/index.html" class="active">20261105 <span>2 篇 · 当日归档</span></a><a href="../20261104/index.html" class="">20261104 <span>1 篇 · 当日归档</span></a><a href="../20261103/index.html" class="">20261103 <span>2 篇 · 当日归档</span></a><a href="../20261102/index.html" class="">20261102 <span>2 篇 · 当日归档</span></a><a href="../20261101/index.html" class="">20261101 <span>1 篇 · 当日归档</span></a><a href="../20261031/index.html" class="">20261031 <span>1 篇 · 当日归档</span></a><a href="../20261030/index.html" class="">20261030 <span>2 篇 · 当日归档</span></a><a href="../20261028/index.html" class="">20261028 <span>1 篇 · 当日归档</span></a><a href="../20261027/index.html" class="">20261027 <span>1 篇 · 当日归档</span></a><a href="../20261026/index.html" class="">20261026 <span>3 篇 · 当日归档</span></a><a href="../20261024/index.html" class="">20261024 <span>1 篇 · 当日归档</span></a><a href="../20261023/index.html" class="">20261023 <span>3 篇 · 当日归档</span></a><a href="../20261022/index.html" class="">20261022 <span>2 篇 · 当日归档</span></a><a href="../20261021/index.html" class="">20261021 <span>2 篇 · 当日归档</span></a><a href="../20261020/index.html" class="">20261020 <span>1 篇 · 当日归档</span></a><a href="../20261019/index.html" class="">20261019 <span>1 篇 · 当日归档</span></a><a href="../20261018/index.html" class="">20261018 <span>2 篇 · 当日归档</span></a><a href="../20261016/index.html" class="">20261016 <span>1 篇 · 当日归档</span></a><a href="../20261015/index.html" class="">20261015 <span>1 篇 · 当日归档</span></a><a href="../20261014/index.html" class="">20261014 <span>3 篇 · 当日归档</span></a><a href="../20261013/index.html" class="">20261013 <span>2 篇 · 当日归档</span></a><a href="../20261012/index.html" class="">20261012 <span>2 篇 · 当日归档</span></a><a href="../20261011/index.html" class="">20261011 <span>3 篇 · 当日归档</span></a><a href="../20261010/index.html" class="">20261010 <span>9 篇 · 当日归档</span></a><a href="../20261006/index.html" class="">20261006 <span>2 篇 · 当日归档</span></a><a href="../20261005/index.html" class="">20261005 <span>3 篇 · 当日归档</span></a><a href="../20261004/index.html" class="">20261004 <span>1 篇 · 当日归档</span></a><a href="../20260929/index.html" class="">20260929 <span>0 篇 · 当日归档</span></a><a href="../20260928/index.html" class="">20260928 <span>1 篇 · 当日归档</span></a><a href="../20260927/index.html" class="">20260927 <span>6 篇 · 当日归档</span></a><a href="../20260922/index.html" class="">20260922 <span>1 篇 · 当日归档</span></a><a href="../20260921/index.html" class="">20260921 <span>8 篇 · 当日归档</span></a><a href="../20260914/index.html" class="">20260914 <span>6 篇 · 当日归档</span></a><a href="../20260910/index.html" class="">20260910 <span>1 篇 · 当日归档</span></a><a href="../20260908/index.html" class="">20260908 <span>2 篇 · 当日归档</span></a><a href="../20260907/index.html" class="">20260907 <span>2 篇 · 当日归档</span></a><a href="../20260906/index.html" class="">20260906 <span>1 篇 · 当日归档</span></a><a href="../20260905/index.html" class="">20260905 <span>1 篇 · 当日归档</span></a><a href="../20260904/index.html" class="">20260904 <span>2 篇 · 当日归档</span></a><a href="../20260903/index.html" class="">20260903 <span>2 篇 · 当日归档</span></a><a href="../20260902/index.html" class="">20260902 <span>3 篇 · 当日归档</span></a><a href="../20260831/index.html" class="">20260831 <span>2 篇 · 当日归档</span></a><a href="../20260829/index.html" class="">20260829 <span>1 篇 · 当日归档</span></a><a href="../20260828/index.html" class="">20260828 <span>1 篇 · 当日归档</span></a><a href="../20260825/index.html" class="">20260825 <span>1 篇 · 当日归档</span></a><a href="../20260824/index.html" class="">20260824 <span>2 篇 · 当日归档</span></a><a href="../20260823/index.html" class="">20260823 <span>1 篇 · 当日归档</span></a><a href="../20260821/index.html" class="">20260821 <span>3 篇 · 当日归档</span></a>
+      </div>
+    </nav>
+    <main class="main">
+      <div class="gazette-header">
+        <div>
+          <h1>金融经纬 · 每日纪要</h1>
+          <div class="gazette-meta">JIEDU DAILY FINANCIAL GAZETTE · VOL. 20261105</div>
+        </div>
+        <div class="gazette-meta">2 ARTICLES ARCHIVED</div>
+      </div>
+      
+<section id="summary" class="summary-card">
+  <div class="summary-head">
+    <div>
+      <h3>每日总结 · 20261105</h3>
+      <div class="meta">daily/20261105/20261105_解读君视频总结.md</div>
+    </div>
+  </div>
+  <div class="content"><h1 id="_1">解读君视频摘要</h1>
+<h2 id="1-2026-11-4-x">1. <a href="#note-Bt4HZ4ezdwc">【2026-11-4最新】大摩周期论剑策略会：《 银行保险油运 三位首席把三季报后的账重算了一遍》【文字稿件发布于解读君推特X】</a></h2>
+<blockquote>
+<p>一句话：银行6%增长可稳ROE，保险大跌已兑现偏好财险，油运周期未完2027更强。</p>
+</blockquote>
+<ul>
+<li><strong>结论1：银行降速提质，ROE企稳不需要高增长。</strong> 全年6-7%左右的利润增长即足以让大行ROE企稳、小幅反弹则有略加速空间。<strong"> <span class="cond-label">适用条件/边界：</span></strong> 仅在量减速、风险管控趋严、息差大致稳定的假设下成立；若Q3式高投资收益不可持续、信贷成本超预期上行或内需/去杠杆进程反复，则增速与企稳逻辑失效。</li>
+<li><strong>结论2：保险三季报式大跌已反映预期，配置偏好财险和友邦而非寿险贝塔。</strong> 寿险单季VNB-30%至-50%、净利大跌主因去年炒停售高基数+短期投资波动，营运利润仍正增长、年化ROE 12-20%、偿付能力与DPS稳定；财险COR持续改善确定性更强。<strong"> <span class="cond-label">适用条件/边界：</span></strong> 仅适用于市场波动、风险偏好低的环境；若股市持续下跌拖累投资收益超预期、开门红弱于国寿/新华给出的正增长指引，则缓解逻辑证伪。</li>
+<li><strong>结论3：油运上行周期未结束，2027年好于2026年，短期波动后仍有上调空间。</strong> 当前期租约20万美元/天假设已高于市场约15万美元/天的一致预期，而现货大幅溢价且成交清淡，未来12个月盈利预测仍有上调空间。<strong"> <span class="cond-label">适用条件/边界：</span></strong> 仅在战争造成船损致有效运力折损未快速修复、伊朗油回归拉动需求而影子船队不高效回归的前提下成立；若运力快速释放回合规市场且无补库/航距拉长，则周期结束。</li>
+<li><strong>结论4：油运最好的入场时点可能是停战协议落地之时，航空优选国泰和春秋、京沪高铁Q4有望改善。</strong> 停战不会立即释放合规运力（需2个月以上观望期），但会触发补库抢运；油价回落对已盈利的国泰/春秋是盈利正弹性，对仍深度亏损的三大航弹性弱；京沪高铁受益航空名义票价同比涨超10%致竞争缓解。<strong"> <span class="cond-label">适用条件/边界：</span></strong> 仅适用于不战不和延续或缓和但非持久完全和平、油价高位温和回落而非深跌；若停战即刻放行运力、油价深跌或出行需求再走弱，则交易逻辑失效。</li>
+</ul>
+<h2 id="2">2. <a href="#note-7paxTA8u1kY">【付鹏谈香港】 东西方两头抽水 北水顾不上南下</a></h2>
+<blockquote>
+<p>一句话：香港走弱主因定位丧失而非估值便宜，正被长线外资与北水两头抽水。</p>
+</blockquote>
+<ul>
+<li><strong>结论1：香港走弱主因是定位而非估值，中间人身份已消失。</strong> 全球长线资金不再将其视为东西之间的缓冲/中转地，而是要求选边的资产，配置时需额外计入国际政治折价；<br><span class="cond-label">适用条件/边界：</span>仅在逆全球化与选边配置逻辑延续期间成立，若地缘缓和或离岸中介功能重建则失效。</li>
+<li><strong>结论2：本轮AI基建浪潮下港股权重结构性缺席，反被虹吸抽水。</strong> 以AH国企+老互联网为权重核心，不在美及日韩台等AI核心资产链条内，且需大额capex支出，自由现金流转弱；<br><span class="cond-label">适用条件/边界：</span>以当前权重结构未变、AI资本开支高峰延续为前提，若权重重构或互联网capex转化为回报则需重估。</li>
+<li><strong>结论3：香港流动性呈东西两头抽水：外资长线撤离叠加北水顾不上南下。</strong> 前者体现为大权重成交占比过去两年快速下降，后者因内地自身结构性行情锁定资金；<br><span class="cond-label">适用条件/边界：</span>以南向净买入持续萎缩、外资配置型资金未回流为观察窗口，单月脉冲式回流不改变结论。</li>
+<li><strong>结论4：大权重转冷+小票游资狂欢的组合不可持续，警惕流动性断裂。</strong> 市场总量曾热但大权重成交趋冷，属配置型资金撤而散户游资炒作，前期IPO乱象及监管调查即为注脚；<br><span class="cond-label">适用条件/边界：</span>适用于判断市场健康度，不直接等同于指数点位预测，若大权重成交占比企稳回升则证伪。</li>
+</ul></div>
+</section>
+
+      
+<article id="note-Bt4HZ4ezdwc" class="article">
+  <div class="article-head">
+    <div>
+      <h3><a href="https://www.youtube.com/watch?v=Bt4HZ4ezdwc" target="_blank" rel="noreferrer">【2026-11-4最新】大摩周期论剑策略会：《 银行保险油运 三位首席把三季报后的账重算了一遍》【文字稿件发布于解读君推特X】</a></h3>
+      <div class="meta">20261105 · Bt4HZ4ezdwc · <a href="https://www.youtube.com/watch?v=Bt4HZ4ezdwc" target="_blank" rel="noreferrer">观看 YouTube 原片 ↗</a></div>
+    </div>
+  </div>
+  <div class="content"><h1 id="2026-11-4-x">结构化笔记｜【2026-11-4最新】大摩周期论剑策略会：《 银行保险油运 三位首席把三季报后的账重算了一遍》【文字稿件发布于解读君推特X】</h1>
+<h2 id="1">1. 核心结论</h2>
+<ul>
+<li><strong>结论1：银行降速提质，ROE企稳不需要高增长。</strong> 全年6-7%左右的利润增长即足以让大行ROE企稳、小幅反弹则有略加速空间。<strong>适用条件/边界：</strong> 仅在量减速、风险管控趋严、息差大致稳定的假设下成立；若Q3式高投资收益不可持续、信贷成本超预期上行或内需/去杠杆进程反复，则增速与企稳逻辑失效。</li>
+<li><strong>结论2：保险三季报式大跌已反映预期，配置偏好财险和友邦而非寿险贝塔。</strong> 寿险单季VNB-30%至-50%、净利大跌主因去年炒停售高基数+短期投资波动，营运利润仍正增长、年化ROE 12-20%、偿付能力与DPS稳定；财险COR持续改善确定性更强。<strong>适用条件/边界：</strong> 仅适用于市场波动、风险偏好低的环境；若股市持续下跌拖累投资收益超预期、开门红弱于国寿/新华给出的正增长指引，则缓解逻辑证伪。</li>
+<li><strong>结论3：油运上行周期未结束，2027年好于2026年，短期波动后仍有上调空间。</strong> 当前期租约20万美元/天假设已高于市场约15万美元/天的一致预期，而现货大幅溢价且成交清淡，未来12个月盈利预测仍有上调空间。<strong>适用条件/边界：</strong> 仅在战争造成船损致有效运力折损未快速修复、伊朗油回归拉动需求而影子船队不高效回归的前提下成立；若运力快速释放回合规市场且无补库/航距拉长，则周期结束。</li>
+<li><strong>结论4：油运最好的入场时点可能是停战协议落地之时，航空优选国泰和春秋、京沪高铁Q4有望改善。</strong> 停战不会立即释放合规运力（需2个月以上观望期），但会触发补库抢运；油价回落对已盈利的国泰/春秋是盈利正弹性，对仍深度亏损的三大航弹性弱；京沪高铁受益航空名义票价同比涨超10%致竞争缓解。<strong>适用条件/边界：</strong> 仅适用于不战不和延续或缓和但非持久完全和平、油价高位温和回落而非深跌；若停战即刻放行运力、油价深跌或出行需求再走弱，则交易逻辑失效。</li>
+</ul>
+<h2 id="2">2. 专家观点与逻辑链</h2>
+<h3 id="1roe">观点 1：银行降速提质，ROE企稳</h3>
+<ul>
+<li><strong>观点归属：</strong> 金融行业首席徐然</li>
+<li><strong>结论：</strong> 银行是稳定正回报板块，明年不需要维持Q3高增速，全年6-7%利润增长即可让ROE企稳，选股偏向农行、建行及宁波银行，工行、中行亦稳健。</li>
+<li><strong>前提事实：</strong> Q3大行收入同比约9%，整体覆盖银行拨备前利润同比+14%、大行+10-16%；多家大行单季净利双位数增长，平均约8.6%较中期的5.5%加速；手续费受保险高基数拖累同比负增长，但投资收益好；实际税率普遍上行、信贷成本略升；零售信贷年内首次明显负增长，60%多杠杆降至50%多。</li>
+<li><strong>推导逻辑：</strong> <code>当前ROE已偏低+监管与银行转向减量提质控风险 → 收入与拨备前利润加速足以覆盖税率与信用成本上行 → Q3利润加速；明年无LPR降10bp冲击+部分高息存款到期 → 息差可稳住 → 只需6-7%增长即可企稳ROE</code></li>
+<li><strong>隐含假设：</strong> 投资收益高增中有可持续部分；三四万亿/年不良消化能力足以覆盖零售风险暴露；地方债清零与严控投资质量下信贷减速不引发大幅信用塌方；地产周期企稳、28年制造业等投资恢复。</li>
+<li><strong>反例 / 证伪条件：</strong> 若Q4及明年收入转弱、投资收益回落而信贷成本继续攀升致利润增速掉至低个位数以下；或零售普惠/经营贷不良计提超预期、息差再下行，则ROE企稳不成立。</li>
+</ul>
+<h3 id="2_1">观点 2：保险最差一季已过，偏好财险和友邦</h3>
+<ul>
+<li><strong>观点归属：</strong> 保险行业分析师赵耀（瑞克）</li>
+<li><strong>结论：</strong> 三季报单季多亏损、前三季净利同比-20%至-50%符合preview并已反映在10月下跌中，基本面担忧短期缓解；板块内相对更看好财险和友邦AIA，寿险仅为托底下的反弹。</li>
+<li><strong>前提事实：</strong> 剔除短期投资波动的营运利润普遍正增长；年化ROE约12-20%；Q3股跌但净资产前9个月+3-4%至+20%多、偿付能力环比持平或小个位数增长；全年DPS预计稳健增长；Q3单季VNB同比-30%至-50%，前9个月回落至小幅区间，8月最差、9-10月逐月改善；财险三家头部COR均同比改善，平安达近年及同业较好水平；AIA Q3单季VNB-5%弱于预期的-3至-4%，但9月单月VNB同比+25%，公司指引Q4强劲。</li>
+<li><strong>推导逻辑：</strong> <code>净利大跌=去年高基数+短期投资波动 → 剔除后营运利润、净资产、偿付能力、DPS均稳健 → 悲观已定价；寿险销售受去年炒停售与银保65号文压制但9-10月改善+开门红国寿正增长、新华银保快于个险指引 → 需求无大忧；财险报行合一延续+监管有力 → COR未来两年改善确定性强 → 波动市况下选财险和AIA</code></li>
+<li><strong>隐含假设：</strong> 年化ROE与DPS口径能穿透短期波动代表真实回报；9-10月改善趋势可延续至开门红；财险监管不放松；AIA管理层对Q4及2027年指引可信，全年VNB约+8%目标让位于长期可持续增长可被市场接受。</li>
+<li><strong>反例 / 证伪条件：</strong> 若开门红实际销售弱于指引、VNB继续大负增长；或股市再跌致净资产与偿付能力明显受损、DPS下调；或财险COR改善停滞、AIA Q4未兑现强劲增长，则推荐失效。</li>
+</ul>
+<h3 id="3">观点 3：油运周期未结束，一致预期将持续上调</h3>
+<ul>
+<li><strong>观点归属：</strong> 交运行业首席范天磊</li>
+<li><strong>结论：</strong> 油运超高资本回报来自不战不和状态，2027年盈利好于2026年，市场对2027年盈利/回报下滑的一致预期将不断上调，股价与估值有支撑。</li>
+<li><strong>前提事实：</strong> 以中远海能港股为例，大摩隐含VLCC年均期租约20万美元/天，市场仅约15万美元/天，而当期期租报价已25-30万美元/天；期租对现货大幅折价致船东惜租、期租成交清淡；战争中出现大量船损。</li>
+<li><strong>推导逻辑：</strong> <code>不战不和=油能出海湾+运力大量损耗 → 价值链利润向船东倾斜 → 超高回报可持续；若缓和，现货下跌预期下期现价差收窄反而刺激期租成交量与期租价上行 → 2027年一致预期上调 → 未来12个月盈利上调支撑股价</code></li>
+<li><strong>隐含假设：</strong> 外资卖方对2027年谨慎的一致预期代表边际定价；期租价是未来一年盈利的合理锚；船损修复与新增运力不能快速填补缺口；伊朗油回归是需求拉动而非运力冲击。</li>
+<li><strong>反例 / 证伪条件：</strong> 若2027年一致预期不升反降、期租价回落至15万美元/天以下并持续成交；或船损快速修复、新船大量交付致有效运力迅速恢复，则上行周期结束。</li>
+</ul>
+<h3 id="4">观点 4：停战落地反而是油运最佳入场时点</h3>
+<ul>
+<li><strong>观点归属：</strong> 交运行业首席范天磊</li>
+<li><strong>结论：</strong> 短期股价由地缘情绪与跟随现货运价交易主导而非基本面，大方向做多，等待美伊和谈/某种停战协议落地时的悲观释放为较好进场时点。</li>
+<li><strong>前提事实：</strong> 绝大多数参与者简单交易地缘方向与近期运价，认为涨因战争、停战即利空，仅极少数精确理解基本面；基本面看似稳住甚至稳中有升，但情绪仍主导波动。</li>
+<li><strong>推导逻辑：</strong> <code>停战协议落地 → 看空者兑现做空/降仓 → 风险释放；但合规运力需2个月以上等待确认真正安全才进高风险区 → 有效运力扰动不立即消失 + 各方疑协议可持续性+全球低库存 → 积极运油抢船 → 运量需求侧拉动 → 基本面强劲表现</code></li>
+<li><strong>隐含假设：</strong> 协议初期的不信任与观望期真实存在；低库存补库意愿强；需求侧抢运超过运力释放速度。</li>
+<li><strong>反例 / 证伪条件：</strong> 若停战后主流合规运力立即大规模进入高风险区、运价与盈利迅速回落；或停战后无抢运补库、运量不升反降，则入场时点判断错误。</li>
+</ul>
+<h3 id="5">观点 5：完全和平后运价与回报仍大幅高于战前</h3>
+<ul>
+<li><strong>观点归属：</strong> 交运行业首席范天磊</li>
+<li><strong>结论：</strong> 即便达成可持续和平，运价与资本回报也不会回到战前不赚钱状态，未来3-4个季度仍上行。</li>
+<li><strong>前提事实：</strong> 战争致大量船损形成有效运力折损；战后存在补库需求；部分亚洲国家或分散中东以外油源致航距拉长；伊朗油若在和平框架下回合规渠道。</li>
+<li><strong>推导逻辑：</strong> <code>船损需时间修/造补 → 有效运力仍紧 + 战后补油库存+油源切换致运距拉长致需求增速高于战前 + 伊朗油回归为需求拉动而影子船队难高效回归合规 → 盈利中枢大幅高于战前</code></li>
+<li><strong>隐含假设：</strong> 船损规模大且修复慢；补库与供应分散真实发生；影子船队合规化存在制度与效率摩擦。</li>
+<li><strong>反例 / 证伪条件：</strong> 若船损被证伪或快速修复、新船集中交付；或无补库、油源未切换、中东份额不降；或影子船队高效合规回归致运力大增，则高位中枢不成立。</li>
+</ul>
+<h3 id="6">观点 6：航空油价回落利好中优选国泰和春秋，京沪高铁维持超配</h3>
+<ul>
+<li><strong>观点归属：</strong> 交运行业首席范天磊</li>
+<li><strong>结论：</strong> 油价高位回落利好航空基本面，但从盈利正弹性出发更喜欢国泰和春秋而非三大航；京沪高铁基本面平稳、四季度盈利有望由Q3持平转正增长，维持超配。</li>
+<li><strong>前提事实：</strong> 今年航空受高油价伤害大；国泰和春秋赚钱，三大航2026年预计仍深度亏损；国泰PE与股息率更便宜、商务客群定价能力强，春秋低成本客群需与旅客分享部分成本下行；京沪高铁今年出行疲软下盈利仍有韧性，自由现金流收益率高达个位数，Q4航空名义票价同比涨超10%减轻京沪线竞争。</li>
+<li><strong>推导逻辑：</strong> <code>油价下行 → 赚钱公司直接体现盈利正弹性，亏损公司需油价大幅深跌才能扭亏 → 国泰&gt;春秋&gt;三大航；高油价推高航空票价 → 高铁航空竞争压力减缓 → 京沪高铁Q4盈利改善+高现金流股东回报属性受long-only青睐</code></li>
+<li><strong>隐含假设：</strong> 油价为温和回落而非大跌也非再涨；票价涨幅能维持且不大幅抑制客座率；京沪高铁票价与客流稳定。</li>
+<li><strong>反例 / 证伪条件：</strong> 若油价不跌反涨或深跌幅度超预期致三大航预期反转；或航空票价回落、出行需求再走弱致京沪高铁盈利继续持平/负增长，则排序与超配失效。</li>
+</ul>
+<h2 id="3_1">3. 投资研究指引</h2>
+<blockquote>
+<p>记录视频所表达的研究方向，不构成买卖建议；没有明确投资含义时如实写“未给出可执行指引”。
+| 主题 / 对象 | 视频隐含或明确的方向 | 为什么 | 正向验证信号 | 风险 / 失效信号 | 需补的证据 |
+|---|---|---|---|---|---|
+| 大型银行：农行、建行，兼顾工行、中行，股份行中宁波银行 | 持续跑赢、稳定正回报，重视股息（股息率约5%、股息6-7%增长） | Q3收入与拨备前利润超预期，ROE企稳只需6-7%增长，息差明年可稳 | Q4利润增速维持中高个位数、息差企稳、零售不良计提可控 | 投资收益退潮、信贷成本分化扩大、息差再下行 | Q4实际税率与信贷成本、2026年息差与分红指引、管理层降速提质表态 |
+| 保险：头部财险、友邦AIA | 波动市况下更偏好的子板块/配置，寿险仅看托底反弹 | 财险COR改善确定性强、不靠股市；AIA Q3为最差时点、Q4回升 | 财险COR继续改善、AIA Q4 VNB强劲、开门红正增长兑现 | 股市再跌拖累净资产与偿付能力、VNB继续-30%以上、DPS下调 | 11-12月开门红启动数据、各渠道VNB、国寿/新华指引兑现度 |
+| 油运：以中远海能港股为锚 | 大方向做多，等待停战协议落地等情绪释放后的入场时点 | 2027年盈利好于2026年、一致预期有大幅上调空间 | 期租成交放量且期租价上行、2027年一致预期上调 | 合规运力立即释放、现货与期租价齐跌、船损修复超预期 | 期租与现货价差、成交量、有效运力与船损、伊朗油与影子船队去向 |
+| 航空：国泰&gt;春秋&gt;三大航 | 交易油价下行时更喜欢已盈利的国泰和春秋 | 赚钱公司才有盈利正弹性，三大航仍深度亏损需深跌才能扭亏 | 油价温和回落、国泰/春秋盈利上修 | 油价反涨或深跌逻辑反转、需求走弱 | 油价、票价与客座率、三大航扭亏进度 |
+| 京沪高铁 | 维持超配 | Q4航空涨价致竞争缓解、盈利韧性+高个位数自由现金流收益率、股东回报属性 | Q4盈利转正增长、票价与客流稳定 | 出行再走弱、航空票价回落 | Q4盈利、京沪线竞争与票价数据、国家队持仓变化 |</p>
+</blockquote></div>
+</article>
+
+<article id="note-7paxTA8u1kY" class="article">
+  <div class="article-head">
+    <div>
+      <h3><a href="https://www.youtube.com/watch?v=7paxTA8u1kY" target="_blank" rel="noreferrer">【付鹏谈香港】 东西方两头抽水 北水顾不上南下</a></h3>
+      <div class="meta">20261105 · 7paxTA8u1kY · <a href="https://www.youtube.com/watch?v=7paxTA8u1kY" target="_blank" rel="noreferrer">观看 YouTube 原片 ↗</a></div>
+    </div>
+  </div>
+  <div class="content"><h1 id="_1">结构化笔记｜【付鹏谈香港】 东西方两头抽水 北水顾不上南下</h1>
+<h2 id="1">1. 核心结论</h2>
+<ul>
+<li><strong>结论1：香港走弱主因是定位而非估值，中间人身份已消失。</strong> 全球长线资金不再将其视为东西之间的缓冲/中转地，而是要求选边的资产，配置时需额外计入国际政治折价；适用条件/边界：仅在逆全球化与选边配置逻辑延续期间成立，若地缘缓和或离岸中介功能重建则失效。</li>
+<li><strong>结论2：本轮AI基建浪潮下港股权重结构性缺席，反被虹吸抽水。</strong> 以AH国企+老互联网为权重核心，不在美及日韩台等AI核心资产链条内，且需大额capex支出，自由现金流转弱；适用条件/边界：以当前权重结构未变、AI资本开支高峰延续为前提，若权重重构或互联网capex转化为回报则需重估。</li>
+<li><strong>结论3：香港流动性呈东西两头抽水：外资长线撤离叠加北水顾不上南下。</strong> 前者体现为大权重成交占比过去两年快速下降，后者因内地自身结构性行情锁定资金；适用条件/边界：以南向净买入持续萎缩、外资配置型资金未回流为观察窗口，单月脉冲式回流不改变结论。</li>
+<li><strong>结论4：大权重转冷+小票游资狂欢的组合不可持续，警惕流动性断裂。</strong> 市场总量曾热但大权重成交趋冷，属配置型资金撤而散户游资炒作，前期IPO乱象及监管调查即为注脚；适用条件/边界：适用于判断市场健康度，不直接等同于指数点位预测，若大权重成交占比企稳回升则证伪。</li>
+</ul>
+<h2 id="2">2. 专家观点与逻辑链</h2>
+<h3 id="1_1">观点 1：中间人定位终结，从缓冲带变为选边资产</h3>
+<ul>
+<li><strong>观点归属：</strong> 付鹏（视频主讲）</li>
+<li><strong>结论：</strong> 香港过去赚的是“不用选边”的钱，现在两边都在逼其选边，估值便宜无法对冲定位折价。</li>
+<li><strong>前提事实：</strong> 2016年以来逆全球化浪潮延续；全球资金配置已不能只看资产好坏与低估；自中概股起长线资金被迫考虑国际政治因素；香港此前承担中转/缓解功能。</li>
+<li><strong>推导逻辑：</strong> <code>逆全球化深化 → 全球配置加入政治选边约束 → 香港不再被划为中间地带而被划入需选边一侧 → 配置港股要求额外风险补偿</code></li>
+<li><strong>隐含假设：</strong> 地缘约束是长线资金硬约束而非短期情绪；香港无法靠制度套利重建中立身份。</li>
+<li><strong>反例 / 证伪条件：</strong> 全球长线资金重返港股大规模增配；或香港重新获得离岸中介豁免地位；转写“1819年”系“2018-2019年”之误，已剔除不影响推导。</li>
+</ul>
+<h3 id="2aicapex">观点 2：AI虹吸与权重错配，老互联网沦为capex支出方</h3>
+<ul>
+<li><strong>观点归属：</strong> 付鹏为主；阿里、腾讯capex与自由现金流具体数字为解读君后期整理补充，非付鹏原话口径。</li>
+<li><strong>结论：</strong> 港股权重资产不是本轮AI受益者，反而要花掉互联网垄断期积累的自由现金流，全球资金被虹吸至美、日韩台积电等核心资产。</li>
+<li><strong>前提事实：</strong> 本轮AI基础设施投资由美国拉动上中下游；港股权重为AH国企+当年转至香港的中概大互联网；付鹏称阿里自由现金流转负、护城河积累的现金流已花光；解读君补充称阿里单季资本开支676亿、自由现金流净流出447亿，腾讯由净流入430亿转净流出138亿。</li>
+<li><strong>推导逻辑：</strong> <code>AI capex集中于美及周边核心链 → 港股权重无AI核心标的且需对外投入 → 相对吸引力下降 → 全球资金虹吸远离香港</code></li>
+<li><strong>隐含假设：</strong> 当前capex不能快速转化为增量利润与估值重估；AH国企无法提供替代性AI敞口；欧洲类比成立但银行能源权重差异不改变结论。</li>
+<li><strong>反例 / 证伪条件：</strong> 老互联网capex验证为有效AI收入/利润；港股出现权重级AI核心资产；美AI投资退潮使虹吸减弱；转写“宏吸机/弘吸/红吸”统一按虹吸理解，“AR”按AI理解。</li>
+</ul>
+<h3 id="3">观点 3：两头抽水下的流动性萎缩，北水缺位是当下主约束</h3>
+<ul>
+<li><strong>观点归属：</strong> 付鹏为主；南向资金规模数据为解读君整理补充。</li>
+<li><strong>结论：</strong> 香港成交转弱是结果：外资配置型资金撤+北水被内地行情锁定顾不上南下，小票炒作熄火后整体流动性易出问题，远期或趋向“深圳市香港区”。</li>
+<li><strong>前提事实：</strong> 香港权重股成交额占市场比重过去两年快速下降；截至5-6月前一年市场总量热但大权重趋冷；散户游资炒作前两年IPO乱象并引致廉政公署与金融监管调查；内地6-7月前亦为结构性行情锁定注意力；解读君补充南向2025年全年净买入约13000亿港元、2026年9月底累计仅4282亿、10月下旬连续8个交易日净卖出。</li>
+<li><strong>推导逻辑：</strong> <code>外资长线撤离 → 大权重成交占比下行 → 市场热度靠游资小票维持 → 内地资金自顾不暇致北水缺位 → 小票熄火后总量流动性收缩</code></li>
+<li><strong>隐含假设：</strong> 大权重成交占比可代理配置型资金去留；散户不炒大权重；南向数据口径可比且持续性强。</li>
+<li><strong>反例 / 证伪条件：</strong> 大权重成交占比企稳回升；南向持续大幅净流入回归；小票成交可独立支撑市场流动性；转写“站在光里、光在那里”等内地产业链口误表述已剔除，不作为依据。</li>
+</ul>
+<h2 id="3_1">3. 投资研究指引</h2>
+<blockquote>
+<p>记录视频所表达的研究方向，不构成买卖建议；视频未给出明确买卖点，以下仅为跟踪与观察方向。
+| 主题 / 对象 | 视频隐含或明确的方向 | 为什么 | 正向验证信号 | 风险 / 失效信号 | 需补的证据 |
+|---|---|---|---|---|---|
+| 港股整体与大权重（AH国企+老互联网） | 未给出可执行指引，隐含谨慎观察、勿只看估值便宜 | 定位折价+AI错配+capex抽血，全球资金虹吸 | 地缘缓和、权重重构出AI核心标的、capex转回报 | 美AI退潮不及预期、capex持续超预期、政治折价扩大 | 权重成交占比、外资持仓、capex/自由现金流持续序列、AH溢价变化 |
+| 港股小票及前两年IPO狂欢股 | 未给出可执行指引，隐含回避炒作、关注监管风险 | 总量热而大权重冷属不健康结构，前期狂欢已引发调查 | 换手回归基本面、监管出清后成交结构正常化 | 游资再度主导、流动性断裂式萎缩 | 小票成交集中度、IPO质量与监管处罚进展 |
+| 流动性跟踪：南向北水与全球配置行为 | 跟踪观察方向，非买卖建议 | 北水是当前主力边际资金，外资去留决定大权重定价 | 南向持续净流入、大权重成交占比回升 | 南向持续净卖出、连续萎缩 | 南向日度/月度净买入、权重成交占比、大权重ETF申赎、外资研报配置变化 |</p>
+</blockquote></div>
+</article>
+
+      <div class="day-card">
+        <p>归档路径 <code>daily/20261105/</code> · <a href="../../index.html">返回历史总览</a> · <a href="./index.html">本日目录</a></p>
+      </div>
+    </main>
+  </div>
+</body>
+</html>

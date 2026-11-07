@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>解读君视频日报 · 20261106</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@400;600;700;900&display=swap" rel="stylesheet">
+  <style>
+:root {
+  --bg-page: #FBF8F2;
+  --bg-surface: #FFFDF9;
+  --bg-header: #F4EFE6;
+  --bg-subtle: #F0EADF;
+  --border-main: #E5DDCD;
+  --border-dark: #2B2625;
+  --text-main: #231F20;
+  --text-muted: #5C554E;
+  --text-light: #8E8478;
+  --accent-burgundy: #8B261D;
+  --accent-amber: #B45309;
+  --font-serif: 'Noto Serif SC', Georgia, 'Times New Roman', serif;
+  --font-sans: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'IBM Plex Mono', monospace;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 15px; }
+body {
+  background: var(--bg-page);
+  color: var(--text-main);
+  font-family: var(--font-sans);
+  line-height: 1.85;
+  -webkit-font-smoothing: antialiased;
+}
+
+.wrap {
+  max-width: 1300px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 290px 1fr;
+  min-height: 100vh;
+  border-left: 2px solid var(--border-dark);
+  border-right: 2px solid var(--border-dark);
+  background: var(--bg-surface);
+}
+
+@media (max-width: 1024px) {
+  .wrap { grid-template-columns: 1fr; border: none; }
+}
+
+/* Sidebar */
+.nav {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow-y: auto;
+  padding: 32px 24px;
+  background: #F7F3EB;
+  border-right: 1px solid var(--border-main);
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+@media (max-width: 1024px) {
+  .nav { position: relative; height: auto; border-right: none; border-bottom: 2px solid var(--border-dark); }
+}
+
+.brand {
+  padding-bottom: 18px;
+  border-bottom: 2px solid var(--border-dark);
+}
+.brand h1 {
+  font-family: var(--font-serif);
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: var(--border-dark);
+}
+.brand h1 span {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent-burgundy);
+  margin-top: 4px;
+}
+
+.toc h2 {
+  font-family: var(--font-serif);
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--border-dark);
+  border-bottom: 1px solid var(--border-main);
+  padding-bottom: 6px;
+  margin: 16px 0 10px;
+}
+
+.toc a {
+  display: flex;
+  flex-direction: column;
+  padding: 8px 10px;
+  text-decoration: none;
+  color: var(--text-main);
+  border: 1px solid transparent;
+  border-radius: 4px;
+  transition: all 0.15s;
+  font-size: 13px;
+  line-height: 1.4;
+  margin-bottom: 4px;
+}
+.toc a:hover {
+  background: var(--bg-subtle);
+  border-color: var(--border-main);
+}
+.toc a.active {
+  background: #EFE8DA;
+  border-color: var(--border-main);
+  color: var(--accent-burgundy);
+  font-weight: 600;
+}
+.toc a span {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+.nav-desc {
+  font-size: 11px;
+  font-family: var(--font-mono);
+  color: var(--text-muted);
+  line-height: 1.6;
+  padding: 4px 6px;
+}
+
+/* Main Area */
+.main {
+  padding: 40px 48px 80px;
+  max-width: 960px;
+}
+
+@media (max-width: 768px) {
+  .main { padding: 24px 18px 40px; }
+}
+
+.gazette-header {
+  border-top: 3px double var(--border-dark);
+  border-bottom: 1px solid var(--border-dark);
+  padding: 20px 0;
+  margin-bottom: 36px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+.gazette-header h1 {
+  font-family: var(--font-serif);
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--border-dark);
+}
+.gazette-header .gazette-meta {
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.summary-card, .article {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-main);
+  margin-bottom: 40px;
+}
+
+.summary-head, .article-head {
+  background: var(--bg-header);
+  padding: 20px 26px;
+  border-bottom: 1px solid var(--border-main);
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+}
+.article-head h3, .summary-head h3 {
+  font-family: var(--font-serif);
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text-main);
+  line-height: 1.35;
+}
+.article-head h3 a, .summary-head h3 a {
+  color: inherit;
+  text-decoration: none;
+}
+.article-head h3 a:hover, .summary-head h3 a:hover {
+  color: var(--accent-burgundy);
+}
+
+.meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-top: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.meta a {
+  color: var(--accent-burgundy);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.content {
+  padding: 32px 36px;
+  font-size: 14.5px;
+  line-height: 1.9;
+  color: #2D2726;
+}
+
+@media (max-width: 768px) {
+  .content { padding: 20px 18px; }
+  .summary-head, .article-head { padding: 16px 18px; }
+}
+
+.content h1 {
+  font-family: var(--font-serif);
+  font-size: 22px;
+  font-weight: 700;
+  margin: 0 0 18px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border-dark);
+}
+
+.content h2 {
+  font-family: var(--font-serif);
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--accent-burgundy);
+  background: var(--bg-header);
+  border: 1px solid var(--border-main);
+  border-radius: 4px;
+  padding: 8px 14px;
+  margin: 32px 0 14px;
+  letter-spacing: 0.02em;
+}
+
+.content h3 {
+  font-family: var(--font-serif);
+  font-size: 14.5px;
+  font-weight: 700;
+  margin: 22px 0 10px;
+  color: var(--text-main);
+}
+
+.content p {
+  margin-bottom: 16px;
+  text-align: justify;
+}
+
+.content strong {
+  font-weight: 700;
+  color: #1A1616;
+}
+
+.content ul, .content ol {
+  margin: 12px 0 18px 6px;
+  padding-left: 22px;
+}
+.content li {
+  margin-bottom: 8px;
+  line-height: 1.8;
+}
+.content ul > li::marker {
+  content: "▪ ";
+  color: var(--accent-burgundy);
+}
+.content ol > li::marker {
+  color: var(--accent-burgundy);
+  font-weight: 700;
+  font-family: var(--font-mono);
+}
+.content li > ul, .content li > ol {
+  margin: 8px 0 8px 6px;
+}
+.cond-label {
+  color: var(--accent-burgundy);
+  font-weight: 700;
+}
+.content li > p {
+  margin-bottom: 6px;
+}
+.content li > p:last-child {
+  margin-bottom: 0;
+}
+
+.viewpoint {
+  border: 1px solid var(--border-main);
+  border-radius: 6px;
+  margin: 16px 0 20px;
+  overflow: hidden;
+  background: #FFFDF8;
+}
+.vp-head {
+  background: var(--bg-header);
+  padding: 10px 16px;
+  border-bottom: 1px solid var(--border-main);
+  display: flex;
+  gap: 10px;
+  align-items: baseline;
+  flex-wrap: wrap;
+}
+.vp-num {
+  font-family: var(--font-serif);
+  font-weight: 700;
+  font-size: 14.5px;
+  color: var(--accent-burgundy);
+  white-space: nowrap;
+}
+.vp-title {
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--text-main);
+}
+.vp-owner {
+  margin-left: auto;
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+.vp-row {
+  display: grid;
+  grid-template-columns: 46px 1fr;
+  gap: 12px;
+  padding: 8px 16px;
+  font-size: 13.5px;
+  line-height: 1.8;
+}
+.vp-row + .vp-row {
+  border-top: 1px dashed var(--border-main);
+}
+.vp-label {
+  font-weight: 700;
+  font-size: 12.5px;
+  color: var(--accent-burgundy);
+  white-space: nowrap;
+  padding-top: 1px;
+}
+.vp-val {
+  color: #2D2726;
+  text-align: justify;
+  min-width: 0;
+}
+.vp-val p {
+  margin: 0;
+  text-align: justify;
+}
+.vp-val code {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  background: #EDE6D8;
+  padding: 2px 6px;
+  border-radius: 3px;
+  color: var(--accent-burgundy);
+}
+@media (max-width: 768px) {
+  .vp-row { grid-template-columns: 40px 1fr; padding: 7px 12px; }
+}
+
+.content blockquote {
+  background: #F3ECE0;
+  border: 1px solid var(--border-main);
+  border-radius: 4px;
+  padding: 14px 20px;
+  margin: 20px 0;
+  font-size: 13.5px;
+  font-style: italic;
+  color: #523E3B;
+}
+
+.content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 24px 0;
+  font-size: 13px;
+  border: 1px solid var(--border-main);
+}
+.content th {
+  background: #ECE4D6;
+  font-family: var(--font-serif);
+  font-weight: 700;
+  color: var(--border-dark);
+  text-align: left;
+  padding: 10px 14px;
+  border: 1px solid var(--border-main);
+}
+.content td {
+  padding: 9px 14px;
+  border: 1px solid var(--border-main);
+}
+.content tr:nth-child(even) {
+  background: #F8F4EC;
+}
+
+.content code {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  background: #EDE6D8;
+  padding: 2px 6px;
+  border-radius: 3px;
+  color: var(--accent-burgundy);
+}
+
+.day-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-main);
+  padding: 20px 24px;
+  margin-bottom: 18px;
+}
+.day-card h3 {
+  font-family: var(--font-serif);
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+.day-card h3 a {
+  color: var(--text-main);
+  text-decoration: none;
+}
+.day-card h3 a:hover {
+  color: var(--accent-burgundy);
+}
+.day-card p {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+.btn {
+  display: inline-flex;
+  padding: 8px 14px;
+  border: 1px solid var(--border-dark);
+  background: var(--bg-surface);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  text-decoration: none;
+  color: var(--text-main);
+  font-weight: 600;
+  transition: all 0.15s;
+}
+.btn:hover {
+  background: var(--bg-subtle);
+}
+.btn.primary {
+  background: var(--border-dark);
+  color: #FFFFFF;
+}
+.btn.primary:hover {
+  background: var(--accent-burgundy);
+  border-color: var(--accent-burgundy);
+}
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <nav class="nav">
+      <div class="brand">
+        <h1>解读君视频日报<span>JIEDU DAILY · 20261106</span></h1>
+      </div>
+      <div class="toc">
+        <h2>全量原文</h2>
+        <a href="#summary" class="active">每日核心总结<span>20261106</span></a>
+        <a href="#note-kyUIlZtz-2I">【2026-11-6】 大摩新经济前瞻 PC塌了云端还在烧 台北四位分析师一次讲完<span>20261106 · kyUIlZtz-2I</span></a>
+        <h2>历史归档</h2>
+        <a href="../../index.html">← 返回历史总览</a>
+        <a href="../20261107/index.html" class="">20261107 <span>1 篇 · 当日归档</span></a><a href="../20261106/index.html" class="active">20261106 <span>1 篇 · 当日归档</span></a><a href="../20261105/index.html" class="">20261105 <span>2 篇 · 当日归档</span></a><a href="../20261104/index.html" class="">20261104 <span>1 篇 · 当日归档</span></a><a href="../20261103/index.html" class="">20261103 <span>2 篇 · 当日归档</span></a><a href="../20261102/index.html" class="">20261102 <span>2 篇 · 当日归档</span></a><a href="../20261101/index.html" class="">20261101 <span>1 篇 · 当日归档</span></a><a href="../20261031/index.html" class="">20261031 <span>1 篇 · 当日归档</span></a><a href="../20261030/index.html" class="">20261030 <span>2 篇 · 当日归档</span></a><a href="../20261028/index.html" class="">20261028 <span>1 篇 · 当日归档</span></a><a href="../20261027/index.html" class="">20261027 <span>1 篇 · 当日归档</span></a><a href="../20261026/index.html" class="">20261026 <span>3 篇 · 当日归档</span></a><a href="../20261024/index.html" class="">20261024 <span>1 篇 · 当日归档</span></a><a href="../20261023/index.html" class="">20261023 <span>3 篇 · 当日归档</span></a><a href="../20261022/index.html" class="">20261022 <span>2 篇 · 当日归档</span></a><a href="../20261021/index.html" class="">20261021 <span>2 篇 · 当日归档</span></a><a href="../20261020/index.html" class="">20261020 <span>1 篇 · 当日归档</span></a><a href="../20261019/index.html" class="">20261019 <span>1 篇 · 当日归档</span></a><a href="../20261018/index.html" class="">20261018 <span>2 篇 · 当日归档</span></a><a href="../20261016/index.html" class="">20261016 <span>1 篇 · 当日归档</span></a><a href="../20261015/index.html" class="">20261015 <span>1 篇 · 当日归档</span></a><a href="../20261014/index.html" class="">20261014 <span>3 篇 · 当日归档</span></a><a href="../20261013/index.html" class="">20261013 <span>2 篇 · 当日归档</span></a><a href="../20261012/index.html" class="">20261012 <span>2 篇 · 当日归档</span></a><a href="../20261011/index.html" class="">20261011 <span>3 篇 · 当日归档</span></a><a href="../20261010/index.html" class="">20261010 <span>9 篇 · 当日归档</span></a><a href="../20261006/index.html" class="">20261006 <span>2 篇 · 当日归档</span></a><a href="../20261005/index.html" class="">20261005 <span>3 篇 · 当日归档</span></a><a href="../20261004/index.html" class="">20261004 <span>1 篇 · 当日归档</span></a><a href="../20260929/index.html" class="">20260929 <span>0 篇 · 当日归档</span></a><a href="../20260928/index.html" class="">20260928 <span>1 篇 · 当日归档</span></a><a href="../20260927/index.html" class="">20260927 <span>6 篇 · 当日归档</span></a><a href="../20260922/index.html" class="">20260922 <span>1 篇 · 当日归档</span></a><a href="../20260921/index.html" class="">20260921 <span>8 篇 · 当日归档</span></a><a href="../20260914/index.html" class="">20260914 <span>6 篇 · 当日归档</span></a><a href="../20260910/index.html" class="">20260910 <span>1 篇 · 当日归档</span></a><a href="../20260908/index.html" class="">20260908 <span>2 篇 · 当日归档</span></a><a href="../20260907/index.html" class="">20260907 <span>2 篇 · 当日归档</span></a><a href="../20260906/index.html" class="">20260906 <span>1 篇 · 当日归档</span></a><a href="../20260905/index.html" class="">20260905 <span>1 篇 · 当日归档</span></a><a href="../20260904/index.html" class="">20260904 <span>2 篇 · 当日归档</span></a><a href="../20260903/index.html" class="">20260903 <span>2 篇 · 当日归档</span></a><a href="../20260902/index.html" class="">20260902 <span>3 篇 · 当日归档</span></a><a href="../20260831/index.html" class="">20260831 <span>2 篇 · 当日归档</span></a><a href="../20260829/index.html" class="">20260829 <span>1 篇 · 当日归档</span></a><a href="../20260828/index.html" class="">20260828 <span>1 篇 · 当日归档</span></a><a href="../20260825/index.html" class="">20260825 <span>1 篇 · 当日归档</span></a><a href="../20260824/index.html" class="">20260824 <span>2 篇 · 当日归档</span></a><a href="../20260823/index.html" class="">20260823 <span>1 篇 · 当日归档</span></a><a href="../20260821/index.html" class="">20260821 <span>3 篇 · 当日归档</span></a>
+      </div>
+    </nav>
+    <main class="main">
+      <div class="gazette-header">
+        <div>
+          <h1>金融经纬 · 每日纪要</h1>
+          <div class="gazette-meta">JIEDU DAILY FINANCIAL GAZETTE · VOL. 20261106</div>
+        </div>
+        <div class="gazette-meta">1 ARTICLES ARCHIVED</div>
+      </div>
+      
+<section id="summary" class="summary-card">
+  <div class="summary-head">
+    <div>
+      <h3>每日总结 · 20261106</h3>
+      <div class="meta">daily/20261106/20261106_解读君视频总结.md</div>
+    </div>
+  </div>
+  <div class="content"><h1 id="_1">解读君视频摘要</h1>
+<h2 id="1-2026-11-6-pc">1. <a href="#note-kyUIlZtz-2I">【2026-11-6】 大摩新经济前瞻 PC塌了云端还在烧 台北四位分析师一次讲完</a></h2>
+<blockquote>
+<p>一句话：明年上半年云端支出或周期见底，电脑去库存超预期短期回避，客制芯片相对占优</p>
+</blockquote>
+<ul>
+<li><strong>云端资本支出面临周期见底风险，时间点在明年上半年。</strong> 适用条件：自去年下半年由推理+Agentic AI接力的上行已持续一年半，且美国云厂本季未再上修开支；<br><span class="cond-label">边界：</span>若出现新应用、新融资、国家政策接力，则周期可延长。</li>
+<li><strong>PC去库存烈度超预期，短期回避PC重仓半导体。</strong> 适用条件：Q3整机同比跌约20-25%、Q4关键零组件环比跌三成以上、明年Q1不复苏，且记忆体维持高价；<br><span class="cond-label">边界：</span>若记忆体降价或换机刺激出现，则跌幅假设失效。</li>
+<li><strong>电源链短期缺催化、中长期随单柜功率提升成长，Delta竞争优势优于Lite-On，HVDC 2027-2028渗透率低。</strong> 适用条件：Vera Rubin系机柜功率上行兑现、Rubin Ultra方案明年上半年才定案；<br><span class="cond-label">边界：</span>若HVDC reference design独占，则2028年超50%渗透率可能。</li>
+<li><strong>未来2-3年ASIC相对占优，MediaTek第二客户+GUC CPU放量是主要Alpha。</strong> 适用条件：TPU V8明年3.5-3.6M颗交付无SRAM/HBM瓶颈、V9按表推进、CPU tape-out/拉货如期；<br><span class="cond-label">边界：</span>若tape-out延迟、CoWoS booking下修或客户集中押注变化，则逻辑失效。</li>
+</ul></div>
+</section>
+
+      
+<article id="note-kyUIlZtz-2I" class="article">
+  <div class="article-head">
+    <div>
+      <h3><a href="https://www.youtube.com/watch?v=kyUIlZtz-2I" target="_blank" rel="noreferrer">【2026-11-6】 大摩新经济前瞻 PC塌了云端还在烧 台北四位分析师一次讲完</a></h3>
+      <div class="meta">20261106 · kyUIlZtz-2I · <a href="https://www.youtube.com/watch?v=kyUIlZtz-2I" target="_blank" rel="noreferrer">观看 YouTube 原片 ↗</a></div>
+    </div>
+  </div>
+  <div class="content"><h1 id="2026-11-6-pc">结构化笔记｜【2026-11-6】 大摩新经济前瞻 PC塌了云端还在烧 台北四位分析师一次讲完</h1>
+<h2 id="1">1. 核心结论</h2>
+<ul>
+<li><strong>云端资本支出面临周期见底风险，时间点在明年上半年。</strong> 适用条件：自去年下半年由推理+Agentic AI接力的上行已持续一年半，且美国云厂本季未再上修开支；边界：若出现新应用、新融资、国家政策接力，则周期可延长。</li>
+<li><strong>PC去库存烈度超预期，短期回避PC重仓半导体。</strong> 适用条件：Q3整机同比跌约20-25%、Q4关键零组件环比跌三成以上、明年Q1不复苏，且记忆体维持高价；边界：若记忆体降价或换机刺激出现，则跌幅假设失效。</li>
+<li><strong>电源链短期缺催化、中长期随单柜功率提升成长，Delta竞争优势优于Lite-On，HVDC 2027-2028渗透率低。</strong> 适用条件：Vera Rubin系机柜功率上行兑现、Rubin Ultra方案明年上半年才定案；边界：若HVDC reference design独占，则2028年超50%渗透率可能。</li>
+<li><strong>未来2-3年ASIC相对占优，MediaTek第二客户+GUC CPU放量是主要Alpha。</strong> 适用条件：TPU V8明年3.5-3.6M颗交付无SRAM/HBM瓶颈、V9按表推进、CPU tape-out/拉货如期；边界：若tape-out延迟、CoWoS booking下修或客户集中押注变化，则逻辑失效。</li>
+</ul>
+<h2 id="2">2. 专家观点与逻辑链</h2>
+<h3 id="1hvdc">观点 1：电源与HVDC：短期平淡、长期跟功率走</h3>
+<ul>
+<li><strong>观点归属：</strong> 台北分析师 Derek（power/BizLink段）</li>
+<li><strong>结论：</strong> Delta Q3毛利率 miss为主观库存跌价约2pp、Q4将回冲+环比营收约+10% QoQ；Lite-On Q3略超预期、明年云+70% YoY带动整体+40-45%；但两者短期催化弱，长期Delta优于Lite-On，HVDC明年仅小批量测试、2028年渗透率基地情形&lt;50%。</li>
+<li><strong>前提事实：</strong> Delta Q3有库存跌价损失、Lite-On Q3无此项；Q4指引营收与毛利率均环比改善；DCDC module占Delta营收high single digit；hyperscaler明年HVDC主要为测试性小批量。</li>
+<li><strong>推导逻辑：</strong> <code>Q3库存跌价为一次性 → Q4回冲+组合改善 → 毛利率环比回升1pp以上；单柜功率代代提升 → DCDC/电源用量提升 → 2027年需求显著增；Rubin时代in-rack方案已够用+Ultra方案未定 → HVDC 2027量小、2028双方案并存则渗透率低</code></li>
+<li><strong>隐含假设：</strong> 库存跌价可在未来几季全额回冲；机柜功率提升不被系统功耗优化对冲；客户愿意维持双方案。</li>
+<li><strong>反例 / 证伪条件：</strong> Q4毛利率未回升超1pp；Lite-On在cooling/DCDC/HVDC追上Delta；明年上半年确认HVDC为唯一reference design。</li>
+</ul>
+<h3 id="2_1">观点 2：云端资本支出：两年上行规律指向明年上半年见顶</h3>
+<ul>
+<li><strong>观点归属：</strong> 台北分析师 Daniel（云端周期段）</li>
+<li><strong>结论：</strong> 2008-2023年四大云厂3年一循环、2年上行配2-4季下行；本轮自2023Q2底部至2025H1达60-70% YoY，去年的推理+Agentic AI续命一年半，明年上半年可能再见顶，除非新应用/资金/政策接力。</li>
+<li><strong>前提事实：</strong> 2023Q2为底部；美国四大云厂本季口头仍乐观但数字上没有上修资本支出；memory涨价下component仍被拉动。</li>
+<li><strong>推导逻辑：</strong> <code>历史15年皆2年上行后回落 → 本轮接力起点为去年下半年 → 至今约1.5年 → 明年上半年进入2年窗口尾部 → 无新增量则见顶</code></li>
+<li><strong>隐含假设：</strong> 历史硬件周期规律在AI时代仍适用；top-down时钟优先于supply chain个股alpha；funding/cash flow不确定性不自动解决。</li>
+<li><strong>反例 / 证伪条件：</strong> 美国云厂再度上修全年capex；主权/新entrant funding大规模落地；出现杀手级应用拉动utilization再上行。</li>
+</ul>
+<h3 id="3pcfomo">观点 3：PC塌了：FOMO备货后的剧烈修正</h3>
+<ul>
+<li><strong>观点归属：</strong> 台北分析师 Daniel + 艾瑞（PC/ODM tracker段）</li>
+<li><strong>结论：</strong> 前三季Fear of missing procurement造成过度备货，Q4必须correction；通路/零部件Q4环比跌三成以上、明年Q1不复苏，若记忆体高价则明年全年PC同比掉；PC相关已全线downgrade，仅留联想Overweight因ISG server扭亏。</li>
+<li><strong>前提事实：</strong> Top-5 ODM notebook出货6月起转弱、Q2末至Q3中需求明显slowdown；IDC Q3+Intel/AMD法说指向同比跌近20-25%超原先teens%预期；timing controller、audio codec、touch等Q4环比-30%+；联想ISG operating margin由亏损转约9%。</li>
+<li><strong>推导逻辑：</strong> <code>上半年提前拉货 → 库存过高+记忆体涨价压制换机 → Q3出货同比大跌 → Q4通路砍单三成+ → 明年Q1不复苏</code></li>
+<li><strong>隐含假设：</strong> 记忆体价格维持高档压制整机需求；ODM tracker可代表全球需求；库存调整不少于一个季度。</li>
+<li><strong>反例 / 证伪条件：</strong> 记忆体Q4涨幅趋缓后快速降价刺激需求；Q4通路跌幅远小于30%；明年Q1提前复苏。</li>
+</ul>
+<h3 id="4ccl">观点 4：CCL与载板：涨价传导分化，催化在台光电</h3>
+<ul>
+<li><strong>观点归属：</strong> 台北分析师 艾瑞（PCB/CCL/载板段）</li>
+<li><strong>结论：</strong> 台燿Q3毛利率大超预期因M6以下占比60-70%+E-glass涨价顺价，台光电仅30-35%低阶+高阶占比高而弹性小；往后看催化在台光电因AI平台组装/良率delay在Q4开始真正出货；欣兴28.8%毛利率miss买方30%+为预期差非结构问题，仍为high conviction稀缺资源。</li>
+<li><strong>前提事实：</strong> 上周台光电/台燿Q3毛利率均超卖方/买方预期、台燿更优；过去1-3个月AI平台有delay；Q4 system已有真正出货；欣兴Q3环比增长符合预期但低于买方毛利率预期。</li>
+<li><strong>推导逻辑：</strong> <code>E-glass Q3大涨 → 中低阶占比高者更易pass-through → 台燿短期毛利率更受益；AI delay消除+Q4出货 → 高阶料号放量 → 台光电价值被看到；载板供需仍紧 → 欣兴预期差不改稀缺性</code></li>
+<li><strong>隐含假设：</strong> E-glass涨价可持续传导；AI出货延迟为良率/组装一次性问题；载板无新增大产能冲击。</li>
+<li><strong>反例 / 证伪条件：</strong> E-glass价格回落或高阶CCL加价跟上；AI平台再度delay；欣兴后续毛利率继续低于30%显示结构问题。</li>
+</ul>
+<h3 id="5asicmediatekguc-cpu">观点 5：ASIC逆周期：MediaTek第二客户+GUC CPU放量</h3>
+<ul>
+<li><strong>观点归属：</strong> 台北分析师 Lucas（ASIC段）</li>
+<li><strong>结论：</strong> 即使cloud capex放缓，ASIC因成本更优未来2-3年仍占优；MediaTek确认第二家非中国AI ASIC客户、2028年贡献超今年TPU，TPU V8今年Q4上调至2.5B、明年16B约3.5-3.6M颗，V9按表推进无delay；GUC靠Google Axion2/Cobalt系+次世代CPU+地平线/Tesla AI5等分散，明年下半年起放量。</li>
+<li><strong>前提事实：</strong> MediaTek法说确认第二客户、28年量产；台积CoWoS booking约180K对应3.5-3.6M颗V8一致；V9部分已tape-out、复杂2nm compute die预计明年1月/Q1 tape-out、明年底小量产+28年初大量产；GUC次世代CPU已在台积tape-out、预计最快明年Q2认列。</li>
+<li><strong>推导逻辑：</strong> <code>云厂降本诉求 → ASIC性价比路线 → MediaTek/GUC design-win兑现 → CoWoS/tape-out进度验证 → 2027-2028营收上修</code></li>
+<li><strong>隐含假设：</strong> SRAM/HBM供给不是瓶颈；第二客户候选限定且28年预算不砍；CPU ASP（约1400-1800美元）与量（各约500K-4M）假设成立。</li>
+<li><strong>反例 / 证伪条件：</strong> V9 tape-out延迟或明年底不能小量产；CoWoS booking下修；第二客户确认为小量项目或28年贡献低于2.5B。</li>
+</ul>
+<h3 id="6pushback">观点 6：上游谨慎：环球晶涨价被pushback、世界先进新加坡厂压毛利率</h3>
+<ul>
+<li><strong>观点归属：</strong> 台北分析师 Lucas（raw wafer/世界先进段）</li>
+<li><strong>结论：</strong> 环球晶等raw wafer虽利用率90-95%但Tier1客户有库存、可pushback明年涨价，明年blended LTA涨幅仅15-20%低于预期的25-30%、台积电&lt;10%；世界先进明年H1新加坡厂按44-45K全产能折旧但仅开3-5K至10K片，margin稀释high single至10%，差于预期的low-to-mid single，维持谨慎。</li>
+<li><strong>前提事实：</strong> 环球晶法说称产能利用率极高但承认部分客户不接受涨价；客户有一定库存+本次涨价可预期致提前拉货，与2021-2022年低库存不同；世界先进新加坡厂房基建自明年Q1起全额折旧。</li>
+<li><strong>推导逻辑：</strong> <code>可预期涨价+客户有库存 → 提前拉货 → 实际议价力弱于利用率 → LTA涨幅打折；新厂全额折旧+低开工 → 上半年margin大幅稀释</code></li>
+<li><strong>隐含假设：</strong> 客户库存水位判断正确；新加坡厂爬坡慢于折旧节奏；12寸上半年仅1万片以下。</li>
+<li><strong>反例 / 证伪条件：</strong> 明年LTA最终涨幅达25-30%；新加坡厂开工快于预期或折旧方式调整； wafer现货价再加速上涨。</li>
+</ul>
+<h2 id="3">3. 投资研究指引</h2>
+<blockquote>
+<p>记录视频所表达的研究方向，不构成买卖建议；没有明确投资含义时如实写“未给出可执行指引”。
+| 主题 / 对象 | 视频隐含或明确的方向 | 为什么 | 正向验证信号 | 风险 / 失效信号 | 需补的证据 |
+|---|---|---|---|---|---|
+| 云端capex周期 | 偏谨慎、等明年上半年再判断，未给出可执行指引 | 周期时钟指向见顶但云厂口头仍乐观、无上修 | 云厂上修capex、新应用/funding落地 | 消费/云需求同时转弱、memory涨价传导停滞 | 美国四大云厂Q4 capex指引、主权订单 |
+| PC链/记忆体相关 | 回避PC重仓股，仅联想因服务器反转保留OW | Q3跌20-25%、Q4零部件-30%+、Q1不复苏 | 库存去化、记忆体涨幅趋缓后需求回稳 | 记忆体维持高价压制换机、拖累TSMC mix | ODM月度出货、Intel/AMD展望、华邦/通路库存 |
+| 电源：Delta vs Lite-On | 相对更看好Delta长期竞争优势 | DCDC/HVDC/机柜功率红利Delta进度更快 | Q4回冲兑现、DCDC客户新增、云业务+70%兑现 | HVDC双方案并存致渗透率&lt;50%、短期无催化 | Q4毛利率、2027云订单、Rubin Ultra方案定案 |
+| 互连：BizLink | 偏多、2027年content翻倍+光转型 | Vera Rubin rack power interconnect content为GB300约2倍、ALC接力AEC物理限制 | Q4 +25-30% QoQ兑现、ALC 2027H2贡献 | AEC在3.2T无可行方案且ALC不及预期 | 10月/11月营收、AEC渗透率、与康宁合作进展 |
+| CCL：台光电/台燿/建滔/生益 | 短期催化偏台光电 | AI delay恢复后高阶放量 | Q4 system出货、M7/M8占比提升 | E-glass继续大涨侵蚀高阶毛利率 | 板厂良率、AI服务器出货 |
+| 载板：欣兴/臻鼎 | High conviction long欣兴 | 最稀缺资源、miss仅预期差 | 毛利率重回30%+、ABF利用率满载 | 持续miss显示结构问题 | 下季毛利率、客户订单 |
+| ASIC：MediaTek/GUC | 相对看好、topic维持 | 第二客户+TPU上调+CPU放量对冲周期 | V8 16B交付、V9 tape-out、CPU Q2认列 | HBM/SRAM瓶颈、tape-out delay | CoWoS booking、客户归属确认、ASP/量 |
+| 硅片：环球晶 /  mature：世界先进 | 偏谨慎 | 涨价被pushback、新加坡厂折旧压margin | LTA最终涨幅、开工爬坡 | LTA仅+15-20%、margin稀释达10% | 明年LTA价格、新加坡厂开工与折旧明细 |</p>
+</blockquote></div>
+</article>
+
+      <div class="day-card">
+        <p>归档路径 <code>daily/20261106/</code> · <a href="../../index.html">返回历史总览</a> · <a href="./index.html">本日目录</a></p>
+      </div>
+    </main>
+  </div>
+</body>
+</html>

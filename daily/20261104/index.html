@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>解读君视频日报 · 20261104</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@400;600;700;900&display=swap" rel="stylesheet">
+  <style>
+:root {
+  --bg-page: #FBF8F2;
+  --bg-surface: #FFFDF9;
+  --bg-header: #F4EFE6;
+  --bg-subtle: #F0EADF;
+  --border-main: #E5DDCD;
+  --border-dark: #2B2625;
+  --text-main: #231F20;
+  --text-muted: #5C554E;
+  --text-light: #8E8478;
+  --accent-burgundy: #8B261D;
+  --accent-amber: #B45309;
+  --font-serif: 'Noto Serif SC', Georgia, 'Times New Roman', serif;
+  --font-sans: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'IBM Plex Mono', monospace;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 15px; }
+body {
+  background: var(--bg-page);
+  color: var(--text-main);
+  font-family: var(--font-sans);
+  line-height: 1.85;
+  -webkit-font-smoothing: antialiased;
+}
+
+.wrap {
+  max-width: 1300px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 290px 1fr;
+  min-height: 100vh;
+  border-left: 2px solid var(--border-dark);
+  border-right: 2px solid var(--border-dark);
+  background: var(--bg-surface);
+}
+
+@media (max-width: 1024px) {
+  .wrap { grid-template-columns: 1fr; border: none; }
+}
+
+/* Sidebar */
+.nav {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow-y: auto;
+  padding: 32px 24px;
+  background: #F7F3EB;
+  border-right: 1px solid var(--border-main);
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+@media (max-width: 1024px) {
+  .nav { position: relative; height: auto; border-right: none; border-bottom: 2px solid var(--border-dark); }
+}
+
+.brand {
+  padding-bottom: 18px;
+  border-bottom: 2px solid var(--border-dark);
+}
+.brand h1 {
+  font-family: var(--font-serif);
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: var(--border-dark);
+}
+.brand h1 span {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent-burgundy);
+  margin-top: 4px;
+}
+
+.toc h2 {
+  font-family: var(--font-serif);
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--border-dark);
+  border-bottom: 1px solid var(--border-main);
+  padding-bottom: 6px;
+  margin: 16px 0 10px;
+}
+
+.toc a {
+  display: flex;
+  flex-direction: column;
+  padding: 8px 10px;
+  text-decoration: none;
+  color: var(--text-main);
+  border: 1px solid transparent;
+  border-radius: 4px;
+  transition: all 0.15s;
+  font-size: 13px;
+  line-height: 1.4;
+  margin-bottom: 4px;
+}
+.toc a:hover {
+  background: var(--bg-subtle);
+  border-color: var(--border-main);
+}
+.toc a.active {
+  background: #EFE8DA;
+  border-color: var(--border-main);
+  color: var(--accent-burgundy);
+  font-weight: 600;
+}
+.toc a span {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+.nav-desc {
+  font-size: 11px;
+  font-family: var(--font-mono);
+  color: var(--text-muted);
+  line-height: 1.6;
+  padding: 4px 6px;
+}
+
+/* Main Area */
+.main {
+  padding: 40px 48px 80px;
+  max-width: 960px;
+}
+
+@media (max-width: 768px) {
+  .main { padding: 24px 18px 40px; }
+}
+
+.gazette-header {
+  border-top: 3px double var(--border-dark);
+  border-bottom: 1px solid var(--border-dark);
+  padding: 20px 0;
+  margin-bottom: 36px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+.gazette-header h1 {
+  font-family: var(--font-serif);
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--border-dark);
+}
+.gazette-header .gazette-meta {
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.summary-card, .article {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-main);
+  margin-bottom: 40px;
+}
+
+.summary-head, .article-head {
+  background: var(--bg-header);
+  padding: 20px 26px;
+  border-bottom: 1px solid var(--border-main);
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+}
+.article-head h3, .summary-head h3 {
+  font-family: var(--font-serif);
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text-main);
+  line-height: 1.35;
+}
+.article-head h3 a, .summary-head h3 a {
+  color: inherit;
+  text-decoration: none;
+}
+.article-head h3 a:hover, .summary-head h3 a:hover {
+  color: var(--accent-burgundy);
+}
+
+.meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-top: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.meta a {
+  color: var(--accent-burgundy);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.content {
+  padding: 32px 36px;
+  font-size: 14.5px;
+  line-height: 1.9;
+  color: #2D2726;
+}
+
+@media (max-width: 768px) {
+  .content { padding: 20px 18px; }
+  .summary-head, .article-head { padding: 16px 18px; }
+}
+
+.content h1 {
+  font-family: var(--font-serif);
+  font-size: 22px;
+  font-weight: 700;
+  margin: 0 0 18px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border-dark);
+}
+
+.content h2 {
+  font-family: var(--font-serif);
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--accent-burgundy);
+  background: var(--bg-header);
+  border: 1px solid var(--border-main);
+  border-radius: 4px;
+  padding: 8px 14px;
+  margin: 32px 0 14px;
+  letter-spacing: 0.02em;
+}
+
+.content h3 {
+  font-family: var(--font-serif);
+  font-size: 14.5px;
+  font-weight: 700;
+  margin: 22px 0 10px;
+  color: var(--text-main);
+}
+
+.content p {
+  margin-bottom: 16px;
+  text-align: justify;
+}
+
+.content strong {
+  font-weight: 700;
+  color: #1A1616;
+}
+
+.content ul, .content ol {
+  margin: 12px 0 18px 6px;
+  padding-left: 22px;
+}
+.content li {
+  margin-bottom: 8px;
+  line-height: 1.8;
+}
+.content ul > li::marker {
+  content: "▪ ";
+  color: var(--accent-burgundy);
+}
+.content ol > li::marker {
+  color: var(--accent-burgundy);
+  font-weight: 700;
+  font-family: var(--font-mono);
+}
+.content li > ul, .content li > ol {
+  margin: 8px 0 8px 6px;
+}
+.cond-label {
+  color: var(--accent-burgundy);
+  font-weight: 700;
+}
+.content li > p {
+  margin-bottom: 6px;
+}
+.content li > p:last-child {
+  margin-bottom: 0;
+}
+
+.viewpoint {
+  border: 1px solid var(--border-main);
+  border-radius: 6px;
+  margin: 16px 0 20px;
+  overflow: hidden;
+  background: #FFFDF8;
+}
+.vp-head {
+  background: var(--bg-header);
+  padding: 10px 16px;
+  border-bottom: 1px solid var(--border-main);
+  display: flex;
+  gap: 10px;
+  align-items: baseline;
+  flex-wrap: wrap;
+}
+.vp-num {
+  font-family: var(--font-serif);
+  font-weight: 700;
+  font-size: 14.5px;
+  color: var(--accent-burgundy);
+  white-space: nowrap;
+}
+.vp-title {
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--text-main);
+}
+.vp-owner {
+  margin-left: auto;
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+.vp-row {
+  display: grid;
+  grid-template-columns: 46px 1fr;
+  gap: 12px;
+  padding: 8px 16px;
+  font-size: 13.5px;
+  line-height: 1.8;
+}
+.vp-row + .vp-row {
+  border-top: 1px dashed var(--border-main);
+}
+.vp-label {
+  font-weight: 700;
+  font-size: 12.5px;
+  color: var(--accent-burgundy);
+  white-space: nowrap;
+  padding-top: 1px;
+}
+.vp-val {
+  color: #2D2726;
+  text-align: justify;
+  min-width: 0;
+}
+.vp-val p {
+  margin: 0;
+  text-align: justify;
+}
+.vp-val code {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  background: #EDE6D8;
+  padding: 2px 6px;
+  border-radius: 3px;
+  color: var(--accent-burgundy);
+}
+@media (max-width: 768px) {
+  .vp-row { grid-template-columns: 40px 1fr; padding: 7px 12px; }
+}
+
+.content blockquote {
+  background: #F3ECE0;
+  border: 1px solid var(--border-main);
+  border-radius: 4px;
+  padding: 14px 20px;
+  margin: 20px 0;
+  font-size: 13.5px;
+  font-style: italic;
+  color: #523E3B;
+}
+
+.content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 24px 0;
+  font-size: 13px;
+  border: 1px solid var(--border-main);
+}
+.content th {
+  background: #ECE4D6;
+  font-family: var(--font-serif);
+  font-weight: 700;
+  color: var(--border-dark);
+  text-align: left;
+  padding: 10px 14px;
+  border: 1px solid var(--border-main);
+}
+.content td {
+  padding: 9px 14px;
+  border: 1px solid var(--border-main);
+}
+.content tr:nth-child(even) {
+  background: #F8F4EC;
+}
+
+.content code {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  background: #EDE6D8;
+  padding: 2px 6px;
+  border-radius: 3px;
+  color: var(--accent-burgundy);
+}
+
+.day-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-main);
+  padding: 20px 24px;
+  margin-bottom: 18px;
+}
+.day-card h3 {
+  font-family: var(--font-serif);
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+.day-card h3 a {
+  color: var(--text-main);
+  text-decoration: none;
+}
+.day-card h3 a:hover {
+  color: var(--accent-burgundy);
+}
+.day-card p {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+.btn {
+  display: inline-flex;
+  padding: 8px 14px;
+  border: 1px solid var(--border-dark);
+  background: var(--bg-surface);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  text-decoration: none;
+  color: var(--text-main);
+  font-weight: 600;
+  transition: all 0.15s;
+}
+.btn:hover {
+  background: var(--bg-subtle);
+}
+.btn.primary {
+  background: var(--border-dark);
+  color: #FFFFFF;
+}
+.btn.primary:hover {
+  background: var(--accent-burgundy);
+  border-color: var(--accent-burgundy);
+}
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <nav class="nav">
+      <div class="brand">
+        <h1>解读君视频日报<span>JIEDU DAILY · 20261104</span></h1>
+      </div>
+      <div class="toc">
+        <h2>全量原文</h2>
+        <a href="#summary" class="active">每日核心总结<span>20261104</span></a>
+        <a href="#note-MH6V-a9k4-4">【2026-11-4最新内容】大佬水皮给出严肃建议： 目前大家千万不要乱抄底 ！政策底都没确认市场底急什么？ 《文字稿件》已经发布于解读君推特X<span>20261104 · MH6V-a9k4-4</span></a>
+        <h2>历史归档</h2>
+        <a href="../../index.html">← 返回历史总览</a>
+        <a href="../20261107/index.html" class="">20261107 <span>1 篇 · 当日归档</span></a><a href="../20261106/index.html" class="">20261106 <span>1 篇 · 当日归档</span></a><a href="../20261105/index.html" class="">20261105 <span>2 篇 · 当日归档</span></a><a href="../20261104/index.html" class="active">20261104 <span>1 篇 · 当日归档</span></a><a href="../20261103/index.html" class="">20261103 <span>2 篇 · 当日归档</span></a><a href="../20261102/index.html" class="">20261102 <span>2 篇 · 当日归档</span></a><a href="../20261101/index.html" class="">20261101 <span>1 篇 · 当日归档</span></a><a href="../20261031/index.html" class="">20261031 <span>1 篇 · 当日归档</span></a><a href="../20261030/index.html" class="">20261030 <span>2 篇 · 当日归档</span></a><a href="../20261028/index.html" class="">20261028 <span>1 篇 · 当日归档</span></a><a href="../20261027/index.html" class="">20261027 <span>1 篇 · 当日归档</span></a><a href="../20261026/index.html" class="">20261026 <span>3 篇 · 当日归档</span></a><a href="../20261024/index.html" class="">20261024 <span>1 篇 · 当日归档</span></a><a href="../20261023/index.html" class="">20261023 <span>3 篇 · 当日归档</span></a><a href="../20261022/index.html" class="">20261022 <span>2 篇 · 当日归档</span></a><a href="../20261021/index.html" class="">20261021 <span>2 篇 · 当日归档</span></a><a href="../20261020/index.html" class="">20261020 <span>1 篇 · 当日归档</span></a><a href="../20261019/index.html" class="">20261019 <span>1 篇 · 当日归档</span></a><a href="../20261018/index.html" class="">20261018 <span>2 篇 · 当日归档</span></a><a href="../20261016/index.html" class="">20261016 <span>1 篇 · 当日归档</span></a><a href="../20261015/index.html" class="">20261015 <span>1 篇 · 当日归档</span></a><a href="../20261014/index.html" class="">20261014 <span>3 篇 · 当日归档</span></a><a href="../20261013/index.html" class="">20261013 <span>2 篇 · 当日归档</span></a><a href="../20261012/index.html" class="">20261012 <span>2 篇 · 当日归档</span></a><a href="../20261011/index.html" class="">20261011 <span>3 篇 · 当日归档</span></a><a href="../20261010/index.html" class="">20261010 <span>9 篇 · 当日归档</span></a><a href="../20261006/index.html" class="">20261006 <span>2 篇 · 当日归档</span></a><a href="../20261005/index.html" class="">20261005 <span>3 篇 · 当日归档</span></a><a href="../20261004/index.html" class="">20261004 <span>1 篇 · 当日归档</span></a><a href="../20260929/index.html" class="">20260929 <span>0 篇 · 当日归档</span></a><a href="../20260928/index.html" class="">20260928 <span>1 篇 · 当日归档</span></a><a href="../20260927/index.html" class="">20260927 <span>6 篇 · 当日归档</span></a><a href="../20260922/index.html" class="">20260922 <span>1 篇 · 当日归档</span></a><a href="../20260921/index.html" class="">20260921 <span>8 篇 · 当日归档</span></a><a href="../20260914/index.html" class="">20260914 <span>6 篇 · 当日归档</span></a><a href="../20260910/index.html" class="">20260910 <span>1 篇 · 当日归档</span></a><a href="../20260908/index.html" class="">20260908 <span>2 篇 · 当日归档</span></a><a href="../20260907/index.html" class="">20260907 <span>2 篇 · 当日归档</span></a><a href="../20260906/index.html" class="">20260906 <span>1 篇 · 当日归档</span></a><a href="../20260905/index.html" class="">20260905 <span>1 篇 · 当日归档</span></a><a href="../20260904/index.html" class="">20260904 <span>2 篇 · 当日归档</span></a><a href="../20260903/index.html" class="">20260903 <span>2 篇 · 当日归档</span></a><a href="../20260902/index.html" class="">20260902 <span>3 篇 · 当日归档</span></a><a href="../20260831/index.html" class="">20260831 <span>2 篇 · 当日归档</span></a><a href="../20260829/index.html" class="">20260829 <span>1 篇 · 当日归档</span></a><a href="../20260828/index.html" class="">20260828 <span>1 篇 · 当日归档</span></a><a href="../20260825/index.html" class="">20260825 <span>1 篇 · 当日归档</span></a><a href="../20260824/index.html" class="">20260824 <span>2 篇 · 当日归档</span></a><a href="../20260823/index.html" class="">20260823 <span>1 篇 · 当日归档</span></a><a href="../20260821/index.html" class="">20260821 <span>3 篇 · 当日归档</span></a>
+      </div>
+    </nav>
+    <main class="main">
+      <div class="gazette-header">
+        <div>
+          <h1>金融经纬 · 每日纪要</h1>
+          <div class="gazette-meta">JIEDU DAILY FINANCIAL GAZETTE · VOL. 20261104</div>
+        </div>
+        <div class="gazette-meta">1 ARTICLES ARCHIVED</div>
+      </div>
+      
+<section id="summary" class="summary-card">
+  <div class="summary-head">
+    <div>
+      <h3>每日总结 · 20261104</h3>
+      <div class="meta">daily/20261104/20261104_解读君视频总结.md</div>
+    </div>
+  </div>
+  <div class="content"><h1 id="_1">解读君视频摘要</h1>
+<h2 id="1-2026-11-4-x">1. <a href="#note-MH6V-a9k4-4">【2026-11-4最新内容】大佬水皮给出严肃建议： 目前大家千万不要乱抄底 ！政策底都没确认市场底急什么？ 《文字稿件》已经发布于解读君推特X</a></h2>
+<blockquote>
+<p>一句话：政策底未确认别乱抄底，汇金未返场，科技股不追，低位蓝筹只做右侧</p>
+</blockquote>
+<ul>
+<li><strong>结论1：政策底尚未确认，更谈不上市场底，当前千万不要乱抄底。</strong> 适用条件/边界：仅适用于政策市逻辑下、指数仍在持续创新低的左侧阶段；一旦出现官宣式救市配套则结论失效。</li>
+<li><strong>结论2：汇金公司尚未实质返场，真救市一定会大张旗鼓官宣。</strong> 适用条件/边界：以汇金亲口宣布及央行支持表态、ETF持续大幅放量为确认标准；间歇性尾盘放量不算。</li>
+<li><strong>结论3：科技股高位不追不抄底，后续最多看反弹反抽。</strong> 适用条件/边界：针对过去两年涨幅巨大、估值透支的科技品种；不适用于低位低估值品种。</li>
+<li><strong>结论4：非科技低估值大蓝筹采取守株待兔、只做右侧策略。</strong> 适用条件/边界：适用于手中有低估值、业绩相对稳定品种且指数未止跌阶段；需等底部确定、轮动反弹再做换仓梳理，不现价追高已涨高的护盘品种。</li>
+</ul></div>
+</section>
+
+      
+<article id="note-MH6V-a9k4-4" class="article">
+  <div class="article-head">
+    <div>
+      <h3><a href="https://www.youtube.com/watch?v=MH6V-a9k4-4" target="_blank" rel="noreferrer">【2026-11-4最新内容】大佬水皮给出严肃建议： 目前大家千万不要乱抄底 ！政策底都没确认市场底急什么？ 《文字稿件》已经发布于解读君推特X</a></h3>
+      <div class="meta">20261104 · MH6V-a9k4-4 · <a href="https://www.youtube.com/watch?v=MH6V-a9k4-4" target="_blank" rel="noreferrer">观看 YouTube 原片 ↗</a></div>
+    </div>
+  </div>
+  <div class="content"><h1 id="2026-11-4-x">结构化笔记｜【2026-11-4最新内容】大佬水皮给出严肃建议： 目前大家千万不要乱抄底 ！政策底都没确认市场底急什么？ 《文字稿件》已经发布于解读君推特X</h1>
+<h2 id="1">1. 核心结论</h2>
+<ul>
+<li><strong>结论1：政策底尚未确认，更谈不上市场底，当前千万不要乱抄底。</strong> 适用条件/边界：仅适用于政策市逻辑下、指数仍在持续创新低的左侧阶段；一旦出现官宣式救市配套则结论失效。</li>
+<li><strong>结论2：汇金公司尚未实质返场，真救市一定会大张旗鼓官宣。</strong> 适用条件/边界：以汇金亲口宣布及央行支持表态、ETF持续大幅放量为确认标准；间歇性尾盘放量不算。</li>
+<li><strong>结论3：科技股高位不追不抄底，后续最多看反弹反抽。</strong> 适用条件/边界：针对过去两年涨幅巨大、估值透支的科技品种；不适用于低位低估值品种。</li>
+<li><strong>结论4：非科技低估值大蓝筹采取守株待兔、只做右侧策略。</strong> 适用条件/边界：适用于手中有低估值、业绩相对稳定品种且指数未止跌阶段；需等底部确定、轮动反弹再做换仓梳理，不现价追高已涨高的护盘品种。</li>
+</ul>
+<h2 id="2">2. 专家观点与逻辑链</h2>
+<h3 id="1_1">观点 1：政策底无法确认，座谈会不能作为依据</h3>
+<ul>
+<li><strong>观点归属：</strong> 水皮</li>
+<li><strong>结论：</strong> 现在不能确认是政策底。</li>
+<li><strong>前提事实：</strong> 7月20日座谈会有配套：国新系宣布百亿级增持、保险联合声明、部分ETF放量；10月10日第二次座谈会仅座谈、无其他配套；第二次座谈会后首个交易日低开低走。</li>
+<li><strong>推导逻辑：</strong> <code>7月座谈有配套曾引发反弹 → 10月二次座谈无配套且市场不认可 → 座谈会可能变为常规倾听动作 → 不能以单次座谈会判断政策底</code></li>
+<li><strong>隐含假设：</strong> 中国股市是政策市，政策底必须先于市场底；真政策底必须有资金+官宣式配套。</li>
+<li><strong>反例 / 证伪条件：</strong> 若出现类似2025年4月7日式宣告、汇金宣布返场、央行明确支持、配套资金大规模进入，则证伪。</li>
+</ul>
+<h3 id="2etf">观点 2：汇金尚未进场，ETF数据不支持救市论</h3>
+<ul>
+<li><strong>观点归属：</strong> 水皮</li>
+<li><strong>结论：</strong> 当前放量不是汇金系统性救市，属想当然。</li>
+<li><strong>前提事实：</strong> 沪深300ETF份额从约183亿份增至363亿份、约增700亿规模，但近期单日增量仅10亿份左右、尾盘放量不能持续；创业板ETF、科创50ETF份额同期反而减少；汇金未宣布增持金额和返场。</li>
+<li><strong>推导逻辑：</strong> <code>ETF仅间歇性放量且核心宽基外份额减少 → 汇金未自我宣布 → 真救市必锣鼓喧天官宣以传导信号 → 当前无真救市</code></li>
+<li><strong>隐含假设：</strong> ETF份额变化可近似跟踪救市资金；汇金救市必然公开宣传而非悄悄进场。</li>
+<li><strong>反例 / 证伪条件：</strong> 若汇金/新闻联播官宣进场、沪深300等三大品种份额持续大幅增长、指数企稳回升，则证伪。</li>
+</ul>
+<h3 id="3">观点 3：市场底更需等待，只做右侧不做左侧</h3>
+<ul>
+<li><strong>观点归属：</strong> 水皮</li>
+<li><strong>结论：</strong> 宁可错过不要做错，欲期追涨杀跌不如守株待兔，另做右侧不做左侧。</li>
+<li><strong>前提事实：</strong> 上证、深成指、创业板、科创50仍每天创新低；政策底未确认；历史上政策底先于市场底。</li>
+<li><strong>推导逻辑：</strong> <code>政策底未确认 → 市场底只能更晚 → 下跌途中买入即左侧、次日可能更低 → 等待确定性底部出现后买入即右侧</code></li>
+<li><strong>隐含假设：</strong> 指数持续新低即未见底；错过成本远小于做错被套成本；市场明天仍有更低买点机会。</li>
+<li><strong>反例 / 证伪条件：</strong> 若指数止跌走出V形反转、政策底+市场底被回头确认，则左侧提前买入反而正确，结论失效。</li>
+</ul>
+<h3 id="4">观点 4：科技与高股息分化，低估值蓝筹存在比价机会</h3>
+<ul>
+<li><strong>观点归属：</strong> 水皮</li>
+<li><strong>结论：</strong> 不追科技股，不现价追已涨高的护盘品种；等非科技低估值大蓝筹，重视银行与保险券商的估值比价。</li>
+<li><strong>前提事实：</strong> 部分科技股过去两年涨幅十余倍至20倍；银行涨约18%-20%、移动涨10%几、中石油涨35%以上、神华从37涨至51、长江电力等护盘上涨；四大行市盈率至八九倍，平安约7倍、太保约5倍多，三季报利空落地后低开高走放量。</li>
+<li><strong>推导逻辑：</strong> <code>科技涨多跌的概率与空间远大于涨 → 追高赔率不对 → 护盘品种已涨高性价比下降 → 同为大蓝筹的保险券商估值更低位置更低 → 回暖企稳时比价优势显现</code></li>
+<li><strong>隐含假设：</strong> 涨多了必跌是常识；护盘资金推高红利品种不可持续追高；保险三季度业绩受市场波动拖累、四季度及明年初负面影响不会更大。</li>
+<li><strong>反例 / 证伪条件：</strong> 若科技以业绩消化估值再创新高、或保险券商四季报继续大幅恶化、或市场回暖优先仍是科技领涨，则证伪。</li>
+</ul>
+<h2 id="3_1">3. 投资研究指引</h2>
+<blockquote>
+<p>记录视频所表达的研究方向，不构成买卖建议；没有明确投资含义时如实写“未给出可执行指引”。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>主题 / 对象</th>
+<th>视频隐含或明确的方向</th>
+<th>为什么</th>
+<th>正向验证信号</th>
+<th>风险 / 失效信号</th>
+<th>需补的证据</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>大盘抄底时机</td>
+<td>明确偏空等待：不乱抄底、只做右侧</td>
+<td>政策底未确认、指数持续新低，左侧易买在下跌途中</td>
+<td>官宣救市+持续放量+指数止跌走V</td>
+<td>指数提前见底反转踏空</td>
+<td>政策表态、汇金公告、ETF持续份额数据</td>
+</tr>
+<tr>
+<td>科技股</td>
+<td>明确回避追高：最多看反弹反抽</td>
+<td>前期涨幅巨大、估值与科技前景混为一谈风险大</td>
+<td>反弹减弱、估值回落</td>
+<td>科技业绩兑现再走主升</td>
+<td>涨幅、估值、业绩兑现度</td>
+</tr>
+<tr>
+<td>银行、移动、电力、煤炭、石油等护盘高股息</td>
+<td>不建议现价追</td>
+<td>已涨幅大、性价比下降，属护盘带指数品种</td>
+<td>回调至低位如神华回40以下</td>
+<td>继续护盘上涨</td>
+<td>股息率、市盈率、资金护盘持续性</td>
+</tr>
+<tr>
+<td>保险、证券等非科技低估值大蓝筹</td>
+<td>守株待兔等待目标出现、不盲目割肉、等反弹轮动再梳理</td>
+<td>位置低、估值低于银行，三季报利空释放后低开高走</td>
+<td>三季报落地放量企稳、四季度业绩环比不更差</td>
+<td>业绩继续恶化、市场继续下行拖累</td>
+<td>中国人寿、新华三季报、四季度业绩、估值比较</td>
+</tr>
+<tr>
+<td>汇金救市跟踪</td>
+<td>观察等待，未给出可执行指引</td>
+<td>需等官方宣布和持续放量确认</td>
+<td>新闻联播/汇金公告、央行支持表态</td>
+<td>间歇放量误判为救市</td>
+<td>汇金增持公告、ETF份额连续数据</td>
+</tr>
+</tbody>
+</table></div>
+</article>
+
+      <div class="day-card">
+        <p>归档路径 <code>daily/20261104/</code> · <a href="../../index.html">返回历史总览</a> · <a href="./index.html">本日目录</a></p>
+      </div>
+    </main>
+  </div>
+</body>
+</html>
