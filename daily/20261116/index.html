@@ -1,0 +1,1590 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>解读君视频日报 · 20261116</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@400;600;700;900&display=swap" rel="stylesheet">
+  <style>
+:root {
+  --bg-page: #FBF8F2;
+  --bg-surface: #FFFDF9;
+  --bg-header: #F4EFE6;
+  --bg-subtle: #F0EADF;
+  --border-main: #E5DDCD;
+  --border-dark: #2B2625;
+  --text-main: #231F20;
+  --text-muted: #5C554E;
+  --text-light: #8E8478;
+  --accent-burgundy: #8B261D;
+  --accent-amber: #B45309;
+  --font-serif: 'Noto Serif SC', Georgia, 'Times New Roman', serif;
+  --font-sans: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'IBM Plex Mono', monospace;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 15px; }
+body {
+  background: var(--bg-page);
+  color: var(--text-main);
+  font-family: var(--font-sans);
+  line-height: 1.85;
+  -webkit-font-smoothing: antialiased;
+}
+
+.wrap {
+  max-width: 1300px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 290px 1fr;
+  min-height: 100vh;
+  border-left: 2px solid var(--border-dark);
+  border-right: 2px solid var(--border-dark);
+  background: var(--bg-surface);
+}
+
+@media (max-width: 1024px) {
+  .wrap { grid-template-columns: 1fr; border: none; }
+}
+
+/* Sidebar */
+.nav {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow-y: auto;
+  padding: 32px 24px;
+  background: #F7F3EB;
+  border-right: 1px solid var(--border-main);
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+@media (max-width: 1024px) {
+  .nav { position: relative; height: auto; border-right: none; border-bottom: 2px solid var(--border-dark); }
+}
+
+.brand {
+  padding-bottom: 18px;
+  border-bottom: 2px solid var(--border-dark);
+}
+.brand h1 {
+  font-family: var(--font-serif);
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: var(--border-dark);
+}
+.brand h1 span {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent-burgundy);
+  margin-top: 4px;
+}
+
+.toc h2 {
+  font-family: var(--font-serif);
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--border-dark);
+  border-bottom: 1px solid var(--border-main);
+  padding-bottom: 6px;
+  margin: 16px 0 10px;
+}
+
+.toc a {
+  display: flex;
+  flex-direction: column;
+  padding: 8px 10px;
+  text-decoration: none;
+  color: var(--text-main);
+  border: 1px solid transparent;
+  border-radius: 4px;
+  transition: all 0.15s;
+  font-size: 13px;
+  line-height: 1.4;
+  margin-bottom: 4px;
+}
+.toc a:hover {
+  background: var(--bg-subtle);
+  border-color: var(--border-main);
+}
+.toc a.active {
+  background: #EFE8DA;
+  border-color: var(--border-main);
+  color: var(--accent-burgundy);
+  font-weight: 600;
+}
+.toc a span {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+.nav-desc {
+  font-size: 11px;
+  font-family: var(--font-mono);
+  color: var(--text-muted);
+  line-height: 1.6;
+  padding: 4px 6px;
+}
+
+/* Main Area */
+.main {
+  padding: 40px 48px 80px;
+  max-width: 960px;
+}
+
+@media (max-width: 768px) {
+  .main { padding: 24px 18px 40px; }
+}
+
+.gazette-header {
+  border-top: 3px double var(--border-dark);
+  border-bottom: 1px solid var(--border-dark);
+  padding: 20px 0;
+  margin-bottom: 36px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+.gazette-header h1 {
+  font-family: var(--font-serif);
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--border-dark);
+}
+.gazette-header .gazette-meta {
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.summary-card, .article {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-main);
+  margin-bottom: 40px;
+}
+
+.summary-head, .article-head {
+  background: var(--bg-header);
+  padding: 20px 26px;
+  border-bottom: 1px solid var(--border-main);
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+}
+.article-head h3, .summary-head h3 {
+  font-family: var(--font-serif);
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text-main);
+  line-height: 1.35;
+}
+.article-head h3 a, .summary-head h3 a {
+  color: inherit;
+  text-decoration: none;
+}
+.article-head h3 a:hover, .summary-head h3 a:hover {
+  color: var(--accent-burgundy);
+}
+
+.meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-top: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.meta a {
+  color: var(--accent-burgundy);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.content {
+  padding: 32px 36px;
+  font-size: 14.5px;
+  line-height: 1.9;
+  color: #2D2726;
+}
+
+@media (max-width: 768px) {
+  .content { padding: 20px 18px; }
+  .summary-head, .article-head { padding: 16px 18px; }
+}
+
+.content h1 {
+  font-family: var(--font-serif);
+  font-size: 22px;
+  font-weight: 700;
+  margin: 0 0 18px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border-dark);
+}
+
+.content h2 {
+  font-family: var(--font-serif);
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--accent-burgundy);
+  background: var(--bg-header);
+  border: 1px solid var(--border-main);
+  border-radius: 4px;
+  padding: 8px 14px;
+  margin: 32px 0 14px;
+  letter-spacing: 0.02em;
+}
+
+.content h3 {
+  font-family: var(--font-serif);
+  font-size: 14.5px;
+  font-weight: 700;
+  margin: 22px 0 10px;
+  color: var(--text-main);
+}
+
+.content p {
+  margin-bottom: 16px;
+  text-align: justify;
+}
+
+.content strong {
+  font-weight: 700;
+  color: #1A1616;
+}
+
+.content ul, .content ol {
+  margin: 12px 0 18px 6px;
+  padding-left: 22px;
+}
+.content li {
+  margin-bottom: 8px;
+  line-height: 1.8;
+}
+.content ul > li::marker {
+  content: "▪ ";
+  color: var(--accent-burgundy);
+}
+.content ol > li::marker {
+  color: var(--accent-burgundy);
+  font-weight: 700;
+  font-family: var(--font-mono);
+}
+.content li > ul, .content li > ol {
+  margin: 8px 0 8px 6px;
+}
+.cond-label {
+  color: var(--accent-burgundy);
+  font-weight: 700;
+}
+.content li > p {
+  margin-bottom: 6px;
+}
+.content li > p:last-child {
+  margin-bottom: 0;
+}
+
+.viewpoint {
+  border: 1px solid var(--border-main);
+  border-radius: 6px;
+  margin: 16px 0 20px;
+  overflow: hidden;
+  background: #FFFDF8;
+}
+.vp-head {
+  background: var(--bg-header);
+  padding: 10px 16px;
+  border-bottom: 1px solid var(--border-main);
+  display: flex;
+  gap: 10px;
+  align-items: baseline;
+  flex-wrap: wrap;
+}
+.vp-num {
+  font-family: var(--font-serif);
+  font-weight: 700;
+  font-size: 14.5px;
+  color: var(--accent-burgundy);
+  white-space: nowrap;
+}
+.vp-title {
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--text-main);
+}
+.vp-owner {
+  margin-left: auto;
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+.vp-row {
+  display: grid;
+  grid-template-columns: 46px 1fr;
+  gap: 12px;
+  padding: 8px 16px;
+  font-size: 13.5px;
+  line-height: 1.8;
+}
+.vp-row + .vp-row {
+  border-top: 1px dashed var(--border-main);
+}
+.vp-label {
+  font-weight: 700;
+  font-size: 12.5px;
+  color: var(--accent-burgundy);
+  white-space: nowrap;
+  padding-top: 1px;
+}
+.vp-val {
+  color: #2D2726;
+  text-align: justify;
+  min-width: 0;
+}
+.vp-val p {
+  margin: 0;
+  text-align: justify;
+}
+.vp-val code {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  background: #EDE6D8;
+  padding: 2px 6px;
+  border-radius: 3px;
+  color: var(--accent-burgundy);
+}
+@media (max-width: 768px) {
+  .vp-row { grid-template-columns: 40px 1fr; padding: 7px 12px; }
+}
+
+.content blockquote {
+  background: #F3ECE0;
+  border: 1px solid var(--border-main);
+  border-radius: 4px;
+  padding: 14px 20px;
+  margin: 20px 0;
+  font-size: 13.5px;
+  font-style: italic;
+  color: #523E3B;
+}
+
+.content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 24px 0;
+  font-size: 13px;
+  border: 1px solid var(--border-main);
+}
+.content th {
+  background: #ECE4D6;
+  font-family: var(--font-serif);
+  font-weight: 700;
+  color: var(--border-dark);
+  text-align: left;
+  padding: 10px 14px;
+  border: 1px solid var(--border-main);
+}
+.content td {
+  padding: 9px 14px;
+  border: 1px solid var(--border-main);
+}
+.content tr:nth-child(even) {
+  background: #F8F4EC;
+}
+
+.content code {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  background: #EDE6D8;
+  padding: 2px 6px;
+  border-radius: 3px;
+  color: var(--accent-burgundy);
+}
+
+.day-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-main);
+  padding: 20px 24px;
+  margin-bottom: 18px;
+}
+.day-card h3 {
+  font-family: var(--font-serif);
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+.day-card h3 a {
+  color: var(--text-main);
+  text-decoration: none;
+}
+.day-card h3 a:hover {
+  color: var(--accent-burgundy);
+}
+.day-card p {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+.btn {
+  display: inline-flex;
+  padding: 8px 14px;
+  border: 1px solid var(--border-dark);
+  background: var(--bg-surface);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  text-decoration: none;
+  color: var(--text-main);
+  font-weight: 600;
+  transition: all 0.15s;
+}
+.btn:hover {
+  background: var(--bg-subtle);
+}
+.btn.primary {
+  background: var(--border-dark);
+  color: #FFFFFF;
+}
+.btn.primary:hover {
+  background: var(--accent-burgundy);
+  border-color: var(--accent-burgundy);
+}
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <nav class="nav">
+      <div class="brand">
+        <h1>解读君视频日报<span>JIEDU DAILY · 20261116</span></h1>
+      </div>
+      <div class="toc">
+        <h2>全量原文</h2>
+        <a href="#summary" class="active">每日核心总结<span>20261116</span></a>
+        <a href="#note-X00irf0nYeY">20261116 大摩邢自强：十五五开局科技强于民生，2027可能还是转型之年Morgan Stanley’s Xing Ziqiang: In the First Year of the 15th<span>20261116 · X00irf0nYeY</span></a><a href="#note-nFI9OtO13H0">【2026-11-15最新】华创张瑜最新： 目前整体居民的风险偏好又下去了 中选之后先做均衡才是策略<span>20261116 · nFI9OtO13H0</span></a><a href="#note-GVMP2x9XBO0">【2026-11-16最新】《大摩策略会发布蓝皮书》2027或仍是转型之年 ！ 邢自强 王滢 科技与民生   【文字稿件已经发布于解读君推特X】<span>20261116 · GVMP2x9XBO0</span></a><a href="#note-M-tb9CJFDog">【重磅内容】大摩闭门会议（11-16）｜2027全球经济和市场展望，看好美股但对中国维持中性<span>20261116 · M-tb9CJFDog</span></a><a href="#note-M903a7EVp-w">大摩互联网团队深度调研科技行业分析：电商更悲观了，首选阿里看的是AI （美团、拼多多下调至标配）<span>20261116 · M903a7EVp-w</span></a>
+        <h2>历史归档</h2>
+        <a href="../../index.html">← 返回历史总览</a>
+        <a href="../20261117/index.html" class="">20261117 <span>1 篇 · 当日归档</span></a><a href="../20261116/index.html" class="active">20261116 <span>5 篇 · 当日归档</span></a><a href="../20261115/index.html" class="">20261115 <span>1 篇 · 当日归档</span></a><a href="../20261113/index.html" class="">20261113 <span>1 篇 · 当日归档</span></a><a href="../20261112/index.html" class="">20261112 <span>1 篇 · 当日归档</span></a><a href="../20261111/index.html" class="">20261111 <span>1 篇 · 当日归档</span></a><a href="../20261110/index.html" class="">20261110 <span>2 篇 · 当日归档</span></a><a href="../20261109/index.html" class="">20261109 <span>2 篇 · 当日归档</span></a><a href="../20261108/index.html" class="">20261108 <span>1 篇 · 当日归档</span></a><a href="../20261107/index.html" class="">20261107 <span>1 篇 · 当日归档</span></a><a href="../20261106/index.html" class="">20261106 <span>1 篇 · 当日归档</span></a><a href="../20261105/index.html" class="">20261105 <span>2 篇 · 当日归档</span></a><a href="../20261104/index.html" class="">20261104 <span>1 篇 · 当日归档</span></a><a href="../20261103/index.html" class="">20261103 <span>2 篇 · 当日归档</span></a><a href="../20261102/index.html" class="">20261102 <span>2 篇 · 当日归档</span></a><a href="../20261101/index.html" class="">20261101 <span>1 篇 · 当日归档</span></a><a href="../20261031/index.html" class="">20261031 <span>1 篇 · 当日归档</span></a><a href="../20261030/index.html" class="">20261030 <span>2 篇 · 当日归档</span></a><a href="../20261028/index.html" class="">20261028 <span>1 篇 · 当日归档</span></a><a href="../20261027/index.html" class="">20261027 <span>1 篇 · 当日归档</span></a><a href="../20261026/index.html" class="">20261026 <span>3 篇 · 当日归档</span></a><a href="../20261024/index.html" class="">20261024 <span>1 篇 · 当日归档</span></a><a href="../20261023/index.html" class="">20261023 <span>3 篇 · 当日归档</span></a><a href="../20261022/index.html" class="">20261022 <span>2 篇 · 当日归档</span></a><a href="../20261021/index.html" class="">20261021 <span>2 篇 · 当日归档</span></a><a href="../20261020/index.html" class="">20261020 <span>1 篇 · 当日归档</span></a><a href="../20261019/index.html" class="">20261019 <span>1 篇 · 当日归档</span></a><a href="../20261018/index.html" class="">20261018 <span>2 篇 · 当日归档</span></a><a href="../20261016/index.html" class="">20261016 <span>1 篇 · 当日归档</span></a><a href="../20261015/index.html" class="">20261015 <span>1 篇 · 当日归档</span></a><a href="../20261014/index.html" class="">20261014 <span>3 篇 · 当日归档</span></a><a href="../20261013/index.html" class="">20261013 <span>2 篇 · 当日归档</span></a><a href="../20261012/index.html" class="">20261012 <span>2 篇 · 当日归档</span></a><a href="../20261011/index.html" class="">20261011 <span>3 篇 · 当日归档</span></a><a href="../20261010/index.html" class="">20261010 <span>9 篇 · 当日归档</span></a><a href="../20261006/index.html" class="">20261006 <span>2 篇 · 当日归档</span></a><a href="../20261005/index.html" class="">20261005 <span>3 篇 · 当日归档</span></a><a href="../20261004/index.html" class="">20261004 <span>1 篇 · 当日归档</span></a><a href="../20260929/index.html" class="">20260929 <span>0 篇 · 当日归档</span></a><a href="../20260928/index.html" class="">20260928 <span>1 篇 · 当日归档</span></a><a href="../20260927/index.html" class="">20260927 <span>6 篇 · 当日归档</span></a><a href="../20260922/index.html" class="">20260922 <span>1 篇 · 当日归档</span></a><a href="../20260921/index.html" class="">20260921 <span>8 篇 · 当日归档</span></a><a href="../20260914/index.html" class="">20260914 <span>6 篇 · 当日归档</span></a><a href="../20260910/index.html" class="">20260910 <span>1 篇 · 当日归档</span></a><a href="../20260908/index.html" class="">20260908 <span>2 篇 · 当日归档</span></a><a href="../20260907/index.html" class="">20260907 <span>2 篇 · 当日归档</span></a><a href="../20260906/index.html" class="">20260906 <span>1 篇 · 当日归档</span></a><a href="../20260905/index.html" class="">20260905 <span>1 篇 · 当日归档</span></a><a href="../20260904/index.html" class="">20260904 <span>2 篇 · 当日归档</span></a><a href="../20260903/index.html" class="">20260903 <span>2 篇 · 当日归档</span></a><a href="../20260902/index.html" class="">20260902 <span>3 篇 · 当日归档</span></a><a href="../20260831/index.html" class="">20260831 <span>2 篇 · 当日归档</span></a><a href="../20260829/index.html" class="">20260829 <span>1 篇 · 当日归档</span></a><a href="../20260828/index.html" class="">20260828 <span>1 篇 · 当日归档</span></a><a href="../20260825/index.html" class="">20260825 <span>1 篇 · 当日归档</span></a><a href="../20260824/index.html" class="">20260824 <span>2 篇 · 当日归档</span></a><a href="../20260823/index.html" class="">20260823 <span>1 篇 · 当日归档</span></a><a href="../20260821/index.html" class="">20260821 <span>3 篇 · 当日归档</span></a>
+      </div>
+    </nav>
+    <main class="main">
+      <div class="gazette-header">
+        <div>
+          <h1>金融经纬 · 每日纪要</h1>
+          <div class="gazette-meta">JIEDU DAILY FINANCIAL GAZETTE · VOL. 20261116</div>
+        </div>
+        <div class="gazette-meta">5 ARTICLES ARCHIVED</div>
+      </div>
+      
+<section id="summary" class="summary-card">
+  <div class="summary-head">
+    <div>
+      <h3>每日总结 · 20261116</h3>
+      <div class="meta">daily/20261116/20261116_解读君视频总结.md</div>
+    </div>
+  </div>
+  <div class="content"><h1 id="_1">解读君视频摘要</h1>
+<h2 id="1-20261116-2027morgan-stanleys-xing-ziqiang-in-the-first-year-of-the-15th">1. <a href="#note-X00irf0nYeY">20261116 大摩邢自强：十五五开局科技强于民生，2027可能还是转型之年Morgan Stanley’s Xing Ziqiang: In the First Year of the 15th</a></h2>
+<blockquote>
+<p>一句话：十五五开局科技强民生弱，分化或再持续两年，2028至2029年才是关键收敛窗口，财政宜转向投资于人。</p>
+</blockquote>
+<ol>
+<li><strong>十五五开局第一年（2026）呈现“科技强、民生弱”的阶段性失衡：出口强、内需弱。</strong> 结论：AI 与能源转型驱动的全球投资超级周期（数据中心、AI 算力、电网、电力设备）使中国出口同比动辄约 20%，而社零同比连续多月仅 1% 出头；<br><span class="cond-label">边界：</span>这是在外需超预期强、GDP 目标基本可达、财政与金融资源有限且优先级偏向产业安全与能源自立的条件下的结果，并非规划“科技与民生并重”意图的否定；只要外需回落或民生改革加速，这一落差的方向可能改变。</li>
+<li><strong>“科技与民生二选一”被明确判为错误的思维定式，消费不只是收入的结果。</strong> 结论：政策可通过就业结构（服务业为劳动密集型，就业溢出大于资本密集的硬科技）和二次分配（税收与五险一金之后更多投向边际消费倾向更高的中低收入群体）影响收入；消费—企业卖得上价—研发创新构成正向循环，只盯供给端等于没想清产业创新生态；<br><span class="cond-label">边界：</span>该判断成立的前提是财政资源并非绝对硬约束、且结构性改革可推进，短期“低垂果实”仍偏少。</li>
+<li><strong>科技红利惠及全民依赖三条路径加二次分配，但当前科技力量仍“单薄”。</strong> 结论：路径为（a）股市财富效应（中国居民资产以无风险存款为主、股市配置比例低，改善空间大）、（b）国有资本与上市公司红利上缴、充实全国社保基金、（c）对科技企业家与新富群体高端消费（教育、医疗、娱乐）的服务业开放与统筹；叠加中国“决策一条心”在二次分配上的效率优势；<br><span class="cond-label">边界：</span>前提是科技进步足够广谱，仅靠少数亮点无法带动全社会收入与消费，因此短期不能把股市财富效应当作普惠收入来源。</li>
+<li><strong>K 型分化或再持续约两年，2028—2029 年是关键收敛窗口。</strong> 结论：AI 工业革命当前对中国 GDP 的年度贡献仍有限，2028 年后逐步起飞、2030 年后对就业与收入改善更明显；随着过剩产能消化、产业政策与科技政策优化、社会福利改革到位，向上的一批力量增强，K 型有望向“爱心型/尖顶型”收敛；<br><span class="cond-label">边界：</span>这是条件性预测而非既成事实，若财政顺周期收紧形成“合成谬误”、低物价循环被延长，分化会延长、收敛推后，甚至走向更极端的 K。</li>
+<li><strong>政策取向：不宜再来一次 4 万亿式大水漫灌，但“924 式”协调行动与财政转向“投资于人”有价值。</strong> 结论：人口老化与城市化放慢使投资边际回报下降（约需 6—7 个点投资增长才换来 1 个点 GDP），传统铁公基与产能刺激得不偿失；有效部分是跨部门协调提振信心、准财政资金支持股市与长期资金入市、近 10 万亿地方债置换纾困、广义财政赤字提升约 3 个百分点；未来财政应从“资金跟着项目走”转向“跟着民生福利支出走”（按揭贴息、社保、养老），由中央政府扩表修复居民与企业资产负债表；<br><span class="cond-label">边界：</span>受年初预算安排与“合格项目”储备约束，2026 年 9 月底落地的按揭贴息仅覆盖总价 150 万元以下首套、年支出 100 多亿元，远低于其建议的每年 4000 亿元量级，力度与覆盖面仍取决于后续预算空间。</li>
+</ol>
+<h2 id="2-2026-11-15">2. <a href="#note-nFI9OtO13H0">【2026-11-15最新】华创张瑜最新： 目前整体居民的风险偏好又下去了 中选之后先做均衡才是策略</a></h2>
+<blockquote>
+<p>一句话：居民风险偏好全面下行是核心约束，股市反弹已至中段宜降锐度做均衡，红利待回调加仓，债市逢高布局，房价锚在二手与总需求。</p>
+</blockquote>
+<ol>
+<li><strong>居民部门再度进入“预期不稳定、风险偏好全面下行”状态，这是评估一切政策效果的核心约束。</strong> 四条证据同向：二季度起居民贷款对社融拉动转负（消费贷、按揭、经营贷逐月少增，属绝对缩表）；5月起新增居民存款中定存占比上升；二、三季度消费倾向回落至近6年低位（三季度仅高于2020、接近2022）；上市公司人均薪酬与农民工工资增速仅从约2%回到约3%，明显跟不上名义GDP两个点以上的修复与利润增速回升。<strong>边界：</strong> 该判断以居民信贷需求、消费倾向、收入预期三项未出现连续2–3个月企稳为前提；任一环节连续改善即需重估。</li>
+<li><strong>股市处于反弹“中段”而非起点，拔估值已变得困难，策略上应借反弹降锐度、促均衡。</strong> 本轮反弹被定性为“宏微观流动性缓解后的估值修复”，12月需防美国通胀粘性、金融条件再度收紧，以及中选后政策不确定性常态化。<strong>边界：</strong> 若12月加息落地后金融条件反而放松、或AI业绩超预期，则“中段”判断偏保守；结构上仍围绕AI硬件，进攻看国产替代/AI应用与困境反转。</li>
+<li><strong>红利是2–3年维度的战略底仓，但未来12个月需等风险溢价回落再加大配置。</strong> 收益拆解显示现金分红贡献约45%、盈利约25%、红利再投约21%、无风险利率约18%，风险溢价与调仓为负贡献；据此测算未来一年回报约2%–4%，乐观9%–11%，悲观-2%至-4%；若出现约10%回调、股息率增厚0.2–0.3个百分点，性价比显著抬升。<strong>边界：</strong> 前提是成分股分红稳定、盈利波动可控、无风险利率不大幅上行。</li>
+<li><strong>债市中期友好、短期有扰动：政策利率换锚带动资金中枢下移约10BP，但年末止盈赎回与政府债免税政策调整预期压制情绪，宜逢高布局。</strong> 换锚后隔夜逆回购1.25%成为主要政策利率，DR001运行区间由1.15%–1.65%改为1.0%–1.5%，中枢从约1.35%–1.4%降至约1.25%–1.3%。<strong>边界：</strong> 10年国债1.62%、30年约2.08%被视为配置盘有效窗口，但若赎回负反馈扩散至利率品或央行数量投放转紧，则下移逻辑失效。</li>
+<li><strong>“新房供地减少→明年房价止跌”的推论不成立：新房只能决定边际溢价，价格锚在二手房与总需求。</strong> 供地较峰值降约75%，但核心城市核心区新房库存仍在增加、今年开发商推盘密集度低于去年；在人口不增、城市不再扩张的条件下，新增住宅需求极小。<strong>边界：</strong> 若核心城市人口重新净流入、二手房价企稳回升或库存显著去化，则该结论需修正；地产股机会在于“选地块赚钱”的alpha（如建发国际）与红利属性标的（如贝壳）。</li>
+</ol>
+<h2 id="3-2026-11-162027-x">3. <a href="#note-GVMP2x9XBO0">【2026-11-16最新】《大摩策略会发布蓝皮书》2027或仍是转型之年 ！ 邢自强 王滢 科技与民生   【文字稿件已经发布于解读君推特X】</a></h2>
+<blockquote>
+<p>一句话：大摩认为2027年仍是转型调整年、内需偏弱，全球风险资产最大超配但中国股票仅平配</p>
+</blockquote>
+<ul>
+<li><strong>2027年仍是转型调整年，不是全面通缩年。</strong> 大摩基准情形为2027年实际GDP约4.4%、官方目标约4.5%，内需增速由3.5%降至3.1%，名义GDP仍受准通缩约束；该判断成立的前提是外需与AI资本开支不明显失速、政策不搞强刺激。若财政/消费政策超预期或出口大幅上修，则“弱内需”判断需调整。</li>
+<li><strong>全球风险资产被提到最大超配，但中国股票暂不超配。</strong> 多资产组合中股票加仓15个百分点至70%，超配美国、日本、欧洲，新兴市场平配，中国维持平配/持有；前提是AI资本开支不大幅下修、美国2027年盈利增速约14%。若AI资本开支推迟、盈利预期下修或中美科技限制急剧升级，该配置会失效。</li>
+<li><strong>中国供给侧有三条结构性支撑，但2027年不足以对冲内需。</strong> 全球AI基建与能源转型超级周期、物理AI/工业5.0、投资从“扩产”转向“存量改造”是中期积极因素；条件是全球资本开支兑现、工业5.0投资真实落地。若出口降至个位数或工业5.0变成新一轮重复建设，则结构性逻辑被证伪。</li>
+<li><strong>2028—2029年走出通缩需要三项政策前提。</strong> 即坚决管住投资冲动、以制度改革落实反内卷；房地产止跌回稳，按揭贴息覆盖存量房并放松一线行政限制；财政避免顺周期紧缩。缺少任一项，可能重演“赢了技术和份额、输了价格和利润”的ROE陷阱。</li>
+<li><strong>板块方向明确但属研究观点，不构成买卖建议。</strong> 大摩上调生物医药至超配、下调互联网至低配，偏好A股、国产替代与新质生产力；黄金维持看多、铜转谨慎、油看空。上述方向需以盈利、订单、政策落地和估值消化验证。</li>
+</ul>
+<h2 id="4-11-162027">4. <a href="#note-M-tb9CJFDog">【重磅内容】大摩闭门会议（11-16）｜2027全球经济和市场展望，看好美股但对中国维持中性</a></h2>
+<blockquote>
+<p>一句话：大摩2027年维持对中国股票中性、看多美股并最大超配风险资产，中国摆脱准通缩或待2028年。</p>
+</blockquote>
+<ul>
+<li><strong>中国：大摩判断 2027 年仍是“准通缩”磨底年，2028 年才可能渐进破局。</strong> 大摩预计 2027 年实际 GDP 官方目标约 4.5%，但名义 GDP 仍受低通胀约束，居民去杠杆、财政收紧、新技术 J 曲线三项拖累仍在；该判断成立的前提是地产未止跌、财政未扩张、反内卷未落地，若三项政策提前发力，则通缩压力可能早于 2028 年缓解。</li>
+<li><strong>全球：大摩将风险资产调至最大超配，美股、日股、欧股优于新兴市场。</strong> 大摩把股票配置提高至组合 70%、超配 15 个百分点，标普 500/日经/MSCI 欧洲 2027 年底目标分别为 8700/4800/3030 点；该判断依赖 AI 资本开支不出现大幅下修、2027 年盈利兑现及全球收益率趋稳，若 AI 投资骤降或地缘冲突升级则失效。</li>
+<li><strong>中国股票：大摩维持中性/平配，暂无上调至超配的紧迫性。</strong> MSCI China 2027/2028 年盈利增速预计 8%/11%，当前 9.6 倍前瞻 PE 虽高于 8 倍历史底部、且较新兴市场有 14% 溢价，估值与盈利尚不支持整体超配；只有在盈利预期下修结束、地产止跌、政策改革落地后才具备上调条件。</li>
+<li><strong>中国破局：大摩认为关键不是技术本身，而是三项制度与政策前提。</strong> 即遏制地方投资冲动/落实反内卷、推动房地产止跌回稳（按揭贴息覆盖存量房、一线行政限制放松）、财政避免顺周期收缩；若 2027 年不能落实，技术升级仍可能重复“赢份额、输利润”的扩产内卷，ROE 难回升。</li>
+<li><strong>配置：大摩明确偏向“美股应用端+中国政策受益端”，并看多黄金、对油/日元偏空、对铜转谨慎。</strong> 美股偏好工业、金融、可选消费及 AI 应用者/大型云厂商；中国偏好 A 股新质生产力、国产替代、红利与生物医药，低配互联网；黄金目标 5000 美元/盎司，油 2027 年底 75 美元，日元 162。该方向依赖降息与收益率回落、AI 应用扩散，若通胀/收益率重新上行或中美科技限制升级则需调整。</li>
+</ul>
+<h2 id="5-ai">5. <a href="#note-M903a7EVp-w">大摩互联网团队深度调研科技行业分析：电商更悲观了，首选阿里看的是AI （美团、拼多多下调至标配）</a></h2>
+<blockquote>
+<p>一句话：大摩看空电商、下调美团拼多多至标配，唯一首选阿里，理由在AI而非电商。</p>
+</blockquote>
+<ul>
+<li>摩根士丹利（大摩）互联网团队对中国电商行业整体转为更悲观，原因有三：自上而下判断消费疲弱且不再预期更强刺激；平台间及跨赛道（外卖、闪购、海外）的激进投入将持续侵蚀现金流；行业放缓期投资人更看重股东回报（分红、回购），而各平台都在加大投入，叠加社保基数提高与税率调整，股东回报力度的不确定性上升（边界：该判断针对电商主业与成熟平台估值，不适用于以 AI/云为估值锚的公司）。</li>
+<li>基于上述框架，美团评级由超配下调至标配、目标价 90 港元；拼多多评级下调至标配、目标价 90（转写稿称“90 元”，未明确币种）。核心理由是 2027–2028 年盈利预测被系统性下修，以及拼多多上市以来股东回报缺位、账上大额现金在估值中被大幅折扣（边界：报告发布前未与公司核对数字，属自上而下模型调整）。</li>
+<li>阿里是该报告唯一首选，但理由明确落在 AI 而非电商：在“英伟达卡全面断供”的极端情形下，阿里因囤货最多且平头哥自研芯片明年起量，反而成为相对受益者；该情形下风险更大的是缺乏自研芯片的字节与腾讯（边界：属极端情形假设推演，团队同时表示芯片供给走向已进入地缘政治层面、无人能确定）。</li>
+<li>企业 IT 支出出现结构性拐点信号：CIO 决策的第一影响因子从宏观/业务需求转向技术迭代升级，IT 预算上修 0.3 个百分点、明年展望约 +9%；AI 预算基本为增量而非挪用；制约 AI 落地的不是模型智能水平或算力紧缺，而是私域数据质量、安全与模型输出方差（边界：结论来自 CIO 问卷调研，为方向性指标而非硬数据）。</li>
+<li>腾讯短期业绩承压且 AI 投入缺乏可验证的商业模式：三季度收入预计 +9%、non-IFRS 经营利润预计下滑约 3%（该季度为首次下滑）；市场对“加投入”与“减投入”均无一致判断，组织变革指向 AI 时代提效而非大规模裁员，短剧是低成本、广告变现的正向增量（边界：混元 4 正式版相对 preview 的进步被认可，但追赶仍在进行中）。</li>
+</ul></div>
+</section>
+
+      
+<article id="note-X00irf0nYeY" class="article">
+  <div class="article-head">
+    <div>
+      <h3><a href="https://www.youtube.com/watch?v=X00irf0nYeY" target="_blank" rel="noreferrer">20261116 大摩邢自强：十五五开局科技强于民生，2027可能还是转型之年Morgan Stanley’s Xing Ziqiang: In the First Year of the 15th</a></h3>
+      <div class="meta">20261116 · X00irf0nYeY · <a href="https://www.youtube.com/watch?v=X00irf0nYeY" target="_blank" rel="noreferrer">观看 YouTube 原片 ↗</a></div>
+    </div>
+  </div>
+  <div class="content"><h1 id="20261116-2027morgan-stanleys-xing-ziqiang-in-the-first-year-of-the-15th">结构化笔记｜20261116 大摩邢自强：十五五开局科技强于民生，2027可能还是转型之年Morgan Stanley’s Xing Ziqiang: In the First Year of the 15th</h1>
+<h2 id="1">1. 核心结论</h2>
+<ol>
+<li><strong>十五五开局第一年（2026）呈现“科技强、民生弱”的阶段性失衡：出口强、内需弱。</strong> 结论：AI 与能源转型驱动的全球投资超级周期（数据中心、AI 算力、电网、电力设备）使中国出口同比动辄约 20%，而社零同比连续多月仅 1% 出头；边界：这是在外需超预期强、GDP 目标基本可达、财政与金融资源有限且优先级偏向产业安全与能源自立的条件下的结果，并非规划“科技与民生并重”意图的否定；只要外需回落或民生改革加速，这一落差的方向可能改变。</li>
+<li><strong>“科技与民生二选一”被明确判为错误的思维定式，消费不只是收入的结果。</strong> 结论：政策可通过就业结构（服务业为劳动密集型，就业溢出大于资本密集的硬科技）和二次分配（税收与五险一金之后更多投向边际消费倾向更高的中低收入群体）影响收入；消费—企业卖得上价—研发创新构成正向循环，只盯供给端等于没想清产业创新生态；边界：该判断成立的前提是财政资源并非绝对硬约束、且结构性改革可推进，短期“低垂果实”仍偏少。</li>
+<li><strong>科技红利惠及全民依赖三条路径加二次分配，但当前科技力量仍“单薄”。</strong> 结论：路径为（a）股市财富效应（中国居民资产以无风险存款为主、股市配置比例低，改善空间大）、（b）国有资本与上市公司红利上缴、充实全国社保基金、（c）对科技企业家与新富群体高端消费（教育、医疗、娱乐）的服务业开放与统筹；叠加中国“决策一条心”在二次分配上的效率优势；边界：前提是科技进步足够广谱，仅靠少数亮点无法带动全社会收入与消费，因此短期不能把股市财富效应当作普惠收入来源。</li>
+<li><strong>K 型分化或再持续约两年，2028—2029 年是关键收敛窗口。</strong> 结论：AI 工业革命当前对中国 GDP 的年度贡献仍有限，2028 年后逐步起飞、2030 年后对就业与收入改善更明显；随着过剩产能消化、产业政策与科技政策优化、社会福利改革到位，向上的一批力量增强，K 型有望向“爱心型/尖顶型”收敛；边界：这是条件性预测而非既成事实，若财政顺周期收紧形成“合成谬误”、低物价循环被延长，分化会延长、收敛推后，甚至走向更极端的 K。</li>
+<li><strong>政策取向：不宜再来一次 4 万亿式大水漫灌，但“924 式”协调行动与财政转向“投资于人”有价值。</strong> 结论：人口老化与城市化放慢使投资边际回报下降（约需 6—7 个点投资增长才换来 1 个点 GDP），传统铁公基与产能刺激得不偿失；有效部分是跨部门协调提振信心、准财政资金支持股市与长期资金入市、近 10 万亿地方债置换纾困、广义财政赤字提升约 3 个百分点；未来财政应从“资金跟着项目走”转向“跟着民生福利支出走”（按揭贴息、社保、养老），由中央政府扩表修复居民与企业资产负债表；边界：受年初预算安排与“合格项目”储备约束，2026 年 9 月底落地的按揭贴息仅覆盖总价 150 万元以下首套、年支出 100 多亿元，远低于其建议的每年 4000 亿元量级，力度与覆盖面仍取决于后续预算空间。</li>
+</ol>
+<h2 id="2">2. 专家观点与逻辑链</h2>
+<h3 id="1_1">观点 1：十五五开局“科技强于民生”，是外需超预期与改革排序共同造成的阶段性落差</h3>
+<ul>
+<li><strong>观点归属：</strong> 邢自强（摩根士丹利），回应主持人马克关于“第一年科技明显强于民生、是否会延续”的提问</li>
+<li><strong>结论：</strong> 2026 年科技与产业链升级进展明显、出口如火如荼，而内需消费挑战较大；落差来自“硬骨头改革推进偏慢”与“外需超预期强”两股力量叠加，而非规划取向改变。</li>
+<li><strong>前提事实：</strong> 社零同比连续多月仅 1% 出头；AI 相关与新能源相关产品出口高增，出口制造业增长约 20%；海外出现以 AI 投资和能源转型为代表的投资超级周期（数据中心、AI 算力、电网、电力设备）；2025 年 10 月 29 日讨论的十五五规划建议首次把提高居民消费率列为五年规划明确目标；对农民工、灵活就业人员（“几亿外出打工人员”）社保进展相对偏慢。</li>
+<li><strong>推导逻辑：</strong> <code>出口超预期强 → GDP 增长目标基本可达 → 加码内需的迫切感短期下降 + 财政金融资源有限、产业安全与能源自立排在清单前列 → 资源向科技倾斜 → 科技与民生体感落差扩大</code></li>
+<li><strong>隐含假设：</strong> 财政与金融资源在短期内近似零和；出口景气可维持到增长目标兑现；民生改善主要依赖“难啃的结构改革”，缺少低成本快变量。</li>
+<li><strong>反例 / 证伪条件：</strong> 若外需（AI 资本开支、电网与电力设备订单）明显回落而内需政策未同步加码，则“出口支撑增长目标”这一环断裂，落差无法用资源排序解释；若社保与消费率指标在第二年显著提速，则“改革推进偏慢”的判断需修正。</li>
+</ul>
+<h3 id="2_1">观点 2：科技与民生并非二选一，消费不只是“收入的结果”</h3>
+<ul>
+<li><strong>观点归属：</strong> 邢自强（延续其去年“既仰望星辰大海、又关注柴米油盐”的框架），并回应市场上“消费是收入的结果、财政不能养懒汉”的主流观点</li>
+<li><strong>结论：</strong> 把消费仅视为结果、只聚焦新质生产力与科技，是思维定式；政策能够影响收入与二次分配，科技与民生可以兼得。</li>
+<li><strong>前提事实：</strong> 硬科技与高端制造多为资本密集型，对就业拉动有限；服务业多为劳动密集型，岗位与收入溢出更强；二次分配（所得税、五险一金后的支出方向）可决定中低收入群体获得的转移；规划中已提出增加财政对社会民生支出、对农民与农民工社保注入。</li>
+<li><strong>推导逻辑：</strong> <code>居民有消费意愿与购买力 → 企业产品与服务卖得上价 → 企业研发创新回报可期 → 形成产业创新生态良性循环 → 供给端科技目标反而更容易实现</code>，即“蛋糕做大本身需要循环，不是单向只盯供给”</li>
+<li><strong>隐含假设：</strong> 需求端购买力能有效传导至企业定价与利润率；服务业就业的收入弹性高于制造业；财政支出结构可被主动调整而非被项目制锁定。</li>
+<li><strong>反例 / 证伪条件：</strong> 若在消费补贴与社保投入扩张的同时，企业盈利与研发投入并未改善（传导断裂），则“循环论”失效；若服务业扩张伴随低生产率与低工资（就业数量增、收入不增），则“服务业拉动收入”的推论需下调。</li>
+</ul>
+<h3 id="3">观点 3：科技红利惠及全民的三条路径与二次分配优势</h3>
+<ul>
+<li><strong>观点归属：</strong> 邢自强</li>
+<li><strong>结论：</strong> 科技投入“集中力量攻坚”的成果要惠及全民，需要股市财富效应、国有资本红利上缴充实社保、高端与服务业消费开放三条路径，并以二次分配为主渠道；中国在二次分配上的执行效率优于美国。</li>
+<li><strong>前提事实：</strong> 美国居民储蓄大量配置股市，享受科技公司股价上涨的财富效应，但该效应高度不均衡、偏向高收入群体；中国居民资产配置以无风险银行存款为主，股市配置比例较低；中国科技板块“有声力量”仍较单薄，亮点集中；规划层面已强调提高居民收入占 GDP 比重、加强对中低收入群体的保障。</li>
+<li><strong>推导逻辑：</strong> <code>科技进步 → 生产率与国家财力提升 → 通过①股市回报②国有资本红利划转社保③新富群体消费释放（服务业开放）+ 二次分配 → 居民收入占 GDP 比重上升、后顾之忧下降 → 消费力释放 → 反哺企业创新</code></li>
+<li><strong>隐含假设：</strong> 资本市场能形成相对普惠、可持续的财富效应；国有资本确有可观红利可上缴；高端消费开放不会引发社会接受度问题（其提到“允许造福”需社会宽容）。</li>
+<li><strong>反例 / 证伪条件：</strong> 若股市上涨主要由估值与少数标驱动、居民参与度低（储蓄搬家未发生），则财富效应路径不成立；若社保注入规模远小于居民预防性储蓄需求，则二次分配对消费的边际拉动可忽略。</li>
+</ul>
+<h3 id="4k-20282029">观点 4：K 型分化或再持续约两年，2028—2029 年才见收敛</h3>
+<ul>
+<li><strong>观点归属：</strong> 邢自强（引用其《中国下一轮工业和科技革命》蓝皮书结论）；“K 型演化为 I 型/爱心型”的比较由主持人提出，邢未直接二选一，仅表示对中国路径“比较乐观”</li>
+<li><strong>结论：</strong> 当前 K 型分化（科技与出口向上、传统与消费向下）大概率再持续两年左右，2028—2029 年随产能消化与改革到位而收敛；AI 对 GDP 的贡献 2028 年后才逐步起飞，2030 年后对就业与收入的改善更明显。</li>
+<li><strong>前提事实：</strong> 当前 AI 为代表的工业革命对中国年度 GDP 贡献仍较有限；部分行业存在过剩产能待消化；产业政策、科技政策仍需优化；社会福利改革尚未到位；企业家信心在科技端已强于 2023 年，股市出现新质生产力相关标的（尽管指数波动）。</li>
+<li><strong>推导逻辑：</strong> <code>过剩产能消化 + 产业/科技政策优化 + 内需与社会福利改革到位（约 2—3 年） → 向上的一批力量变强、带动就业与财富效应 → K 型收敛</code></li>
+<li><strong>隐含假设：</strong> 政策方向不发生大幅摇摆；AI 应用落地按 S 曲线推进（2028 年后加速）；居民与企业信心恢复滞后于技术扩散但终将跟上。</li>
+<li><strong>反例 / 证伪条件：</strong> 若 2028 年前财政持续顺周期收紧、低物价循环延长，则收敛时点后移；若 AI 扩散主要替代劳动而非补充劳动，则“带动就业”这一环反向，K 型可能加剧而非收敛。</li>
+</ul>
+<h3 id="5-vs">观点 5：“财政可持续 vs 经济可持续”存在合成谬误，中央政府应主动扩表</h3>
+<ul>
+<li><strong>观点归属：</strong> 邢自强</li>
+<li><strong>结论：</strong> 在居民与企业信心不足、处于降杠杆阶段时，本应实施扩张性财政；但加强税收征管、加强社保缴费等“各自合理”的微观操作叠加，会形成宏观紧缩的合成谬误，反而延长低物价循环，使债务/GDP 的分母更难改善。</li>
+<li><strong>前提事实：</strong> 过去一年统计的实际财政赤字率略有收窄；2021 年决策层曾提出避免“合成谬误”风险；2026 年财政收入增长尚可但支出进度偏慢，原因是资金跟着项目走、缺乏符合当前导向的合格项目，出现“有钱花不出去”；人口下降与城市化放慢使传统铁公基必要性下降。</li>
+<li><strong>推导逻辑：</strong> <code>财政缺钱 → 加强征管/社保缴费（微观合理） → 企业税单成本上升、需求又弱 → 更不愿投资与雇人 → 低物价循环延长 → 名义 GDP（分母）增速放缓 → 财政比率反而更难看</code></li>
+<li><strong>隐含假设：</strong> 私人部门去杠杆以“节衣缩食”方式进行而非收入增长方式（其引用辜朝明式资产负债表衰退逻辑）；中央资产负债表仍有扩张空间且不引发通胀或产能过剩。</li>
+<li><strong>反例 / 证伪条件：</strong> 若名义 GDP 随征管加强而稳定回升（分母改善快于分子），则合成谬误判断不成立；若中央加杠杆后资金仍无法落地为民生支出（项目制约束未破），则扩表建议失效。</li>
+</ul>
+<h3 id="6">观点 6：按揭贴息“方向对、力度小”，本质是从“跟项目走”转向“投资于人”</h3>
+<ul>
+<li><strong>观点归属：</strong> 邢自强（其最早建议财政贴息，主持人指出实际力度远小于其 4000 亿/年建议）</li>
+<li><strong>结论：</strong> 2026 年 9 月底落地的按揭利率贴息是政府首次用自身资产负债表真金白银缓解居民房贷压力，方向正确；但仅覆盖总价 150 万元以下首套、低线城市刚需，年支出 100 多亿元，未来有扩大至存量房贷、提高总价上限的空间。</li>
+<li><strong>前提事实：</strong> 去杠杆已持续四五年；政策于 10 月出台时年度预算已基本花完，可动用资源有限；若年初预留预算，力度可更优；居民若以节衣缩食还贷而非收入增长还贷，将陷入资产负债表衰退；贴息对象若扩至已购房者，等于腾出资金用于其他消费。</li>
+<li><strong>推导逻辑：</strong> <code>财政资金投向民生（按揭、社保、养老）这一“隐性项目” → 不引发产能过剩、更具持久性 → 居民现金流改善 → 消费与信心修复</code>；反面：<code>资金跟项目走 → 合格项目难找 → 支出进度慢 → 财政乘数低</code></li>
+<li><strong>隐含假设：</strong> 居民现金流改善会转化为消费而非全部用于提前还贷或储蓄；财政理念可从“钢筋水泥式项目”切换到“投资于人”。</li>
+<li><strong>反例 / 证伪条件：</strong> 若贴息落地后居民仍集体提前还贷、消费未回升，则传导假设失效；若扩大覆盖面后财政支出规模上升但缺乏项目与预算配套，则“有钱花不出去”重演。</li>
+</ul>
+<h3 id="74-924">观点 7：不宜再来一次“4 万亿”，但“924 式”协调行动的价值应被承认</h3>
+<ul>
+<li><strong>观点归属：</strong> 邢自强（回应市场“是否再来一次 924、甚至 2008 年 4 万亿式刺激”的期待）</li>
+<li><strong>结论：</strong> 大水漫灌式刺激不适合当前阶段，但 924 的三项内容（跨部门协调提振信心与长期资金入市、近 10 万亿地方债置换纾困、广义财政赤字提升约 3 个百分点）确有价值，关键在于沿此方向优化而非简单复制规模。</li>
+<li><strong>前提事实：</strong> 人口结构老化、城市化进度放慢；投资端需 6—7 个点增长才能带来 1 个点 GDP，边际回报下降；924 后两年 GDP 平减指数仍为负、居民与民企信心有待恢复；地方财力不支时基本公共服务难以为继；以旧换新等消费端补贴已使用部分财政空间。</li>
+<li><strong>推导逻辑：</strong> <code>传统投资边际回报递减 + 人口与城市化约束 → 大规模基建/产能刺激得不偿失 → 有效政策应作用于信心、地方财政纾困与居民消费端 → 财政支出结构比总量更重要</code></li>
+<li><strong>隐含假设：</strong> 协调一致的预期管理能持续生效；地方债置换能真正恢复公共服务能力而不只是账面腾挪；消费补贴具备可持续的财政来源。</li>
+<li><strong>反例 / 证伪条件：</strong> 若在地产与就业未稳的情况下，仅靠信心类政策而财政支出未实质扩张，则平减指数持续为负将证伪“924 路径足够”；反之若出现通胀与产能过剩苗头，则“不宜大水漫灌”的判断需要重新权衡。</li>
+</ul>
+<h2 id="3_1">3. 投资研究指引</h2>
+<blockquote>
+<p>记录视频所表达的研究方向，不构成买卖建议；没有明确投资含义时如实写“未给出可执行指引”。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>主题 / 对象</th>
+<th>视频隐含或明确的方向</th>
+<th>为什么</th>
+<th>正向验证信号</th>
+<th>风险 / 失效信号</th>
+<th>需补的证据</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AI / 能源转型相关出口制造（数据中心、算力、电网、电力设备）</td>
+<td>当期景气最强的一条线，但被定位为“外需超级周期”而非永久趋势</td>
+<td>海外 AI 投资与能源转型形成投资超级周期，中国出口直接受益，出口增速约 20%</td>
+<td>出口增速维持双位数、相关设备订单与产能利用率上行</td>
+<td>海外 AI 资本开支见顶、关税或供应链限制、出口增速回落至个位数</td>
+<td>主要出口目的地的 AI/电网资本开支计划与在手订单；份额与价格数据</td>
+</tr>
+<tr>
+<td>内需消费（社零、可选消费）</td>
+<td>明确偏弱，被列为“待修复”而非当期主线</td>
+<td>社零同比仅 1% 出头；居民资产以存款为主、预防性储蓄高；社保改革进展慢</td>
+<td>社零同比回到 4%—5% 以上、居民存款增速放缓、消费率目标出现量化进度</td>
+<td>低物价循环延续、平减指数持续为负、居民提前还贷潮</td>
+<td>居民收入与就业结构数据；消费率目标的分年度考核口径</td>
+</tr>
+<tr>
+<td>服务业与就业（劳动密集型）</td>
+<td>隐含正向：财政应更多支持服务业以拉动就业与收入</td>
+<td>硬科技资本密集、就业拉动弱；服务业劳动密集、收入溢出强</td>
+<td>服务业就业与工资增速回升、服务业增加值占 GDP 比重上升</td>
+<td>服务业低生产率、低工资扩张，收入不增</td>
+<td>服务业分行业就业弹性与工资数据</td>
+</tr>
+<tr>
+<td>地产链 / 按揭贴息受益（低线城市首套刚需）</td>
+<td>方向性正向但力度小：政策已落地、覆盖面有扩大空间</td>
+<td>贴息是财政“投资于人”的首个实例，年支出仅 100 多亿元（对比建议的 4000 亿元）</td>
+<td>贴息扩至存量房贷或提高总价上限；地产销售与居民中长期贷款回升</td>
+<td>贴息规模不扩大、居民仍以节衣缩食还贷；房价预期继续走弱</td>
+<td>贴息实际投放金额与覆盖户数；居民提前还贷比例</td>
+</tr>
+<tr>
+<td>股市（财富效应、长期资金入市）</td>
+<td>隐含正向但强调“不均衡”，不作为普惠收入来源</td>
+<td>居民股市配置比例低、改善空间大；924 后长期资金入市提振信心</td>
+<td>居民资产配置向权益迁移、长期资金占比提升、指数与盈利同步改善</td>
+<td>上涨仅由估值与少数标的驱动、居民参与度低；指数大幅波动</td>
+<td>居民金融资产结构数据；长期资金（社保、保险）权益仓位</td>
+</tr>
+<tr>
+<td>国有资本 / 社保基金（红利上缴）</td>
+<td>隐含正向的政策通道</td>
+<td>国有股权红利上缴可充实全国社保，改善二次分配</td>
+<td>国有资本划转社保规模扩大、社保覆盖面与替代率提升</td>
+<td>分红比例与划转节奏低于预期；社保注入难对冲预防性储蓄</td>
+<td>国有资本经营预算调入社保的金额与年度计划</td>
+</tr>
+<tr>
+<td>财政与利率环境（中央加杠杆、地方债置换）</td>
+<td>判断为“应扩张而实际偏紧”，是核心宏观变量</td>
+<td>实际赤字率略有收窄、支出进度偏慢；合成谬误延长低物价循环</td>
+<td>广义财政赤字扩张、支出进度加快、平减指数转正</td>
+<td>征管加强与社保缴费加码导致顺周期收紧；支出仍受项目制约束</td>
+<td>广义财政赤字月度进度；中央国债与特别国债投向结构</td>
+</tr>
+<tr>
+<td>高端消费与服务业开放（教育、医疗、娱乐）</td>
+<td>隐含正向的增量方向</td>
+<td>科技企业家与新富群体消费若被允许与保障，可形成财富效应释放通道</td>
+<td>服务业开放试点扩围、高端消费回流数据改善</td>
+<td>社会接受度与监管收紧；“允许造福”未落地</td>
+<td>服务业开放清单与试点城市数据</td>
+</tr>
+<tr>
+<td>传统基建 / 铁公基 / 大规模产能刺激</td>
+<td>明确负面：不宜再来一次 4 万亿式刺激</td>
+<td>投资端需 6—7 个点增长才换 1 个点 GDP；人口老化、城市化放慢</td>
+<td>政策明确转向民生支出、放弃大规模基建加码</td>
+<td>若重启大水漫灌，则产能过剩与回报率进一步下降</td>
+<td>基建投资边际产出比（ICOR）最新测算</td>
+</tr>
+</tbody>
+</table>
+<p>补充说明（整理，非嘉宾观点）：转写稿中“40 亿”“40 亿”类表述与上下文不符，正文按“4 万亿”理解；“免薪免重”“低灌效应”“新智生产密”等为语音转写讹误，已按语义分别处理为“符合当前政策导向的合格项目”“（消费）溢出/滴灌效应”“新质生产力”，不进入结论。</p></div>
+</article>
+
+<article id="note-nFI9OtO13H0" class="article">
+  <div class="article-head">
+    <div>
+      <h3><a href="https://www.youtube.com/watch?v=nFI9OtO13H0" target="_blank" rel="noreferrer">【2026-11-15最新】华创张瑜最新： 目前整体居民的风险偏好又下去了 中选之后先做均衡才是策略</a></h3>
+      <div class="meta">20261116 · nFI9OtO13H0 · <a href="https://www.youtube.com/watch?v=nFI9OtO13H0" target="_blank" rel="noreferrer">观看 YouTube 原片 ↗</a></div>
+    </div>
+  </div>
+  <div class="content"><h1 id="2026-11-15">结构化笔记｜【2026-11-15最新】华创张瑜最新： 目前整体居民的风险偏好又下去了 中选之后先做均衡才是策略</h1>
+<h2 id="1">1. 核心结论</h2>
+<ol>
+<li><strong>居民部门再度进入“预期不稳定、风险偏好全面下行”状态，这是评估一切政策效果的核心约束。</strong> 四条证据同向：二季度起居民贷款对社融拉动转负（消费贷、按揭、经营贷逐月少增，属绝对缩表）；5月起新增居民存款中定存占比上升；二、三季度消费倾向回落至近6年低位（三季度仅高于2020、接近2022）；上市公司人均薪酬与农民工工资增速仅从约2%回到约3%，明显跟不上名义GDP两个点以上的修复与利润增速回升。<strong>边界：</strong> 该判断以居民信贷需求、消费倾向、收入预期三项未出现连续2–3个月企稳为前提；任一环节连续改善即需重估。</li>
+<li><strong>股市处于反弹“中段”而非起点，拔估值已变得困难，策略上应借反弹降锐度、促均衡。</strong> 本轮反弹被定性为“宏微观流动性缓解后的估值修复”，12月需防美国通胀粘性、金融条件再度收紧，以及中选后政策不确定性常态化。<strong>边界：</strong> 若12月加息落地后金融条件反而放松、或AI业绩超预期，则“中段”判断偏保守；结构上仍围绕AI硬件，进攻看国产替代/AI应用与困境反转。</li>
+<li><strong>红利是2–3年维度的战略底仓，但未来12个月需等风险溢价回落再加大配置。</strong> 收益拆解显示现金分红贡献约45%、盈利约25%、红利再投约21%、无风险利率约18%，风险溢价与调仓为负贡献；据此测算未来一年回报约2%–4%，乐观9%–11%，悲观-2%至-4%；若出现约10%回调、股息率增厚0.2–0.3个百分点，性价比显著抬升。<strong>边界：</strong> 前提是成分股分红稳定、盈利波动可控、无风险利率不大幅上行。</li>
+<li><strong>债市中期友好、短期有扰动：政策利率换锚带动资金中枢下移约10BP，但年末止盈赎回与政府债免税政策调整预期压制情绪，宜逢高布局。</strong> 换锚后隔夜逆回购1.25%成为主要政策利率，DR001运行区间由1.15%–1.65%改为1.0%–1.5%，中枢从约1.35%–1.4%降至约1.25%–1.3%。<strong>边界：</strong> 10年国债1.62%、30年约2.08%被视为配置盘有效窗口，但若赎回负反馈扩散至利率品或央行数量投放转紧，则下移逻辑失效。</li>
+<li><strong>“新房供地减少→明年房价止跌”的推论不成立：新房只能决定边际溢价，价格锚在二手房与总需求。</strong> 供地较峰值降约75%，但核心城市核心区新房库存仍在增加、今年开发商推盘密集度低于去年；在人口不增、城市不再扩张的条件下，新增住宅需求极小。<strong>边界：</strong> 若核心城市人口重新净流入、二手房价企稳回升或库存显著去化，则该结论需修正；地产股机会在于“选地块赚钱”的alpha（如建发国际）与红利属性标的（如贝壳）。</li>
+</ol>
+<h2 id="2">2. 专家观点与逻辑链</h2>
+<h3 id="1_1">观点 1：居民风险偏好二次下行，政策效果须以“能否对冲居民收缩”为标尺</h3>
+<ul>
+<li><strong>观点归属：</strong> 华创证券 张瑜（宏观）</li>
+<li><strong>结论：</strong> 居民部门已再次进入预期不稳定、风险偏好全面下行的状态；评价任何货币/财政政策，核心看它能否抵得过居民风险偏好的下行与收缩，并重新启动“居民加杠杆—消费—再循环”。</li>
+<li><strong>前提事实：</strong> ①二季度起居民贷款对社融拉动转负，消费贷、按揭、经营贷三大项加总逐月少增，属贷款绝对意义上的缩表；②5月以来新增居民存款中定存比例上升，居民重新“攒定存”；③二、三季度消费倾向在近6–7年同期位置中持续下移，三季度仅高于2020、与2022接近持平，为近6年最低；④上市公司人均薪酬与农民工工资增速约从2%回到3%，方向向好但幅度远小于名义GDP两个点以上的修复与工业利润、上市公司利润的回升，收入与增速的裂口在扩大。</li>
+<li><strong>推导逻辑：</strong> <code>居民贷款缩表 + 存款定存化 + 消费倾向回落 + 收入增速跟不上利润修复 → 居民预期不稳定、风险偏好下行 → 政策传导被居民端“收缩”抵消 → 政策效果取决于能否对冲该收缩；对股市意味着拔估值困难、进入区间震荡，对债市意味着核心矛盾从基本面转为央行宽松力度能否对冲存款回表带来的流动性冲击</code></li>
+<li><strong>隐含假设：</strong> 居民行为由预期驱动、短期难以自我修复；宽信用的瓶颈在居民信贷需求而非银行供给；存款回表对股债均构成流动性冲击。</li>
+<li><strong>反例 / 证伪条件：</strong> 居民中长贷连续2–3个月同比多增、定存占比回落、消费倾向回到同期中位以上；或股市在估值不扩张的情况下由盈利驱动上涨，则“风险偏好下行”与“拔估值困难”同时被削弱。</li>
+</ul>
+<h3 id="212">观点 2：反弹已至中段，12月主线是“降锐度、促均衡”而非追高</h3>
+<ul>
+<li><strong>观点归属：</strong> 华创证券策略（“华资疗配”段落，转写不清）</li>
+<li><strong>结论：</strong> 10月底以来看多的反弹属宏微观流动性缓解后的估值修复，目前处于中段；往后需防美国通胀粘性与金融条件再收紧，以及中选后政策不确定性快速显现，建议借反弹降低组合锐度、做均衡。</li>
+<li><strong>前提事实：</strong> 12月存在50BP加息的可能（最新PPI数据后基准情景仍为25BP）；若真落地50BP，并非利空出尽式冲击，而说明过去半年市场对通胀持续性与紧缩程度定价不足；中选落地后AI业绩不确定性上升，英伟达管理层变动进一步扰动产业链；红利内部对4.5%股息率（部分银行仅3%出头）分歧较大。</li>
+<li><strong>推导逻辑：</strong> <code>流动性缓解 → 估值修复 → 修复已行至中段 → 叠加海外通胀/金融条件与政策不确定性 → 继续追涨的赔率下降 → 降锐度、促均衡；结构上守AI硬件，进攻端配置国产替代+AI应用与困境反转（地产链、消费、光伏链等）</code></li>
+<li><strong>隐含假设：</strong> 本轮上涨由估值而非盈利驱动；海外流动性收紧会通过风险偏好传导至A股；AI硬件是反弹中确定性相对最高的方向。</li>
+<li><strong>反例 / 证伪条件：</strong> 12月未加息或加息后金融条件反而转松；AI资本开支与订单超预期推动盈利上修；中选后政策不确定性反而下降——任一情形都会使“中段+降锐度”偏保守。</li>
+</ul>
+<h3 id="3">观点 3：红利长期靠分红与盈利韧性，年内需等风险溢价回落</h3>
+<ul>
+<li><strong>观点归属：</strong> 华创证券策略（红利部分）</li>
+<li><strong>结论：</strong> 站在2–3年视角，红利不必过度择时，收益主要来自现金分红与盈利韧性；但站在未来12个月视角，风险溢价尚未充分调整，回落后再配置性价比更高。</li>
+<li><strong>前提事实：</strong> 中证红利股息率约4.5%，较2023年初明显下降，部分银行股息率仅3%出头；收益拆解：现金分红约45%、盈利约25%、红利再投约21%、无风险利率约18%，剔除无风险利率后的风险溢价与调仓为负贡献；22–23年经验：美联储加息与资金再平衡使红利估值收缩，待加息终点明确、其他行业利润增速下行后，红利相对配置价值才显现；未来一年测算回报2%–4%，乐观9%–11%，悲观-2%至-4%。</li>
+<li><strong>推导逻辑：</strong> <code>红利收益=分红(稳定)+盈利(韧性)+再投+无风险利率-风险溢价损耗 → 长周期分红与盈利足以支撑底仓价值 → 但当前风险溢价未充分补偿 → 12个月预期回报偏薄 → 需约10%回调、股息率增厚0.2–0.3pct后才具极优性价比</code></li>
+<li><strong>隐含假设：</strong> 红利成分股以成熟经营、市场地位稳固的企业为主，现金流创造能力强、盈利依托存量业务；分红政策稳定；无风险利率不出现大幅上行。</li>
+<li><strong>反例 / 证伪条件：</strong> 加息推动无风险利率快速上行、风险溢价被动走扩；银行等权重成分股分红率下调或盈利明显恶化；其他行业利润增速回升使红利相对优势消失。</li>
+</ul>
+<h3 id="4">观点 4：政策利率换锚≈一次“准降息”，但年末赎回扰动压制短期节奏</h3>
+<ul>
+<li><strong>观点归属：</strong> 华创证券固收 周冠南</li>
+<li><strong>结论：</strong> 央行将主要政策利率由7天逆回购（1.4%固定利率）换锚至隔夜逆回购（1.25%固定利率），临时正逆回购同步改为隔夜±25BP，DR001区间由1.15%–1.65%调整为1.0%–1.5%；换锚虽不等同降息、不带动LPR下调，但在银行间市场带来接近10BP的资金中枢下移，中期利好债市；短期受年末止盈、赎回与税制预期扰动，宜逢高布局。</li>
+<li><strong>前提事实：</strong> 换锚前DR001围绕政策利率偏低约5BP、在1.35%–1.4%运行；换锚后围绕1.25%波动、约在1.25%–1.3%；隔夜作为引导利率下行会带动存单、同业存款等短端下移并向长端传导，改善银行同业负债成本；10月已较充分交易换锚与央行买债的增量利好，10年国债从1.72%→1.68%→1.62%阶台阶式下行；近期出现三方面扰动：央行提示利率难进一步下行、权益风险偏好较三季度略有企稳、华发事件后珠海方面未给出明确官方方案导致部分低等级信用调整；上周市场关注央行调研政府债利息收入免税政策调整对银行配置行为的影响，叠加年末止盈，周四周五赎回演绎较明显。</li>
+<li><strong>推导逻辑：</strong> <code>政策利率换锚 → 隔夜利率成为锚、中枢下移近10BP → 短端（存单/同业存款）跟随下移 → 银行同业负债成本改善、向长端传导 → 债市定价中枢小幅下移（10年从1.6%附近仍有约10BP空间） → 但年末止盈+赎回+税制预期先行交易 → 节奏上先调整、后配置</code></li>
+<li><strong>隐含假设：</strong> 换锚不改变货币政策取向、LPR与存贷款报价利率基本稳定；流动性传导顺畅、央行数量投放配合；税制调整短期落地概率低。</li>
+<li><strong>反例 / 证伪条件：</strong> DR001持续高于1.35%、资金面反而收紧；赎回负反馈从信用品扩散至利率品并形成自我强化；政府债免税政策超预期落地并显著改变银行配置行为。</li>
+</ul>
+<h3 id="5">观点 5：美股成长风格三次走弱源于估值下杀而非盈利，年底可能再走强</h3>
+<ul>
+<li><strong>观点归属：</strong> 华创证券海外研究（美股AI部分）</li>
+<li><strong>结论：</strong> 过去12个月AI科技股跑赢力度减弱、成长风格三次修正，但三次都是“相对盈利差在扩大、股价却在跑输”的背离，本质是估值压缩；当前AI科技股远期估值已显著低于今年3月低点，在利率曲线未倒挂的前提下，盈利下修压力小于估值下行压力，年底成长风格很可能再度走强。</li>
+<li><strong>前提事实：</strong> 三次走弱分别对应：2025年10月–2026年2月（甲骨文等云厂商大幅增加资本开支）、2026年6–7月（存储半导体盈利增速升至不可持续水平）、2026年10月至今（AI产业与相关公司营收前景出现系统性消极预期）；背离证据：标普500/等权标普500由0.89降至0.83而EPS同比差由4.1%升至6.2%，纳指100/罗素2000由10.1降至9.4而EPS差由5.8%升至6.2%；第二轮纳指100/罗素2000由10.5降至9.5而EPS差由23.8%升至44%；第三轮标普500/等权由0.9降至0.85、EPS差维持14.7%，纳指100/罗素2000由10.9降至10、EPS差由42.6%升至43.1%；截至11月13日，标普500远期PE 19.5倍、纳指100 20.8倍，均低于3月低点，信息技术19.3倍反而低于必选消费25.3倍、医疗保健20.4倍。</li>
+<li><strong>推导逻辑：</strong> <code>AI叙事受多重打击（营收不及预期、AI债券抛售、中选后资本开支分歧、管理层变动） → 成长股估值压缩而盈利差仍在扩大 → 估值已便宜、传统行业反而更贵 → 利率曲线未倒挂下盈利下修压力&lt;估值下行压力 → 年底成长风格再度走强、AI股可能重新跑赢</code></li>
+<li><strong>隐含假设：</strong> AI盈利预期不再系统性下修；美债利率不出现失控上行；资本开支叙事不再被证伪。</li>
+<li><strong>反例 / 证伪条件：</strong> AI资本开支或营收指引再被大幅下修（第四轮背离转为盈利下修）；长端美债利率快速上行压制远期估值；AI相关信用风险（债券抛售）扩散为融资链断裂。</li>
+</ul>
+<h3 id="6a">观点 6：A股“先抑后扬”、港股谨慎偏空，短期多空交织</h3>
+<ul>
+<li><strong>观点归属：</strong> 华创证券金工 王小川</li>
+<li><strong>结论：</strong> A股短期模型多空交织，中长期多数指数仍看多，判断未来先抑后扬（甚至可能跌得很少、周一开盘不跌）；港股各模型一致偏空，维持谨慎。下周推荐行业：综合、电力公用事业、纺织服装、家电（轮动模型）、钢铁（基本面改善）。</li>
+<li><strong>前提事实：</strong> 本周上证跌0.4%、创业板指跌1.59%，行业涨少跌多，通信、银行、电子、煤炭、家电涨幅居前，电新、有色、化工、石油石化跌幅居前；主力资金净流入通信、电子、轻工制造、家电、煤炭，净流出电新、化工、有色、计算机、医药；偏债混合型基金平均-0.5%，股票型ETF平均-0.98%；新发基金57只、合计157亿元（混合26只25亿、股票18只38亿、债券13只93亿）；VIX略降至14.36；短期模型：深100看多、成交量模型看空、智能300看空、智能50看多；中期：涨跌停模型看多，上行收益差模型对上证与中证500看多，月效模型中性；长期：动态估值模型对上证、沪深300、上证50看多；港股成交量/成交额、上下行收益差、相似多空模型均看空；仓位：股票型-13BP、混合型+66BP，加仓通信（及电力，转写不清）、减仓电子与汽车。</li>
+<li><strong>推导逻辑：</strong> <code>短期模型多空交织 + 中长期指数普遍看多 → A股先抑后扬；港股各模型一致看空 → 谨慎偏空；仓位变动信息量有限 → 结构上跟随资金流入方向（通信、家电、煤炭、银行）</code></li>
+<li><strong>隐含假设：</strong> 模型信号在年末流动性环境下仍有效；行业轮动模型对下周一月内有效。</li>
+<li><strong>反例 / 证伪条件：</strong> 出现放量突破使成交量模型翻多、或港股模型同步转多；年末资金面/政策事件导致“先抑”幅度远超预期并破坏中长期趋势。</li>
+</ul>
+<h3 id="7">观点 7：三项流动性工具加速投放，红利为压舱石、非银博反弹</h3>
+<ul>
+<li><strong>观点归属：</strong> 华创证券金融 徐刚</li>
+<li><strong>结论：</strong> 11月初以来一行一会一局推动存量工具加大使用，互换便利、中证A500相关ETF、回购增持再贷款三线放量，对市场流动性与权重板块形成增量支撑；但工具生效需要时间，年末绝对收益资金止盈与海外风险释放削弱反弹持续性，当前位置偏左侧，红利（尤其银行）是战略底仓，非银可用于博反弹。</li>
+<li><strong>前提事实：</strong> 互换便利本轮券商与基金申报超千亿，头部券商单家超100亿、中小券商30–50亿，首批存续约1050亿加新增约1000亿，未来体量有望达约2000亿；中证A500相关ETF（转写为“主的EDF”）18家基金公司合计募集超350亿，风格延续均衡、红利蓝筹与部分量化策略，建仓明显加快；回购增持再贷款方面，截至10月底约900家上市公司披露约1100单，含国新、诚通两家国有资本运营公司新增申请，工具利率由创设时约1.75%降至约1%，累计下调约75BP，并已从阶段性安排转为长期制度性安排；证券行业自营对方向性投资有明确要求，增量资金一部分投科创、一部分留在红利。</li>
+<li><strong>推导逻辑：</strong> <code>监管引导+利率成本下行 → 三类工具申报与投放放量 → 增量资金进入科创ETF与红利资产 → 改善流动性与权重股支撑 → 但机制生效需时间、年末止盈与海外风险共振 → 市场偏左侧、底部区域逐步显现 → 红利为压舱石，非银博反弹</code></li>
+<li><strong>隐含假设：</strong> 机构按监管导向加快实际投放；负债端成本继续下行、险资对红利资产的准入标准（股息率、ROE、商业模式稳定性）趋于优化；工具资金不会因市场下跌而被风控收回。</li>
+<li><strong>反例 / 证伪条件：</strong> 申报到实际投放的转化率显著低于预期；市场调整导致券商自营收缩方向性敞口；险资红利准入标准未放松、银行股息率继续下移使配置吸引力下降。</li>
+</ul>
+<h3 id="8">观点 8：新房供给减少不足以让明年房价止跌，价格锚在二手房与总需求</h3>
+<ul>
+<li><strong>观点归属：</strong> 华创证券房地产/多元资产 尚哥</li>
+<li><strong>结论：</strong> 对新房供给减少能否带来明年房价止跌，答案偏否定。新房只能决定边际溢价，决定不了价格锚；决定价格锚的是二手房与总需求（后周期理论），需看到总需求曲线右移，房价才能止跌回稳。</li>
+<li><strong>前提事实：</strong> 新增供地量较高点下降约75%，但新出让地块对应的新房是以更有性价比的方式卖掉的；核心城市核心区新房库存是增加而非减少；今年开发商推盘密集度明显低于去年，说明相对需求而言新增地块并不稀缺；多数城市新房去化周期并未明显下降；新房定价逻辑为“二手房价格锚+新房边际溢价”，同价格段新房与二手房本质是居民偏好的选择，周边新房竞争多则溢价极低甚至对二手房砸盘。</li>
+<li><strong>推导逻辑：</strong> <code>新增住宅需求主要来自城市扩张 → 城市不再扩张、常住人口不增则无刚性新增需求 → 供地减少不等于供给相对需求不足（库存与推盘数据佐证） → 新房只定边际溢价、定不了价格锚 → 供给收缩无法推动房价止跌回稳；价格锚取决于二手房与总需求右移</code></li>
+<li><strong>隐含假设：</strong> 城市扩张阶段已结束、常住人口不增；二手房价格是新房定价锚；居民加杠杆能力与意愿不出现大幅反转。</li>
+<li><strong>反例 / 证伪条件：</strong> 核心城市人口重新净流入带动刚性需求；二手房价企稳回升、成交量持续放大；供地进一步收缩至库存显著去化、去化周期明显下降。</li>
+</ul>
+<h2 id="3_1">3. 投资研究指引</h2>
+<blockquote>
+<p>记录视频所表达的研究方向，不构成买卖建议。转写稿存在较多ASR错字与数字讹误（如“封天/涉容/暂定存/亚股/主的EDF”等），下文按语义还原，存疑数字已标注，引用前需回溯原始录音核对。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>主题 / 对象</th>
+<th>视频隐含或明确的方向</th>
+<th>为什么</th>
+<th>正向验证信号</th>
+<th>风险 / 失效信号</th>
+<th>需补的证据</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>居民部门 / 内需消费</td>
+<td>偏谨慎：居民仍处缩表与风险偏好下行，消费倾向难言见底</td>
+<td>贷款绝对缩表、存款定存化、消费倾向近6年最低、收入增速跟不上利润修复</td>
+<td>居民中长贷同比转正并连续多增；新增存款定存占比回落；消费倾向回到同期中位</td>
+<td>收入预期进一步下修；消费倾向再创新低；居民信贷持续负增</td>
+<td>居民部门月度信贷结构、定存/活期拆分、季度消费倾向与人均可支配收入细项</td>
+</tr>
+<tr>
+<td>A股整体（12月）</td>
+<td>中性偏均衡：反弹中段，借反弹降锐度、促均衡，不追高</td>
+<td>本轮为流动性驱动的估值修复，海外通胀/金融条件与中选后政策不确定性上升</td>
+<td>12月加息幅度不超25BP或落地后金融条件转松；成交与风险偏好同步回升</td>
+<td>50BP加息落地且长端利率上行；AI业绩指引下修；政策不确定性升温</td>
+<td>12月FOMC定价、美国通胀分项、中选后政策落地清单</td>
+</tr>
+<tr>
+<td>AI硬件 / 国产替代 / AI应用</td>
+<td>明确进攻方向（反弹过程中围绕AI硬件，兼顾国产替代与AI应用）</td>
+<td>流动性修复+产业趋势仍在，但需防业绩与产业链扰动</td>
+<td>算力订单与资本开支指引上修；国产替代份额提升；AI应用收入放量</td>
+<td>英伟达等管理层变动扩散为供应链扰动；AI资本开支下修；AI相关债券融资风险</td>
+<td>AI产业链订单/库存数据、国产算力招标、应用端付费数据</td>
+</tr>
+<tr>
+<td>困境反转（地产链、消费、光伏链等）</td>
+<td>博弈性方向（转写为“困境反转的博弈”）</td>
+<td>估值与预期处于低位，政策与流动性边际改善提供交易窗口</td>
+<td>地产销售/二手成交环比改善；消费数据企稳；光伏价格与排产回升</td>
+<td>房价继续下行；消费倾向再降；产能出清慢于预期</td>
+<td>高频地产成交、消费分项、光伏产业链价格与开工率</td>
+</tr>
+<tr>
+<td>红利 / 银行 / 险资配置</td>
+<td>战略底仓，但年内等回调；2–3年维度不必过度择时</td>
+<td>收益主要来自分红与盈利韧性，股息率仍高于无风险利率，负债成本下行提升吸引力</td>
+<td>10%级别回调后股息率增厚0.2–0.3pct；险资红利准入标准优化；银行负债成本继续下行</td>
+<td>无风险利率大幅上行；分红率下调；其他行业盈利增速反超</td>
+<td>中证红利分红与盈利拆解、险资配置新规、银行息差与分红预案</td>
+</tr>
+<tr>
+<td>利率债</td>
+<td>中期偏多、短期防波动；10Y 1.62%、30Y约2.08%视为配置盘窗口，逢高布局</td>
+<td>换锚带动资金中枢下移约10BP，基本面与货币条件友好；但年末止盈与赎回压制</td>
+<td>DR001稳定在1.25%–1.3%；央行数量投放配合；赎回指标回落</td>
+<td>DR001持续高于1.35%；赎回负反馈扩散至利率品；政府债免税政策超预期调整</td>
+<td>央行公开市场操作明细、基金久期与赎回数据、财政贴息/税制文件</td>
+</tr>
+<tr>
+<td>信用债（二永、证金债）</td>
+<td>观察为主，待赎回边际稳定后再介入</td>
+<td>华发事件后低等级信用调整，珠海方面尚无明确官方方案；基金申赎影响大的品种波动更大</td>
+<td>信用舆情出现明确处置方案；赎回斜率放缓；信用利差企稳</td>
+<td>信用风险扩散；理财/基金赎回加速；低等级利差走扩</td>
+<td>涉事主体处置进展、理财与债基申赎高频数据、信用利差曲线</td>
+</tr>
+<tr>
+<td>美股AI / 成长风格</td>
+<td>偏多（年底成长风格可能再度走强、AI股可能重新跑赢）</td>
+<td>三次走弱均为估值压缩而非盈利恶化，当前远期PE低于3月低点，传统行业反而更贵</td>
+<td>标普500/纳指100远期PE企稳回升；AI营收指引上修；利率曲线维持未倒挂</td>
+<td>AI资本开支/营收再下修；长端美债利率急升；AI信用风险扩散</td>
+<td>美股四季报AI资本开支指引、远期EPS修正广度、美债期限利差</td>
+</tr>
+<tr>
+<td>地产股</td>
+<td>结构性alpha：选地块能力强的房企（如建发国际）；红利属性看贝壳</td>
+<td>房价仍有压力，但部分房企可通过挑地块赚钱走出alpha；贝壳具红利属性</td>
+<td>房企拿地利润率改善、销售去化率提升；二手成交与佣金收入企稳</td>
+<td>房价加速下行；房企拿地利润率收窄；二手成交量再萎缩</td>
+<td>房企拿地毛利率测算、核心城市去化周期、二手成交与挂牌价差</td>
+</tr>
+<tr>
+<td>港股</td>
+<td>谨慎偏空</td>
+<td>成交量/成交额、上下行收益差、相似多空模型一致看空</td>
+<td>模型转多；南向资金持续净流入；成交额放大</td>
+<td>海外流动性收紧；港元利率上行；地缘与政策扰动</td>
+<td>港股模型参数与历史胜率、南向资金日频数据</td>
+</tr>
+<tr>
+<td>券商 / 非银</td>
+<td>可用于博反弹（非底仓）</td>
+<td>互换便利等工具直接改善券商资金运用，市场反弹时弹性更大</td>
+<td>互换便利实际投放加速；成交额与两融回升；券商自营收益改善</td>
+<td>投放转化率低；市场下跌导致自营收缩；费率与业务监管趋严</td>
+<td>互换便利投放明细、券商自营权益敞口、两融与成交额数据</td>
+</tr>
+</tbody>
+</table></div>
+</article>
+
+<article id="note-GVMP2x9XBO0" class="article">
+  <div class="article-head">
+    <div>
+      <h3><a href="https://www.youtube.com/watch?v=GVMP2x9XBO0" target="_blank" rel="noreferrer">【2026-11-16最新】《大摩策略会发布蓝皮书》2027或仍是转型之年 ！ 邢自强 王滢 科技与民生   【文字稿件已经发布于解读君推特X】</a></h3>
+      <div class="meta">20261116 · GVMP2x9XBO0 · <a href="https://www.youtube.com/watch?v=GVMP2x9XBO0" target="_blank" rel="noreferrer">观看 YouTube 原片 ↗</a></div>
+    </div>
+  </div>
+  <div class="content"><h1 id="2026-11-162027-x">结构化笔记｜【2026-11-16最新】《大摩策略会发布蓝皮书》2027或仍是转型之年 ！ 邢自强 王滢 科技与民生   【文字稿件已经发布于解读君推特X】</h1>
+<p><em>说明：以下为对转写稿的结构化整理，不是发言人原话。转写稿存在较多语音识别错字（如“新智生产力”应为“新质生产力”、“民生中国指数”应为“MSCI中国指数”、“男皮书”应为“蓝皮书”等），已按语境校正；涉及人名、技术路线和具体数字处仍建议核对原报告。</em></p>
+<h2 id="1">1. 核心结论</h2>
+<ul>
+<li><strong>2027年仍是转型调整年，不是全面通缩年。</strong> 大摩基准情形为2027年实际GDP约4.4%、官方目标约4.5%，内需增速由3.5%降至3.1%，名义GDP仍受准通缩约束；该判断成立的前提是外需与AI资本开支不明显失速、政策不搞强刺激。若财政/消费政策超预期或出口大幅上修，则“弱内需”判断需调整。</li>
+<li><strong>全球风险资产被提到最大超配，但中国股票暂不超配。</strong> 多资产组合中股票加仓15个百分点至70%，超配美国、日本、欧洲，新兴市场平配，中国维持平配/持有；前提是AI资本开支不大幅下修、美国2027年盈利增速约14%。若AI资本开支推迟、盈利预期下修或中美科技限制急剧升级，该配置会失效。</li>
+<li><strong>中国供给侧有三条结构性支撑，但2027年不足以对冲内需。</strong> 全球AI基建与能源转型超级周期、物理AI/工业5.0、投资从“扩产”转向“存量改造”是中期积极因素；条件是全球资本开支兑现、工业5.0投资真实落地。若出口降至个位数或工业5.0变成新一轮重复建设，则结构性逻辑被证伪。</li>
+<li><strong>2028—2029年走出通缩需要三项政策前提。</strong> 即坚决管住投资冲动、以制度改革落实反内卷；房地产止跌回稳，按揭贴息覆盖存量房并放松一线行政限制；财政避免顺周期紧缩。缺少任一项，可能重演“赢了技术和份额、输了价格和利润”的ROE陷阱。</li>
+<li><strong>板块方向明确但属研究观点，不构成买卖建议。</strong> 大摩上调生物医药至超配、下调互联网至低配，偏好A股、国产替代与新质生产力；黄金维持看多、铜转谨慎、油看空。上述方向需以盈利、订单、政策落地和估值消化验证。</li>
+</ul>
+<h2 id="2">2. 专家观点与逻辑链</h2>
+<h3 id="12027">观点 1：2027年是“磨底调整、准通缩”之年</h3>
+<ul>
+<li><strong>观点归属：</strong> 邢自强（Robin）</li>
+<li><strong>结论：</strong> 2027年中国经济仍处于K型分化延续期，内需偏弱、新质生产力净拉动不明显，实际GDP约4.4%，名义GDP受准通缩压制；2028年才具备渐进走出通缩的基础。</li>
+<li><strong>前提事实：</strong> 房价调整带来负财富效应，就业和收入预期偏弱；居民部门持续去杠杆，转写稿称过去13—14个月居民贷款余额累计下降近2万亿元；社保征管规范化短期提高中小企业用工成本；以旧换新政策对2027年有退坡效应；地方化债额度在2027年缩减，地方现金流偏紧；AI算力、电网投资增速虽快，但占全社会固定资产投资比重仍小，且AI初期对初级白领岗位有替代摩擦。</li>
+<li><strong>推导逻辑：</strong> <code>居民去杠杆+地方财政收缩+新技术仍处J曲线底部磨合期 → 消费与投资需求偏弱、名义GDP受抑 → 2027年仍是准通缩式调整年</code></li>
+<li><strong>隐含假设：</strong> 没有大规模居民收入或社保刺激；房地产不会快速反弹；外需不出现断崖式下滑；AI资本开支不突然失速。</li>
+<li><strong>反例 / 证伪条件：</strong> 若财政明显扩张、地产提前止跌、消费补贴加码，或AI应用迅速形成生产率并带动就业，则“2027准通缩”判断需上修。</li>
+</ul>
+<h3 id="2_1">观点 2：全球股票最大超配，中国股票暂不超配</h3>
+<ul>
+<li><strong>观点归属：</strong> 王滢（Laura）</li>
+<li><strong>结论：</strong> 2027年多资产配置中，股票加仓15个百分点至70%，为可用的最大风险资产超配；超配美国、日本、欧洲，新兴市场平配，中国维持平配而非超配。目标价：标普500为8700点（约+15%）、MSCI欧洲3030点（约+15%）、日经4800点（超+20%）、MSCI新兴市场1760点（约+13%）。</li>
+<li><strong>前提事实：</strong> 美国2026年盈利增速约34%，2027年约14%，2028年放缓至9%；AI资本开支2027年整体不变，仅少部分从2028年挪至2029年；罗素3000成分股调查中，预计2027年AI能提升本公司业绩的比例升至44%，高于去年的30%多；中国MSCI 2027年盈利增速约8%，对应9.6倍前瞻市盈率，较新兴市场仍有14%溢价。</li>
+<li><strong>推导逻辑：</strong> <code>AI资本开支延续+美股盈利扩散+AI应用可见度提高 → 美日欧风险回报优于其他市场 → 股票整体最大超配；中国盈利仅温和修复且估值仍有溢价 → 维持平配</code></li>
+<li><strong>隐含假设：</strong> AI资本开支不因融资、电力或政治约束大幅下修；通胀不迫使央行超预期加息；中美不出现全面科技脱钩；日本盈利和弱日元逻辑延续。</li>
+<li><strong>反例 / 证伪条件：</strong> 若AI资本开支在2028年前明显推迟、美国盈利预期下修、欧洲或日本盈利不及预期，则超配逻辑弱化；若中国出现强政策刺激、地产企稳且盈利上修，则中国应从平配上调。</li>
+</ul>
+<h3 id="3">观点 3：中国盈利温和修复，但估值尚未便宜到“必须超配”</h3>
+<ul>
+<li><strong>观点归属：</strong> 王滢（Laura）</li>
+<li><strong>结论：</strong> MSCI中国2027年盈利增速约8%（2026年约6%），2028年恢复至约11%；当前9.6倍前瞻市盈率，距8倍历史底部仍有距离，且较新兴市场有14%溢价，因此暂不把中国整体提升为超配。</li>
+<li><strong>前提事实：</strong> 2026年四季度至2027年上半年仍可能看到盈利预期下修，2027年增长部分来自低基数；人民币小幅升值对盈利有正贡献；2027年市场可能从过度集中AI交易转向更多板块和个股扩散。</li>
+<li><strong>推导逻辑：</strong> <code>低基数+汇率小幅升值+板块扩散 → 中国盈利增速由6%小幅升至8%；但估值仍有溢价、盈利仍有下修风险 → 不足以支持整体超配</code></li>
+<li><strong>隐含假设：</strong> 人民币不出现大幅贬值；互联网和地产盈利不再大幅暴雷；中美科技限制不急剧升级；政策不出现大规模需求刺激。</li>
+<li><strong>反例 / 证伪条件：</strong> 若政策强刺激带动地产和消费企稳、AI应用盈利兑现，使2027年盈利上修至双位数且估值回落，则“平配”判断需改。</li>
+</ul>
+<h3 id="42028">观点 4：三大供给侧结构性变化支撑2028年之后</h3>
+<ul>
+<li><strong>观点归属：</strong> 郑琳（Jenny）、邢自强</li>
+<li><strong>结论：</strong> 全球AI基建与能源转型超级周期、物理AI/工业5.0、投资结构边际改善，是2028年后中国走出通缩的中期支撑；但2027年这些力量仍“小荷才露尖尖角”，不足以扭转内需。</li>
+<li><strong>前提事实：</strong> 全球资本开支预计从2025年约11万亿美元升至2030年约16万亿美元，增量近一半来自广义工业投资，AI与半导体及间接投资再占约两成；中国占全球制造业增加值约28%，拥有超过3万座智能工厂和1亿多台联网工业设备；中国数据中心用电仅占全社会用电约2%，美国已超过6%，中国到2030年预计仅升至4%；中国从研发到量产速度可短于两年，海外常需约四年。</li>
+<li><strong>推导逻辑：</strong> <code>全球工业资本开支上行+中国制造/电力/数据/工程师优势 → 出口与工业5.0存量改造受益 → 消化过剩产能、提升生产率 → 2028年后通缩压力缓解</code></li>
+<li><strong>隐含假设：</strong> 全球不出现深度衰退；关税和贸易壁垒不完全抵消中国份额优势；工业5.0以存量改造为主，不演变为新一轮扩产；电力与供应链优势可持续。</li>
+<li><strong>反例 / 证伪条件：</strong> 若全球资本开支周期见顶、出口份额因贸易壁垒明显下降，或工业5.0变成地方重复建设，则结构性支撑不成立。</li>
+</ul>
+<h3 id="5">观点 5：走出通缩需要三项政策前提</h3>
+<ul>
+<li><strong>观点归属：</strong> 邢自强（Robin）</li>
+<li><strong>结论：</strong> 2028—2029年要真正走出通缩、推动企业ROE显著回升，除技术J曲线跨过拐点外，还需三项政策条件：管住投资冲动、落实反内卷；房地产止跌回稳；财政避免顺周期紧缩。</li>
+<li><strong>前提事实：</strong> 转写稿称中国约80%的产业政策源自地方招商引资、抓生产搞建设，容易形成重复建设；2009—2015年、2020—2023年两轮扩产均出现“赢技术和份额、输价格和利润”，ROE未改善；当前地方有找税源、加强征管的动机；房地产负财富效应仍压制消费。</li>
+<li><strong>推导逻辑：</strong> <code>地方投资冲动+地产下行+财政收缩 → 产能过剩与需求不足并存 → 通缩持续；若制度约束投资、地产修复、财政托底 → 产能利用率和利润率回升 → ROE改善、通缩缓解</code></li>
+<li><strong>隐含假设：</strong> 政策有执行力，不只是口号；按揭贴息能覆盖存量房并形成实际购买力；财政资源足以避免地方现金流断裂。</li>
+<li><strong>反例 / 证伪条件：</strong> 若反内卷只停留在文件、地产继续下跌、地方财政进一步收缩，则2028年仍难走出通缩，“技术升级自动带来回报”的判断被证伪。</li>
+</ul>
+<h3 id="6">观点 6：全球增长有韧性、通胀有粘性，央行进入“迷你加息”</h3>
+<ul>
+<li><strong>观点归属：</strong> 蔡志鹏</li>
+<li><strong>结论：</strong> 2027—2028年全球增长约3.3%—3.4%，通胀2027年缓慢回落、2028年趋势更明确；美联储、欧洲央行、日本央行均在2026年12月和2027年3月各加息25个基点，随后维持，2028年才进入降息。</li>
+<li><strong>前提事实：</strong> 2027年增长主要靠AI投资，2028年逐步转向软件、应用和更广泛技术渗透；能源价格总体回落，但柴油等成品油因炼化和运输问题偏紧，可能延续到2027年年中；美国2027年四季度实际GDP同比约2.5%，失业率约4.3%；欧洲年初通胀约4.5%、全年约3.4%；日本2026年增长约0.8%、2027年约0.5%。</li>
+<li><strong>推导逻辑：</strong> <code>AI投资+就业韧性 → 增长不差；能源与运输成本+服务通胀 → 通胀有粘性 → 央行只能谨慎加息、延迟降息</code></li>
+<li><strong>隐含假设：</strong> 能源价格不失控；AI投资不突然断崖；工资和服务通胀不加速；地缘冲突不显著升级。</li>
+<li><strong>反例 / 证伪条件：</strong> 若油价大幅飙升或AI资本开支骤停，则“增长有韧性+通胀有粘性”的组合被打破，央行路径需重估。</li>
+</ul>
+<h3 id="7">观点 7：超节点是国产算力的“折中方案”，产业链需求高速扩张</h3>
+<ul>
+<li><strong>观点归属：</strong> 科技分析师 Andy（转写稿末段写作“孟宇”，姓名待核）</li>
+<li><strong>结论：</strong> 在先进制程受限、单芯片性能落后海外的背景下，超节点是中国AI基础设施的必然选择；市场规模有望从2025年的百亿级增至2030年的万亿级，年均增速超过100%；光互联、PCB/CCL、AI电源、液冷、储能等环节受益。</li>
+<li><strong>前提事实：</strong> 中国单芯片性能大幅落后海外GPU；中国在网络通讯、光互联领域具备国际领先的研发和产业生态；华为384超节点已发布并商用；海外先进芯片获取越困难，国内对国产超节点的需求越旺盛；但国产超节点也受国内芯片产能和核心零部件制约。</li>
+<li><strong>推导逻辑：</strong> <code>先进制程受限 → 单卡性能不足 → 用网络互联和超节点“以长板补短板” → 国产算力系统需求上升 → 光互联/PCB/电源/液冷等产业链扩容</code></li>
+<li><strong>隐含假设：</strong> 国内芯片产能和良率能逐步跟上；客户愿意为超节点付出耐心；生态系统伙伴愿意构建独立编译体系和生态；光互联路线（转写稿中MPO/CPO/NPO混用，需核对）由中国企业保持优势。</li>
+<li><strong>反例 / 证伪条件：</strong> 若海外先进芯片供应放松、国产芯片产能或良率不及预期、CPO等路线被海外主导，则超节点经济性和产业链受益逻辑减弱。</li>
+</ul>
+<h3 id="82030">观点 8：2030年三个里程碑</h3>
+<ul>
+<li><strong>观点归属：</strong> 郑琳（Jenny）</li>
+<li><strong>结论：</strong> 到2030年，中国前沿产业收入规模有望从2025年约1.4万亿美元扩大到3.2万亿美元；商品出口全球份额从约15%升至16.5%；AI与工业5.0有望把2028—2030年年均潜在增速抬高0.3个百分点至约4.2%。</li>
+<li><strong>前提事实：</strong> 前沿产业增量约九成来自AI、工业5.0和生物医药；中国企业海外扩产、技术商业化和生产体系出海，使“Made by China”的实际影响力大于出口份额数字；反内卷和全国统一大市场有助于约束地方重复建设。</li>
+<li><strong>推导逻辑：</strong> <code>产业升级+企业出海+市场扩张 → 收入与份额上升 → 生产率和利润率改善 → 潜在增速提高、通缩压力缓解</code></li>
+<li><strong>隐含假设：</strong> 全球需求不深度衰退；贸易壁垒可控；技术商业化顺利；国内投资效率提升。</li>
+<li><strong>反例 / 证伪条件：</strong> 若海外再工业化加速替代中国供应链、国内投资回报率持续低下，或AI应用迟迟不能商业化，则2030年里程碑难以实现。</li>
+</ul>
+<h2 id="3_1">3. 投资研究指引</h2>
+<blockquote>
+<p>记录视频所表达的研究方向，不构成买卖建议；没有明确投资含义时如实写“未给出可执行指引”。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>主题 / 对象</th>
+<th>视频隐含或明确的方向</th>
+<th>为什么</th>
+<th>正向验证信号</th>
+<th>风险 / 失效信号</th>
+<th>需补的证据</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>全球股票（风险资产）</td>
+<td>最大额度超配，股票仓位加15个百分点至70%</td>
+<td>AI资本开支延续、美国盈利增速仍高、AI应用可见度提升</td>
+<td>AI资本开支不下修；美股2027年EPS增速达14%；罗素3000调查中AI受益比例继续上升</td>
+<td>AI资本开支推迟至2029年；盈利预期下修；通胀迫使央行超预期加息</td>
+<td>2027年AI资本开支明细、超大规模云厂商指引、盈利修正广度</td>
+</tr>
+<tr>
+<td>美国 / 日本 / 欧洲股市</td>
+<td>超配；标普500目标8700、MSCI欧洲3030、日经4800</td>
+<td>美股盈利与AI应用扩散；日本弱日元和盈利改善；欧洲估值与盈利修复</td>
+<td>美股盈利不下修；日经盈利和弱日元延续；欧洲通胀回落</td>
+<td>美国AI资本开支断档；日本加息超预期导致日元急升；欧洲通胀粘性超预期</td>
+<td>各国2027年盈利预测、央行路径、日元与欧元汇率假设</td>
+</tr>
+<tr>
+<td>中国股票整体（MSCI中国/新兴市场）</td>
+<td>维持平配/持有，暂不提升为超配</td>
+<td>2027年盈利仅约8%，估值9.6倍且较EM溢价14%，盈利仍有下修风险</td>
+<td>2027年盈利上修至双位数；地产止跌；政策强刺激；估值回落至8倍附近</td>
+<td>中美科技限制升级；盈利预期持续下修；地产继续下跌；人民币大幅贬值</td>
+<td>2027年一季报与中报盈利修正、政策落地力度、地产销售与价格数据</td>
+</tr>
+<tr>
+<td>A股 / 新质生产力 / 国产替代</td>
+<td>相对更看好A股，聚焦新质生产力和国产替代；区分国产替代受益者与全球产业链参与者</td>
+<td>国家队资金支持；A股新质生产力聚集；国产算力链受外部限制催化</td>
+<td>国产替代订单和收入加速；国家队资金持续流入；政策支持明确</td>
+<td>国产芯片产能/良率不及预期；外部限制阶段性放松；主题估值透支</td>
+<td>国产替代公司订单、产能、客户验证；A股与H股相对估值</td>
+</tr>
+<tr>
+<td>生物医药</td>
+<td>正式上调至超配</td>
+<td>全球收益率趋缓有利于估值和现金流回归；融资与资本市场活动有望恢复</td>
+<td>全球利率下行；生物医药融资回暖；创新药授权与并购活跃</td>
+<td>利率重新上行；融资窗口再度关闭；医保控费超预期</td>
+<td>生物医药融资数据、创新药BD交易、板块盈利修正</td>
+</tr>
+<tr>
+<td>互联网</td>
+<td>正式下调至低配</td>
+<td>宏观挑战仍在；中美科技限制不确定性上升，风险溢价可能抬升，大市值高流动性互联网平台受影响更大</td>
+<td>中美关系缓和；平台盈利上修；监管环境稳定</td>
+<td>中美科技限制升级；盈利下修；风险溢价上升</td>
+<td>中美科技限制清单、平台盈利预测、监管政策变化</td>
+</tr>
+<tr>
+<td>黄金</td>
+<td>维持看多，目标价5000美元/盎司</td>
+<td>大宗中持续看好的品类，避险与配置需求支撑</td>
+<td>实际利率下行；央行购金延续；地缘风险上升</td>
+<td>实际利率大幅上行；美元走强；避险需求下降</td>
+<td>央行购金、ETF流入、实际利率与美元走势</td>
+</tr>
+<tr>
+<td>铜 / 原油</td>
+<td>铜从乐观转为谨慎；油看空，2027年底目标75美元/桶</td>
+<td>铜短期供应偏紧但2027年供应逐步放松；油需求与供应格局偏弱</td>
+<td>铜供应中断超预期；油需求超预期或OPEC+减产</td>
+<td>铜供应释放快于预期；油需求走弱、库存上升</td>
+<td>铜矿供应增速、全球库存、OPEC+产量政策</td>
+</tr>
+<tr>
+<td>中国利率 / 人民币</td>
+<td>1年期国债利率从1.6%向1.4%—1.5%走；2027年底美元兑人民币6.6，2030年6.1—6.2</td>
+<td>信贷需求不足，银行资金被迫配置国债；准通缩拖慢人民币升值；中期工业投资回暖后利率和汇率回升</td>
+<td>信贷需求持续弱；央行宽松；出口竞争力提升</td>
+<td>信贷需求超预期反弹；通胀回升；资本外流压力</td>
+<td>信贷社融数据、央行操作、结售汇与出口份额</td>
+</tr>
+<tr>
+<td>超节点 / AI基础设施</td>
+<td>结构性看好；超节点市场2025年百亿级至2030年万亿级，CAGR超100%</td>
+<td>先进制程受限下的国产算力折中方案；光互联、PCB、电源、液冷、储能受益</td>
+<td>华为及国产超节点订单放量；光互联技术商用；国产芯片产能扩张</td>
+<td>海外芯片供应放松；国产芯片产能/良率不足；CPO路线被海外主导</td>
+<td>超节点订单、光模块/PCB/液冷供应商指引、国产芯片产能规划</td>
+</tr>
+<tr>
+<td>房地产 / 反内卷 / 民生政策</td>
+<td>政策观察项，未给出可执行交易指引</td>
+<td>地产止跌、按揭贴息覆盖存量房、放松一线限制、反内卷和社保改革，是2028年走出通缩的前提</td>
+<td>按揭贴息扩至存量房；一线限制放松；反内卷细则落地；社保覆盖农民工</td>
+<td>政策停留在口号；地产继续下跌；地方财政进一步收缩</td>
+<td>地产销售与价格数据、按揭贴息范围、地方化债与财政支出进度</td>
+</tr>
+</tbody>
+</table></div>
+</article>
+
+<article id="note-M-tb9CJFDog" class="article">
+  <div class="article-head">
+    <div>
+      <h3><a href="https://www.youtube.com/watch?v=M-tb9CJFDog" target="_blank" rel="noreferrer">【重磅内容】大摩闭门会议（11-16）｜2027全球经济和市场展望，看好美股但对中国维持中性</a></h3>
+      <div class="meta">20261116 · M-tb9CJFDog · <a href="https://www.youtube.com/watch?v=M-tb9CJFDog" target="_blank" rel="noreferrer">观看 YouTube 原片 ↗</a></div>
+    </div>
+  </div>
+  <div class="content"><h1 id="11-162027">结构化笔记｜【重磅内容】大摩闭门会议（11-16）｜2027全球经济和市场展望，看好美股但对中国维持中性</h1>
+<h2 id="1">1. 核心结论</h2>
+<ul>
+<li><strong>中国：大摩判断 2027 年仍是“准通缩”磨底年，2028 年才可能渐进破局。</strong> 大摩预计 2027 年实际 GDP 官方目标约 4.5%，但名义 GDP 仍受低通胀约束，居民去杠杆、财政收紧、新技术 J 曲线三项拖累仍在；该判断成立的前提是地产未止跌、财政未扩张、反内卷未落地，若三项政策提前发力，则通缩压力可能早于 2028 年缓解。</li>
+<li><strong>全球：大摩将风险资产调至最大超配，美股、日股、欧股优于新兴市场。</strong> 大摩把股票配置提高至组合 70%、超配 15 个百分点，标普 500/日经/MSCI 欧洲 2027 年底目标分别为 8700/4800/3030 点；该判断依赖 AI 资本开支不出现大幅下修、2027 年盈利兑现及全球收益率趋稳，若 AI 投资骤降或地缘冲突升级则失效。</li>
+<li><strong>中国股票：大摩维持中性/平配，暂无上调至超配的紧迫性。</strong> MSCI China 2027/2028 年盈利增速预计 8%/11%，当前 9.6 倍前瞻 PE 虽高于 8 倍历史底部、且较新兴市场有 14% 溢价，估值与盈利尚不支持整体超配；只有在盈利预期下修结束、地产止跌、政策改革落地后才具备上调条件。</li>
+<li><strong>中国破局：大摩认为关键不是技术本身，而是三项制度与政策前提。</strong> 即遏制地方投资冲动/落实反内卷、推动房地产止跌回稳（按揭贴息覆盖存量房、一线行政限制放松）、财政避免顺周期收缩；若 2027 年不能落实，技术升级仍可能重复“赢份额、输利润”的扩产内卷，ROE 难回升。</li>
+<li><strong>配置：大摩明确偏向“美股应用端+中国政策受益端”，并看多黄金、对油/日元偏空、对铜转谨慎。</strong> 美股偏好工业、金融、可选消费及 AI 应用者/大型云厂商；中国偏好 A 股新质生产力、国产替代、红利与生物医药，低配互联网；黄金目标 5000 美元/盎司，油 2027 年底 75 美元，日元 162。该方向依赖降息与收益率回落、AI 应用扩散，若通胀/收益率重新上行或中美科技限制升级则需调整。</li>
+</ul>
+<h2 id="2">2. 专家观点与逻辑链</h2>
+<h3 id="12027-2028">观点 1：2027 年中国“准通缩磨底”，2028 年才可能渐进走出通缩</h3>
+<ul>
+<li><strong>观点归属：</strong> 大摩宏观团队/邢自强（Robin）</li>
+<li><strong>结论：</strong> 2027 年是中国经济继续调整转型的“准通缩之年”，实际 GDP 目标约 4.5%，名义 GDP 增速仍温和疲软；2028 年之后才可能渐进打破通缩。</li>
+<li><strong>前提事实：</strong> 房地产调整带来负财富效应，就业和收入预期偏弱；居民继续节衣缩食还债；社保征管规范化短期抬高中小企业用工成本；以旧换新效果退坡；地方化债额度 2027 年缩减、广义财政偏紧；AI/算力/电网投资占总固投比例仍小，且初期替代常规岗位。</li>
+<li><strong>推导逻辑：</strong> <code>居民资产负债表受损+财政收缩+新技术尚处J曲线早期 → 内需与新产业对冲不足、名义增长受低通胀压制 → 2027年仍是准通缩磨底，2028年才具备走出通缩的供给与政策条件</code></li>
+<li><strong>隐含假设：</strong> 政策不会在 2027 年出现大幅超前刺激；房地产不会快速反转；AI/新质生产力对生产率的净拉动需要时间；外部出口仍能维持一定韧性。</li>
+<li><strong>反例 / 证伪条件：</strong> 若 2027 年出台大规模居民补贴/社保改革、地产快速止跌、财政明显扩张，则通缩可能提前缓解；若出口大幅下滑或地产二次探底，则 2028 年破局时点后移。</li>
+</ul>
+<h3 id="22027-j">观点 2：2027 年内需受居民去杠杆、财政约束、新技术 J 曲线“三座大山”压制</h3>
+<ul>
+<li><strong>观点归属：</strong> 大摩宏观团队/邢自强（Robin）</li>
+<li><strong>结论：</strong> 2027 年国内消费和投资仍受居民去杠杆、财政约束、新技术 J 曲线三重压制，内需增长相对保守。</li>
+<li><strong>前提事实：</strong> 房价调整的负财富效应、就业收入预期弱；社保规范化提高小微用工成本；以旧换新退坡；地方广义财政收入受限、化债额度缩减，地方政府找税源、加强征管动机强；AI 算力/电网投资增速快但占全社会固投比重小，AI 初期对初级白领/常规岗位有替代摩擦。</li>
+<li><strong>推导逻辑：</strong> <code>居民修复资产负债表→消费倾向偏低；地方现金流偏紧→财政支出和投资受限；新技术投资体量小且先替代后增效→净拉动有限；三者共振→2027年内需偏弱</code></li>
+<li><strong>隐含假设：</strong> 居民不额外加杠杆；地方没有新增中央转移支付大规模兜底；AI 对就业的替代效应先于生产率提升。</li>
+<li><strong>反例 / 证伪条件：</strong> 若中央大幅加杠杆补居民/地方、地产价格企稳、AI 应用快速提升企业盈利并创造新岗位，则内需拖累弱于预期。</li>
+</ul>
+<h3 id="3">观点 3：供给侧三大结构性变化支撑中国出口与工业升级，但技术优势不等于股东回报</h3>
+<ul>
+<li><strong>观点归属：</strong> 大摩宏观团队/邢自强（Robin）</li>
+<li><strong>结论：</strong> 中国在 AI 基建、能源转型和物理 AI/工业 5.0 上具备供给优势，出口可能保持双位数增长；但技术升级和份额扩张不自动带来通缩退出和 ROE 提升。</li>
+<li><strong>前提事实：</strong> 全球 AI 基建与能源转型两个超级周期都离不开中国，中国出口明年可能保持强势、同比双位数；中国数据中心仅耗全国约 2% 电力，美国约 6.5% 且面临电网与政治约束；中国有电网改造、储能、绿电、智能工厂、工业设备联网和工程师红利；工业 5.0 更多是存量工厂智能化改造，用 AI 智能体和机器人提升良率，而非盲目建新厂；2009—2015、2020—2023 两轮扩产出现“赢技术和份额、输价格和利润”，ROE 未改善。转写中“重谷”应为“中国”；原文编号有重叠，按上下文理解为 AI 基建、能源转型、物理 AI 三项。</li>
+<li><strong>推导逻辑：</strong> <code>全球AI/能源转型超级周期依赖中国供给+物理AI场景与电力/工程师优势 → 出口和工业升级有结构性支撑；但地方投资冲动与同质化扩产 → 产能过剩、价格战、利润与ROE受压 → 只有叠加反内卷和回报率纪律，供给优势才能转化为股东回报</code></li>
+<li><strong>隐含假设：</strong> 全球 AI/能源转型资本开支不出现断崖；中国能控制新增重复产能；出口不遭遇极端关税/禁运；物理 AI 商业化能提升良率而非仅替代人工。</li>
+<li><strong>反例 / 证伪条件：</strong> 若全球 AI 资本开支大幅下修、出口被高关税阻断、或地方继续大规模补贴扩产，则供给优势反而加剧内卷；若 AI 应用显著提升全要素生产率和企业 ROE，则“技术不等于回报”的判断被证伪。</li>
+</ul>
+<h3 id="4">观点 4：走出通缩需要三项政策前提，社保改革可提供更乐观场景</h3>
+<ul>
+<li><strong>观点归属：</strong> 大摩宏观团队/邢自强（Robin）</li>
+<li><strong>结论：</strong> 2028—2029 年要真正走出通缩、提升潜在增速和 ROE，需要“反内卷/管住投资冲动、地产止跌回稳、财政避免顺周期收缩”三项前提；若再叠加社保福利改革，则场景更乐观。</li>
+<li><strong>前提事实：</strong> 中国约 80% 的产业政策源自地方招商引资、抓生产搞建设；AI/人形机器人存在重复补贴风险；房地产仍处调整，按揭贴息若只覆盖新房/限价房，受益面有限；地方找税源、加强征管个体合理但共振可能形成“合成谬误”，类似 2021 年；2023—2024 年曾对 2021 年政策做优化，相关优化可能要到 2027 年下半年之后。</li>
+<li><strong>推导逻辑：</strong> <code>地方投资冲动+地产未稳+财政收缩 → 产能过剩、资产负债表收缩、需求不足 → 通过统一大市场/正确政绩观、存量房贴息与一线松绑、财政逆周期 → 产能利用率和利润率修复 → 2028年后通缩渐进缓解</code></li>
+<li><strong>隐含假设：</strong> 政策有足够执行力遏制地方投资；地产政策能撬动居民信心；财政有空间且愿意逆周期；社保改革能释放超额储蓄。</li>
+<li><strong>反例 / 证伪条件：</strong> 若地方投资冲动未止、地产继续下跌、财政反而收紧，则 2028 年仍难走出通缩；若政策力度过大导致新一轮产能扩张或资产泡沫，则属另一类风险。</li>
+</ul>
+<h3 id="5">观点 5：全球多资产最大超配股票，超配美/日/欧、平配新兴市场</h3>
+<ul>
+<li><strong>观点归属：</strong> 大摩全球策略团队/Laura（转写称“罗”）</li>
+<li><strong>结论：</strong> 2027 年对风险资产保持高度热情，股票配置升至 70%、超配 15 个百分点，为可达到的最大规模；超配美国、日本、欧洲，新兴市场平配。</li>
+<li><strong>前提事实：</strong> 标普 500 2027 年底目标 8700 点（约 15% 上行）；MSCI 欧洲目标 3030 点（约 15%）；日经目标 4800 点（超过 20%）；MSCI 新兴市场目标 1760 点（约 13%）；现金作为融资来源；黄金目标 5000 美元/盎司；油 2027 年底 75 美元；铜短期紧、2027 年逐步转松；日元 2027 年底 162。</li>
+<li><strong>推导逻辑：</strong> <code>AI资本开支2027年不变+美股盈利仍增长+全球收益率趋稳 → 风险资产风险回报优于现金/大宗 → 股票最大超配，美股为首选，日欧次之，EM仅平配</code></li>
+<li><strong>隐含假设：</strong> 美国经济不衰退；AI 资本开支不大幅下修；全球通胀/收益率不重新失控；地缘冲突不升级为系统性冲击。</li>
+<li><strong>反例 / 证伪条件：</strong> 若 AI 资本开支断崖、美国盈利下修、通胀反弹推高收益率、或中美科技/台海等地缘冲突升级，则超配股票和日欧美的判断失效。</li>
+</ul>
+<h3 id="6-ai-2026">观点 6：美股盈利由 AI 应用扩散支撑，但 2026 年增速数据存疑</h3>
+<ul>
+<li><strong>观点归属：</strong> 大摩全球策略团队/Laura（转写称“罗”）</li>
+<li><strong>结论：</strong> 美股仍值得超配，核心是 AI 资本开支 2027 年不发生重大变化、AI 应用从“算力硬件”扩散到更多企业，盈利增长可维持；但转写中的 2026 年盈利增速数字异常，需以原报告核对。</li>
+<li><strong>前提事实：</strong> 转写称标普 500 盈利增速 2026 年 34%、2027 年 14%、2028 年 9%；2028 年有小部分 AI 资本开支挪至 2029 年，但 2027 年资本开支和总投资金额无重大变化；罗素 3000 成分股调查中，认为 2027 年 AI 能提升本公司业绩的比例升至 44%，去年为三十几个百分点；经历估值调整后，估值/盈利/生产力提升不支持过度保守。其中 2026 年 34% 与常见年度盈利增速量级不符，疑为转写/口误，引用时需以原报告核对。</li>
+<li><strong>推导逻辑：</strong> <code>AI资本开支维持+企业AI应用范围扩大 → 2027年盈利增速仍高于历史均值 → 估值消化后美股风险回报仍优 → 超配美股</code></li>
+<li><strong>隐含假设：</strong> 调查样本具有代表性；AI 应用带来的效率提升能转化为财务数字；2027 年不会出现 AI 投资回报证伪；税率/监管/劳动力成本不剧烈变化。</li>
+<li><strong>反例 / 证伪条件：</strong> 若 AI 项目回报率低于预期、企业 IT 支出削减、2027 年盈利增速明显低于预期、或估值再次大幅扩张后遭遇利率上行，则超配逻辑弱化。</li>
+</ul>
+<h3 id="7">观点 7：中国股票维持中性：盈利温和改善，估值缺乏超配吸引力</h3>
+<ul>
+<li><strong>观点归属：</strong> 大摩全球策略团队/Laura（转写称“罗”）</li>
+<li><strong>结论：</strong> 对中国股票在新兴市场内维持平配/中性，不进一步下调也不上调；2027 年盈利增速 8%、2028 年 11%，估值 9.6 倍前瞻 PE，较 8 倍历史底部有距离且较 EM 溢价 14%，暂无超配紧迫性。</li>
+<li><strong>前提事实：</strong> 2026 年盈利增速约 6%，2026 年三四季报和 2027 年上半年可能仍有预期下修，形成低基数；2027 年小幅人民币升值；2027 年板块/个股配置空间较 2026 年集中 AI 更均衡；油价和全球收益率趋稳；中美科技限制不确定性被视为短期最大风险。</li>
+<li><strong>推导逻辑：</strong> <code>盈利温和改善（6%→8%）+估值高于历史底部且较EM溢价 → 风险回报不足以支持超配 → 维持中性，等待盈利下修结束和政策/地产验证</code></li>
+<li><strong>隐含假设：</strong> 人民币小幅升值不损害出口企业盈利；中美科技限制不急剧升级；盈利预期下修在 2027 年上半年见底；EM 整体盈利不出现更强复苏。</li>
+<li><strong>反例 / 证伪条件：</strong> 若中国政策大幅刺激、地产止跌、盈利预期上修至双位数、估值回落至 8 倍附近，则中性判断应上调；若中美科技限制升级、盈利下修超预期，则可能转向低配。</li>
+</ul>
+<h3 id="8-a">观点 8：行业配置上调生物医药、下调互联网，聚焦 A 股/国产替代/新质生产力</h3>
+<ul>
+<li><strong>观点归属：</strong> 大摩全球策略团队/Laura（转写称“罗”）</li>
+<li><strong>结论：</strong> 中国板块配置上，上调医疗保健中的生物医药至超配，下调互联网至低配；继续保留高科技/新质生产力与红利敞口；2027 年重点交易包括 A 股新质生产力、AI 国产替代、蓝皮书中的确定性龙头与崛起新星、港股/A 股精选名单。</li>
+<li><strong>前提事实：</strong> 全球收益率趋缓有利于生物医药估值和现金流折现，并鼓励资本市场活动；互联网面临宏观挑战和中美科技限制不确定性，风险溢价上升，大市值高流动性互联网股受影响更大；A 股有新质生产力聚集和国家队资金支持；AI 交易需区分国产替代受益者与全球产业链参与者；蓝皮书筛选已取得高份额的确定性公司和 up-and-coming 新星；港股 China focus list 和 A 股精选名单历史跑赢。</li>
+<li><strong>推导逻辑：</strong> <code>收益率回落→生物医药估值修复；科技限制/宏观压力→互联网风险溢价上升；政策与资金支持+国产替代→A股新质生产力相对占优 → 上调生物医药、下调互联网，集中A股/国产替代/新质生产力</code></li>
+<li><strong>隐含假设：</strong> 全球利率不重新大幅上行；中美科技限制不扩散到生物医药；国产替代能兑现订单和利润；国家队资金持续支持 A 股；精选名单的历史表现可延续。</li>
+<li><strong>反例 / 证伪条件：</strong> 若全球收益率重新上行、生物医药融资寒冬延续，则上调评级失效；若中美科技关系缓和、互联网盈利超预期，则低配失效；若国产替代只增收不增利，则新质生产力交易失效。</li>
+</ul>
+<h2 id="3_1">3. 投资研究指引</h2>
+<blockquote>
+<p>记录视频所表达的研究方向，不构成买卖建议；没有明确投资含义时如实写“未给出可执行指引”。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>主题 / 对象</th>
+<th>视频隐含或明确的方向</th>
+<th>为什么</th>
+<th>正向验证信号</th>
+<th>风险 / 失效信号</th>
+<th>需补的证据</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>全球多资产</td>
+<td>最大超配股票（70%、+15pp），现金作融资来源</td>
+<td>AI 资本开支维持、盈利增长、收益率趋稳</td>
+<td>股票风险溢价下降、盈利上修</td>
+<td>AI 资本开支断崖、衰退、通胀反弹</td>
+<td>大摩资产配置模型、各资产预期回报</td>
+</tr>
+<tr>
+<td>美股</td>
+<td>超配；标普 500 2027 年底 8700（约 +15%）</td>
+<td>AI 应用扩散、2027 年盈利增速 14%、估值调整后合理</td>
+<td>2027 年 EPS 增速达 14%、AI 应用调查继续上升</td>
+<td>盈利下修、AI 回报证伪、利率上行</td>
+<td>2026 年盈利增速原始数据（转写 34% 存疑）、EPS 路径</td>
+</tr>
+<tr>
+<td>日股</td>
+<td>超配；日经 2027 年底 4800（&gt;+20%）</td>
+<td>盈利/估值/弱日元支撑</td>
+<td>日元维持弱势、企业盈利上修</td>
+<td>日元大幅升值、全球衰退</td>
+<td>日经 EPS、汇率假设</td>
+</tr>
+<tr>
+<td>欧股</td>
+<td>超配；MSCI 欧洲 3030（约 +15%）</td>
+<td>全球风险偏好回升、估值相对低</td>
+<td>欧洲盈利企稳、收益率回落</td>
+<td>能源冲击、财政/政治风险</td>
+<td>欧洲盈利与政策假设</td>
+</tr>
+<tr>
+<td>新兴市场</td>
+<td>平配；MSCI EM 1760（约 +13%）</td>
+<td>相对美股缺乏更强盈利/估值优势</td>
+<td>EM 盈利上修、美元走弱</td>
+<td>美元走强、中国拖累</td>
+<td>EM 与美股盈利差</td>
+</tr>
+<tr>
+<td>中国股票（MSCI China）</td>
+<td>中性/平配，暂不上调</td>
+<td>2027/2028 盈利 8%/11%，9.6x PE、较 EM 溢价 14%</td>
+<td>盈利下修结束、地产止跌、政策落地</td>
+<td>中美科技限制升级、盈利下修</td>
+<td>盈利预测明细、估值历史区间</td>
+</tr>
+<tr>
+<td>A 股</td>
+<td>相对看好，新质生产力+国家队支持</td>
+<td>政策资金支持、科技聚集</td>
+<td>国家队增量资金、科技订单/盈利兑现</td>
+<td>资金撤出、题材估值过高</td>
+<td>国家队持仓/资金流数据</td>
+</tr>
+<tr>
+<td>中国新质生产力/国产替代</td>
+<td>重点配置方向，聚焦国产替代受益者</td>
+<td>物理 AI、工业 5.0、自主可控</td>
+<td>国产订单、份额、利润率提升</td>
+<td>只增收不增利、重复扩产</td>
+<td>订单/毛利率/ROE 验证</td>
+</tr>
+<tr>
+<td>中国红利股</td>
+<td>保留敞口，作为稳定现金流</td>
+<td>低利率、波动市场下的防御性</td>
+<td>股息率稳定、分红提升</td>
+<td>利率上行、盈利下滑</td>
+<td>分红覆盖率、股息率</td>
+</tr>
+<tr>
+<td>中国生物医药</td>
+<td>上调至超配</td>
+<td>全球收益率趋缓利于估值/现金流，资本市场活动恢复</td>
+<td>融资回暖、BD 交易、盈利改善</td>
+<td>利率上行、政策降价、融资寒冬</td>
+<td>创新药管线、海外授权数据</td>
+</tr>
+<tr>
+<td>中国互联网</td>
+<td>下调至低配</td>
+<td>宏观压力+中美科技限制不确定性，风险溢价上升</td>
+<td>监管/中美关系缓和、盈利超预期</td>
+<td>科技限制升级、盈利下修</td>
+<td>政策情景与盈利敏感性</td>
+</tr>
+<tr>
+<td>中国出口</td>
+<td>判断明年可能双位数增长；未给出出口链个股指引</td>
+<td>全球 AI 基建/能源转型超级周期离不开中国</td>
+<td>出口同比双位数、份额提升</td>
+<td>关税升级、外需下滑</td>
+<td>出口分项、关税情景</td>
+</tr>
+<tr>
+<td>中国地产</td>
+<td>政策期待进一步放松；未给出地产股可执行指引</td>
+<td>止跌回稳是破通缩前提；按揭贴息覆盖存量房、一线限制取消</td>
+<td>销售/价格企稳、贴息扩围</td>
+<td>政策力度不足、销售再下滑</td>
+<td>贴息覆盖范围、地产销售/价格数据</td>
+</tr>
+<tr>
+<td>中国财政/反内卷</td>
+<td>政策期待；未给出直接交易指引</td>
+<td>地方财政顺周期收缩、重复建设</td>
+<td>广义赤字扩张、统一大市场/考核改革落地</td>
+<td>财政收缩、地方投资反弹</td>
+<td>财政预算、地方债额度、产能利用率</td>
+</tr>
+<tr>
+<td>黄金</td>
+<td>看多，目标 5000 美元/盎司</td>
+<td>避险/央行购金/实际利率逻辑（转写未展开）</td>
+<td>实际利率下行、央行购金</td>
+<td>实际利率大幅上行、美元走强</td>
+<td>大摩黄金模型</td>
+</tr>
+<tr>
+<td>铜</td>
+<td>短期紧、2027 年转谨慎</td>
+<td>供应短期紧，2027 年逐步放松</td>
+<td>库存下降、供应扰动</td>
+<td>需求走弱、供应超预期释放</td>
+<td>供需平衡表</td>
+</tr>
+<tr>
+<td>原油</td>
+<td>偏空，2027 年底 75 美元</td>
+<td>供需宽松/需求偏弱（转写未展开）</td>
+<td>库存累积、需求下修</td>
+<td>地缘断供、OPEC+减产</td>
+<td>供需平衡表</td>
+</tr>
+<tr>
+<td>日元</td>
+<td>小幅看空，2027 年底 162</td>
+<td>美日利差/日本央行政策（转写未展开）</td>
+<td>美日利差维持、日央行鸽派</td>
+<td>日本央行加息、避险升值</td>
+<td>利率路径与干预风险</td>
+</tr>
+<tr>
+<td>AI 交易</td>
+<td>从算力硬件转向应用者/大型云厂商；中国聚焦国产替代</td>
+<td>AI 资本开支 2027 年不变，应用扩散</td>
+<td>AI 应用收入/效率数据</td>
+<td>资本开支下修、芯片限制</td>
+<td>AI capex、应用渗透率</td>
+</tr>
+</tbody>
+</table></div>
+</article>
+
+<article id="note-M903a7EVp-w" class="article">
+  <div class="article-head">
+    <div>
+      <h3><a href="https://www.youtube.com/watch?v=M903a7EVp-w" target="_blank" rel="noreferrer">大摩互联网团队深度调研科技行业分析：电商更悲观了，首选阿里看的是AI （美团、拼多多下调至标配）</a></h3>
+      <div class="meta">20261116 · M903a7EVp-w · <a href="https://www.youtube.com/watch?v=M903a7EVp-w" target="_blank" rel="noreferrer">观看 YouTube 原片 ↗</a></div>
+    </div>
+  </div>
+  <div class="content"><h1 id="ai">结构化笔记｜大摩互联网团队深度调研科技行业分析：电商更悲观了，首选阿里看的是AI （美团、拼多多下调至标配）</h1>
+<h2 id="1">1. 核心结论</h2>
+<ul>
+<li>摩根士丹利（大摩）互联网团队对中国电商行业整体转为更悲观，原因有三：自上而下判断消费疲弱且不再预期更强刺激；平台间及跨赛道（外卖、闪购、海外）的激进投入将持续侵蚀现金流；行业放缓期投资人更看重股东回报（分红、回购），而各平台都在加大投入，叠加社保基数提高与税率调整，股东回报力度的不确定性上升（边界：该判断针对电商主业与成熟平台估值，不适用于以 AI/云为估值锚的公司）。</li>
+<li>基于上述框架，美团评级由超配下调至标配、目标价 90 港元；拼多多评级下调至标配、目标价 90（转写稿称“90 元”，未明确币种）。核心理由是 2027–2028 年盈利预测被系统性下修，以及拼多多上市以来股东回报缺位、账上大额现金在估值中被大幅折扣（边界：报告发布前未与公司核对数字，属自上而下模型调整）。</li>
+<li>阿里是该报告唯一首选，但理由明确落在 AI 而非电商：在“英伟达卡全面断供”的极端情形下，阿里因囤货最多且平头哥自研芯片明年起量，反而成为相对受益者；该情形下风险更大的是缺乏自研芯片的字节与腾讯（边界：属极端情形假设推演，团队同时表示芯片供给走向已进入地缘政治层面、无人能确定）。</li>
+<li>企业 IT 支出出现结构性拐点信号：CIO 决策的第一影响因子从宏观/业务需求转向技术迭代升级，IT 预算上修 0.3 个百分点、明年展望约 +9%；AI 预算基本为增量而非挪用；制约 AI 落地的不是模型智能水平或算力紧缺，而是私域数据质量、安全与模型输出方差（边界：结论来自 CIO 问卷调研，为方向性指标而非硬数据）。</li>
+<li>腾讯短期业绩承压且 AI 投入缺乏可验证的商业模式：三季度收入预计 +9%、non-IFRS 经营利润预计下滑约 3%（该季度为首次下滑）；市场对“加投入”与“减投入”均无一致判断，组织变革指向 AI 时代提效而非大规模裁员，短剧是低成本、广告变现的正向增量（边界：混元 4 正式版相对 preview 的进步被认可，但追赶仍在进行中）。</li>
+</ul>
+<h2 id="2">2. 专家观点与逻辑链</h2>
+<h3 id="1_1">观点 1：中国电商行业观点整体转向更悲观</h3>
+<ul>
+<li><strong>观点归属：</strong> 大摩互联网团队（转写稿称“艾迪”，报告主讲人）</li>
+<li><strong>结论：</strong> 中国电商行业未来一段时间（今年年底至明年）消费与基本面偏弱，行业整体估值与股东回报承压，团队在报告中“观点非常鲜明”地转向更悲观。</li>
+<li><strong>前提事实：</strong> 自上而下不认为政府会出台更有利的消费政策；微观层面双十一消费表现偏弱；平台竞争不限于电商内部，还延伸至外卖、闪购及海外扩张；主要平台的投入回报在短中期偏弱、长期不确定性高；同期出现社保基数提高与税率调整，对利润构成不确定影响。</li>
+<li><strong>推导逻辑：</strong> <code>消费疲弱+竞争跨赛道加剧 → 平台被迫激进投入、现金流与股东回报被侵蚀 → 成熟行业估值锚转向分红/回购，而回报力度反而下降 → 行业整体估值下移、观点转悲观</code></li>
+<li><strong>隐含假设：</strong> 电商是成熟行业，其估值主要由股东回报与稳态利润决定；平台的新投入无法在可预见期内转化为可界定的价值增量。</li>
+<li><strong>反例 / 证伪条件：</strong> 出现超预期消费刺激或消费数据连续反弹；新投入（外卖、闪购、海外）在 1–2 年内显现明确 ROI 与利润贡献；平台宣布并执行超预期回购/分红。</li>
+</ul>
+<h3 id="2-90">观点 2：美团下调至标配，目标价 90 港元</h3>
+<ul>
+<li><strong>观点归属：</strong> 大摩互联网团队（转写稿称“卓恩/庄恩”）</li>
+<li><strong>结论：</strong> 美团评级由超配下调至标配，目标价 90 港元；即使按 2028 年估值也约 14–15 倍，而当前互联网同行（腾讯、阿里）约 10–11 倍，因此“90 块还是蛮贵的”。</li>
+<li><strong>前提事实：</strong> 三季报后市场开始看 2027 年数字，而市场一致预期对 2027/2028 尚未调整；宏观月度数据持续走弱；抖音在到店（尤其到餐）的竞争自 7–8 月起持续激烈；AI 投入全年约 100–150 亿元亏损、未来三年可能升至每年 150–200 亿元，且计入 unallocated 科目；公司在外资电话会上表示外卖单均 UE 回到 1.1 元的路径可能延至 2028 年。</li>
+<li><strong>推导逻辑：</strong> <code>宏观走弱 → on-demand 收入增速由低双位数砍至 5–6% → 到店 OP margin 由近 30% 砍至约 26% → AI 投入（无外部客户、纯成本）扩大 unallocated 亏损 → UE 恢复推迟至 2028 年 → 2027/2028 盈利下修、目标价下调至 90 港元</code></li>
+<li><strong>隐含假设：</strong> 外卖单量对宏观消费高度敏感（弹性大于社零）；闪购仍处低基数发力期，可维持接近 20% 的量增；AI 投入在三年内不产生收入贡献。</li>
+<li><strong>反例 / 证伪条件：</strong> 宏观消费回暖带动单量恢复；抖音到店竞争缓和、补贴退坡；AI 投入出现对外商业化收入；外卖 UE 提前回到 1.1 元/单（团队已将基准推至 2028 年）。</li>
+</ul>
+<h3 id="3-90">观点 3：拼多多下调至标配，目标价 90</h3>
+<ul>
+<li><strong>观点归属：</strong> 大摩互联网团队（“艾迪”）</li>
+<li><strong>结论：</strong> 拼多多评级下调至标配，目标价 90（转写稿称“90 元”，币种未明确），主要因股东回报缺位导致估值难获投资者认同。</li>
+<li><strong>前提事实：</strong> 在电商行业趋势放缓背景下拼多多仍在持续获取市场份额（团队对此给予肯定）；但上市至今在股东回报上“没有作为”；账上持有大额现金。</li>
+<li><strong>推导逻辑：</strong> <code>行业放缓 → 估值锚转向股东回报 → 拼多多无分红/回购 → 账上现金在估值中被大幅折扣 → 目标价与评级下调</code></li>
+<li><strong>隐含假设：</strong> 现金在缺乏回报政策时不能计入估值；市场份额提升不足以对冲估值锚的切换。</li>
+<li><strong>反例 / 证伪条件：</strong> 拼多多启动实质性回购或分红；行业增速回升使成长性重新成为定价主线；市场份额提升带来超预期利润率。</li>
+</ul>
+<h3 id="4-ai">观点 4：阿里是报告内唯一首选，逻辑在 AI 与芯片供给</h3>
+<ul>
+<li><strong>观点归属：</strong> 大摩互联网团队（“艾迪”主述，卓恩补充）</li>
+<li><strong>结论：</strong> 阿里是报告内唯一首选，但原因是 AI 而非电商；在英伟达卡被完全禁售的极端情形下，阿里是国内相对受益者。</li>
+<li><strong>前提事实：</strong> 阿里近期股价对分拆、业绩前瞻等利好无反应，主要受英伟达相关出口管制担忧压制；阿里是国内囤积英伟达卡最多的一方（自用为主）；平头哥自研芯片明年起量；字节与腾讯缺乏自研芯片，腾讯今年才开始大量采购囤货。</li>
+<li><strong>推导逻辑：</strong> <code>市场担忧卡供应中断 → 中国 AI 叙事受质疑 → 极端断供情形下，卡储备+自研芯片成为稀缺资源 → 阿里（囤货最多+平头哥起量）相对优势扩大 → 阿里作为 AI 标的被列为首选</code></li>
+<li><strong>隐含假设：</strong> 国产芯片与英伟达产品仍有性能差距，但“有量”在断供情形下的价值高于性能差距；自用算力可支撑云与模型业务连续性。</li>
+<li><strong>反例 / 证伪条件：</strong> 英伟达供应渠道保持通畅、管制未进一步收紧（则相对优势不成立）；平头哥起量不及预期；云增速因算力约束反而下滑；国产替代生态（其他厂商芯片）快速成熟削弱其稀缺性。</li>
+</ul>
+<h3 id="5">观点 5：携程基本面略优于多数电商</h3>
+<ul>
+<li><strong>观点归属：</strong> 大摩互联网团队（“刘洋”）</li>
+<li><strong>结论：</strong> 携程基本面比多数电商略好，但缺乏阿里式的强 AI 投资逻辑，属“相对看好”。</li>
+<li><strong>前提事实：</strong> 旅游与体验式服务需求略好于商品消费；OTA 竞争比电商温和；海外业务占比大、增量主要由海外带动；美国中期选举后油价明显回调，利好出境与海外旅游需求。</li>
+<li><strong>推导逻辑：</strong> <code>服务/体验需求韧性 + OTA 竞争温和 + 海外占比高 + 油价回落 → 边际改善 → 相对优于电商，但最终仍受疲弱消费约束</code></li>
+<li><strong>隐含假设：</strong> 油价回落可传导至出行需求；海外增长可对冲国内消费疲弱。</li>
+<li><strong>反例 / 证伪条件：</strong> 国内消费进一步走弱传导至旅游支出；油价回升；OTA 竞争加剧或海外需求回落。</li>
+</ul>
+<h3 id="6-it-ai-cio">观点 6：企业 IT 预算与 AI 采用出现结构性变化（CIO 调研）</h3>
+<ul>
+<li><strong>观点归属：</strong> 大摩互联网团队（“刘洋”，引述当周发布的下半年中国 IT 采购/CIO 调研）</li>
+<li><strong>结论：</strong> CIO 决策的第一影响因子首次从宏观/业务需求转向技术迭代升级，IT 预算上修、明年展望约 +9%（优于欧美稳定预期），AI 预算为净增量。</li>
+<li><strong>前提事实：</strong> 过去 3–4 年 AI 快速发展期企业预算持续紧张；本次调研出现 IT 预算 0.3 个百分点上修，且发生在宏观逐渐转差的背景下；部分行业已有玩家投入 AI 并看到效果，同行可能进入 FOMO；AI 项目大量进入生产阶段；CIO 关注点是用 AI 提升生产、营销、销售效率，而非 coding/IT 本身；AI 落地障碍依次为高质量私域数据、安全、模型输出方差（而非模型智能水平或算力紧缺）；中国企业 AI 预算多为独立增量，欧美更常见把非 IT 预算挪作 AI；今年预算上修主要由硬件贡献，软件与服务被下修，CIO 预期明年软件/服务增速反超；私有化 AI（行业级/公司级小模型部署在私有算力）意愿强，与算力紧缺涨价及国内开源生态匹配；阿里云份额仍在增长但对字节、腾讯的优势收窄，模型心智上豆包重回领先、千问势头逆转。</li>
+<li><strong>推导逻辑：</strong> <code>AI 投入累积 3–4 年 → 部分企业见到效果形成 FOMO → 决策因子由宏观切换为技术迭代 → 预算上修且为增量 → 硬件先行、软件服务随后反超 → IT 支出进入新周期</code></li>
+<li><strong>隐含假设：</strong> 问卷样本能代表整体企业 IT 支出方向；硬件价格上涨不会持续压制软件预算；AI 项目效果可持续。</li>
+<li><strong>反例 / 证伪条件：</strong> 宏观进一步恶化使预算重新被砍；硬件价格再度大幅上涨挤压软件预算；AI 项目停留在 POC 无法进入生产；调研口径与实际采购数据背离。</li>
+</ul>
+<h3 id="7">观点 7：软件首选金蝶，其次深信服</h3>
+<ul>
+<li><strong>观点归属：</strong> 大摩互联网团队（“刘洋”）</li>
+<li><strong>结论：</strong> 软件板块首选金蝶（AI ERP 龙头），其次深信服（私有云/超融合 + 长期 AI 安全）。</li>
+<li><strong>前提事实：</strong> 金蝶受益于出口强劲（尤其制造业）及从外资厂商（转写稿提及“SATT”类外资厂商）手中抢份额，宏观走弱下收入增长反而提速，港股估值已跌至价值之下；深信服受益于 VMware 替代（2–3 年份额切换机会），短期业绩由私有云/超融合驱动、景气度高，长期看 AI 驱动网络安全，但网络安全行业体制内预算紧张需较长时间缓解。</li>
+<li><strong>推导逻辑：</strong> <code>IT 预算结构性上修+国产替代 → 金蝶收入提速、估值低于价值 → 首选；VMware 替代+超融合高景气 → 深信服短期有支撑，AI 安全为长期期权</code></li>
+<li><strong>隐含假设：</strong> 国产替代节奏延续；港股估值折价会被修复；网络安全预算终将恢复。</li>
+<li><strong>反例 / 证伪条件：</strong> 企业软件预算继续被硬件挤压；替代进程放缓；网络安全预算长期不改善；估值折价长期不收敛。</li>
+</ul>
+<h3 id="8ai">观点 8：腾讯——AI 投入缺明确商业模式，组织变革指向效率，短剧为低成本增量</h3>
+<ul>
+<li><strong>观点归属：</strong> 大摩互联网团队（转写稿称“刘洋”之后的腾讯部分主讲）</li>
+<li><strong>结论：</strong> 腾讯三季度收入预计 +9%、non-IFRS 经营利润预计下滑约 3%（首次下滑）；市场对 AI 投入“加还是减”无一致判断，组织变革指向 AI 时代提效而非大裁员，短剧对广告收入是正向增量。</li>
+<li><strong>前提事实：</strong> 投资者讨论集中在 AI 算力获取、混元 4、28 周年内部信引发的组织变革讨论、微信短剧动作；市场并未把“减少 capex”简单视为利好；目前没有明确的 AI 商业模式；混元 4 正式版相对 preview 扩展了预训练/后训练数据，新增视觉理解与电脑操作能力；腾讯公开否认裁员 50% 的传闻，称本轮变革不同于前几年（更偏账本），重点是用 AI 提效、压扁中间管理层、重新调度资源兼顾现有业务与 AI 原生机会；短剧已进入微信“看一看”入口，投入不大、变现主要对应广告收入。</li>
+<li><strong>推导逻辑：</strong> <code>AI 投入短期压制利润但长期回报不明 → 加/减投入均难形成一致预期 → 组织变革以提效和资源重配为主（非大规模裁员）→ 短剧以低投入换取用户时长与广告收入 → 短期业绩承压、中期看核心业务韧性与管理层口径</code></li>
+<li><strong>隐含假设：</strong> AI 商业模式将在中期内逐步清晰；短剧不显著抬升内容成本；组织调整不引发核心人才流失。</li>
+<li><strong>反例 / 证伪条件：</strong> 出现明确 AI 变现路径（则投入转为正面）；capex 大幅削减且不影响模型进展；短剧对用户时长/广告收入贡献超预期或引发监管；组织变革演变为实质性大规模裁员。</li>
+</ul>
+<h2 id="3">3. 投资研究指引</h2>
+<blockquote>
+<p>记录视频所表达的研究方向，不构成买卖建议；没有明确投资含义时如实写“未给出可执行指引”。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>主题 / 对象</th>
+<th>视频隐含或明确的方向</th>
+<th>为什么</th>
+<th>正向验证信号</th>
+<th>风险 / 失效信号</th>
+<th>需补的证据</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>中国电商行业（整体）</td>
+<td>明确转谨慎/更悲观</td>
+<td>消费弱、跨赛道竞争投入、股东回报能力下降</td>
+<td>消费数据连续回暖；平台宣布加大回购分红；新业务 ROI 显现</td>
+<td>消费进一步走弱；补贴战升级；税率/社保成本上升</td>
+<td>双十一及月度社零与电商 GMV 数据；各平台投入与回报口径</td>
+</tr>
+<tr>
+<td>美团</td>
+<td>明确下调至标配（超配→平配），目标价 90 港元</td>
+<td>on-demand 增速砍至 5–6%、到店 OP margin 砍至约 26%、AI 亏损扩大、UE 恢复推迟至 2028</td>
+<td>单量增速回升；抖音到店竞争缓和；UE 提前改善；AI 出现外部收入</td>
+<td>宏观继续走弱；抖音补贴加码；AI 亏损超 150–200 亿/年；UE 恢复再推迟</td>
+<td>与公司核对后的 2027/2028 模型；到店 margin 拆分；AI 投入口径确认</td>
+</tr>
+<tr>
+<td>拼多多</td>
+<td>明确下调至标配，目标价 90（币种未明）</td>
+<td>行业放缓下股东回报缺位，现金被大幅折扣</td>
+<td>启动回购/分红；份额提升带来利润率改善</td>
+<td>继续无股东回报；行业增速再下台阶</td>
+<td>现金使用计划；股东回报政策沟通；Temu 投入与亏损口径</td>
+</tr>
+<tr>
+<td>阿里巴巴</td>
+<td>报告内唯一首选，但逻辑在 AI/芯片而非电商</td>
+<td>英伟达卡囤货最多 + 平头哥自研明年起量，极端断供下相对受益</td>
+<td>平头哥出货起量；云增速维持；模型能力提升</td>
+<td>管制放松使稀缺性逻辑失效；平头哥不及预期；云受算力约束</td>
+<td>卡储备规模与结构；平头哥产能与性能；云收入拆分</td>
+</tr>
+<tr>
+<td>携程</td>
+<td>相对看好（弱于阿里的强逻辑）</td>
+<td>服务需求韧性、OTA 竞争温和、海外占比高、油价回落</td>
+<td>出境/海外预订加速；油价维持低位</td>
+<td>国内消费传导至旅游；油价回升；OTA 竞争加剧</td>
+<td>海外收入占比与增速；出境预订高频数据</td>
+</tr>
+<tr>
+<td>企业 IT 支出 / AI 采用</td>
+<td>明确偏正面（结构性拐点）</td>
+<td>决策因子转向技术迭代，预算上修、AI 为增量预算</td>
+<td>软件/服务增速反超硬件；AI 项目进入生产比例上升</td>
+<td>宏观再恶化导致预算回砍；硬件涨价挤压软件</td>
+<td>CIO 调研样本与口径；实际采购与订单数据</td>
+</tr>
+<tr>
+<td>金蝶</td>
+<td>明确首选（软件板块）</td>
+<td>AI ERP 龙头、出口与制造业驱动、抢外资份额、估值低于价值</td>
+<td>收入提速延续；大客户签约；估值修复</td>
+<td>软件预算被硬件挤压；替代放缓</td>
+<td>订阅收入与续费率；制造业客户结构</td>
+</tr>
+<tr>
+<td>深信服</td>
+<td>明确次选（软件板块）</td>
+<td>VMware 替代 2–3 年窗口、超融合高景气、AI 安全长期期权</td>
+<td>超融合订单增长；替代份额落地</td>
+<td>网安预算持续紧张；替代进度慢</td>
+<td>私有云订单；网安预算恢复节奏</td>
+</tr>
+<tr>
+<td>腾讯</td>
+<td>中性偏观察：短期利润承压，关注核心业务韧性与管理层口径</td>
+<td>AI 投入无明确商业模式，Q3 收入 +9%、non-IFRS 经营利润约 -3%；组织变革指向提效；短剧为低成本增量</td>
+<td>出现 AI 变现路径；混元能力持续追赶；短剧广告收入贡献</td>
+<td>capex 与利润压力超预期；组织调整扰动；短剧监管</td>
+<td>三季度实际财报；capex 指引；AI 产品商业化进展</td>
+</tr>
+<tr>
+<td>英伟达卡供应 / 出口管制</td>
+<td>未给出可执行指引（作为情景假设讨论）</td>
+<td>团队明示该变量已进入地缘政治层面、难以判断</td>
+<td>供应渠道保持通畅</td>
+<td>全面断供（则阿里相对受益、字节腾讯风险更大）</td>
+<td>管制细则与实际通关/租赁渠道数据</td>
+</tr>
+</tbody>
+</table></div>
+</article>
+
+      <div class="day-card">
+        <p>归档路径 <code>daily/20261116/</code> · <a href="../../index.html">返回历史总览</a> · <a href="./index.html">本日目录</a></p>
+      </div>
+    </main>
+  </div>
+</body>
+</html>

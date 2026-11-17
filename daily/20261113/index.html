@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>解读君视频日报 · 20261113</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@400;600;700;900&display=swap" rel="stylesheet">
+  <style>
+:root {
+  --bg-page: #FBF8F2;
+  --bg-surface: #FFFDF9;
+  --bg-header: #F4EFE6;
+  --bg-subtle: #F0EADF;
+  --border-main: #E5DDCD;
+  --border-dark: #2B2625;
+  --text-main: #231F20;
+  --text-muted: #5C554E;
+  --text-light: #8E8478;
+  --accent-burgundy: #8B261D;
+  --accent-amber: #B45309;
+  --font-serif: 'Noto Serif SC', Georgia, 'Times New Roman', serif;
+  --font-sans: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'IBM Plex Mono', monospace;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 15px; }
+body {
+  background: var(--bg-page);
+  color: var(--text-main);
+  font-family: var(--font-sans);
+  line-height: 1.85;
+  -webkit-font-smoothing: antialiased;
+}
+
+.wrap {
+  max-width: 1300px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 290px 1fr;
+  min-height: 100vh;
+  border-left: 2px solid var(--border-dark);
+  border-right: 2px solid var(--border-dark);
+  background: var(--bg-surface);
+}
+
+@media (max-width: 1024px) {
+  .wrap { grid-template-columns: 1fr; border: none; }
+}
+
+/* Sidebar */
+.nav {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow-y: auto;
+  padding: 32px 24px;
+  background: #F7F3EB;
+  border-right: 1px solid var(--border-main);
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+@media (max-width: 1024px) {
+  .nav { position: relative; height: auto; border-right: none; border-bottom: 2px solid var(--border-dark); }
+}
+
+.brand {
+  padding-bottom: 18px;
+  border-bottom: 2px solid var(--border-dark);
+}
+.brand h1 {
+  font-family: var(--font-serif);
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: var(--border-dark);
+}
+.brand h1 span {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent-burgundy);
+  margin-top: 4px;
+}
+
+.toc h2 {
+  font-family: var(--font-serif);
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--border-dark);
+  border-bottom: 1px solid var(--border-main);
+  padding-bottom: 6px;
+  margin: 16px 0 10px;
+}
+
+.toc a {
+  display: flex;
+  flex-direction: column;
+  padding: 8px 10px;
+  text-decoration: none;
+  color: var(--text-main);
+  border: 1px solid transparent;
+  border-radius: 4px;
+  transition: all 0.15s;
+  font-size: 13px;
+  line-height: 1.4;
+  margin-bottom: 4px;
+}
+.toc a:hover {
+  background: var(--bg-subtle);
+  border-color: var(--border-main);
+}
+.toc a.active {
+  background: #EFE8DA;
+  border-color: var(--border-main);
+  color: var(--accent-burgundy);
+  font-weight: 600;
+}
+.toc a span {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+.nav-desc {
+  font-size: 11px;
+  font-family: var(--font-mono);
+  color: var(--text-muted);
+  line-height: 1.6;
+  padding: 4px 6px;
+}
+
+/* Main Area */
+.main {
+  padding: 40px 48px 80px;
+  max-width: 960px;
+}
+
+@media (max-width: 768px) {
+  .main { padding: 24px 18px 40px; }
+}
+
+.gazette-header {
+  border-top: 3px double var(--border-dark);
+  border-bottom: 1px solid var(--border-dark);
+  padding: 20px 0;
+  margin-bottom: 36px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+.gazette-header h1 {
+  font-family: var(--font-serif);
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--border-dark);
+}
+.gazette-header .gazette-meta {
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.summary-card, .article {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-main);
+  margin-bottom: 40px;
+}
+
+.summary-head, .article-head {
+  background: var(--bg-header);
+  padding: 20px 26px;
+  border-bottom: 1px solid var(--border-main);
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+}
+.article-head h3, .summary-head h3 {
+  font-family: var(--font-serif);
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text-main);
+  line-height: 1.35;
+}
+.article-head h3 a, .summary-head h3 a {
+  color: inherit;
+  text-decoration: none;
+}
+.article-head h3 a:hover, .summary-head h3 a:hover {
+  color: var(--accent-burgundy);
+}
+
+.meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-top: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.meta a {
+  color: var(--accent-burgundy);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.content {
+  padding: 32px 36px;
+  font-size: 14.5px;
+  line-height: 1.9;
+  color: #2D2726;
+}
+
+@media (max-width: 768px) {
+  .content { padding: 20px 18px; }
+  .summary-head, .article-head { padding: 16px 18px; }
+}
+
+.content h1 {
+  font-family: var(--font-serif);
+  font-size: 22px;
+  font-weight: 700;
+  margin: 0 0 18px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border-dark);
+}
+
+.content h2 {
+  font-family: var(--font-serif);
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--accent-burgundy);
+  background: var(--bg-header);
+  border: 1px solid var(--border-main);
+  border-radius: 4px;
+  padding: 8px 14px;
+  margin: 32px 0 14px;
+  letter-spacing: 0.02em;
+}
+
+.content h3 {
+  font-family: var(--font-serif);
+  font-size: 14.5px;
+  font-weight: 700;
+  margin: 22px 0 10px;
+  color: var(--text-main);
+}
+
+.content p {
+  margin-bottom: 16px;
+  text-align: justify;
+}
+
+.content strong {
+  font-weight: 700;
+  color: #1A1616;
+}
+
+.content ul, .content ol {
+  margin: 12px 0 18px 6px;
+  padding-left: 22px;
+}
+.content li {
+  margin-bottom: 8px;
+  line-height: 1.8;
+}
+.content ul > li::marker {
+  content: "▪ ";
+  color: var(--accent-burgundy);
+}
+.content ol > li::marker {
+  color: var(--accent-burgundy);
+  font-weight: 700;
+  font-family: var(--font-mono);
+}
+.content li > ul, .content li > ol {
+  margin: 8px 0 8px 6px;
+}
+.cond-label {
+  color: var(--accent-burgundy);
+  font-weight: 700;
+}
+.content li > p {
+  margin-bottom: 6px;
+}
+.content li > p:last-child {
+  margin-bottom: 0;
+}
+
+.viewpoint {
+  border: 1px solid var(--border-main);
+  border-radius: 6px;
+  margin: 16px 0 20px;
+  overflow: hidden;
+  background: #FFFDF8;
+}
+.vp-head {
+  background: var(--bg-header);
+  padding: 10px 16px;
+  border-bottom: 1px solid var(--border-main);
+  display: flex;
+  gap: 10px;
+  align-items: baseline;
+  flex-wrap: wrap;
+}
+.vp-num {
+  font-family: var(--font-serif);
+  font-weight: 700;
+  font-size: 14.5px;
+  color: var(--accent-burgundy);
+  white-space: nowrap;
+}
+.vp-title {
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--text-main);
+}
+.vp-owner {
+  margin-left: auto;
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+.vp-row {
+  display: grid;
+  grid-template-columns: 46px 1fr;
+  gap: 12px;
+  padding: 8px 16px;
+  font-size: 13.5px;
+  line-height: 1.8;
+}
+.vp-row + .vp-row {
+  border-top: 1px dashed var(--border-main);
+}
+.vp-label {
+  font-weight: 700;
+  font-size: 12.5px;
+  color: var(--accent-burgundy);
+  white-space: nowrap;
+  padding-top: 1px;
+}
+.vp-val {
+  color: #2D2726;
+  text-align: justify;
+  min-width: 0;
+}
+.vp-val p {
+  margin: 0;
+  text-align: justify;
+}
+.vp-val code {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  background: #EDE6D8;
+  padding: 2px 6px;
+  border-radius: 3px;
+  color: var(--accent-burgundy);
+}
+@media (max-width: 768px) {
+  .vp-row { grid-template-columns: 40px 1fr; padding: 7px 12px; }
+}
+
+.content blockquote {
+  background: #F3ECE0;
+  border: 1px solid var(--border-main);
+  border-radius: 4px;
+  padding: 14px 20px;
+  margin: 20px 0;
+  font-size: 13.5px;
+  font-style: italic;
+  color: #523E3B;
+}
+
+.content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 24px 0;
+  font-size: 13px;
+  border: 1px solid var(--border-main);
+}
+.content th {
+  background: #ECE4D6;
+  font-family: var(--font-serif);
+  font-weight: 700;
+  color: var(--border-dark);
+  text-align: left;
+  padding: 10px 14px;
+  border: 1px solid var(--border-main);
+}
+.content td {
+  padding: 9px 14px;
+  border: 1px solid var(--border-main);
+}
+.content tr:nth-child(even) {
+  background: #F8F4EC;
+}
+
+.content code {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  background: #EDE6D8;
+  padding: 2px 6px;
+  border-radius: 3px;
+  color: var(--accent-burgundy);
+}
+
+.day-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-main);
+  padding: 20px 24px;
+  margin-bottom: 18px;
+}
+.day-card h3 {
+  font-family: var(--font-serif);
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+.day-card h3 a {
+  color: var(--text-main);
+  text-decoration: none;
+}
+.day-card h3 a:hover {
+  color: var(--accent-burgundy);
+}
+.day-card p {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+.btn {
+  display: inline-flex;
+  padding: 8px 14px;
+  border: 1px solid var(--border-dark);
+  background: var(--bg-surface);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  text-decoration: none;
+  color: var(--text-main);
+  font-weight: 600;
+  transition: all 0.15s;
+}
+.btn:hover {
+  background: var(--bg-subtle);
+}
+.btn.primary {
+  background: var(--border-dark);
+  color: #FFFFFF;
+}
+.btn.primary:hover {
+  background: var(--accent-burgundy);
+  border-color: var(--accent-burgundy);
+}
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <nav class="nav">
+      <div class="brand">
+        <h1>解读君视频日报<span>JIEDU DAILY · 20261113</span></h1>
+      </div>
+      <div class="toc">
+        <h2>全量原文</h2>
+        <a href="#summary" class="active">每日核心总结<span>20261113</span></a>
+        <a href="#note-WXRiTk4aulg">【2026-11-13 全精华部分】付鹏拆解游资剧本：热点、投流、市值管理“一条龙”，散户为什么别学盘手做短线？Fu Peng on the Hot-Money Playbook【去掉闲聊保留精华】<span>20261113 · WXRiTk4aulg</span></a>
+        <h2>历史归档</h2>
+        <a href="../../index.html">← 返回历史总览</a>
+        <a href="../20261117/index.html" class="">20261117 <span>1 篇 · 当日归档</span></a><a href="../20261116/index.html" class="">20261116 <span>5 篇 · 当日归档</span></a><a href="../20261115/index.html" class="">20261115 <span>1 篇 · 当日归档</span></a><a href="../20261113/index.html" class="active">20261113 <span>1 篇 · 当日归档</span></a><a href="../20261112/index.html" class="">20261112 <span>1 篇 · 当日归档</span></a><a href="../20261111/index.html" class="">20261111 <span>1 篇 · 当日归档</span></a><a href="../20261110/index.html" class="">20261110 <span>2 篇 · 当日归档</span></a><a href="../20261109/index.html" class="">20261109 <span>2 篇 · 当日归档</span></a><a href="../20261108/index.html" class="">20261108 <span>1 篇 · 当日归档</span></a><a href="../20261107/index.html" class="">20261107 <span>1 篇 · 当日归档</span></a><a href="../20261106/index.html" class="">20261106 <span>1 篇 · 当日归档</span></a><a href="../20261105/index.html" class="">20261105 <span>2 篇 · 当日归档</span></a><a href="../20261104/index.html" class="">20261104 <span>1 篇 · 当日归档</span></a><a href="../20261103/index.html" class="">20261103 <span>2 篇 · 当日归档</span></a><a href="../20261102/index.html" class="">20261102 <span>2 篇 · 当日归档</span></a><a href="../20261101/index.html" class="">20261101 <span>1 篇 · 当日归档</span></a><a href="../20261031/index.html" class="">20261031 <span>1 篇 · 当日归档</span></a><a href="../20261030/index.html" class="">20261030 <span>2 篇 · 当日归档</span></a><a href="../20261028/index.html" class="">20261028 <span>1 篇 · 当日归档</span></a><a href="../20261027/index.html" class="">20261027 <span>1 篇 · 当日归档</span></a><a href="../20261026/index.html" class="">20261026 <span>3 篇 · 当日归档</span></a><a href="../20261024/index.html" class="">20261024 <span>1 篇 · 当日归档</span></a><a href="../20261023/index.html" class="">20261023 <span>3 篇 · 当日归档</span></a><a href="../20261022/index.html" class="">20261022 <span>2 篇 · 当日归档</span></a><a href="../20261021/index.html" class="">20261021 <span>2 篇 · 当日归档</span></a><a href="../20261020/index.html" class="">20261020 <span>1 篇 · 当日归档</span></a><a href="../20261019/index.html" class="">20261019 <span>1 篇 · 当日归档</span></a><a href="../20261018/index.html" class="">20261018 <span>2 篇 · 当日归档</span></a><a href="../20261016/index.html" class="">20261016 <span>1 篇 · 当日归档</span></a><a href="../20261015/index.html" class="">20261015 <span>1 篇 · 当日归档</span></a><a href="../20261014/index.html" class="">20261014 <span>3 篇 · 当日归档</span></a><a href="../20261013/index.html" class="">20261013 <span>2 篇 · 当日归档</span></a><a href="../20261012/index.html" class="">20261012 <span>2 篇 · 当日归档</span></a><a href="../20261011/index.html" class="">20261011 <span>3 篇 · 当日归档</span></a><a href="../20261010/index.html" class="">20261010 <span>9 篇 · 当日归档</span></a><a href="../20261006/index.html" class="">20261006 <span>2 篇 · 当日归档</span></a><a href="../20261005/index.html" class="">20261005 <span>3 篇 · 当日归档</span></a><a href="../20261004/index.html" class="">20261004 <span>1 篇 · 当日归档</span></a><a href="../20260929/index.html" class="">20260929 <span>0 篇 · 当日归档</span></a><a href="../20260928/index.html" class="">20260928 <span>1 篇 · 当日归档</span></a><a href="../20260927/index.html" class="">20260927 <span>6 篇 · 当日归档</span></a><a href="../20260922/index.html" class="">20260922 <span>1 篇 · 当日归档</span></a><a href="../20260921/index.html" class="">20260921 <span>8 篇 · 当日归档</span></a><a href="../20260914/index.html" class="">20260914 <span>6 篇 · 当日归档</span></a><a href="../20260910/index.html" class="">20260910 <span>1 篇 · 当日归档</span></a><a href="../20260908/index.html" class="">20260908 <span>2 篇 · 当日归档</span></a><a href="../20260907/index.html" class="">20260907 <span>2 篇 · 当日归档</span></a><a href="../20260906/index.html" class="">20260906 <span>1 篇 · 当日归档</span></a><a href="../20260905/index.html" class="">20260905 <span>1 篇 · 当日归档</span></a><a href="../20260904/index.html" class="">20260904 <span>2 篇 · 当日归档</span></a><a href="../20260903/index.html" class="">20260903 <span>2 篇 · 当日归档</span></a><a href="../20260902/index.html" class="">20260902 <span>3 篇 · 当日归档</span></a><a href="../20260831/index.html" class="">20260831 <span>2 篇 · 当日归档</span></a><a href="../20260829/index.html" class="">20260829 <span>1 篇 · 当日归档</span></a><a href="../20260828/index.html" class="">20260828 <span>1 篇 · 当日归档</span></a><a href="../20260825/index.html" class="">20260825 <span>1 篇 · 当日归档</span></a><a href="../20260824/index.html" class="">20260824 <span>2 篇 · 当日归档</span></a><a href="../20260823/index.html" class="">20260823 <span>1 篇 · 当日归档</span></a><a href="../20260821/index.html" class="">20260821 <span>3 篇 · 当日归档</span></a>
+      </div>
+    </nav>
+    <main class="main">
+      <div class="gazette-header">
+        <div>
+          <h1>金融经纬 · 每日纪要</h1>
+          <div class="gazette-meta">JIEDU DAILY FINANCIAL GAZETTE · VOL. 20261113</div>
+        </div>
+        <div class="gazette-meta">1 ARTICLES ARCHIVED</div>
+      </div>
+      
+<section id="summary" class="summary-card">
+  <div class="summary-head">
+    <div>
+      <h3>每日总结 · 20261113</h3>
+      <div class="meta">daily/20261113/20261113_解读君视频总结.md</div>
+    </div>
+  </div>
+  <div class="content"><h1 id="_1">解读君视频摘要</h1>
+<h2 id="1-2026-11-13-fu-peng-on-the-hot-money-playbook">1. <a href="#note-WXRiTk4aulg">【2026-11-13 全精华部分】付鹏拆解游资剧本：热点、投流、市值管理“一条龙”，散户为什么别学盘手做短线？Fu Peng on the Hot-Money Playbook【去掉闲聊保留精华】</a></h2>
+<blockquote>
+<p>一句话：游资炒作是靠话题与投流驱动的工程，散户不应学短线；AI硬件将转向周期定价。</p>
+</blockquote>
+<ol>
+<li><strong>游资炒作是“话题+小板块+投流”三段式工程，不是自发的价值发现。</strong> 适用条件：出现全民级新话题（本期为 AI 漫剧）、对应板块市值小、散户情绪与新闻热度同步高涨；<br><span class="cond-label">边界：</span>一旦话题热度自然衰减、监管介入内容投放，或板块容量变大导致撬动成本上升，该链条即失效——视频未给出可量化的识别指标，只能事后确认。</li>
+<li><strong>毛利率是比订单、利润、销售数据更早的周期拐点信号（付鹏观点）。</strong> 适用条件：成本—价格结构清晰的制造业/硬件类行业，尤其资本开支驱动型；<br><span class="cond-label">边界：</span>对毛利率结构性稳定或会计口径频繁变动的平台、软件类公司参考价值弱；且毛利率见顶只标志“成长→成熟”过渡，不预示下跌时点与幅度。</li>
+<li><strong>付鹏判断上游 AI 硬件（“卖铲子”）未来 3–5 年将从成长性定价切换为周期性定价。</strong> 适用条件：资本开支高峰过去、产能释放、毛利率确认见顶；<br><span class="cond-label">边界：</span>若 AI 需求出现新一波非线性扩张或供给端受强约束，周期拐点将推迟；此为观点而非事实，需用 1998–2000 年互联网上游硬件、国内钢铁/水泥/沥青的镜像路径自行验证。</li>
+<li><strong>本轮美股（纳指、半导体）调整更接近“窗口期估值下修”，而非 AI 长期预期破裂。</strong> 适用条件：产业冲击尚未扩散至整体经济，红利类与消费类资产上涨形成对冲，故指数波动有限而个股跌幅巨大；<br><span class="cond-label">边界：</span>若远期订单出现大面积违约（参照思科 1998–1999 后订单违约与 CDS 定价），或龙头毛利率确认下行，则性质转为叙事变化。</li>
+<li><strong>散户不应模仿游资盘手做短线——对手是团队、有分工、有付费数据（如期权的 delta/gamma 结构数据），信息不对称客观存在且无法被“打破”。</strong> 适用条件：交易时长向 7×24 演进、被动配置比例上升的成熟市场趋势下；<br><span class="cond-label">边界：</span>该结论针对无数据与团队资源的个人投资者，不适用于具备机构级信息与工具的主体；结论的操作含义是“拉长周期做配置、不输即是赢”，而非“不参与市场”。</li>
+</ol></div>
+</section>
+
+      
+<article id="note-WXRiTk4aulg" class="article">
+  <div class="article-head">
+    <div>
+      <h3><a href="https://www.youtube.com/watch?v=WXRiTk4aulg" target="_blank" rel="noreferrer">【2026-11-13 全精华部分】付鹏拆解游资剧本：热点、投流、市值管理“一条龙”，散户为什么别学盘手做短线？Fu Peng on the Hot-Money Playbook【去掉闲聊保留精华】</a></h3>
+      <div class="meta">20261113 · WXRiTk4aulg · <a href="https://www.youtube.com/watch?v=WXRiTk4aulg" target="_blank" rel="noreferrer">观看 YouTube 原片 ↗</a></div>
+    </div>
+  </div>
+  <div class="content"><h1 id="2026-11-13-fu-peng-on-the-hot-money-playbook">结构化笔记｜【2026-11-13 全精华部分】付鹏拆解游资剧本：热点、投流、市值管理“一条龙”，散户为什么别学盘手做短线？Fu Peng on the Hot-Money Playbook【去掉闲聊保留精华】</h1>
+<h2 id="1">1. 核心结论</h2>
+<ol>
+<li><strong>游资炒作是“话题+小板块+投流”三段式工程，不是自发的价值发现。</strong> 适用条件：出现全民级新话题（本期为 AI 漫剧）、对应板块市值小、散户情绪与新闻热度同步高涨；边界：一旦话题热度自然衰减、监管介入内容投放，或板块容量变大导致撬动成本上升，该链条即失效——视频未给出可量化的识别指标，只能事后确认。</li>
+<li><strong>毛利率是比订单、利润、销售数据更早的周期拐点信号（付鹏观点）。</strong> 适用条件：成本—价格结构清晰的制造业/硬件类行业，尤其资本开支驱动型；边界：对毛利率结构性稳定或会计口径频繁变动的平台、软件类公司参考价值弱；且毛利率见顶只标志“成长→成熟”过渡，不预示下跌时点与幅度。</li>
+<li><strong>付鹏判断上游 AI 硬件（“卖铲子”）未来 3–5 年将从成长性定价切换为周期性定价。</strong> 适用条件：资本开支高峰过去、产能释放、毛利率确认见顶；边界：若 AI 需求出现新一波非线性扩张或供给端受强约束，周期拐点将推迟；此为观点而非事实，需用 1998–2000 年互联网上游硬件、国内钢铁/水泥/沥青的镜像路径自行验证。</li>
+<li><strong>本轮美股（纳指、半导体）调整更接近“窗口期估值下修”，而非 AI 长期预期破裂。</strong> 适用条件：产业冲击尚未扩散至整体经济，红利类与消费类资产上涨形成对冲，故指数波动有限而个股跌幅巨大；边界：若远期订单出现大面积违约（参照思科 1998–1999 后订单违约与 CDS 定价），或龙头毛利率确认下行，则性质转为叙事变化。</li>
+<li><strong>散户不应模仿游资盘手做短线——对手是团队、有分工、有付费数据（如期权的 delta/gamma 结构数据），信息不对称客观存在且无法被“打破”。</strong> 适用条件：交易时长向 7×24 演进、被动配置比例上升的成熟市场趋势下；边界：该结论针对无数据与团队资源的个人投资者，不适用于具备机构级信息与工具的主体；结论的操作含义是“拉长周期做配置、不输即是赢”，而非“不参与市场”。</li>
+</ol>
+<h2 id="2">2. 专家观点与逻辑链</h2>
+<h3 id="1_1">观点 1：游资剧本的三段式结构——找话题、选小板块、投流放大</h3>
+<ul>
+<li><strong>观点归属：</strong> 付鹏（解读君频道访谈）</li>
+<li><strong>结论：</strong> 游资不会切向拿股息分红的红利资产，而是围绕当期最具新闻热度的题材（本期为 AI 漫剧）在小容量板块上做撬动，并配合内容投放完成“一条龙”式炒作。</li>
+<li><strong>前提事实：</strong> 那段时间 AI 漫剧的网上新闻热度与关注点足够高；对应板块（传媒类）市值小、标的少；短视频已成为主要信息入口，股吧等旧渠道被替代。</li>
+<li><strong>推导逻辑：</strong> <code>全民级新话题出现 → 板块容量小、少量资金即可撬动 → 游资“引子”出现并快速进场 → 散户在短视频/信息流中看到讨论与个股异动 → 跟风买入推高价格</code></li>
+<li><strong>隐含假设：</strong> 散户的注意力与买入决策主要由短视频信息流驱动；监管对“有偿话题投放”缺乏实时识别能力；话题热度在数日内不会自然衰减。</li>
+<li><strong>反例 / 证伪条件：</strong> 话题热度上升但对应板块无个股异动；或监管对“群发/付费话题”明确处罚导致投放成本骤升；或板块内标的市值过大、撬动所需资金超出游资承受范围。</li>
+</ul>
+<h3 id="2_1">观点 2：市值管理的“投流化”——内容看不出指向，但背后有目的</h3>
+<ul>
+<li><strong>观点归属：</strong> 付鹏</li>
+<li><strong>结论：</strong> 市值管理（转写中“视觉管理”为错字）的执行方式已从股吧发帖迁移到短视频投流：由传媒公司组织数百家账号群发统一定制的话题内容，单条成本约 2000–5000 元，内容表面不指向任何标的，实际带明确目的。</li>
+<li><strong>前提事实：</strong> 存在可被组织的传媒公司账号群；短视频平台的分发机制使“无指向内容”更易获得自然流量；单条投放成本低廉。</li>
+<li><strong>推导逻辑：</strong> <code>传媒公司接单 → 组织账号统一发布 AI 漫剧类内容 → 平台算法分发形成“全民在讨论”的观感 → 明后天市场情绪与股价被抬起</code></li>
+<li><strong>隐含假设：</strong> 平台算法无法有效区分自然讨论与有偿投放；投资者会把“内容热度”误当“基本面变化”。</li>
+<li><strong>反例 / 证伪条件：</strong> 平台加强商业内容标识与投放溯源；或同类内容泛滥后受众脱敏（与观点 5 相互印证），投放的边际效果递减至零。</li>
+</ul>
+<h3 id="3">观点 3：毛利率是周期拐点的先行指标，订单与利润是滞后的</h3>
+<ul>
+<li><strong>观点归属：</strong> 付鹏</li>
+<li><strong>结论：</strong> 判断成长转向成熟/衰退的第一信号是毛利率见顶，而非订单、财报利润或销售数据；毛利率上行阶段赚的是产业红利的钱，见顶之后赚的是内卷抢份额的钱。</li>
+<li><strong>前提事实：</strong> 毛利率在会计链条上先于利润与销售数据变化；思科在 1998–1999 年极度乐观后出现大量订单违约与不执行；CDS（信用违约掉期）市场对远期订单存在违约定价；国内新能源车产业链某环节毛利率约半年前见顶后股价下跌 30%–40%。</li>
+<li><strong>推导逻辑：</strong> <code>经营中价格与成本先反应 → 毛利率先于利润与销售见顶 → 毛利率见顶意味着产业红利期结束、进入份额竞争 → 估值定价从成长切换为周期 → 股价承压</code></li>
+<li><strong>隐含假设：</strong> 行业成本结构相对稳定、毛利率变化主要反映供需而非会计口径调整；股价对毛利率拐点的反应存在时滞但方向确定。</li>
+<li><strong>反例 / 证伪条件：</strong> 毛利率短期波动由原材料一次性冲击或汇率造成、随后恢复；或行业通过技术迭代重新打开价格空间使毛利率再创新高；或订单违约风险被 CDS 定价证伪（违约概率未上升）。</li>
+</ul>
+<h3 id="4-ai">观点 4：上游 AI 硬件将从成长性定价转为周期性定价</h3>
+<ul>
+<li><strong>观点归属：</strong> 付鹏</li>
+<li><strong>结论：</strong> 未来 3–5 年，AI 上游硬件（“卖铲子”环节）会走完“成长性定价→周期性定价”的切换，可通过对 1998–2000 年互联网上游硬件、以及国内钢铁/水泥/沥青的镜像研究来预判转折时点与信号。</li>
+<li><strong>前提事实：</strong> 基建周期中，钢厂、水泥、工程机械第一波具备成长性与估值，毛利率见顶后估值消失、转为纯价值/周期定价；当前 AI 资本开支处于高强度扩张阶段。</li>
+<li><strong>推导逻辑：</strong> <code>资本开支高峰 → 上游硬件量价齐升、享受成长估值 → 产能释放、毛利率见顶 → 估值体系切换为周期股 → 定价锚从增速变为周期位置</code></li>
+<li><strong>隐含假设：</strong> AI 资本开支会遵循传统资本开支周期的形态（先超调、后过剩）；历史互联网上游硬件的周期形态可类比迁移到当下。</li>
+<li><strong>反例 / 证伪条件：</strong> AI 需求出现新的非线性扩张（新应用范式）持续消化产能；或供给端受制于先进制程/电力等硬约束，产能无法如期释放，毛利率长期维持高位。</li>
+</ul>
+<h3 id="5-ai">观点 5：美股调整是估值下修而非 AI 叙事破裂，指数波动被对冲掩盖</h3>
+<ul>
+<li><strong>观点归属：</strong> 付鹏</li>
+<li><strong>结论：</strong> 纳指与半导体的大幅回调属于“高速公路修完但车还没跑起来”窗口期的估值挤压，不是市场对 AI 未来预期发生根本变化；因产业冲击尚未扩散至整体经济，且红利类、消费类资产上涨形成对冲，指数看似跌幅有限，但个股可能已跌去 70%。</li>
+<li><strong>前提事实：</strong> 本轮纳指与半导体跌幅显著；美股红利类资产同期上涨；AI 相关投资集中于产业内部，尚未传导至整体经济与企业盈利面。</li>
+<li><strong>推导逻辑：</strong> <code>基础设施投入完成、应用回报未至 → 处于预期与现实的窗口期 → 中观/行业/产业层面的负面扰动被放大 → 估值被挤压 → 但资金在红利与消费上对冲 → 指数波动不大、个股分化极大</code></li>
+<li><strong>隐含假设：</strong> AI 的长期需求逻辑未被破坏；资金在板块间可自由再配置以平滑指数。</li>
+<li><strong>反例 / 证伪条件：</strong> 远期订单出现大面积违约、信用风险定价上升；或龙头公司毛利率确认下行并传导至整体盈利；或 AI 资本开支出现主动砍单，届时性质转为叙事与周期双杀。</li>
+</ul>
+<h3 id="6ai">观点 6：AI 漫剧/短剧的生命周期短，靠“成瘾—呕吐—脱敏”自然出清</h3>
+<ul>
+<li><strong>观点归属：</strong> 付鹏（基于个人重度使用的一手体验）</li>
+<li><strong>结论：</strong> AI 漫剧/短剧不会形成长期沉迷，生命周期最多再半年到一年、很可能半年内见顶；之后 70%–80% 的人会产生审美疲劳甚至反感，精品长剧有机会反杀。</li>
+<li><strong>前提事实：</strong> 欧盟委员会认定 TikTok 个性化推荐存在“兔子洞效应”，对未成年人及心理脆弱人群的心理健康造成明显伤害；付鹏本人高频使用后已接近“脱敏”阶段；游戏时代起“越禁越想玩、玩到吐为止”的经验。</li>
+<li><strong>推导逻辑：</strong> <code>算法推荐带来强刺激 → 短期成瘾、内容供给爆发 → 同质化导致审美疲劳与反感 → 用户自然脱敏、留存下降 → 行业见顶，精品长内容重新获得相对优势</code></li>
+<li><strong>隐含假设：</strong> 内容同质化速度足够快、供给端无法持续创新；成年人具备自然脱敏能力（未成年人及心理脆弱人群不适用，需外部保护）。</li>
+<li><strong>反例 / 证伪条件：</strong> 出现形态创新的高质量 AI 内容持续拉高留存；或平台通过个性化推荐不断刷新刺激阈值，延长成瘾周期；或监管限制反而强化猎奇需求（“越不让玩越想玩”）。</li>
+</ul>
+<h3 id="7-724">观点 7：交易时长走向 7×24，散户的出路是配置而非盯盘</h3>
+<ul>
+<li><strong>观点归属：</strong> 付鹏</li>
+<li><strong>结论：</strong> 全球主要市场（美、韩等）向 7×24 交易演进后，散户式盯盘炒作不可持续；散户将被动配置化、主动参与比例下降，核心原则是“不输即是赢、不折腾即是赢，但不等于不折腾”，即留在市场里待得足够久。</li>
+<li><strong>前提事实：</strong> 美股拟改 7×24 交易，韩国市场亦在变化；有朋友在近 7×24 的市场中坚持一两个月后失去生活与家庭互动，随后发现少看几小时并无影响；成熟市场（如美国）大资金并无“盘手”概念。</li>
+<li><strong>推导逻辑：</strong> <code>交易时长延长 → 盯盘的时间成本与生理成本剧增 → 边际信息价值趋零 → 主动短线参与比例下降 → 被动配置成为主流 → 留在场内的时间长度决定相对收益</code></li>
+<li><strong>隐含假设：</strong> 散户不具备信息与数据优势（如期权的 delta/gamma 市场结构数据需付费采购）；市场长期向上提供配置回报。</li>
+<li><strong>反例 / 证伪条件：</strong> 交易制度未向 7×24 推进、或短线生态因制度（如 T+0、做市）改变而重新有利于个人；或个人具备可复用的量化/数据工具，使主动参与仍具优势。</li>
+</ul>
+<h3 id="8">观点 8：人口周期决定教育行业长期收缩，学区房逻辑转向“医区房”</h3>
+<ul>
+<li><strong>观点归属：</strong> 付鹏</li>
+<li><strong>结论：</strong> 2015 年新生儿断崖可按年龄倒推出小学、初中、高中的入学高峰时序，教育（含幼教、教培）不是好行业；未来“学区房”的核心价值将让位于“医区房”——离优质医疗资源的通行时间（心梗/脑梗黄金半小时至一小时）比学区更重要。</li>
+<li><strong>前提事实：</strong> 2015 年后新生儿数量断崖；多地幼儿园、小学已关停合并，民营办校机构陆续撤离；教培同时受监管打压与 AI 替代影响；优质医疗资源稀缺。</li>
+<li><strong>推导逻辑：</strong> <code>新生儿数量断崖 → 按年龄倒推各学段入学人口依次见顶回落 → 教育资源过剩、学校关停合并 → 学历贬值与就业压力上升 → 学区房需求逻辑弱化；同时老龄化提升医疗可达性权重 → 医区房逻辑强化</code></li>
+<li><strong>隐含假设：</strong> 人口趋势不可逆、短期内无大规模移民或生育政策逆转；医疗资源分布格局不发生根本改变。</li>
+<li><strong>反例 / 证伪条件：</strong> 出生率出现趋势性反弹；或教育资源配置政策（如教师轮岗、多校划片）与医疗资源下沉改变稀缺性分布，使地理溢价重估。</li>
+</ul>
+<h2 id="3_1">3. 投资研究指引</h2>
+<blockquote>
+<p>记录视频所表达的研究方向，不构成买卖建议；没有明确投资含义时如实写“未给出可执行指引”。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>主题 / 对象</th>
+<th>视频隐含或明确的方向</th>
+<th>为什么</th>
+<th>正向验证信号</th>
+<th>风险 / 失效信号</th>
+<th>需补的证据</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>传媒 / AI 漫剧题材股</td>
+<td>明确提示为游资炒作载体，暗含“不参与、不追高”的倾向</td>
+<td>板块小易撬动，热度由投流与群发内容放大，散户处于信息链末端</td>
+<td>出现可追溯的自然需求（付费、留存）而非投放热度；平台商业内容标识完善</td>
+<td>话题热度衰减、受众审美疲劳（半年内见顶）、监管查处有偿话题投放</td>
+<td>平台投放报价与账号群规模、题材股换手率与龙虎榜结构、内容热度与成交量的时序关系</td>
+</tr>
+<tr>
+<td>AI 上游硬件（算力/半导体设备等“卖铲子”）</td>
+<td>中期偏谨慎：未来 3–5 年由成长性定价转周期性定价</td>
+<td>资本开支高峰后产能释放，毛利率见顶使估值锚从增速切换为周期位置</td>
+<td>毛利率连续环比走弱、资本开支指引下修、订单交付周期缩短</td>
+<td>新应用范式带来非线性需求；先进制程/电力等供给硬约束使产能无法释放</td>
+<td>各环节毛利率季度序列、云厂商资本开支指引、1998–2000 互联网上游硬件与国内钢铁/水泥的镜像拐点对照</td>
+</tr>
+<tr>
+<td>美股指数（纳指）与半导体个股</td>
+<td>指数层面偏中性（估值下修），个股层面提示高分化风险</td>
+<td>产业冲击未扩散至整体经济，红利与消费上涨对冲指数</td>
+<td>红利/消费相对强势延续、个股跌幅与指数背离加大</td>
+<td>远期订单违约扩散、CDS 定价走阔、龙头毛利率确认下行</td>
+<td>半导体龙头毛利率与订单违约数据、CDS 利差、指数与成分股涨跌分布</td>
+</tr>
+<tr>
+<td>美股红利类、消费类资产</td>
+<td>视频明确描述其在本轮中上涨并形成对冲，隐含相对占优</td>
+<td>资金在产业预期空窗期寻找确定性现金流</td>
+<td>利率下行背景下红利溢价稳定、消费盈利不恶化</td>
+<td>利率上行或盈利下修导致红利与消费同步回撤，对冲失效</td>
+<td>红利指数相对收益、资金流数据、盈利修正广度</td>
+</tr>
+<tr>
+<td>A 股小市值题材股整体</td>
+<td>未给出可执行指引；提示炒作链条存在，散户易被“一条龙”收割</td>
+<td>投流+群发+小板块的组合使价格先于基本面反应</td>
+<td>交易监管强化、信息披露与异常交易问询增多</td>
+<td>跟随游资节奏短线操作，承担对手方为团队与数据优势方的风险</td>
+<td>异常交易账户画像、题材股资金结构与持仓周期数据</td>
+</tr>
+<tr>
+<td>教育 / 幼教 / 教培</td>
+<td>明确负面：受人口周期（2015 新生儿断崖）压制，不是好行业</td>
+<td>学龄人口按年龄依次见顶回落，学校关停合并、学历贬值</td>
+<td>行业出清后集中度提升、龙头转型（非学科/AI 教育）见效</td>
+<td>出生率持续走低、政策进一步收紧、AI 替代加速</td>
+<td>分学段入学人口预测、幼儿园/小学关停数量、机构退出与转型数据</td>
+</tr>
+<tr>
+<td>学区房 vs “医区房”（医疗资源可达性）</td>
+<td>方向性判断：学区属性弱化，医疗可达性权重上升</td>
+<td>教育资源过剩 + 老龄化提升急救时间价值（黄金半小时至一小时）</td>
+<td>优质医疗周边居住溢价扩大、学区溢价收窄</td>
+<td>教育资源均衡化政策或医疗资源下沉改变稀缺分布；人口流入结构变化</td>
+<td>学区房与医院周边房价溢价对比、急救可达时间与预后数据、各城市医疗资源密度</td>
+</tr>
+<tr>
+<td>散户交易方式（7×24 与被动化）</td>
+<td>明确建议：不模仿盘手短线，拉长周期、以配置为主，“不输即是赢”</td>
+<td>对手为团队、有分工与付费数据，信息不对称无法被“打破”</td>
+<td>主要市场延长交易时段、被动产品规模占比上升</td>
+<td>交易制度或工具普惠化使个人重获优势；市场长期回报缺失使配置失效</td>
+<td>各市场交易时长改革进度、被动/主动资金占比、个人投资者换手与收益分布</td>
+</tr>
+<tr>
+<td>社会消费心态（攀比转向空闲时间、欲望下降）</td>
+<td>未给出可执行指引；仅作社会观察，未落到具体板块或标的</td>
+<td>视频仅描述朋友圈炫耀方式与年轻人“断舍离”倾向，未连接到消费数据或投资结论</td>
+<td>—</td>
+<td>—</td>
+<td>若需使用，需补消费分项数据、闲暇时间偏好调查与相关行业收入验证</td>
+</tr>
+</tbody>
+</table></div>
+</article>
+
+      <div class="day-card">
+        <p>归档路径 <code>daily/20261113/</code> · <a href="../../index.html">返回历史总览</a> · <a href="./index.html">本日目录</a></p>
+      </div>
+    </main>
+  </div>
+</body>
+</html>

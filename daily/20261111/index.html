@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>解读君视频日报 · 20261111</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@400;600;700;900&display=swap" rel="stylesheet">
+  <style>
+:root {
+  --bg-page: #FBF8F2;
+  --bg-surface: #FFFDF9;
+  --bg-header: #F4EFE6;
+  --bg-subtle: #F0EADF;
+  --border-main: #E5DDCD;
+  --border-dark: #2B2625;
+  --text-main: #231F20;
+  --text-muted: #5C554E;
+  --text-light: #8E8478;
+  --accent-burgundy: #8B261D;
+  --accent-amber: #B45309;
+  --font-serif: 'Noto Serif SC', Georgia, 'Times New Roman', serif;
+  --font-sans: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'IBM Plex Mono', monospace;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 15px; }
+body {
+  background: var(--bg-page);
+  color: var(--text-main);
+  font-family: var(--font-sans);
+  line-height: 1.85;
+  -webkit-font-smoothing: antialiased;
+}
+
+.wrap {
+  max-width: 1300px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 290px 1fr;
+  min-height: 100vh;
+  border-left: 2px solid var(--border-dark);
+  border-right: 2px solid var(--border-dark);
+  background: var(--bg-surface);
+}
+
+@media (max-width: 1024px) {
+  .wrap { grid-template-columns: 1fr; border: none; }
+}
+
+/* Sidebar */
+.nav {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow-y: auto;
+  padding: 32px 24px;
+  background: #F7F3EB;
+  border-right: 1px solid var(--border-main);
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+@media (max-width: 1024px) {
+  .nav { position: relative; height: auto; border-right: none; border-bottom: 2px solid var(--border-dark); }
+}
+
+.brand {
+  padding-bottom: 18px;
+  border-bottom: 2px solid var(--border-dark);
+}
+.brand h1 {
+  font-family: var(--font-serif);
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: var(--border-dark);
+}
+.brand h1 span {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent-burgundy);
+  margin-top: 4px;
+}
+
+.toc h2 {
+  font-family: var(--font-serif);
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--border-dark);
+  border-bottom: 1px solid var(--border-main);
+  padding-bottom: 6px;
+  margin: 16px 0 10px;
+}
+
+.toc a {
+  display: flex;
+  flex-direction: column;
+  padding: 8px 10px;
+  text-decoration: none;
+  color: var(--text-main);
+  border: 1px solid transparent;
+  border-radius: 4px;
+  transition: all 0.15s;
+  font-size: 13px;
+  line-height: 1.4;
+  margin-bottom: 4px;
+}
+.toc a:hover {
+  background: var(--bg-subtle);
+  border-color: var(--border-main);
+}
+.toc a.active {
+  background: #EFE8DA;
+  border-color: var(--border-main);
+  color: var(--accent-burgundy);
+  font-weight: 600;
+}
+.toc a span {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+.nav-desc {
+  font-size: 11px;
+  font-family: var(--font-mono);
+  color: var(--text-muted);
+  line-height: 1.6;
+  padding: 4px 6px;
+}
+
+/* Main Area */
+.main {
+  padding: 40px 48px 80px;
+  max-width: 960px;
+}
+
+@media (max-width: 768px) {
+  .main { padding: 24px 18px 40px; }
+}
+
+.gazette-header {
+  border-top: 3px double var(--border-dark);
+  border-bottom: 1px solid var(--border-dark);
+  padding: 20px 0;
+  margin-bottom: 36px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+.gazette-header h1 {
+  font-family: var(--font-serif);
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--border-dark);
+}
+.gazette-header .gazette-meta {
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.summary-card, .article {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-main);
+  margin-bottom: 40px;
+}
+
+.summary-head, .article-head {
+  background: var(--bg-header);
+  padding: 20px 26px;
+  border-bottom: 1px solid var(--border-main);
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+}
+.article-head h3, .summary-head h3 {
+  font-family: var(--font-serif);
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text-main);
+  line-height: 1.35;
+}
+.article-head h3 a, .summary-head h3 a {
+  color: inherit;
+  text-decoration: none;
+}
+.article-head h3 a:hover, .summary-head h3 a:hover {
+  color: var(--accent-burgundy);
+}
+
+.meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-top: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.meta a {
+  color: var(--accent-burgundy);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.content {
+  padding: 32px 36px;
+  font-size: 14.5px;
+  line-height: 1.9;
+  color: #2D2726;
+}
+
+@media (max-width: 768px) {
+  .content { padding: 20px 18px; }
+  .summary-head, .article-head { padding: 16px 18px; }
+}
+
+.content h1 {
+  font-family: var(--font-serif);
+  font-size: 22px;
+  font-weight: 700;
+  margin: 0 0 18px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border-dark);
+}
+
+.content h2 {
+  font-family: var(--font-serif);
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--accent-burgundy);
+  background: var(--bg-header);
+  border: 1px solid var(--border-main);
+  border-radius: 4px;
+  padding: 8px 14px;
+  margin: 32px 0 14px;
+  letter-spacing: 0.02em;
+}
+
+.content h3 {
+  font-family: var(--font-serif);
+  font-size: 14.5px;
+  font-weight: 700;
+  margin: 22px 0 10px;
+  color: var(--text-main);
+}
+
+.content p {
+  margin-bottom: 16px;
+  text-align: justify;
+}
+
+.content strong {
+  font-weight: 700;
+  color: #1A1616;
+}
+
+.content ul, .content ol {
+  margin: 12px 0 18px 6px;
+  padding-left: 22px;
+}
+.content li {
+  margin-bottom: 8px;
+  line-height: 1.8;
+}
+.content ul > li::marker {
+  content: "▪ ";
+  color: var(--accent-burgundy);
+}
+.content ol > li::marker {
+  color: var(--accent-burgundy);
+  font-weight: 700;
+  font-family: var(--font-mono);
+}
+.content li > ul, .content li > ol {
+  margin: 8px 0 8px 6px;
+}
+.cond-label {
+  color: var(--accent-burgundy);
+  font-weight: 700;
+}
+.content li > p {
+  margin-bottom: 6px;
+}
+.content li > p:last-child {
+  margin-bottom: 0;
+}
+
+.viewpoint {
+  border: 1px solid var(--border-main);
+  border-radius: 6px;
+  margin: 16px 0 20px;
+  overflow: hidden;
+  background: #FFFDF8;
+}
+.vp-head {
+  background: var(--bg-header);
+  padding: 10px 16px;
+  border-bottom: 1px solid var(--border-main);
+  display: flex;
+  gap: 10px;
+  align-items: baseline;
+  flex-wrap: wrap;
+}
+.vp-num {
+  font-family: var(--font-serif);
+  font-weight: 700;
+  font-size: 14.5px;
+  color: var(--accent-burgundy);
+  white-space: nowrap;
+}
+.vp-title {
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--text-main);
+}
+.vp-owner {
+  margin-left: auto;
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+.vp-row {
+  display: grid;
+  grid-template-columns: 46px 1fr;
+  gap: 12px;
+  padding: 8px 16px;
+  font-size: 13.5px;
+  line-height: 1.8;
+}
+.vp-row + .vp-row {
+  border-top: 1px dashed var(--border-main);
+}
+.vp-label {
+  font-weight: 700;
+  font-size: 12.5px;
+  color: var(--accent-burgundy);
+  white-space: nowrap;
+  padding-top: 1px;
+}
+.vp-val {
+  color: #2D2726;
+  text-align: justify;
+  min-width: 0;
+}
+.vp-val p {
+  margin: 0;
+  text-align: justify;
+}
+.vp-val code {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  background: #EDE6D8;
+  padding: 2px 6px;
+  border-radius: 3px;
+  color: var(--accent-burgundy);
+}
+@media (max-width: 768px) {
+  .vp-row { grid-template-columns: 40px 1fr; padding: 7px 12px; }
+}
+
+.content blockquote {
+  background: #F3ECE0;
+  border: 1px solid var(--border-main);
+  border-radius: 4px;
+  padding: 14px 20px;
+  margin: 20px 0;
+  font-size: 13.5px;
+  font-style: italic;
+  color: #523E3B;
+}
+
+.content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 24px 0;
+  font-size: 13px;
+  border: 1px solid var(--border-main);
+}
+.content th {
+  background: #ECE4D6;
+  font-family: var(--font-serif);
+  font-weight: 700;
+  color: var(--border-dark);
+  text-align: left;
+  padding: 10px 14px;
+  border: 1px solid var(--border-main);
+}
+.content td {
+  padding: 9px 14px;
+  border: 1px solid var(--border-main);
+}
+.content tr:nth-child(even) {
+  background: #F8F4EC;
+}
+
+.content code {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  background: #EDE6D8;
+  padding: 2px 6px;
+  border-radius: 3px;
+  color: var(--accent-burgundy);
+}
+
+.day-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-main);
+  padding: 20px 24px;
+  margin-bottom: 18px;
+}
+.day-card h3 {
+  font-family: var(--font-serif);
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+.day-card h3 a {
+  color: var(--text-main);
+  text-decoration: none;
+}
+.day-card h3 a:hover {
+  color: var(--accent-burgundy);
+}
+.day-card p {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+.btn {
+  display: inline-flex;
+  padding: 8px 14px;
+  border: 1px solid var(--border-dark);
+  background: var(--bg-surface);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  text-decoration: none;
+  color: var(--text-main);
+  font-weight: 600;
+  transition: all 0.15s;
+}
+.btn:hover {
+  background: var(--bg-subtle);
+}
+.btn.primary {
+  background: var(--border-dark);
+  color: #FFFFFF;
+}
+.btn.primary:hover {
+  background: var(--accent-burgundy);
+  border-color: var(--accent-burgundy);
+}
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <nav class="nav">
+      <div class="brand">
+        <h1>解读君视频日报<span>JIEDU DAILY · 20261111</span></h1>
+      </div>
+      <div class="toc">
+        <h2>全量原文</h2>
+        <a href="#summary" class="active">每日核心总结<span>20261111</span></a>
+        <a href="#note-FPkfbXXGW2I">【2026-11-11】  大摩周期论剑闭门会议：目前各行业整体投资策略分析分享<span>20261111 · FPkfbXXGW2I</span></a>
+        <h2>历史归档</h2>
+        <a href="../../index.html">← 返回历史总览</a>
+        <a href="../20261117/index.html" class="">20261117 <span>1 篇 · 当日归档</span></a><a href="../20261116/index.html" class="">20261116 <span>5 篇 · 当日归档</span></a><a href="../20261115/index.html" class="">20261115 <span>1 篇 · 当日归档</span></a><a href="../20261113/index.html" class="">20261113 <span>1 篇 · 当日归档</span></a><a href="../20261112/index.html" class="">20261112 <span>1 篇 · 当日归档</span></a><a href="../20261111/index.html" class="active">20261111 <span>1 篇 · 当日归档</span></a><a href="../20261110/index.html" class="">20261110 <span>2 篇 · 当日归档</span></a><a href="../20261109/index.html" class="">20261109 <span>2 篇 · 当日归档</span></a><a href="../20261108/index.html" class="">20261108 <span>1 篇 · 当日归档</span></a><a href="../20261107/index.html" class="">20261107 <span>1 篇 · 当日归档</span></a><a href="../20261106/index.html" class="">20261106 <span>1 篇 · 当日归档</span></a><a href="../20261105/index.html" class="">20261105 <span>2 篇 · 当日归档</span></a><a href="../20261104/index.html" class="">20261104 <span>1 篇 · 当日归档</span></a><a href="../20261103/index.html" class="">20261103 <span>2 篇 · 当日归档</span></a><a href="../20261102/index.html" class="">20261102 <span>2 篇 · 当日归档</span></a><a href="../20261101/index.html" class="">20261101 <span>1 篇 · 当日归档</span></a><a href="../20261031/index.html" class="">20261031 <span>1 篇 · 当日归档</span></a><a href="../20261030/index.html" class="">20261030 <span>2 篇 · 当日归档</span></a><a href="../20261028/index.html" class="">20261028 <span>1 篇 · 当日归档</span></a><a href="../20261027/index.html" class="">20261027 <span>1 篇 · 当日归档</span></a><a href="../20261026/index.html" class="">20261026 <span>3 篇 · 当日归档</span></a><a href="../20261024/index.html" class="">20261024 <span>1 篇 · 当日归档</span></a><a href="../20261023/index.html" class="">20261023 <span>3 篇 · 当日归档</span></a><a href="../20261022/index.html" class="">20261022 <span>2 篇 · 当日归档</span></a><a href="../20261021/index.html" class="">20261021 <span>2 篇 · 当日归档</span></a><a href="../20261020/index.html" class="">20261020 <span>1 篇 · 当日归档</span></a><a href="../20261019/index.html" class="">20261019 <span>1 篇 · 当日归档</span></a><a href="../20261018/index.html" class="">20261018 <span>2 篇 · 当日归档</span></a><a href="../20261016/index.html" class="">20261016 <span>1 篇 · 当日归档</span></a><a href="../20261015/index.html" class="">20261015 <span>1 篇 · 当日归档</span></a><a href="../20261014/index.html" class="">20261014 <span>3 篇 · 当日归档</span></a><a href="../20261013/index.html" class="">20261013 <span>2 篇 · 当日归档</span></a><a href="../20261012/index.html" class="">20261012 <span>2 篇 · 当日归档</span></a><a href="../20261011/index.html" class="">20261011 <span>3 篇 · 当日归档</span></a><a href="../20261010/index.html" class="">20261010 <span>9 篇 · 当日归档</span></a><a href="../20261006/index.html" class="">20261006 <span>2 篇 · 当日归档</span></a><a href="../20261005/index.html" class="">20261005 <span>3 篇 · 当日归档</span></a><a href="../20261004/index.html" class="">20261004 <span>1 篇 · 当日归档</span></a><a href="../20260929/index.html" class="">20260929 <span>0 篇 · 当日归档</span></a><a href="../20260928/index.html" class="">20260928 <span>1 篇 · 当日归档</span></a><a href="../20260927/index.html" class="">20260927 <span>6 篇 · 当日归档</span></a><a href="../20260922/index.html" class="">20260922 <span>1 篇 · 当日归档</span></a><a href="../20260921/index.html" class="">20260921 <span>8 篇 · 当日归档</span></a><a href="../20260914/index.html" class="">20260914 <span>6 篇 · 当日归档</span></a><a href="../20260910/index.html" class="">20260910 <span>1 篇 · 当日归档</span></a><a href="../20260908/index.html" class="">20260908 <span>2 篇 · 当日归档</span></a><a href="../20260907/index.html" class="">20260907 <span>2 篇 · 当日归档</span></a><a href="../20260906/index.html" class="">20260906 <span>1 篇 · 当日归档</span></a><a href="../20260905/index.html" class="">20260905 <span>1 篇 · 当日归档</span></a><a href="../20260904/index.html" class="">20260904 <span>2 篇 · 当日归档</span></a><a href="../20260903/index.html" class="">20260903 <span>2 篇 · 当日归档</span></a><a href="../20260902/index.html" class="">20260902 <span>3 篇 · 当日归档</span></a><a href="../20260831/index.html" class="">20260831 <span>2 篇 · 当日归档</span></a><a href="../20260829/index.html" class="">20260829 <span>1 篇 · 当日归档</span></a><a href="../20260828/index.html" class="">20260828 <span>1 篇 · 当日归档</span></a><a href="../20260825/index.html" class="">20260825 <span>1 篇 · 当日归档</span></a><a href="../20260824/index.html" class="">20260824 <span>2 篇 · 当日归档</span></a><a href="../20260823/index.html" class="">20260823 <span>1 篇 · 当日归档</span></a><a href="../20260821/index.html" class="">20260821 <span>3 篇 · 当日归档</span></a>
+      </div>
+    </nav>
+    <main class="main">
+      <div class="gazette-header">
+        <div>
+          <h1>金融经纬 · 每日纪要</h1>
+          <div class="gazette-meta">JIEDU DAILY FINANCIAL GAZETTE · VOL. 20261111</div>
+        </div>
+        <div class="gazette-meta">1 ARTICLES ARCHIVED</div>
+      </div>
+      
+<section id="summary" class="summary-card">
+  <div class="summary-head">
+    <div>
+      <h3>每日总结 · 20261111</h3>
+      <div class="meta">daily/20261111/20261111_解读君视频总结.md</div>
+    </div>
+  </div>
+  <div class="content"><h1 id="_1">解读君视频摘要</h1>
+<h2 id="1-2026-11-11">1. <a href="#note-FPkfbXXGW2I">【2026-11-11】  大摩周期论剑闭门会议：目前各行业整体投资策略分析分享</a></h2>
+<blockquote>
+<p>一句话：电网投资确定性最高，煤电长协电价转向区域分化，储能偏谨慎、海风后移，金融与工业聚焦龙头。</p>
+</blockquote>
+<ul>
+<li><strong>煤电年度长协电价更可能“区域分化”，而非全国普涨。</strong> 2027年年度长协电价在广东、江苏等电力偏紧的沿海省份更可能取得较好结果，中东部电力宽松或核电、水电占比高的省份面临地方政府压价阻力；<br><span class="cond-label">边界是</span>煤价维持高位、发改委降低年度长协比例并提高市场化比例，若煤价回落或地方强压价则判断失效。</li>
+<li><strong>电网投资是确定性较高的方向，但短期节奏有波动。</strong> 国网“十五五”4万亿元投资目标被描述为坚定，专家预计2027年电网投资增速约6%，特高压及220/330/110kV主干网（受数据中心建设拉动）存在上行空间；<br><span class="cond-label">边界是</span>国网投资计划不下调、数据中心建设持续，若投资计划下调或特高压审批延迟则证伪。</li>
+<li><strong>储能偏谨慎、海风节奏后移，海风产业链更偏好海缆与海工基础。</strong> 储能专家较2025年底更谨慎，2026年装机约200GWh、2027年能见度低；海风2026年是开工/批复低点，2027年开工拐点、2028年并网拐点，海缆和基础环节优于风机；<br><span class="cond-label">边界是</span>储能依赖锂价低位、融资和接入改善，海风依赖军事核准放松及深远海方案推出。</li>
+<li><strong>金融主线是“优化投资、减速提质、控风险”。</strong> 9月工业投资同比-2.1%，但产出/名义需求增速约8%，产出增速高于投资增速有利于市场化压降制造业风险；银行风险下降、让利过渡后盈利合理回归，人民币升值增强金融股吸引力；<br><span class="cond-label">边界是</span>政策坚持、出口和涨价支撑名义增长，若转向强刺激或风险重新暴露则失效。</li>
+<li><strong>工业板块需求有韧性但分化加剧，选股聚焦盈利韧性与预期上修的龙头。</strong> 人形机器人商业化预期后移（约七成用户要求单价低于10万元），工程机械、锂电设备、AI数据中心发电存在预期差，但短期情绪和供给过剩担忧压制估值；<br><span class="cond-label">边界是</span>海外份额提升和成本管控见效，若海外贸易壁垒、AI资本开支推迟或价格战加剧则证伪。</li>
+</ul></div>
+</section>
+
+      
+<article id="note-FPkfbXXGW2I" class="article">
+  <div class="article-head">
+    <div>
+      <h3><a href="https://www.youtube.com/watch?v=FPkfbXXGW2I" target="_blank" rel="noreferrer">【2026-11-11】  大摩周期论剑闭门会议：目前各行业整体投资策略分析分享</a></h3>
+      <div class="meta">20261111 · FPkfbXXGW2I · <a href="https://www.youtube.com/watch?v=FPkfbXXGW2I" target="_blank" rel="noreferrer">观看 YouTube 原片 ↗</a></div>
+    </div>
+  </div>
+  <div class="content"><h1 id="2026-11-11">结构化笔记｜【2026-11-11】  大摩周期论剑闭门会议：目前各行业整体投资策略分析分享</h1>
+<h2 id="1">1. 核心结论</h2>
+<ul>
+<li><strong>煤电年度长协电价更可能“区域分化”，而非全国普涨。</strong> 2027年年度长协电价在广东、江苏等电力偏紧的沿海省份更可能取得较好结果，中东部电力宽松或核电、水电占比高的省份面临地方政府压价阻力；边界是煤价维持高位、发改委降低年度长协比例并提高市场化比例，若煤价回落或地方强压价则判断失效。</li>
+<li><strong>电网投资是确定性较高的方向，但短期节奏有波动。</strong> 国网“十五五”4万亿元投资目标被描述为坚定，专家预计2027年电网投资增速约6%，特高压及220/330/110kV主干网（受数据中心建设拉动）存在上行空间；边界是国网投资计划不下调、数据中心建设持续，若投资计划下调或特高压审批延迟则证伪。</li>
+<li><strong>储能偏谨慎、海风节奏后移，海风产业链更偏好海缆与海工基础。</strong> 储能专家较2025年底更谨慎，2026年装机约200GWh、2027年能见度低；海风2026年是开工/批复低点，2027年开工拐点、2028年并网拐点，海缆和基础环节优于风机；边界是储能依赖锂价低位、融资和接入改善，海风依赖军事核准放松及深远海方案推出。</li>
+<li><strong>金融主线是“优化投资、减速提质、控风险”。</strong> 9月工业投资同比-2.1%，但产出/名义需求增速约8%，产出增速高于投资增速有利于市场化压降制造业风险；银行风险下降、让利过渡后盈利合理回归，人民币升值增强金融股吸引力；边界是政策坚持、出口和涨价支撑名义增长，若转向强刺激或风险重新暴露则失效。</li>
+<li><strong>工业板块需求有韧性但分化加剧，选股聚焦盈利韧性与预期上修的龙头。</strong> 人形机器人商业化预期后移（约七成用户要求单价低于10万元），工程机械、锂电设备、AI数据中心发电存在预期差，但短期情绪和供给过剩担忧压制估值；边界是海外份额提升和成本管控见效，若海外贸易壁垒、AI资本开支推迟或价格战加剧则证伪。</li>
+</ul>
+<h2 id="2">2. 专家观点与逻辑链</h2>
+<h3 id="1_1">观点 1：电力需求与煤电电价——区域分化、市场化比例可能提升</h3>
+<ul>
+<li><strong>观点归属：</strong> 公用事业与新能源首席 Iva（伊娃）</li>
+<li><strong>结论：</strong> 2027年煤电年度长协电价大概率区域分化，广东、江苏等电力偏紧的沿海省份结果更好；发改委可能降低年度长协签订比例、提高市场化比例，使电价更多随煤价波动。</li>
+<li><strong>前提事实：</strong> 转写稿称，2026年前9个月电力需求增速3%—4%，低于年初5%—6%的预期，居民用电受天气因素拖累；中电联专家预计“十五五”年均电力需求增速4%—5%，电力需求对GDP弹性高于1；2026年煤价走高，而2025年底签订的2026年年度长协电价下降，年度长协约占70%，煤电企业成本压力较大。</li>
+<li><strong>推导逻辑：</strong> <code>煤价上涨 + 年度长协占比高且价格锁定 → 煤电企业成本压力上升 → 市场预期2027年长协电价上涨 → 但区域供需和电源结构差异、地方政府阻力不同 → 电价区域分化；若降低长协比例 → 市场化电价随煤价波动</code></li>
+<li><strong>隐含假设：</strong> 煤价维持高位；区域电力供需格局不变；政策允许提高市场化交易比例；中电联需求预测可信。</li>
+<li><strong>反例 / 证伪条件：</strong> 煤价大幅回落；发改委不降低长协比例；地方政府强力压价；电力需求超预期宽松导致电价失去上涨基础。</li>
+</ul>
+<h3 id="24">观点 2：电网投资——4万亿元目标下的确定性</h3>
+<ul>
+<li><strong>观点归属：</strong> 公用事业与新能源首席 Iva（伊娃）</li>
+<li><strong>结论：</strong> 电网投资短期有波动，但“十五五”4万亿元目标下确定性较高；专家预计2027年增速约6%，特高压和各省主干网存在上行空间。</li>
+<li><strong>前提事实：</strong> 转写稿称，2026年前9个月电网投资增速约3%—4%，低于年初5%—10%的预期；国网“十五五”4万亿元投资目标未变；专家预测2027年电网投资增速约6%；数据中心建设更激进，拉动省内220/330/110kV主干网需求。</li>
+<li><strong>推导逻辑：</strong> <code>国网投资计划坚定 → 短期节奏波动不改总量目标 → 特高压加快 + 数据中心拉动主干网 → 2027年约6%增速，长期有上行空间</code></li>
+<li><strong>隐含假设：</strong> 国网投资计划不下调；数据中心建设持续；特高压和主干网项目核准顺利。</li>
+<li><strong>反例 / 证伪条件：</strong> 国网投资计划下调；数据中心建设明显放缓；特高压审批延迟；地方电网投资资金受限。</li>
+</ul>
+<h3 id="320252027">观点 3：储能——比2025年底更谨慎，2027年能见度低</h3>
+<ul>
+<li><strong>观点归属：</strong> 公用事业与新能源首席 Iva（伊娃）</li>
+<li><strong>结论：</strong> 电化学独立储能专家较2025年底更谨慎，2026年装机约200GWh，2027年增速能见度低；最乐观企业希望明年行业增长30%，但依赖碳酸锂价格维持12万元/吨以下及系统运行费缓解。</li>
+<li><strong>前提事实：</strong> 转写稿称，2026年储能招标体量约400GWh、装机约200GWh；电网接入偏紧、融资偏紧、系统运行费上升、容量电价各省政策不一；独立储能项目回报率不具吸引力，国央企开发商仍在观望；一家储能上市公司（转写名称不清、未被覆盖）最乐观。</li>
+<li><strong>推导逻辑：</strong> <code>招标体量大但装机转化受接入、融资、费用约束 → 项目IRR偏低 → 开发商观望 → 2027年增速能见度低；若锂价低位 + 系统运行费缓解 → 最乐观情形约30%增长</code></li>
+<li><strong>隐含假设：</strong> 碳酸锂价格维持低位；容量电价和接入政策改善；融资成本不上升。</li>
+<li><strong>反例 / 证伪条件：</strong> 锂价大幅上涨；接入和容量电价政策收紧；系统运行费继续上升；国央企持续观望导致装机不及预期。</li>
+</ul>
+<h3 id="420272028">观点 4：海风——2027年开工拐点、2028年并网拐点，偏好海缆与海工基础</h3>
+<ul>
+<li><strong>观点归属：</strong> 公用事业与新能源首席 Iva（伊娃）</li>
+<li><strong>结论：</strong> 2026年是海风开工和批复低点，2027年开工拐点（超过10GW），2028年并网拐点（超过10GW）；产业链更看好海工基础（foundation）和海底电缆，风机环节相对不看好。</li>
+<li><strong>前提事实：</strong> 转写稿称，2026年前9个月中国风电装机60.7GW，同比基本持平；海风年初至今仅约2GW新项目开工，全年投运6—8GW；军事核准和深远海行动方案推出慢于预期；方案可能在四季度推出、分批释放，整体体量小于原预期；海风建设周期约16个月；海风投资中期约1.3万—1.5万元/kW；风机加塔筒占海风投资比重从30%—40%降至约20%；海风风机竞争格局尚未稳定。</li>
+<li><strong>推导逻辑：</strong> <code>军事核准 + 深远海方案推迟 → 2026年开工低 → 2027年开工拐点 → 约16个月建设周期 → 2028年并网拐点；深远海使施工、基础、海缆权重上升、风机占比下降 → 更看好海缆和基础</code></li>
+<li><strong>隐含假设：</strong> 深远海行动方案四季度推出；军事核准逐步放松；项目收益率可行；建设周期约16个月；海缆/基础竞争格局不恶化。</li>
+<li><strong>反例 / 证伪条件：</strong> 方案继续推迟；军事核准继续卡住；项目IRR不足；风机价格战扩散至海缆和基础；年开工量持续低于10GW。</li>
+</ul>
+<h3 id="5">观点 5：光伏与燃机——光伏需求偏弱，燃机需求平稳</h3>
+<ul>
+<li><strong>观点归属：</strong> 公用事业与新能源首席 Iva（伊娃）</li>
+<li><strong>结论：</strong> 光伏2026年装机约180—200GW、2027年约200GW，需求偏弱，供给端未见头部企业大规模退出；全球燃机需求每年约120—130GW，保持平稳。</li>
+<li><strong>前提事实：</strong> 转写稿称，2025年光伏装机超过300GW；2026年一季度开工很低；136号文后项目回报率下降；组件效率提升仅带来小幅正面影响；供给端未看到头部企业大规模退出；燃机专家预测全球需求平稳。</li>
+<li><strong>推导逻辑：</strong> <code>政策调整 → 光伏项目回报率下降 → 装机下滑；效率提升不足以抵消需求疲软；供给未出清 → 价格和盈利承压；燃机受电力需求支撑但增速平稳</code></li>
+<li><strong>隐含假设：</strong> 136号文等政策不转向；消纳约束不改善；无大规模产能退出；全球燃机需求不大幅波动。</li>
+<li><strong>反例 / 证伪条件：</strong> 光伏装机超预期；组件效率大幅提升或政策补贴加码；头部产能大规模退出；燃机订单超预期。</li>
+</ul>
+<h3 id="6">观点 6：金融——优化投资、去杠杆、控风险是主线</h3>
+<ul>
+<li><strong>观点归属：</strong> 中国金融行业首席 Ric</li>
+<li><strong>结论：</strong> 中国应继续优化投资、减速提质、控风险，而非刺激需求；9月工业投资同比-2.1%，但产出/名义需求增速约8%，有利于市场化压降制造业风险；银行风险下降、让利过渡后盈利合理回归，人民币升值增强金融股吸引力。</li>
+<li><strong>前提事实：</strong> 转写稿称，9月工业投资同比-2.1%；出口较好叠加涨价，名义需求增速约8%以上；居民移动端商户消费支付约65万亿元/年；银行卡独立收单约10万亿元量级，银行反馈20%—40%不走移动端，招行40%有特殊性、20%更具普遍性；居民杠杆从2009年20%多升至60%多，2026年首次去杠杆；基建和房地产处于调整；政策主线是投资减速提质。</li>
+<li><strong>推导逻辑：</strong> <code>居民、基建、房地产杠杆调整 → 继续加杠杆刺激不可持续 → 投资端减速提质、控风险 → 产出增速高于投资增速 → 市场化压降制造业风险 → 银行风险下降、盈利回归、估值反弹；人民币升值 → 金融股吸引力上升</code></li>
+<li><strong>隐含假设：</strong> 支付数据能代表真实消费；漏记消费可加总；政策坚持不转向强刺激；出口和涨价维持；人民币升值。</li>
+<li><strong>反例 / 证伪条件：</strong> 政策转向强刺激；工业投资重新加速；银行不良或风险上升；人民币贬值；支付数据被证伪。</li>
+</ul>
+<h3 id="7">观点 7：工业整体——需求有韧性、分化加剧、聚焦龙头</h3>
+<ul>
+<li><strong>观点归属：</strong> 工业行业分析师 Andy（袁迪黄）</li>
+<li><strong>结论：</strong> 工业整体需求有韧性，下游景气度健康，但投资者情绪谨慎；增长更多来自结构性机会（智能制造/AI、海外扩张），龙头利润率接近企稳，业绩分化加剧，选股应聚焦盈利韧性和预期上修的龙头。</li>
+<li><strong>前提事实：</strong> 转写稿称，三季度业绩后路演反馈显示投资者情绪偏谨慎，担忧宏观、AI资本开支放缓和地缘政治；个别板块增速较此前回落；成本压力包括人民币升值、原材料和运费上涨、价格竞争；龙头通过提升份额、拓展海外高毛利业务和成本管控消化压力。</li>
+<li><strong>推导逻辑：</strong> <code>需求有韧性但增速分化 → 成本压力 + 价格竞争 → 龙头凭份额、海外、成本管控企稳利润率 → 业绩分化加剧 → 选股聚焦龙头</code></li>
+<li><strong>隐含假设：</strong> 海外扩张不被贸易壁垒阻断；成本压力可控；AI资本开支不急剧下滑。</li>
+<li><strong>反例 / 证伪条件：</strong> 海外贸易壁垒升级；AI资本开支大幅推迟；价格战加剧；龙头利润率再次下行。</li>
+</ul>
+<h3 id="8">观点 8：人形机器人与自动化——商业化审慎，零部件放量但价格竞争激烈</h3>
+<ul>
+<li><strong>观点归属：</strong> 工业行业分析师 Andy（袁迪黄）</li>
+<li><strong>结论：</strong> 人形机器人长期兴趣高，但商业化节奏后移，约七成用户要求单价低于10万元；零部件出货放量是机会，但价格竞争激烈，产能利用率和利润率更关键；自动化明年需求略高于市场预期，但2027年增速较2026年放缓。</li>
+<li><strong>前提事实：</strong> 转写稿称，第二次人形机器人用户调查显示部署时间延后、初期部署规模更小；约七成受访者要求单价低于10万元/台，去年约五成；10月部分自动化厂商订单进一步放缓；工厂升级和AI应用仍支撑行业景气。</li>
+<li><strong>推导逻辑：</strong> <code>用户对投资回报要求提高 → 部署时间和规模后移 → 价格需降至10万元以下 → 零部件放量但价格竞争激烈 → 产能利用率和利润率成为关键；自动化受工厂升级和AI支撑，但增速放缓</code></li>
+<li><strong>隐含假设：</strong> 用户调查样本有代表性；成本下降路径可行；AI应用持续落地；海外需求稳定。</li>
+<li><strong>反例 / 证伪条件：</strong> 人形机器人价格快速降至10万元以下且部署加速；自动化订单超预期；AI应用不及预期；价格战导致利润率恶化。</li>
+</ul>
+<h3 id="9">观点 9：工程机械——海外份额结构性提升，内需关注设备更新</h3>
+<ul>
+<li><strong>观点归属：</strong> 工业行业分析师 Andy（袁迪黄）</li>
+<li><strong>结论：</strong> 市场担忧2027年周期走弱，但摩根士丹利更积极，看好中国龙头海外份额结构性提升；内需不悲观，关注2027—2028年设备更新和电动化升级。</li>
+<li><strong>前提事实：</strong> 转写稿称，市场担忧国内宏观和海外加息导致2027年行业周期走弱；中国企业产品性价比强；本地销售、售后和品牌投入进入收获期；非洲、东南亚已有较强优势，但市占率仍有提升空间；设备更新需求将在2027—2028年释放；电动化产品升级带来结构性机会。</li>
+<li><strong>推导逻辑：</strong> <code>产品性价比 + 渠道/品牌投入 → 海外份额提升 → 对冲周期下行；国内设备更新 + 电动化 → 内需有支撑 → 龙头盈利韧性</code></li>
+<li><strong>隐含假设：</strong> 海外市场不出现强贸易壁垒；海外加息不导致需求崩盘；设备更新政策落地。</li>
+<li><strong>反例 / 证伪条件：</strong> 海外贸易壁垒或加息导致需求大幅下滑；国内设备更新不及预期；价格战；份额提升停滞。</li>
+</ul>
+<h3 id="10ai">观点 10：AI数据中心发电与锂电设备——存在预期差，但短期情绪压制</h3>
+<ul>
+<li><strong>观点归属：</strong> 工业行业分析师 Andy（袁迪黄）</li>
+<li><strong>结论：</strong> AI数据中心发电至少2027年供给缺口仍紧，中国供应商有抢份额窗口；潍柴动力2027年预期保守、估值约10倍PE，但短期情绪压制。锂电设备市场悲观，龙头明年订单有望维持高位甚至小增，先导智能维持超配，但估值修复节奏谨慎。</li>
+<li><strong>前提事实：</strong> 转写稿称，中期选举后市场担忧美国数据中心建设推迟；2027年发电设备供给缺口仍紧；中国供应商具备产品、交付和扩产能力；潍柴动力2027年AI数据中心收入和盈利预期已相当保守，估值约10倍PE；市场担忧2028年后供给过剩及中国厂商竞争力变弱；锂电设备今年订单快速增长，市场担心明年大幅下滑；龙头电池厂产能利用率健康；储能、乘用车、商用车电动化、钠电/固态电池升级、设备更新（寿命5—8年，上一轮扩产高峰2021—2023年）、海外客户及新产品延伸提供支撑。</li>
+<li><strong>推导逻辑：</strong> <code>AI资本开支 → 2027年发电设备缺口 → 中国供应商扩产抢份额 → 潍柴预期保守有上修空间；但2028年供给过剩担忧压制估值。锂电：龙头电池厂利用率健康 + 多领域扩产 + 新技术 + 更新 + 海外 → 订单维持高位 → 先导智能存在预期差；但订单增速放缓 + 情绪保守 → 估值修复慢</code></li>
+<li><strong>隐含假设：</strong> 美国数据中心不大幅推迟；发电设备缺口持续；锂电扩产不被“反内卷”过度约束；新技术和更新需求兑现。</li>
+<li><strong>反例 / 证伪条件：</strong> AI监管导致数据中心大幅推迟；2028年供给过剩提前；中国厂商竞争力下降；锂电订单大幅下滑；“反内卷”限制扩产。</li>
+</ul>
+<h3 id="11ai">观点 11：问答——美国AI监管、思源电气与海风装机节奏</h3>
+<ul>
+<li><strong>观点归属：</strong> 公用事业与新能源首席 Iva（伊娃）</li>
+<li><strong>结论：</strong> 美国AI监管收紧可能使更多数据中心转向非美市场，对中国电力需求约束减少，但非美市场盈利低于北美、中东变压器竞争更激烈；思源电气盈利增长确定性仍高，但毛利率上修空间有限。海风2026年是开工/批复低点，2027年开工拐点、2028年并网拐点，股票更看好海缆和海工基础。</li>
+<li><strong>前提事实：</strong> 转写稿称，美国中期选举后AI数据中心舆论争议升级；非美市场对电力设备渗透率提升；北美市场盈利更高；思源电气2026年750kV GIS交付加快，2027年可能获得特高压直流换流阀、1000kV GIS订单；海风前9个月风电装机60.7GW，海风新开工约2GW，全年投运6—8GW；军事核准和深远海方案推迟；方案可能在四季度推出；建设周期约16个月；风机加塔筒占比降至约20%。</li>
+<li><strong>推导逻辑：</strong> <code>美国监管收紧 → 数据中心转向非美 → 中国电力设备需求不减弱但盈利结构下移 → 思源订单确定性高、毛利率弹性有限；海风扰动放松 → 2027年开工拐点 → 2028年并网拐点 → 海缆/基础受益</code></li>
+<li><strong>隐含假设：</strong> 数据中心真的转向非美；非美市场竞争不恶化；思源新产品订单兑现；海风方案四季度推出、军事核准放松。</li>
+<li><strong>反例 / 证伪条件：</strong> 数据中心仍留在美国；非美市场价格战；思源订单不及预期；海风方案继续推迟。</li>
+</ul>
+<h2 id="3">3. 投资研究指引</h2>
+<blockquote>
+<p>记录视频所表达的研究方向，不构成买卖建议；没有明确投资含义时如实写“未给出可执行指引”。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>主题 / 对象</th>
+<th>视频隐含或明确的方向</th>
+<th>为什么</th>
+<th>正向验证信号</th>
+<th>风险 / 失效信号</th>
+<th>需补的证据</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>煤电 / 电力运营商</td>
+<td>区域分化，沿海偏紧省份电价更有支撑</td>
+<td>煤价高位、年度长协占比高、区域供需和电源结构差异</td>
+<td>2027年广东、江苏长协电价上涨；发改委降低长协比例</td>
+<td>煤价回落；地方强压价；长协比例不降</td>
+<td>各省2027年长协谈判结果、煤价走势、发改委文件</td>
+</tr>
+<tr>
+<td>电网投资 / 电网设备</td>
+<td>偏积极，2027年增速约6%，特高压和主干网有上行空间</td>
+<td>国网“十五五”4万亿元目标坚定；数据中心拉动主干网</td>
+<td>国网投资计划维持；特高压核准加快；数据中心配套订单</td>
+<td>投资计划下调；特高压审批延迟；数据中心放缓</td>
+<td>国网年度投资计划、特高压线路核准清单</td>
+</tr>
+<tr>
+<td>储能</td>
+<td>中性偏谨慎，2027年能见度低，等待回报率改善</td>
+<td>接入紧、融资紧、系统运行费上升、容量电价政策不一</td>
+<td>锂价维持12万元/吨以下；容量电价改善；融资成本下降</td>
+<td>锂价上涨；接入和容量电价收紧；国央企继续观望</td>
+<td>各省容量电价、独立储能IRR、招标与装机转化数据</td>
+</tr>
+<tr>
+<td>海风整体</td>
+<td>偏积极但节奏后移，2027年开工拐点、2028年并网拐点</td>
+<td>军事核准和深远海方案推迟导致2026年低点；方案推出后项目启动</td>
+<td>深远海方案四季度推出；广东、江苏项目启动；招标放量</td>
+<td>方案继续推迟；军事核准卡住；项目IRR不足</td>
+<td>方案细则、项目核准清单、招标数据</td>
+</tr>
+<tr>
+<td>海风风机</td>
+<td>相对不看好</td>
+<td>风机加塔筒占比从30%—40%降至约20%；竞争格局未稳</td>
+<td>海风风机价格企稳；格局出清</td>
+<td>价格战；新进入者增加；份额分散</td>
+<td>海风风机中标价、主要厂商份额</td>
+</tr>
+<tr>
+<td>海缆 / 海工基础</td>
+<td>相对看好</td>
+<td>深远海使施工、基础、海缆权重上升；竞争格局更好</td>
+<td>海缆和基础订单放量；项目开工</td>
+<td>价格战扩散；项目推迟；原材料成本上升</td>
+<td>海缆/基础订单、招标价格、项目开工进度</td>
+</tr>
+<tr>
+<td>光伏</td>
+<td>偏谨慎，需求疲软，供给未出清</td>
+<td>136号文后回报率下降；一季度低开工；头部未大规模退出</td>
+<td>组件效率提升；消纳改善；头部产能退出</td>
+<td>装机继续下滑；价格战；供给出清慢</td>
+<td>月度装机、组件价格、产能退出数据</td>
+</tr>
+<tr>
+<td>燃机</td>
+<td>中性，全球需求约120—130GW平稳</td>
+<td>电力需求支撑但增速平稳</td>
+<td>全球燃机订单稳定</td>
+<td>AI资本开支波动；订单低于预期</td>
+<td>全球燃机订单、主要厂商交付数据</td>
+</tr>
+<tr>
+<td>金融 / 银行</td>
+<td>偏积极，优化投资、去杠杆、控风险，估值有支撑</td>
+<td>工业投资减速提质；产出增速高于投资；银行风险下降；人民币升值</td>
+<td>工业投资继续减速提质；银行不良改善；人民币升值</td>
+<td>政策转向强刺激；风险重新暴露；人民币贬值</td>
+<td>银行不良/拨备、支付数据、居民杠杆数据</td>
+</tr>
+<tr>
+<td>人形机器人</td>
+<td>中性偏审慎，商业化节奏后移，零部件放量但价格竞争</td>
+<td>用户要求单价低于10万元；部署时间延后；价格竞争激烈</td>
+<td>单价降至10万元以下；部署加速；产能利用率提升</td>
+<td>价格战；商业化不及预期；订单低于预期</td>
+<td>用户调查、订单、BOM成本、产能利用率</td>
+</tr>
+<tr>
+<td>自动化</td>
+<td>偏积极，略高于市场预期，但2027年增速放缓</td>
+<td>工厂升级和AI应用支撑；关注份额提升和海外扩张</td>
+<td>订单增速企稳；海外收入占比提升</td>
+<td>10月订单继续放缓；资本开支下滑</td>
+<td>月度订单、出口数据、下游资本开支</td>
+</tr>
+<tr>
+<td>工程机械</td>
+<td>偏积极，海外份额结构性提升，内需设备更新</td>
+<td>产品性价比、渠道和品牌投入进入收获期；设备更新2027—2028年释放</td>
+<td>海外市占率提升；设备更新政策落地；电动化新品</td>
+<td>海外贸易壁垒/加息；国内需求疲软；价格战</td>
+<td>海外销量、市占率、设备更新周期</td>
+</tr>
+<tr>
+<td>AI数据中心发电 / 潍柴动力</td>
+<td>偏积极但短期承压，2027年预期保守</td>
+<td>2027年发电设备供给缺口紧；中国供应商可扩产抢份额；估值约10倍PE</td>
+<td>美国数据中心资本开支维持；发电设备订单增长</td>
+<td>AI监管导致数据中心推迟；2028年供给过剩；竞争力下降</td>
+<td>美国数据中心审批、发电设备订单、盈利预期</td>
+</tr>
+<tr>
+<td>锂电设备 / 先导智能</td>
+<td>偏积极，先导智能维持超配，订单有望维持高位</td>
+<td>龙头电池厂利用率健康；多领域扩产；新技术、设备更新、海外延伸</td>
+<td>电池厂扩产计划；设备招标；海外订单</td>
+<td>储能需求放缓；扩产受限；订单大幅下滑</td>
+<td>电池厂扩产计划、设备招标、海外订单</td>
+</tr>
+<tr>
+<td>思源电气</td>
+<td>偏积极，盈利增长确定性较高，但毛利率上修空间有限</td>
+<td>750kV GIS交付加快；特高压直流换流阀、1000kV GIS可能突破；海外订单</td>
+<td>新产品订单落地；海外收入增长</td>
+<td>美国市场受限；中东竞争加剧；毛利率承压</td>
+<td>订单结构、海外毛利率、特高压招标结果</td>
+</tr>
+</tbody>
+</table></div>
+</article>
+
+      <div class="day-card">
+        <p>归档路径 <code>daily/20261111/</code> · <a href="../../index.html">返回历史总览</a> · <a href="./index.html">本日目录</a></p>
+      </div>
+    </main>
+  </div>
+</body>
+</html>

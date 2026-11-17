@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>解读君视频日报 · 20261117</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@400;600;700;900&display=swap" rel="stylesheet">
+  <style>
+:root {
+  --bg-page: #FBF8F2;
+  --bg-surface: #FFFDF9;
+  --bg-header: #F4EFE6;
+  --bg-subtle: #F0EADF;
+  --border-main: #E5DDCD;
+  --border-dark: #2B2625;
+  --text-main: #231F20;
+  --text-muted: #5C554E;
+  --text-light: #8E8478;
+  --accent-burgundy: #8B261D;
+  --accent-amber: #B45309;
+  --font-serif: 'Noto Serif SC', Georgia, 'Times New Roman', serif;
+  --font-sans: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'IBM Plex Mono', monospace;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 15px; }
+body {
+  background: var(--bg-page);
+  color: var(--text-main);
+  font-family: var(--font-sans);
+  line-height: 1.85;
+  -webkit-font-smoothing: antialiased;
+}
+
+.wrap {
+  max-width: 1300px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 290px 1fr;
+  min-height: 100vh;
+  border-left: 2px solid var(--border-dark);
+  border-right: 2px solid var(--border-dark);
+  background: var(--bg-surface);
+}
+
+@media (max-width: 1024px) {
+  .wrap { grid-template-columns: 1fr; border: none; }
+}
+
+/* Sidebar */
+.nav {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow-y: auto;
+  padding: 32px 24px;
+  background: #F7F3EB;
+  border-right: 1px solid var(--border-main);
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+@media (max-width: 1024px) {
+  .nav { position: relative; height: auto; border-right: none; border-bottom: 2px solid var(--border-dark); }
+}
+
+.brand {
+  padding-bottom: 18px;
+  border-bottom: 2px solid var(--border-dark);
+}
+.brand h1 {
+  font-family: var(--font-serif);
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: var(--border-dark);
+}
+.brand h1 span {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent-burgundy);
+  margin-top: 4px;
+}
+
+.toc h2 {
+  font-family: var(--font-serif);
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--border-dark);
+  border-bottom: 1px solid var(--border-main);
+  padding-bottom: 6px;
+  margin: 16px 0 10px;
+}
+
+.toc a {
+  display: flex;
+  flex-direction: column;
+  padding: 8px 10px;
+  text-decoration: none;
+  color: var(--text-main);
+  border: 1px solid transparent;
+  border-radius: 4px;
+  transition: all 0.15s;
+  font-size: 13px;
+  line-height: 1.4;
+  margin-bottom: 4px;
+}
+.toc a:hover {
+  background: var(--bg-subtle);
+  border-color: var(--border-main);
+}
+.toc a.active {
+  background: #EFE8DA;
+  border-color: var(--border-main);
+  color: var(--accent-burgundy);
+  font-weight: 600;
+}
+.toc a span {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+.nav-desc {
+  font-size: 11px;
+  font-family: var(--font-mono);
+  color: var(--text-muted);
+  line-height: 1.6;
+  padding: 4px 6px;
+}
+
+/* Main Area */
+.main {
+  padding: 40px 48px 80px;
+  max-width: 960px;
+}
+
+@media (max-width: 768px) {
+  .main { padding: 24px 18px 40px; }
+}
+
+.gazette-header {
+  border-top: 3px double var(--border-dark);
+  border-bottom: 1px solid var(--border-dark);
+  padding: 20px 0;
+  margin-bottom: 36px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+.gazette-header h1 {
+  font-family: var(--font-serif);
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--border-dark);
+}
+.gazette-header .gazette-meta {
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.summary-card, .article {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-main);
+  margin-bottom: 40px;
+}
+
+.summary-head, .article-head {
+  background: var(--bg-header);
+  padding: 20px 26px;
+  border-bottom: 1px solid var(--border-main);
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+}
+.article-head h3, .summary-head h3 {
+  font-family: var(--font-serif);
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text-main);
+  line-height: 1.35;
+}
+.article-head h3 a, .summary-head h3 a {
+  color: inherit;
+  text-decoration: none;
+}
+.article-head h3 a:hover, .summary-head h3 a:hover {
+  color: var(--accent-burgundy);
+}
+
+.meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-top: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.meta a {
+  color: var(--accent-burgundy);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.content {
+  padding: 32px 36px;
+  font-size: 14.5px;
+  line-height: 1.9;
+  color: #2D2726;
+}
+
+@media (max-width: 768px) {
+  .content { padding: 20px 18px; }
+  .summary-head, .article-head { padding: 16px 18px; }
+}
+
+.content h1 {
+  font-family: var(--font-serif);
+  font-size: 22px;
+  font-weight: 700;
+  margin: 0 0 18px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border-dark);
+}
+
+.content h2 {
+  font-family: var(--font-serif);
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--accent-burgundy);
+  background: var(--bg-header);
+  border: 1px solid var(--border-main);
+  border-radius: 4px;
+  padding: 8px 14px;
+  margin: 32px 0 14px;
+  letter-spacing: 0.02em;
+}
+
+.content h3 {
+  font-family: var(--font-serif);
+  font-size: 14.5px;
+  font-weight: 700;
+  margin: 22px 0 10px;
+  color: var(--text-main);
+}
+
+.content p {
+  margin-bottom: 16px;
+  text-align: justify;
+}
+
+.content strong {
+  font-weight: 700;
+  color: #1A1616;
+}
+
+.content ul, .content ol {
+  margin: 12px 0 18px 6px;
+  padding-left: 22px;
+}
+.content li {
+  margin-bottom: 8px;
+  line-height: 1.8;
+}
+.content ul > li::marker {
+  content: "▪ ";
+  color: var(--accent-burgundy);
+}
+.content ol > li::marker {
+  color: var(--accent-burgundy);
+  font-weight: 700;
+  font-family: var(--font-mono);
+}
+.content li > ul, .content li > ol {
+  margin: 8px 0 8px 6px;
+}
+.cond-label {
+  color: var(--accent-burgundy);
+  font-weight: 700;
+}
+.content li > p {
+  margin-bottom: 6px;
+}
+.content li > p:last-child {
+  margin-bottom: 0;
+}
+
+.viewpoint {
+  border: 1px solid var(--border-main);
+  border-radius: 6px;
+  margin: 16px 0 20px;
+  overflow: hidden;
+  background: #FFFDF8;
+}
+.vp-head {
+  background: var(--bg-header);
+  padding: 10px 16px;
+  border-bottom: 1px solid var(--border-main);
+  display: flex;
+  gap: 10px;
+  align-items: baseline;
+  flex-wrap: wrap;
+}
+.vp-num {
+  font-family: var(--font-serif);
+  font-weight: 700;
+  font-size: 14.5px;
+  color: var(--accent-burgundy);
+  white-space: nowrap;
+}
+.vp-title {
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--text-main);
+}
+.vp-owner {
+  margin-left: auto;
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+.vp-row {
+  display: grid;
+  grid-template-columns: 46px 1fr;
+  gap: 12px;
+  padding: 8px 16px;
+  font-size: 13.5px;
+  line-height: 1.8;
+}
+.vp-row + .vp-row {
+  border-top: 1px dashed var(--border-main);
+}
+.vp-label {
+  font-weight: 700;
+  font-size: 12.5px;
+  color: var(--accent-burgundy);
+  white-space: nowrap;
+  padding-top: 1px;
+}
+.vp-val {
+  color: #2D2726;
+  text-align: justify;
+  min-width: 0;
+}
+.vp-val p {
+  margin: 0;
+  text-align: justify;
+}
+.vp-val code {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  background: #EDE6D8;
+  padding: 2px 6px;
+  border-radius: 3px;
+  color: var(--accent-burgundy);
+}
+@media (max-width: 768px) {
+  .vp-row { grid-template-columns: 40px 1fr; padding: 7px 12px; }
+}
+
+.content blockquote {
+  background: #F3ECE0;
+  border: 1px solid var(--border-main);
+  border-radius: 4px;
+  padding: 14px 20px;
+  margin: 20px 0;
+  font-size: 13.5px;
+  font-style: italic;
+  color: #523E3B;
+}
+
+.content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 24px 0;
+  font-size: 13px;
+  border: 1px solid var(--border-main);
+}
+.content th {
+  background: #ECE4D6;
+  font-family: var(--font-serif);
+  font-weight: 700;
+  color: var(--border-dark);
+  text-align: left;
+  padding: 10px 14px;
+  border: 1px solid var(--border-main);
+}
+.content td {
+  padding: 9px 14px;
+  border: 1px solid var(--border-main);
+}
+.content tr:nth-child(even) {
+  background: #F8F4EC;
+}
+
+.content code {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  background: #EDE6D8;
+  padding: 2px 6px;
+  border-radius: 3px;
+  color: var(--accent-burgundy);
+}
+
+.day-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-main);
+  padding: 20px 24px;
+  margin-bottom: 18px;
+}
+.day-card h3 {
+  font-family: var(--font-serif);
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+.day-card h3 a {
+  color: var(--text-main);
+  text-decoration: none;
+}
+.day-card h3 a:hover {
+  color: var(--accent-burgundy);
+}
+.day-card p {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+.btn {
+  display: inline-flex;
+  padding: 8px 14px;
+  border: 1px solid var(--border-dark);
+  background: var(--bg-surface);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  text-decoration: none;
+  color: var(--text-main);
+  font-weight: 600;
+  transition: all 0.15s;
+}
+.btn:hover {
+  background: var(--bg-subtle);
+}
+.btn.primary {
+  background: var(--border-dark);
+  color: #FFFFFF;
+}
+.btn.primary:hover {
+  background: var(--accent-burgundy);
+  border-color: var(--accent-burgundy);
+}
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <nav class="nav">
+      <div class="brand">
+        <h1>解读君视频日报<span>JIEDU DAILY · 20261117</span></h1>
+      </div>
+      <div class="toc">
+        <h2>全量原文</h2>
+        <a href="#summary" class="active">每日核心总结<span>20261117</span></a>
+        <a href="#note-H9rPwx6YL0E">【2026-11-16最新】顶级投行摩根士丹利最新判断：预计要2028年才会降息<span>20261117 · H9rPwx6YL0E</span></a>
+        <h2>历史归档</h2>
+        <a href="../../index.html">← 返回历史总览</a>
+        <a href="../20261117/index.html" class="active">20261117 <span>1 篇 · 当日归档</span></a><a href="../20261116/index.html" class="">20261116 <span>5 篇 · 当日归档</span></a><a href="../20261115/index.html" class="">20261115 <span>1 篇 · 当日归档</span></a><a href="../20261113/index.html" class="">20261113 <span>1 篇 · 当日归档</span></a><a href="../20261112/index.html" class="">20261112 <span>1 篇 · 当日归档</span></a><a href="../20261111/index.html" class="">20261111 <span>1 篇 · 当日归档</span></a><a href="../20261110/index.html" class="">20261110 <span>2 篇 · 当日归档</span></a><a href="../20261109/index.html" class="">20261109 <span>2 篇 · 当日归档</span></a><a href="../20261108/index.html" class="">20261108 <span>1 篇 · 当日归档</span></a><a href="../20261107/index.html" class="">20261107 <span>1 篇 · 当日归档</span></a><a href="../20261106/index.html" class="">20261106 <span>1 篇 · 当日归档</span></a><a href="../20261105/index.html" class="">20261105 <span>2 篇 · 当日归档</span></a><a href="../20261104/index.html" class="">20261104 <span>1 篇 · 当日归档</span></a><a href="../20261103/index.html" class="">20261103 <span>2 篇 · 当日归档</span></a><a href="../20261102/index.html" class="">20261102 <span>2 篇 · 当日归档</span></a><a href="../20261101/index.html" class="">20261101 <span>1 篇 · 当日归档</span></a><a href="../20261031/index.html" class="">20261031 <span>1 篇 · 当日归档</span></a><a href="../20261030/index.html" class="">20261030 <span>2 篇 · 当日归档</span></a><a href="../20261028/index.html" class="">20261028 <span>1 篇 · 当日归档</span></a><a href="../20261027/index.html" class="">20261027 <span>1 篇 · 当日归档</span></a><a href="../20261026/index.html" class="">20261026 <span>3 篇 · 当日归档</span></a><a href="../20261024/index.html" class="">20261024 <span>1 篇 · 当日归档</span></a><a href="../20261023/index.html" class="">20261023 <span>3 篇 · 当日归档</span></a><a href="../20261022/index.html" class="">20261022 <span>2 篇 · 当日归档</span></a><a href="../20261021/index.html" class="">20261021 <span>2 篇 · 当日归档</span></a><a href="../20261020/index.html" class="">20261020 <span>1 篇 · 当日归档</span></a><a href="../20261019/index.html" class="">20261019 <span>1 篇 · 当日归档</span></a><a href="../20261018/index.html" class="">20261018 <span>2 篇 · 当日归档</span></a><a href="../20261016/index.html" class="">20261016 <span>1 篇 · 当日归档</span></a><a href="../20261015/index.html" class="">20261015 <span>1 篇 · 当日归档</span></a><a href="../20261014/index.html" class="">20261014 <span>3 篇 · 当日归档</span></a><a href="../20261013/index.html" class="">20261013 <span>2 篇 · 当日归档</span></a><a href="../20261012/index.html" class="">20261012 <span>2 篇 · 当日归档</span></a><a href="../20261011/index.html" class="">20261011 <span>3 篇 · 当日归档</span></a><a href="../20261010/index.html" class="">20261010 <span>9 篇 · 当日归档</span></a><a href="../20261006/index.html" class="">20261006 <span>2 篇 · 当日归档</span></a><a href="../20261005/index.html" class="">20261005 <span>3 篇 · 当日归档</span></a><a href="../20261004/index.html" class="">20261004 <span>1 篇 · 当日归档</span></a><a href="../20260929/index.html" class="">20260929 <span>0 篇 · 当日归档</span></a><a href="../20260928/index.html" class="">20260928 <span>1 篇 · 当日归档</span></a><a href="../20260927/index.html" class="">20260927 <span>6 篇 · 当日归档</span></a><a href="../20260922/index.html" class="">20260922 <span>1 篇 · 当日归档</span></a><a href="../20260921/index.html" class="">20260921 <span>8 篇 · 当日归档</span></a><a href="../20260914/index.html" class="">20260914 <span>6 篇 · 当日归档</span></a><a href="../20260910/index.html" class="">20260910 <span>1 篇 · 当日归档</span></a><a href="../20260908/index.html" class="">20260908 <span>2 篇 · 当日归档</span></a><a href="../20260907/index.html" class="">20260907 <span>2 篇 · 当日归档</span></a><a href="../20260906/index.html" class="">20260906 <span>1 篇 · 当日归档</span></a><a href="../20260905/index.html" class="">20260905 <span>1 篇 · 当日归档</span></a><a href="../20260904/index.html" class="">20260904 <span>2 篇 · 当日归档</span></a><a href="../20260903/index.html" class="">20260903 <span>2 篇 · 当日归档</span></a><a href="../20260902/index.html" class="">20260902 <span>3 篇 · 当日归档</span></a><a href="../20260831/index.html" class="">20260831 <span>2 篇 · 当日归档</span></a><a href="../20260829/index.html" class="">20260829 <span>1 篇 · 当日归档</span></a><a href="../20260828/index.html" class="">20260828 <span>1 篇 · 当日归档</span></a><a href="../20260825/index.html" class="">20260825 <span>1 篇 · 当日归档</span></a><a href="../20260824/index.html" class="">20260824 <span>2 篇 · 当日归档</span></a><a href="../20260823/index.html" class="">20260823 <span>1 篇 · 当日归档</span></a><a href="../20260821/index.html" class="">20260821 <span>3 篇 · 当日归档</span></a>
+      </div>
+    </nav>
+    <main class="main">
+      <div class="gazette-header">
+        <div>
+          <h1>金融经纬 · 每日纪要</h1>
+          <div class="gazette-meta">JIEDU DAILY FINANCIAL GAZETTE · VOL. 20261117</div>
+        </div>
+        <div class="gazette-meta">1 ARTICLES ARCHIVED</div>
+      </div>
+      
+<section id="summary" class="summary-card">
+  <div class="summary-head">
+    <div>
+      <h3>每日总结 · 20261117</h3>
+      <div class="meta">daily/20261117/20261117_解读君视频总结.md</div>
+    </div>
+  </div>
+  <div class="content"><h1 id="_1">解读君视频摘要</h1>
+<h2 id="1-2026-11-162028">1. <a href="#note-H9rPwx6YL0E">【2026-11-16最新】顶级投行摩根士丹利最新判断：预计要2028年才会降息</a></h2>
+<blockquote>
+<p>一句话：摩根士丹利判断全球降息要到2028年，中国2027年是调整年、GDP增速降至4.4%。</p>
+</blockquote>
+<ul>
+<li><strong>全球利率路径是“加息到顶后长期观望”，降息要到2028年。</strong> 摩根士丹利预计美联储、欧央行、日央行均在2026年12月与2027年3月各加息25bp，随后分别维持至2027年底、2028年6月后、2028年底再开启降息；适用边界是核心通胀黏性不散、柴油等能源成本继续向食品与部分服务价格传导，若2027年核心通胀提前回到目标或增长失速，该路径会被推翻。</li>
+<li><strong>中国2027年是“调整之年”，不是“通缩之年”或“内需全面萎缩之年”。</strong> 预计GDP增速4.4%（2026年约4.6%），内需贡献由3.5%降至3.1%、净出口贡献由1.3pp升至1.5pp；CPI 0.7%、核心CPI 0.8%、GDP平减指数约0.4%，PPI在2027年二季度后可能重新转负；成立条件是出口维持约12%增长、一二线房价2027年下半年低位企稳、财政仅温和收缩（广义赤字率11%→10.5%）。</li>
+<li><strong>居民部门去杠杆是内需偏弱的核心约束，消费修复是慢变量。</strong> 过去13–14个月居民贷款余额累计下降近2万亿元，2027年消费实际增速仅3.2%（略高于今年主要因低基数与以旧换新扰动）；若社保征缴趋严、建筑业与部分服务业就业继续走弱，消费中枢抬升会更慢。</li>
+<li><strong>三个结构性力量支撑2028年后改善，但需要时间发酵。</strong> 全球工业资本开支上行（亚洲年度资本开支2025年约11万亿美元→2030年16万亿美元）、AI与工业5.0放大中国制造优势（全球约28%制造业增加值、3万座以上智能工厂、数据中心用电占比2%→4%）、投资结构边际改善（工业5.0未来10年约12万亿美元增量投资以改造存量为主）；<br><span class="cond-label">边界是</span>短期AI出口对内需带动弱、地产尚未止跌、AI初期就业替代担忧仍在。</li>
+<li><strong>2028–2030年三大里程碑及资产含义明确但非全面看多。</strong> 前沿产业收入由1.4万亿→3.2万亿美元、商品出口份额由约15%→16.5%、AI与工业5.0每年抬升潜在增速0.3pp至约4.2%；对应1年期国债利率1.6%→1.4–1.5%、10年期2030年回到1.8–2%、USD/CNY 2027年底6.6、2030年6.1–6.2；股票端仅“提高全球风险资产配置热情”，并未把中国整体上调至超配。</li>
+</ul></div>
+</section>
+
+      
+<article id="note-H9rPwx6YL0E" class="article">
+  <div class="article-head">
+    <div>
+      <h3><a href="https://www.youtube.com/watch?v=H9rPwx6YL0E" target="_blank" rel="noreferrer">【2026-11-16最新】顶级投行摩根士丹利最新判断：预计要2028年才会降息</a></h3>
+      <div class="meta">20261117 · H9rPwx6YL0E · <a href="https://www.youtube.com/watch?v=H9rPwx6YL0E" target="_blank" rel="noreferrer">观看 YouTube 原片 ↗</a></div>
+    </div>
+  </div>
+  <div class="content"><h1 id="2026-11-162028">结构化笔记｜【2026-11-16最新】顶级投行摩根士丹利最新判断：预计要2028年才会降息</h1>
+<h2 id="1">1. 核心结论</h2>
+<ul>
+<li><strong>全球利率路径是“加息到顶后长期观望”，降息要到2028年。</strong> 摩根士丹利预计美联储、欧央行、日央行均在2026年12月与2027年3月各加息25bp，随后分别维持至2027年底、2028年6月后、2028年底再开启降息；适用边界是核心通胀黏性不散、柴油等能源成本继续向食品与部分服务价格传导，若2027年核心通胀提前回到目标或增长失速，该路径会被推翻。</li>
+<li><strong>中国2027年是“调整之年”，不是“通缩之年”或“内需全面萎缩之年”。</strong> 预计GDP增速4.4%（2026年约4.6%），内需贡献由3.5%降至3.1%、净出口贡献由1.3pp升至1.5pp；CPI 0.7%、核心CPI 0.8%、GDP平减指数约0.4%，PPI在2027年二季度后可能重新转负；成立条件是出口维持约12%增长、一二线房价2027年下半年低位企稳、财政仅温和收缩（广义赤字率11%→10.5%）。</li>
+<li><strong>居民部门去杠杆是内需偏弱的核心约束，消费修复是慢变量。</strong> 过去13–14个月居民贷款余额累计下降近2万亿元，2027年消费实际增速仅3.2%（略高于今年主要因低基数与以旧换新扰动）；若社保征缴趋严、建筑业与部分服务业就业继续走弱，消费中枢抬升会更慢。</li>
+<li><strong>三个结构性力量支撑2028年后改善，但需要时间发酵。</strong> 全球工业资本开支上行（亚洲年度资本开支2025年约11万亿美元→2030年16万亿美元）、AI与工业5.0放大中国制造优势（全球约28%制造业增加值、3万座以上智能工厂、数据中心用电占比2%→4%）、投资结构边际改善（工业5.0未来10年约12万亿美元增量投资以改造存量为主）；边界是短期AI出口对内需带动弱、地产尚未止跌、AI初期就业替代担忧仍在。</li>
+<li><strong>2028–2030年三大里程碑及资产含义明确但非全面看多。</strong> 前沿产业收入由1.4万亿→3.2万亿美元、商品出口份额由约15%→16.5%、AI与工业5.0每年抬升潜在增速0.3pp至约4.2%；对应1年期国债利率1.6%→1.4–1.5%、10年期2030年回到1.8–2%、USD/CNY 2027年底6.6、2030年6.1–6.2；股票端仅“提高全球风险资产配置热情”，并未把中国整体上调至超配。</li>
+</ul>
+<h2 id="2">2. 专家观点与逻辑链</h2>
+<h3 id="12028">观点 1：能源成本黏在核心通胀，主要央行2028年才降息</h3>
+<ul>
+<li><strong>观点归属：</strong> 摩根士丹利全球宏观团队（邢自强及宏观团队）</li>
+<li><strong>结论：</strong> 全球通胀2027年缓慢回落、2028年趋势才明确；主要央行2026年12月与2027年3月各加息25bp后进入长时间观望，降息周期2028年才启动。</li>
+<li><strong>前提事实：</strong> 布伦特原油回落，但因炼化产能受损与运输问题，柴油等成品油与原油价格分化，柴油市场偏紧预计延续到2027年年中；运输与生产成本维持高位，并可能继续向食品和部分服务价格传导。</li>
+<li><strong>推导逻辑：</strong> <code>能源成本黏在运输/生产/食品服务价格 → 核心通胀回落慢 → 央行需要更长观察期 → 到达终点利率后不急于降息 → 2028年通胀路径明确才开启降息</code></li>
+<li><strong>隐含假设：</strong> 财政不明显扩张、能源不出现二次冲击、通胀预期不脱锚、央行不以增长为唯一目标。</li>
+<li><strong>反例 / 证伪条件：</strong> 2027年上半年核心通胀快速回到目标附近，或就业与增长明显恶化，首次降息可能提前至2027年；反之若柴油冲击扩散至工资，加息幅度可能超预期。</li>
+</ul>
+<h3 id="2_1">观点 2：美国“微妙的平衡”给了美联储加息的底气</h3>
+<ul>
+<li><strong>观点归属：</strong> 摩根士丹利（宏观团队转述美国经济判断）</li>
+<li><strong>结论：</strong> 2027年四季度美国实际GDP同比约2.5%，略高于市场共识；2027年底失业率约4.3%；美联储2026年12月与2027年3月各加息25bp，随后维持至2027年底。</li>
+<li><strong>前提事实：</strong> AI投资之外，高收入家庭受财富效应支撑、消费维持不错；就业市场“新增岗位不多但劳动力供给也被压降”，失业率只会温和上升。</li>
+<li><strong>推导逻辑：</strong> <code>就业供需双缩 → 失业率仅温和上行 → 消费有基础、通胀有黏性 → 美联储有空间继续加息而非降息</code></li>
+<li><strong>隐含假设：</strong> AI资本开支不失速、资产价格不出现大跌导致财富效应逆转、移民与劳动供给政策不发生剧变。</li>
+<li><strong>反例 / 证伪条件：</strong> 失业率快速升破4.5%–5%、消费信贷违约率跳升、AI投资出现拐点，则“再加息两次”的路径作废。</li>
+</ul>
+<h3 id="3">观点 3：欧洲与日本——同样的加息节奏，不同的政策阶段</h3>
+<ul>
+<li><strong>观点归属：</strong> 摩根士丹利宏观团队</li>
+<li><strong>结论：</strong> 欧央行2026年12月与2027年3月各加息25bp后维持不变，直到2028年6月之后核心通胀进入明确下行通道再降息；日央行同样两次加息后维持到2028年底。欧洲通胀2027年初或达4.5%、全年3.4%，核心黏性明显。</li>
+<li><strong>前提事实：</strong> 欧洲增长与美国不同但货币政策反应函数类似；日本走出长期通缩，但居民实际购买力偏弱，抑制继续加息空间；日本GDP增速今年约0.8%、明年降至0.5%、2028年温和回升。</li>
+<li><strong>推导逻辑：</strong> <code>欧洲核心通胀黏性 + 增长尚可 → 继续收紧并长期维持；日本实际购买力弱 → 加息空间受限、节奏更慢 → 更晚回到中性利率</code></li>
+<li><strong>隐含假设：</strong> 欧洲不出现大规模财政宽松、日本工资—物价正循环延续但不过热、汇率不引发输入型通胀失控。</li>
+<li><strong>反例 / 证伪条件：</strong> 欧洲增长失速或日本实际消费转弱，加息会暂停甚至转向；若日元大幅贬值推升通胀，日央行节奏可能快于预期。</li>
+</ul>
+<h3 id="42027">观点 4：中国2027年“调整之年”——增长、通胀、财政与货币的组合</h3>
+<ul>
+<li><strong>观点归属：</strong> 蔡志鹏（摩根士丹利中国经济学家）</li>
+<li><strong>结论：</strong> 2027年GDP增速4.4%，内需增速3.1%、净出口贡献1.5pp；名义GDP增速由5.8%降至4.8%；CPI 0.7%、核心CPI 0.8%、GDP平减指数约0.4%；广义赤字率11%→10.5%；政策利率维持1.25%；增长目标大概率设在4.5%左右。</li>
+<li><strong>前提事实：</strong> 出口受AI、全球工业升级、能源安全与国防相关投资支撑，美元计价出口仍可维持约12%且广度拓宽；内需受地产调整、居民去杠杆、就业偏弱拖累；化债支持缩减2万亿元叠加土地收入下降挤压地方现金流，结转结余资金1.5–2万亿元形成缓冲；政策思路延续“托而不举”。</li>
+<li><strong>推导逻辑：</strong> <code>外需强 + 内需弱 → 增长放缓但不断崖 → 低通胀延续、PPI二季度后重新转负 → 财政温和收缩、货币定向宽松但不降政策利率</code></li>
+<li><strong>隐含假设：</strong> 出口不遭遇全面贸易摩擦、地产不再大幅失速、财政不转向强刺激、能源与芯片涨价等实物因素继续消退。</li>
+<li><strong>反例 / 证伪条件：</strong> 出口增速跌破5%、地产销售与投资二次探底、政策转向大规模刺激，则4.4%与低通胀判断需分别下修/上修；若贸易摩擦扩散至广泛双边领域，净出口贡献1.5pp不成立。</li>
+</ul>
+<h3 id="5">观点 5：居民去杠杆与消费的漫长修复</h3>
+<ul>
+<li><strong>观点归属：</strong> 蔡志鹏</li>
+<li><strong>结论：</strong> 2027年居民消费实际增长3.2%，中枢偏低，消费修复是非常漫长的过程。</li>
+<li><strong>前提事实：</strong> 过去13–14个月经借条调整后的居民贷款余额累计下降近2万亿元，家庭部门去杠杆“如火如荼”；建筑业与部分服务业就业偏弱；社保征缴进一步趋严，可能增加中小企业用工压力。</li>
+<li><strong>推导逻辑：</strong> <code>收入与就业预期偏弱 → 家庭主动去杠杆 → 消费谨慎、储蓄倾向高 → 即使基数与政策微调，修复仍是慢变量</code></li>
+<li><strong>隐含假设：</strong> 房价预期不再快速恶化、就业政策有托底、以旧换新等政策扰动逐步消退。</li>
+<li><strong>反例 / 证伪条件：</strong> 居民贷款余额重新持续正增长、青年失业率明显下降、二手房成交与价格同步回暖，则消费弹性可能显著高于3.2%。</li>
+</ul>
+<h3 id="620282030">观点 6：三个结构性力量与2028–2030年三大里程碑</h3>
+<ul>
+<li><strong>观点归属：</strong> 摩根士丹利宏观策略团队（转写中称 Jenny）</li>
+<li><strong>结论：</strong> 2027年是调整年而非通缩年；2028年起宏观环境改善；到2030年实现前沿产业市场空间翻倍以上、制造份额扩大、潜在增速维持约4.2%三大里程碑。</li>
+<li><strong>前提事实：</strong> 亚洲年度资本开支2025年约11万亿美元→2030年16万亿美元，增量近半来自广义工业投资、约两成来自AI/半导体及间接投资；中国占全球工业增加值约30%，工程设备、机械设备与零部件全球份额过半；工业5.0未来10年约12万亿美元新增投资，以存量工厂智能化改造为主；中国数据中心用电仅占全社会用电约2%，2030年升至约4%，美国已超6%；前沿产业收入1.4万亿→3.2万亿美元，九成增量来自AI、工业5.0与生物医药。</li>
+<li><strong>推导逻辑：</strong> <code>全球资本开支上行 + AI改造存量产能 → 中国出口与制造份额扩张 → 产能过剩缓和、工业利润率修复 → 居民收入与内需改善 → 2028年起回到低通胀稳定环境</code></li>
+<li><strong>隐含假设：</strong> AI应用真实落地并提升生产率、反内卷与全国统一大市场能约束地方重复建设、地产2027年下半年企稳、海外不出现极端脱钩。</li>
+<li><strong>反例 / 证伪条件：</strong> 全球资本开支周期下行、AI投资回报被证伪、地产继续下行、贸易摩擦全面升级，则“2028年改善”时点后移；若产能过剩程度未缓和，PPI与利润修复不成立。</li>
+</ul>
+<h3 id="7">观点 7：超节点——芯片受限下的“以长补短”</h3>
+<ul>
+<li><strong>观点归属：</strong> Andy（摩根士丹利科技硬件团队）</li>
+<li><strong>结论：</strong> 超节点是中国AI基础设施的必然选择，市场规模由2025年百亿级增至2030年1万亿元、年均增速超100%；光互联（NPO）、高端PCB/CCL、电源、液冷、储能受益，CPO是大陆企业相对边缘的环节。</li>
+<li><strong>前提事实：</strong> 单芯片制程受限、性能大幅落后海外GPU；中国长板在网络互联与光通信，具备国际领先的研发能力与产业生态；华为384超节点已成功发布并商用；2026年10月OCP会议形成“互联是下一步提升整体算力关键”的行业共识。</li>
+<li><strong>推导逻辑：</strong> <code>单卡性能短板 → 用网络互联与系统级工程补足 → 超节点规模化商用 → 光模块、PCB、电源、液冷需求倍增</code></li>
+<li><strong>隐含假设：</strong> 国产芯片产能与核心零部件供给能跟上、客户愿意为生态付出耐心、美国管制不进一步切断关键设备与材料。</li>
+<li><strong>反例 / 证伪条件：</strong> 国产先进制程突破使单卡性能追平（超节点必要性下降）、CPO路线被海外主导且大陆被排除、芯片产能瓶颈长期无解，则1万亿市场与100%增速不成立。</li>
+</ul>
+<h3 id="8">观点 8：资产含义——利率、汇率与股票配置</h3>
+<ul>
+<li><strong>观点归属：</strong> 摩根士丹利宏观策略团队</li>
+<li><strong>结论：</strong> 未来12–18个月1年期国债利率由1.6%降至1.4–1.5%；10年期国债利率2030年回到1.8–2%；USD/CNY 2027年底6.6、2030年6.1–6.2；股票机会随产业升级扩散，但中国整体未上调至超配。</li>
+<li><strong>前提事实：</strong> 信贷需求不足使银行资金不得不配置国债；准通缩环境拖慢人民币升值；工业投资回暖后企业融资需求回升、出口竞争力提升；产业升级拓宽银行、自有资金之外的融资渠道（离岸资金、点心债、可转债）。</li>
+<li><strong>推导逻辑：</strong> <code>资产荒 → 短端利率下行；准通缩 → 人民币升值偏慢；产业升级 + 出口竞争力 → 中长期利率与汇率回升</code></li>
+<li><strong>隐含假设：</strong> 央行不主动大幅下调政策利率、资本流动管理框架不变、美国降息路径如其所料。</li>
+<li><strong>反例 / 证伪条件：</strong> 信贷需求突然回暖、人民币快速升值、美联储降息大幅提前，则短端下行与汇率路径需修正。</li>
+</ul>
+<h2 id="3_1">3. 投资研究指引</h2>
+<blockquote>
+<p>记录视频所表达的研究方向，不构成买卖建议；没有明确投资含义时如实写“未给出可执行指引”。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>主题 / 对象</th>
+<th>视频隐含或明确的方向</th>
+<th>为什么</th>
+<th>正向验证信号</th>
+<th>风险 / 失效信号</th>
+<th>需补的证据</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>全球风险资产 / 股票</td>
+<td>明确提高配置热情</td>
+<td>2027年增长尚可、2028年通胀路径明确后政策转松</td>
+<td>全球盈利预期上修、信用利差收窄</td>
+<td>通胀二次上行导致加息超预期、AI资本开支失速</td>
+<td>各国2027年盈利增速与估值分位</td>
+</tr>
+<tr>
+<td>中国股票整体</td>
+<td>未上调至超配，仅结构机会</td>
+<td>外需与科技强、内需与消费弱，K型分化</td>
+<td>内需政策落地、居民信贷转正</td>
+<td>贸易摩擦扩散、地产二次探底</td>
+<td>政策落地节奏与盈利扩散广度</td>
+</tr>
+<tr>
+<td>中国超节点产业链（光模块/NPO、高端PCB/CCL、电源、液冷、储能）</td>
+<td>明确正面</td>
+<td>芯片受限下系统级补短板，2025年百亿级→2030年1万亿、CAGR&gt;100%</td>
+<td>华为新一代NPO方案落地、国产芯片产能扩张、订单与招标放量</td>
+<td>国产制程突破削弱超节点必要性、CPO路线被排除、零部件断供</td>
+<td>国产芯片产能与良率、超节点实际出货与客户结构</td>
+</tr>
+<tr>
+<td>CPO相关大陆厂商</td>
+<td>偏谨慎（相对边缘）</td>
+<td>CPO主要由美国及大陆以外企业合作开发，大陆处边缘位置</td>
+<td>大陆企业进入CPO核心供应链</td>
+<td>技术路线锁定、大陆被排除</td>
+<td>CPO专利与供应链份额数据</td>
+</tr>
+<tr>
+<td>中国利率债</td>
+<td>短端下行（1.6%→1.4–1.5%）</td>
+<td>信贷需求不足、银行被动配债</td>
+<td>信贷社融持续偏弱、央行定向宽松</td>
+<td>信贷需求突然回暖、财政大幅扩张</td>
+<td>银行配债行为与超储数据</td>
+</tr>
+<tr>
+<td>人民币汇率</td>
+<td>升值偏慢：2027年底6.6、2030年6.1–6.2</td>
+<td>准通缩拖慢升值，出口竞争力支撑中长期</td>
+<td>出口份额提升、工业投资回暖</td>
+<td>美联储降息提前、资本外流</td>
+<td>结售汇与出口份额月度数据</td>
+</tr>
+<tr>
+<td>中国消费</td>
+<td>偏弱（未给出可执行指引）</td>
+<td>居民去杠杆、就业与收入预期弱，2027年实际增速仅3.2%</td>
+<td>居民贷款余额转正、就业与收入预期改善</td>
+<td>社保征缴趋严、服务业就业继续走弱</td>
+<td>居民信贷、就业与消费高频数据</td>
+</tr>
+<tr>
+<td>中国房地产</td>
+<td>观察：一二线2027年下半年低位企稳（非推荐）</td>
+<td>房价企稳可减少居民消费的负财富效应</td>
+<td>一二线二手成交与价格企稳</td>
+<td>销售投资再度下行、房企信用事件</td>
+<td>高频成交、库存与房企现金流</td>
+</tr>
+<tr>
+<td>中国出口链 / 工业设备与中间品</td>
+<td>正面</td>
+<td>全球工业资本开支上行、供应链重组“叙事大于实质”、中国占全球工业增加值约30%</td>
+<td>出口广度拓宽、设备与零部件订单上行</td>
+<td>局部行业贸易摩擦升级为全面摩擦</td>
+<td>出口分项与海外资本开支订单</td>
+</tr>
+<tr>
+<td>日韩设备商 / 拉美矿产能源</td>
+<td>间接受益（未给出具体标的）</td>
+<td>中国科技崛起推动各国再工业化</td>
+<td>日韩设备订单、拉美资源资本开支上行</td>
+<td>全球资本开支周期下行</td>
+<td>各国资本开支与设备订单数据</td>
+</tr>
+</tbody>
+</table></div>
+</article>
+
+      <div class="day-card">
+        <p>归档路径 <code>daily/20261117/</code> · <a href="../../index.html">返回历史总览</a> · <a href="./index.html">本日目录</a></p>
+      </div>
+    </main>
+  </div>
+</body>
+</html>
