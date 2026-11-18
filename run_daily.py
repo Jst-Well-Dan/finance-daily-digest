@@ -4,7 +4,8 @@
 run_daily.py — 本地一键运行「解读君视频日报」全链路，随后自动提交并推送 GitHub。
 
 流程: ① 增量下载 → ①.5 按【发布日期(upload_date)】归档分发到 daily/YYYYMMDD
-      → ② 转写(补全部缺档日期) → ③ pi 结构化笔记 → ③.5 一句话 TL;DR → ④ 确定性总结 → ⑤ HTML → ⑥ git push
+      → ② 转写(补全部缺档日期) → ②.5 文稿清洗(规则+LLM → *_清洗版.md)
+      → ③ pi 结构化笔记 → ③.5 一句话 TL;DR → ④ 确定性总结 → ⑤ HTML → ⑥ git push
 
 特点：支持【隔几天补一次】。上次更新是 9/3，今天 9/5 运行，将自动把 9/4、9/5 的视频
 按发布日期落进各自 daily 目录，并逐日补转写/笔记/总结，全部日期一起生成。
@@ -17,7 +18,8 @@ run_daily.py — 本地一键运行「解读君视频日报」全链路，随后
 
 环境变量:
     SILICONFLOW_API_KEY   转写必需（已配置）
-    YOUTUBE_NOTES_MODEL   笔记 LLM 模型，默认 muse-spark-1.3-contributor
+    YOUTUBE_NOTES_MODEL   笔记 LLM 模型，默认 opendesign/deepseek-v4.1-flash
+    YOUTUBE_CLEAN_MODEL   文稿清洗 LLM 模型，默认跟随 YOUTUBE_NOTES_MODEL
                           （不要用 PI_MODEL：那是 pi 运行时注入的“当前会话模型”，
                             常与笔记需求无关，且多 provider 同名歧义时会让 pi 直接报错）
 
@@ -36,7 +38,9 @@ ROOT = Path(__file__).resolve().parents[0]
 SKILLS = ROOT / ".pi" / "skills"
 DAILY = ROOT / "daily"
 
-DEFAULT_PI_MODEL = "muse-spark-1.3-contributor"
+# 笔记/清洗 LLM 模型（全部 provider 前缀写全，避免同名歧义）
+# 2026-11-18: muse-spark(openCode Go) 订阅已失效，全链路改用 opendesign/deepseek-v4.1-flash
+DEFAULT_PI_MODEL = "opendesign/deepseek-v4.1-flash"
 # 要抓的频道。新增频道只需在这里加一行（--channels 可临时覆盖）。
 # 2026-11-18: 移除 TMT调查组 —— 与解读君内容重复，只保留 JIEDU369。
 CHANNELS = [
@@ -155,6 +159,15 @@ def run_tx_notes_summary(date_dirs: list[str], notes_limit: int) -> None:
             "--status-file", str(d / ".transcribe_status.json"),
             "--workers", "3",
         ], f"② 转写 {date_name}（SiliconFlow）", allow_fail_ok=True)
+
+        # ②.5 文稿清洗（规则层 + LLM 层）：产出 `*_清洗版.md`，原文不覆盖。
+        # 下游笔记优先读清洗版；清洗失败时自动回落原文，不阻塞流水线。
+        sh([
+            sys.executable, str(ROOT / "scripts" / "clean_transcript.py"),
+            "--daily-dir", str(d),
+        ], f"②.5 清洗转写稿 {date_name}（规则+LLM）",
+           env_extra={**env_notes, "YOUTUBE_CLEAN_MODEL": env_notes["PI_MODEL"]},
+           allow_fail_ok=True)
 
         # ③ 结构化笔记：limit>0 时只对第一个日期目录限量生效，其余日期跳过（防意外消耗额度）
         if notes_limit > 0 and idx > 0:

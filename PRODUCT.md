@@ -24,14 +24,14 @@ Primary: 解读君 YouTube 频道的核心观众与研究者 — 在每日复盘
 
 ## Operating Context
 
-工作流：`download_youtube_channel.py`（日期窗口 + archive 去重）→ `process_video_transcripts.py`（ffmpeg → SiliconFlow）→ 结构化笔记（1800-3000字固定模板）→ 每日总结。产出位于 `daily/20260903/` 等日期目录，当前已有 20260903 三视频（洪灏/大摩/付鹏）及总结。
+工作流：`download_youtube_channel.py`（日期窗口 + archive 去重）→ `process_video_transcripts.py`（ffmpeg → SiliconFlow）→ `clean_transcript.py`（规则+LLM 清洗 → `_清洗版.md`）→ 结构化笔记（1800-3000字固定模板，读清洗版）→ 每日总结。产出位于 `daily/20260903/` 等日期目录，当前已有 20260903 三视频（洪灏/大摩/付鹏）及总结。
 
 ## Capabilities and Constraints
 
 - 只读展示；不改写 `daily/`，不触 `archive`
 - 需解析 Markdown 核心结论与结构化笔记的固定小节，保留表格与引用样式
 - 纯静态，可直接双击 `index.html` 打开，无需构建
-- 术语：视频ID、结构化笔记、转写正文、核心结论
+- 术语：视频ID、结构化笔记、转写正文、清洗版（`_清洗版.md`）、核心结论
 
 ## Brand Commitments
 

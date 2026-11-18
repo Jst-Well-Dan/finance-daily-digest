@@ -25,6 +25,16 @@ MEDIA_EXTENSIONS = {
     ".wmv",
 }
 
+# 由转写稿派生的下游产物，不是转写稿本身，重跑转写/清理时绝不能当垃圾删掉。
+DERIVED_MD_SUFFIXES = (
+    "_结构化笔记.md",
+    "_清洗版.md",
+)
+
+
+def _is_derived_md(name: str) -> bool:
+    return name.endswith(DERIVED_MD_SUFFIXES)
+
 
 def write_status(path: Path, payload: dict) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
@@ -77,7 +87,7 @@ def process_video(video_dir: Path, transcriber: Path) -> dict:
     # 避免重复转写，同时在成功后会统一保留正确命名
     legacy_mds = [
         p for p in video_dir.glob("*.md")
-        if p.is_file() and not p.name.endswith("_结构化笔记.md") and p.stat().st_size > 0
+        if p.is_file() and not _is_derived_md(p.name) and p.stat().st_size > 0
     ]
     # 若已存在正确命名的 md，直接跳过
     if markdown_path.exists() and markdown_path.stat().st_size > 0:
@@ -182,8 +192,9 @@ def process_video(video_dir: Path, transcriber: Path) -> dict:
         for item in video_dir.iterdir():
             if item.is_file() and item.suffix.lower() != ".md":
                 item.unlink()
-            # 清理旧截断 md（若同时存在）
-            if item.is_file() and item != markdown_path and item.suffix == ".md" and not item.name.endswith("_结构化笔记.md"):
+            # 清理旧截断 md（若同时存在）；派生产物（结构化笔记/清洗版）必须保留，
+            # 否则重跑转写会把已生成的下游文件删掉。
+            if item.is_file() and item != markdown_path and item.suffix == ".md" and not _is_derived_md(item.name):
                 # 保留正确命名的，其余旧 md 删除
                 if item.name != markdown_path.name:
                     try:

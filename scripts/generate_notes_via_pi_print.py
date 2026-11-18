@@ -49,6 +49,21 @@ TEMPLATE = """# 结构化笔记｜{title}
 
 DIR_RE = re.compile(r"\[[A-Za-z0-9_-]{6,}\]$")
 VID_RE = re.compile(r"\[([A-Za-z0-9_-]{6,})\]$")
+CLEAN_MARK = "_清洗版"
+CLEAN_SUFFIX = CLEAN_MARK + ".md"
+NOTE_SUFFIX = "_结构化笔记.md"
+
+
+def pick_source(files: list[Path]) -> list[Path]:
+    """每个视频目录只留一个源：优先 _清洗版.md，缺失则回落原文。
+
+    清洗版是人工/LLM 精修过的稿子，喂给笔记 LLM 质量更高；
+    但清洗失败时不能让流水线卡住，所以必须回落原文。
+    """
+    cleaned = [f for f in files if f.name.endswith(CLEAN_SUFFIX) and f.stat().st_size > 800]
+    if cleaned:
+        return [max(cleaned, key=lambda p: p.stat().st_size)]
+    return [max(files, key=lambda p: p.stat().st_size)] if files else []
 
 
 def build_prompt(transcript: str, title: str) -> str:
@@ -78,6 +93,17 @@ def clean_output(text: str) -> str:
     return out
 
 
+def note_path_for(src: Path) -> Path:
+    """清洗版与原文同名不同后缀，笔记必须挂在原文 stem 上，
+
+    否则会生成「标题_清洗版_结构化笔记.md」，导致 build_reader / 每日总结认错标题。
+    """
+    stem = src.stem
+    if src.name.endswith(CLEAN_SUFFIX):
+        stem = stem[: -len(CLEAN_MARK)] if stem.endswith(CLEAN_MARK) else stem
+    return src.parent / (stem + NOTE_SUFFIX)
+
+
 def collect_tasks(daily: Path) -> list[tuple[Path, Path]]:
     tasks: list[tuple[Path, Path]] = []
     for d in sorted(daily.iterdir()):
@@ -88,15 +114,22 @@ def collect_tasks(daily: Path) -> list[tuple[Path, Path]]:
             continue
         cands = [f for f in sorted(d.iterdir())
                  if f.is_file() and f.suffix == ".md"
-                 and not f.name.endswith("_结构化笔记.md") and f"[{vid}]" in f.name]
+                 and not f.name.endswith(NOTE_SUFFIX)
+                 and not f.name.endswith(CLEAN_SUFFIX)
+                 and f"[{vid}]" in f.name]
         if not cands:
             cands = [f for f in sorted(d.iterdir())
                      if f.is_file() and f.suffix == ".md"
-                     and not f.name.endswith("_结构化笔记.md")]
+                     and not f.name.endswith(NOTE_SUFFIX)
+                     and not f.name.endswith(CLEAN_SUFFIX)]
+        clean_cands = [f for f in sorted(d.iterdir())
+                       if f.is_file() and f.name.endswith(CLEAN_SUFFIX)
+                       and (not vid or f"[{vid}]" in f.name)]
+        cands = pick_source(clean_cands) or pick_source(cands)
         for t in cands:
             if t.stat().st_size < 500:
                 continue
-            note = t.parent / (t.stem + "_结构化笔记.md")
+            note = note_path_for(t)
             if note.exists() and note.stat().st_size > 800:
                 print(f"跳过已存在: {note}")
                 continue
@@ -106,6 +139,7 @@ def collect_tasks(daily: Path) -> list[tuple[Path, Path]]:
 
 def generate_one(pi_bin: str, model: str, tpath: Path, note: Path, timeout: int) -> bool:
     transcript = tpath.read_text(encoding="utf-8")
+    note = note_path_for(tpath)
     m = re.search(r"^#\s+(.+)", transcript, flags=re.M)
     title = (m.group(1).strip() if m else re.sub(r"\s*\[[^\]]+\]$", "", tpath.parent.name))
     prompt = build_prompt(transcript, title)
