@@ -39,6 +39,9 @@ import tempfile
 import unicodedata
 from pathlib import Path
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from env_loader import get_chain, load_env  # noqa: E402 — 零依赖 .env 加载器
+
 # 2026-11-18: muse-spark(openCode Go) 订阅已失效，全链路默认改用 opendesign/deepseek-v4.1-flash
 DEFAULT_MODEL = "opendesign/deepseek-v4.1-flash"
 CLEAN_SUFFIX = "_清洗版.md"
@@ -310,12 +313,22 @@ def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--daily-dir", required=True, help="单个日期目录或 daily 根目录")
     ap.add_argument("--limit", type=int, default=0, help="最多处理篇数（0=不限），从最新往前取")
-    ap.add_argument("--timeout", type=int, default=600, help="单篇 LLM 超时秒数")
+    ap.add_argument("--timeout", type=int, default=0, help="单篇 LLM 超时秒数（0=读 YOUTUBE_CLEAN_TIMEOUT，默认 900）")
     ap.add_argument("--rules-only", action="store_true", help="只跑规则层，不调 LLM")
     ap.add_argument("--force", action="store_true", help="已存在也重跑覆盖")
     ap.add_argument("--pi-bin", default="pi")
     ap.add_argument("--model", default="", help="覆盖清洗模型")
     args = ap.parse_args()
+
+    # .env 优先；环境变量里给 YOUTUBE_CLEAN_RULES_ONLY=1 可全局开关 LLM 层。
+    load_env()
+    if not args.rules_only and get_chain("YOUTUBE_CLEAN_RULES_ONLY", default="0") == "1":
+        args.rules_only = True
+    if args.timeout <= 0:
+        try:
+            args.timeout = int(get_chain("YOUTUBE_CLEAN_TIMEOUT", default="900"))
+        except ValueError:
+            args.timeout = 900
 
     root = Path(args.daily_dir)
     if not root.is_dir():
@@ -335,10 +348,8 @@ def main() -> int:
                 return 1
             pi_bin = found
         if not model:
-            model = (
-                os.environ.get("YOUTUBE_CLEAN_MODEL", "").strip()
-                or os.environ.get("YOUTUBE_NOTES_MODEL", "").strip()
-                or DEFAULT_MODEL
+            model = get_chain(
+                "YOUTUBE_CLEAN_MODEL", "YOUTUBE_NOTES_MODEL", default=DEFAULT_MODEL
             )
 
     items = list_transcripts(daily_dirs, only_newest=True)

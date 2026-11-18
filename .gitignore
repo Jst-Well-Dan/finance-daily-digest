@@ -37,3 +37,8 @@ node_modules/
 cookies.txt
 *.cookies.txt
 
+# local env config (may contain API keys — never commit)
+.env
+.env.*
+!.env.example
+

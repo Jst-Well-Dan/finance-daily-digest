@@ -70,6 +70,20 @@ YouTube 下载归档（跨运行去重，按视频 ID）：
 
 `<daily_dir>/YYYYMMDD/YYYYMMDD_解读君视频总结.md`
 
+## 模型与本地配置（.env）
+
+所有可变参数（模型、频道、下载窗口、cookies、清洗开关）集中在仓库根 `.env`，模板见 `.env.example`，
+说明见 `CONFIG.md`。脚本通过 `scripts/env_loader.py` 加载，**不覆盖**已存在的环境变量，
+所以命令行显式赋值永远优先。
+
+- `YOUTUBE_NOTES_MODEL` — 结构化笔记 + 一句话 TL;DR
+- `YOUTUBE_CLEAN_MODEL` — 转写稿清洗的 LLM 层（留空则跟随上一条）
+- `YOUTUBE_CHANNELS` — 要抓的频道 URL，空格/逗号分隔
+- `SILICONFLOW_API_KEY` — 语音转写（必填）
+
+**模型名必须带 provider 前缀**（如 `opendesign/deepseek-v4.1-flash`）。裸名在多个 provider
+下同名时 pi 会直接报 `Model xxx is ambiguous across providers` 而失败。
+
 ## 增量范围策略
 
 本技能不再和帖子技能共用日期范围（两者已解耦，可能各自独立排期）。默认用**滚动回溯窗口**代替"记录上次运行时间"的状态文件：

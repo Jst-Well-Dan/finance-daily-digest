@@ -12,7 +12,7 @@ generate_tldr_via_pi_print.py — 为每日总结生成「每视频一句话 TL;
      提炼一句话，结果写入 <daily-dir>/.tldr.json（随仓库提交，保证可复现）。
      build_daily_summary.py 读取该缓存拼入总结；缺失则跳过，永不阻塞。
 环境变量:
-    PI_MODEL   可选，透传给 `pi --model`；未设则用 pi 默认模型。
+    YOUTUBE_NOTES_MODEL  可选，透传给 `pi --model`；未设则回落 PI_MODEL，再回落内置默认。
 退出码: 0=无待办或全部成功，1=部分失败。
 """
 import argparse
@@ -24,6 +24,9 @@ import subprocess
 import sys
 import tempfile
 from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from env_loader import load_env  # noqa: E402 — 零依赖 .env 加载器
 
 PROMPT = """以下是一期财经视频的标题与核心结论，请用一句话（不超过60个汉字）概括本期最值得投资者知道的信息。
 只输出这一句话，不要编号、不要 markdown、不要解释、不要加任何前后缀。
@@ -76,6 +79,8 @@ def main() -> int:
     ap.add_argument("--pi-bin", default="pi")
     args = ap.parse_args()
 
+    load_env()
+
     pi_bin = args.pi_bin
     if not Path(pi_bin).exists():
         found = shutil.which(pi_bin)
@@ -115,7 +120,7 @@ def main() -> int:
         return 0
     if args.limit > 0:
         tasks = tasks[: args.limit]
-    model = os.environ.get("PI_MODEL", "")
+    model = os.environ.get("YOUTUBE_NOTES_MODEL", "").strip() or os.environ.get("PI_MODEL", "").strip()
     print(f"待生成 {len(tasks)} 条 TL;DR（pi -p{', model=' + model if model else ''}）...")
 
     failed = 0

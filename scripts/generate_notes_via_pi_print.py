@@ -24,6 +24,13 @@ import sys
 import tempfile
 from pathlib import Path
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from env_loader import load_env  # noqa: E402 — 零依赖 .env 加载器
+
+# 模型优先级：YOUTUBE_NOTES_MODEL > PI_MODEL > 内置默认。
+# PI_MODEL 是 pi 运行时注入的“当前会话模型”，只作兼容回落。
+DEFAULT_MODEL = "opendesign/deepseek-v4.1-flash"
+
 TEMPLATE = """# 结构化笔记｜{title}
 
 ## 1. 核心结论
@@ -175,7 +182,10 @@ def main() -> int:
     ap.add_argument("--limit", type=int, default=0, help="最多生成篇数（0=不限）")
     ap.add_argument("--timeout", type=int, default=300, help="单篇超时秒数")
     ap.add_argument("--pi-bin", default="pi", help="pi 可执行文件路径")
+    ap.add_argument("--model", default="", help="覆盖模型（默认读 YOUTUBE_NOTES_MODEL）")
     args = ap.parse_args()
+
+    load_env()
 
     pi_bin = args.pi_bin
     if not Path(pi_bin).exists():
@@ -197,7 +207,7 @@ def main() -> int:
     if args.limit > 0:
         tasks = tasks[: args.limit]
         print(f"本次限制只生成 {len(tasks)} 篇（--limit {args.limit}）")
-    model = os.environ.get("PI_MODEL", "")
+    model = args.model.strip() or os.environ.get("YOUTUBE_NOTES_MODEL", "").strip() or os.environ.get("PI_MODEL", "").strip() or DEFAULT_MODEL
     print(f"待生成 {len(tasks)} 篇笔记（pi -p{', model=' + model if model else ''}）...")
 
     failed = 0

@@ -38,17 +38,29 @@ ROOT = Path(__file__).resolve().parents[0]
 SKILLS = ROOT / ".pi" / "skills"
 DAILY = ROOT / "daily"
 
-# 笔记/清洗 LLM 模型（全部 provider 前缀写全，避免同名歧义）
-# 2026-11-18: muse-spark(openCode Go) 订阅已失效，全链路改用 opendesign/deepseek-v4.1-flash
+sys.path.insert(0, str(ROOT / "scripts"))
+from env_loader import get, load_env  # noqa: E402 — 零依赖 .env 加载器
+
+# 模型一律从 .env / 环境变量取，不在代码里写死。
+# 2026-11-18: muse-spark(openCode Go) 订阅已失效，当前默认 opendesign/deepseek-v4.1-flash
 DEFAULT_PI_MODEL = "opendesign/deepseek-v4.1-flash"
-# 要抓的频道。新增频道只需在这里加一行（--channels 可临时覆盖）。
-# 2026-11-18: 移除 TMT调查组 —— 与解读君内容重复，只保留 JIEDU369。
-CHANNELS = [
-    "https://www.youtube.com/@JIEDU369/videos",
-]
+# 要抓的频道。默认只抓解读君；可用 .env 的 YOUTUBE_CHANNELS 或 --channels 覆盖。
+DEFAULT_CHANNELS = ["https://www.youtube.com/@JIEDU369/videos"]
 # 专用变量名：刻意不复用 PI_MODEL（见顶部说明）
 NOTES_MODEL_ENV = "YOUTUBE_NOTES_MODEL"
 VID_DIR_RE = re.compile(r"^(.+)\s*\[([A-Za-z0-9_-]{6,})\]$")
+
+
+def resolve_channels(cli: list[str] | None) -> list[str]:
+    """频道优先级：--channels > YOUTUBE_CHANNELS(空格/逗号分隔) > 内置默认。"""
+    if cli:
+        return cli
+    raw = get("YOUTUBE_CHANNELS")
+    if raw:
+        items = [x.strip() for x in re.split(r"[\s,]+", raw) if x.strip()]
+        if items:
+            return items
+    return list(DEFAULT_CHANNELS)
 
 
 def sh(cmd, title, check=False, env_extra=None, allow_fail_ok=False):
@@ -147,7 +159,7 @@ def run_tx_notes_summary(date_dirs: list[str], notes_limit: int) -> None:
     # opencode 与 opencode-go），pi -p --model 会因歧义直接报错，导致当天笔记全部生成失败。
     # 只认本技能专用的 YOUTUBE_NOTES_MODEL，否则回落到技能默认模型。
     notes_model = os.environ.get(NOTES_MODEL_ENV, "").strip() or DEFAULT_PI_MODEL
-    env_notes = {"PI_MODEL": notes_model}
+    env_notes = {"PI_MODEL": notes_model, NOTES_MODEL_ENV: notes_model}
     for idx, date_name in enumerate(date_dirs):
         d = DAILY / date_name
         print(f"\n{'#'*72}\n# 处理日期 {date_name}  ({d})")
@@ -166,8 +178,7 @@ def run_tx_notes_summary(date_dirs: list[str], notes_limit: int) -> None:
             sys.executable, str(ROOT / "scripts" / "clean_transcript.py"),
             "--daily-dir", str(d),
         ], f"②.5 清洗转写稿 {date_name}（规则+LLM）",
-           env_extra={**env_notes, "YOUTUBE_CLEAN_MODEL": env_notes["PI_MODEL"]},
-           allow_fail_ok=True)
+           env_extra=env_notes, allow_fail_ok=True)
 
         # ③ 结构化笔记：limit>0 时只对第一个日期目录限量生效，其余日期跳过（防意外消耗额度）
         if notes_limit > 0 and idx > 0:
@@ -206,23 +217,40 @@ def main() -> int:
     ap.add_argument(
         "--backfill-days",
         type=int,
-        default=45,
-        help="下载窗口下界兜底天数（默认 45，防止窗口外的漏片永远补不回来）",
+        default=0,
+        help="下载窗口下界兜底天数（0=读 YOUTUBE_BACKFILL_DAYS，默认 45；防止窗口外漏片永远补不回来）",
     )
-    ap.add_argument("--cookies", type=Path, help="cookies.txt 路径（可选）")
+    ap.add_argument("--cookies", type=Path, help="cookies.txt 路径（可选，默认读 YOUTUBE_COOKIES）")
     ap.add_argument(
         "--channels",
         nargs="+",
-        default=CHANNELS,
-        help="要抓取的频道 URL 列表，默认只有 JIEDU369",
+        default=None,
+        help="要抓取的频道 URL 列表（默认读 YOUTUBE_CHANNELS，再默认只有 JIEDU369）",
     )
     args = ap.parse_args()
+
+    # 加载 .env（不覆盖已有环境变量，命令行赋值永远优先）
+    env_file = load_env(ROOT)
+    print(f"◆ 配置: {env_file or '（无 .env，使用内置默认）'}")
+    args.channels = resolve_channels(args.channels)
+    if args.backfill_days <= 0:
+        try:
+            args.backfill_days = int(get("YOUTUBE_BACKFILL_DAYS", "45"))
+        except ValueError:
+            args.backfill_days = 45
+    if not args.cookies:
+        cand = get("YOUTUBE_COOKIES")
+        if cand:
+            args.cookies = Path(cand if Path(cand).is_absolute() else ROOT / cand)
 
     date_str = args.date or datetime.now().strftime("%Y%m%d")
     dd = DAILY / date_str
     if not dd.exists():
         dd.mkdir(parents=True, exist_ok=True)
     print(f"◆ 今天: {date_str}  下载暂存目录: {dd}")
+    print(f"◆ 频道: {', '.join(args.channels)}")
+    print(f"◆ 模型: 笔记/TL;DR={os.environ.get(NOTES_MODEL_ENV, '').strip() or DEFAULT_PI_MODEL}"
+          f"  清洗={get('YOUTUBE_CLEAN_MODEL') or os.environ.get(NOTES_MODEL_ENV, '').strip() or DEFAULT_PI_MODEL}")
 
     # 上次更新日 = 已有日期目录中的最大值（如 20260903）
     existing = existing_daily_dates()
