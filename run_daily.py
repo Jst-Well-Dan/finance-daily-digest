@@ -37,10 +37,10 @@ SKILLS = ROOT / ".pi" / "skills"
 DAILY = ROOT / "daily"
 
 DEFAULT_PI_MODEL = "muse-spark-1.3-contributor"
-# 要抓的频道。新增频道只需在这里加一行（use --channels 可临时覆盖）。
+# 要抓的频道。新增频道只需在这里加一行（--channels 可临时覆盖）。
+# 2026-11-18: 移除 TMT调查组 —— 与解读君内容重复，只保留 JIEDU369。
 CHANNELS = [
     "https://www.youtube.com/@JIEDU369/videos",
-    "https://www.youtube.com/@TMT_%E8%B0%83%E6%9F%A5%E7%BB%84/videos",
 ]
 # 专用变量名：刻意不复用 PI_MODEL（见顶部说明）
 NOTES_MODEL_ENV = "YOUTUBE_NOTES_MODEL"
@@ -201,7 +201,7 @@ def main() -> int:
         "--channels",
         nargs="+",
         default=CHANNELS,
-        help="要抓取的频道 URL 列表，默认内置 JIEDU369 + TMT调查组",
+        help="要抓取的频道 URL 列表，默认只有 JIEDU369",
     )
     args = ap.parse_args()
 
