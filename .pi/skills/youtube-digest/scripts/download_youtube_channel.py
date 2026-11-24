@@ -32,6 +32,32 @@ CHANNEL_URL = "https://www.youtube.com/@JIEDU369/videos"
 RANGE_STOP_MARKER = "Encountered a video that did not match filter, stopping due to --break-match-filter"
 
 
+# Windows MAX_PATH=260，留 5 字符余量；id 最长 11 字符（YouTube 11 位），后缀按最长的
+# "_结构化笔记.md"（13 字符，按字符计）预留。
+_MAX_PATH = 255
+_ID_PART = len(" [XXXXXXXXXXX]")   # 13
+_LONGEST_SUFFIX = len("_结构化笔记.md")  # 13
+
+
+def _path_fits(run_dir: Path, title_chars: int) -> bool:
+    """直接量出最长派生路径，比推导不等式更不容易算错。"""
+    dir_name = "x" * title_chars + " [XXXXXXXXXXX]"  # " [ID]" 固定 14 字符
+    worst = run_dir.resolve() / dir_name / (dir_name + "_结构化笔记.md")
+    return len(str(worst)) <= _MAX_PATH
+
+
+def _title_limit_for(run_dir: Path) -> int:
+    """算出目录名里标题可用字符数，确保「目录名 + 派生文件名」不超 MAX_PATH。
+
+    转写稿/清洗版/结构化笔记的文件名都是「目录全名 + 后缀」，路径里目录名出现两次，
+    所以预算 ≈ (MAX_PATH - 前缀 - 最长后缀) / 2。这里逐字符回退实测，避免差一。
+    """
+    for limit in range(120, 29, -1):
+        if _path_fits(run_dir, limit):
+            return limit
+    return 30
+
+
 def resolve_yt_dlp(value: str | None) -> list[str]:
     """解析 yt-dlp 调用方式，常规优先，回退直接使用 python -m。
 
@@ -105,8 +131,20 @@ def resolve_binary(value: str | None, name: str) -> str:
 
 
 def build_command(args: argparse.Namespace, yt_dlp_cmd: list[str], node: str | None) -> list[str]:
+    # 目录名保持「标题 [ID]」（下游以目录名为基准命名 .md）；目录内的媒体与 info.json
+    # 一律用短名 [ID].ext。原因：Windows MAX_PATH=260 且本机 LongPathsEnabled=0，
+    # 长中文标题下「目录全名 + 同名文件 + .info.json」会超过 260 字符，yt-dlp 报
+    # “Cannot write video metadata to JSON file” 直接丢失该条（2026-11-24 eZ4pkZgP9Gc 复现）。
+    #
+    # 目录名长度还必须给「派生 md」留出预算：转写稿/清洗版/结构化笔记的文件名都是
+    # 「目录全名 + 后缀」，正文路径里目录名会出现两次（父目录 + 文件名），所以
+    # 2 × 目录名 + 前缀 + 最长后缀 ≤ 255。超了会连 _清洗版.md 都写不进去
+    # （2026-11-20 eZ4pkZgP9Gc 目录 92 字符 → 265 字符，清洗与笔记全失败）。
+    # 用 `s`（按字符截断）而非 `B`（按字节）：Windows MAX_PATH 以 UTF-16 码元计，
+    # 中文字符 1 码元但 3 字节，按字节截会把中文标题砍到只剩十几个字。
+    title_limit = _title_limit_for(args.run_dir)
     output_template = str(
-        args.run_dir / "%(title).120B [%(id)s]" / "%(title).120B [%(id)s].%(ext)s"
+        args.run_dir / f"%(title).{title_limit}s [%(id)s]" / "%(id)s.%(ext)s"
     )
     command = [
         *yt_dlp_cmd,

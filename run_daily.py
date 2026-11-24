@@ -115,6 +115,10 @@ def distribute_by_upload_date(dd: Path) -> list[Path]:
     把 dd 下刚下载/已有的视频目录按 upload_date 分发到 daily/YYYYMMDD。
     返回：本次涉及的所有日期目录名。
     """
+    # 必须绝对化：调用方可能传相对路径（如 daily/20261124），而 DAILY 是绝对路径。
+    # 混用时 `target != d.parent` 恒为 True，即使 upload_date 就是当天，也会去“移动到自己”，
+    # 合并分支里 dest_item == item 先 unlink 再 rename，会把 info.json 删掉（2026-11-24 事故）。
+    dd = dd.resolve()
     moved: dict[str, Path] = {}
     for d in sorted(dd.iterdir()):
         if not d.is_dir():
@@ -127,7 +131,7 @@ def distribute_by_upload_date(dd: Path) -> list[Path]:
             target = DAILY / upload
         else:
             target = dd  # 无日期信息则留在下载日
-        if target != d.parent:
+        if target.resolve() != d.parent.resolve():
             target.mkdir(parents=True, exist_ok=True)
             dest = target / d.name
             if dest.exists():
@@ -137,6 +141,8 @@ def distribute_by_upload_date(dd: Path) -> list[Path]:
                 import shutil
                 for item in list(d.iterdir()):
                     dest_item = dest / item.name
+                    if dest_item.resolve() == item.resolve():
+                        continue  # 同一文件（不应发生，但宁可不删）
                     if dest_item.exists():
                         if dest_item.is_dir():
                             shutil.rmtree(dest_item, ignore_errors=True)

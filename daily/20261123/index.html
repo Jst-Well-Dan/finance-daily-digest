@@ -1,0 +1,950 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>解读君视频日报 · 20261123</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@400;600;700;900&display=swap" rel="stylesheet">
+  <style>
+:root {
+  --bg-page: #FBF8F2;
+  --bg-surface: #FFFDF9;
+  --bg-header: #F4EFE6;
+  --bg-subtle: #F0EADF;
+  --border-main: #E5DDCD;
+  --border-dark: #2B2625;
+  --text-main: #231F20;
+  --text-muted: #5C554E;
+  --text-light: #8E8478;
+  --accent-burgundy: #8B261D;
+  --accent-amber: #B45309;
+  --font-serif: 'Noto Serif SC', Georgia, 'Times New Roman', serif;
+  --font-sans: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'IBM Plex Mono', monospace;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 15px; }
+body {
+  background: var(--bg-page);
+  color: var(--text-main);
+  font-family: var(--font-sans);
+  line-height: 1.85;
+  -webkit-font-smoothing: antialiased;
+}
+
+.wrap {
+  max-width: 1300px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 290px 1fr;
+  min-height: 100vh;
+  border-left: 2px solid var(--border-dark);
+  border-right: 2px solid var(--border-dark);
+  background: var(--bg-surface);
+}
+
+@media (max-width: 1024px) {
+  .wrap { grid-template-columns: 1fr; border: none; }
+}
+
+/* Sidebar */
+.nav {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow-y: auto;
+  padding: 32px 24px;
+  background: #F7F3EB;
+  border-right: 1px solid var(--border-main);
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+@media (max-width: 1024px) {
+  .nav { position: relative; height: auto; border-right: none; border-bottom: 2px solid var(--border-dark); }
+}
+
+.brand {
+  padding-bottom: 18px;
+  border-bottom: 2px solid var(--border-dark);
+}
+.brand h1 {
+  font-family: var(--font-serif);
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: var(--border-dark);
+}
+.brand h1 span {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent-burgundy);
+  margin-top: 4px;
+}
+
+.toc h2 {
+  font-family: var(--font-serif);
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--border-dark);
+  border-bottom: 1px solid var(--border-main);
+  padding-bottom: 6px;
+  margin: 16px 0 10px;
+}
+
+.toc a {
+  display: flex;
+  flex-direction: column;
+  padding: 8px 10px;
+  text-decoration: none;
+  color: var(--text-main);
+  border: 1px solid transparent;
+  border-radius: 4px;
+  transition: all 0.15s;
+  font-size: 13px;
+  line-height: 1.4;
+  margin-bottom: 4px;
+}
+.toc a:hover {
+  background: var(--bg-subtle);
+  border-color: var(--border-main);
+}
+.toc a.active {
+  background: #EFE8DA;
+  border-color: var(--border-main);
+  color: var(--accent-burgundy);
+  font-weight: 600;
+}
+.toc a span {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+.nav-desc {
+  font-size: 11px;
+  font-family: var(--font-mono);
+  color: var(--text-muted);
+  line-height: 1.6;
+  padding: 4px 6px;
+}
+
+/* Main Area */
+.main {
+  padding: 40px 48px 80px;
+  max-width: 960px;
+}
+
+@media (max-width: 768px) {
+  .main { padding: 24px 18px 40px; }
+}
+
+.gazette-header {
+  border-top: 3px double var(--border-dark);
+  border-bottom: 1px solid var(--border-dark);
+  padding: 20px 0;
+  margin-bottom: 36px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+.gazette-header h1 {
+  font-family: var(--font-serif);
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--border-dark);
+}
+.gazette-header .gazette-meta {
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.summary-card, .article {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-main);
+  margin-bottom: 40px;
+}
+
+.summary-head, .article-head {
+  background: var(--bg-header);
+  padding: 20px 26px;
+  border-bottom: 1px solid var(--border-main);
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+}
+.article-head h3, .summary-head h3 {
+  font-family: var(--font-serif);
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text-main);
+  line-height: 1.35;
+}
+.article-head h3 a, .summary-head h3 a {
+  color: inherit;
+  text-decoration: none;
+}
+.article-head h3 a:hover, .summary-head h3 a:hover {
+  color: var(--accent-burgundy);
+}
+
+.meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-top: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.meta a {
+  color: var(--accent-burgundy);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.content {
+  padding: 32px 36px;
+  font-size: 14.5px;
+  line-height: 1.9;
+  color: #2D2726;
+}
+
+@media (max-width: 768px) {
+  .content { padding: 20px 18px; }
+  .summary-head, .article-head { padding: 16px 18px; }
+}
+
+.content h1 {
+  font-family: var(--font-serif);
+  font-size: 22px;
+  font-weight: 700;
+  margin: 0 0 18px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border-dark);
+}
+
+.content h2 {
+  font-family: var(--font-serif);
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--accent-burgundy);
+  background: var(--bg-header);
+  border: 1px solid var(--border-main);
+  border-radius: 4px;
+  padding: 8px 14px;
+  margin: 32px 0 14px;
+  letter-spacing: 0.02em;
+}
+
+.content h3 {
+  font-family: var(--font-serif);
+  font-size: 14.5px;
+  font-weight: 700;
+  margin: 22px 0 10px;
+  color: var(--text-main);
+}
+
+.content p {
+  margin-bottom: 16px;
+  text-align: justify;
+}
+
+.content strong {
+  font-weight: 700;
+  color: #1A1616;
+}
+
+.content ul, .content ol {
+  margin: 12px 0 18px 6px;
+  padding-left: 22px;
+}
+.content li {
+  margin-bottom: 8px;
+  line-height: 1.8;
+}
+.content ul > li::marker {
+  content: "▪ ";
+  color: var(--accent-burgundy);
+}
+.content ol > li::marker {
+  color: var(--accent-burgundy);
+  font-weight: 700;
+  font-family: var(--font-mono);
+}
+.content li > ul, .content li > ol {
+  margin: 8px 0 8px 6px;
+}
+.cond-label {
+  color: var(--accent-burgundy);
+  font-weight: 700;
+}
+.content li > p {
+  margin-bottom: 6px;
+}
+.content li > p:last-child {
+  margin-bottom: 0;
+}
+
+.viewpoint {
+  border: 1px solid var(--border-main);
+  border-radius: 6px;
+  margin: 16px 0 20px;
+  overflow: hidden;
+  background: #FFFDF8;
+}
+.vp-head {
+  background: var(--bg-header);
+  padding: 10px 16px;
+  border-bottom: 1px solid var(--border-main);
+  display: flex;
+  gap: 10px;
+  align-items: baseline;
+  flex-wrap: wrap;
+}
+.vp-num {
+  font-family: var(--font-serif);
+  font-weight: 700;
+  font-size: 14.5px;
+  color: var(--accent-burgundy);
+  white-space: nowrap;
+}
+.vp-title {
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--text-main);
+}
+.vp-owner {
+  margin-left: auto;
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+.vp-row {
+  display: grid;
+  grid-template-columns: 46px 1fr;
+  gap: 12px;
+  padding: 8px 16px;
+  font-size: 13.5px;
+  line-height: 1.8;
+}
+.vp-row + .vp-row {
+  border-top: 1px dashed var(--border-main);
+}
+.vp-label {
+  font-weight: 700;
+  font-size: 12.5px;
+  color: var(--accent-burgundy);
+  white-space: nowrap;
+  padding-top: 1px;
+}
+.vp-val {
+  color: #2D2726;
+  text-align: justify;
+  min-width: 0;
+}
+.vp-val p {
+  margin: 0;
+  text-align: justify;
+}
+.vp-val code {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  background: #EDE6D8;
+  padding: 2px 6px;
+  border-radius: 3px;
+  color: var(--accent-burgundy);
+}
+@media (max-width: 768px) {
+  .vp-row { grid-template-columns: 40px 1fr; padding: 7px 12px; }
+}
+
+.content blockquote {
+  background: #F3ECE0;
+  border: 1px solid var(--border-main);
+  border-radius: 4px;
+  padding: 14px 20px;
+  margin: 20px 0;
+  font-size: 13.5px;
+  font-style: italic;
+  color: #523E3B;
+}
+
+.content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 24px 0;
+  font-size: 13px;
+  border: 1px solid var(--border-main);
+}
+.content th {
+  background: #ECE4D6;
+  font-family: var(--font-serif);
+  font-weight: 700;
+  color: var(--border-dark);
+  text-align: left;
+  padding: 10px 14px;
+  border: 1px solid var(--border-main);
+}
+.content td {
+  padding: 9px 14px;
+  border: 1px solid var(--border-main);
+}
+.content tr:nth-child(even) {
+  background: #F8F4EC;
+}
+
+.content code {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  background: #EDE6D8;
+  padding: 2px 6px;
+  border-radius: 3px;
+  color: var(--accent-burgundy);
+}
+
+.day-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-main);
+  padding: 20px 24px;
+  margin-bottom: 18px;
+}
+.day-card h3 {
+  font-family: var(--font-serif);
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+.day-card h3 a {
+  color: var(--text-main);
+  text-decoration: none;
+}
+.day-card h3 a:hover {
+  color: var(--accent-burgundy);
+}
+.day-card p {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+.btn {
+  display: inline-flex;
+  padding: 8px 14px;
+  border: 1px solid var(--border-dark);
+  background: var(--bg-surface);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  text-decoration: none;
+  color: var(--text-main);
+  font-weight: 600;
+  transition: all 0.15s;
+}
+.btn:hover {
+  background: var(--bg-subtle);
+}
+.btn.primary {
+  background: var(--border-dark);
+  color: #FFFFFF;
+}
+.btn.primary:hover {
+  background: var(--accent-burgundy);
+  border-color: var(--accent-burgundy);
+}
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <nav class="nav">
+      <div class="brand">
+        <h1>解读君视频日报<span>JIEDU DAILY · 20261123</span></h1>
+      </div>
+      <div class="toc">
+        <h2>全量原文</h2>
+        <a href="#summary" class="active">每日核心总结<span>20261123</span></a>
+        <a href="#note-wg3bB8ZMNIU">【2026-11-23最新】张瑜重要内容！剧烈波动震荡大势研判——近期市场暴跌还没到危机！ 非常值得一听的内容<span>20261123 · wg3bB8ZMNIU</span></a><a href="#note-fU44jE3itdM">【最新出炉 2026-11-23附文稿】大摩内部闭门会：宏观策略谈 冰火两重天市场剧烈动荡来袭！ 国产AI芯片或大幅涨价！【文字稿件已经发布于解读君推特X】<span>20261123 · fU44jE3itdM</span></a>
+        <h2>历史归档</h2>
+        <a href="../../index.html">← 返回历史总览</a>
+        <a href="../20261124/index.html" class="">20261124 <span>1 篇 · 当日归档</span></a><a href="../20261123/index.html" class="active">20261123 <span>2 篇 · 当日归档</span></a><a href="../20261122/index.html" class="">20261122 <span>1 篇 · 当日归档</span></a><a href="../20261121/index.html" class="">20261121 <span>1 篇 · 当日归档</span></a><a href="../20261120/index.html" class="">20261120 <span>1 篇 · 当日归档</span></a><a href="../20261118/index.html" class="">20261118 <span>0 篇 · 当日归档</span></a><a href="../20261117/index.html" class="">20261117 <span>1 篇 · 当日归档</span></a><a href="../20261116/index.html" class="">20261116 <span>5 篇 · 当日归档</span></a><a href="../20261115/index.html" class="">20261115 <span>1 篇 · 当日归档</span></a><a href="../20261113/index.html" class="">20261113 <span>1 篇 · 当日归档</span></a><a href="../20261112/index.html" class="">20261112 <span>1 篇 · 当日归档</span></a><a href="../20261111/index.html" class="">20261111 <span>1 篇 · 当日归档</span></a><a href="../20261110/index.html" class="">20261110 <span>2 篇 · 当日归档</span></a><a href="../20261109/index.html" class="">20261109 <span>2 篇 · 当日归档</span></a><a href="../20261108/index.html" class="">20261108 <span>1 篇 · 当日归档</span></a><a href="../20261107/index.html" class="">20261107 <span>1 篇 · 当日归档</span></a><a href="../20261106/index.html" class="">20261106 <span>1 篇 · 当日归档</span></a><a href="../20261105/index.html" class="">20261105 <span>2 篇 · 当日归档</span></a><a href="../20261104/index.html" class="">20261104 <span>1 篇 · 当日归档</span></a><a href="../20261103/index.html" class="">20261103 <span>2 篇 · 当日归档</span></a><a href="../20261102/index.html" class="">20261102 <span>2 篇 · 当日归档</span></a><a href="../20261101/index.html" class="">20261101 <span>1 篇 · 当日归档</span></a><a href="../20261031/index.html" class="">20261031 <span>1 篇 · 当日归档</span></a><a href="../20261030/index.html" class="">20261030 <span>2 篇 · 当日归档</span></a><a href="../20261028/index.html" class="">20261028 <span>1 篇 · 当日归档</span></a><a href="../20261027/index.html" class="">20261027 <span>1 篇 · 当日归档</span></a><a href="../20261026/index.html" class="">20261026 <span>3 篇 · 当日归档</span></a><a href="../20261024/index.html" class="">20261024 <span>1 篇 · 当日归档</span></a><a href="../20261023/index.html" class="">20261023 <span>3 篇 · 当日归档</span></a><a href="../20261022/index.html" class="">20261022 <span>2 篇 · 当日归档</span></a><a href="../20261021/index.html" class="">20261021 <span>2 篇 · 当日归档</span></a><a href="../20261020/index.html" class="">20261020 <span>1 篇 · 当日归档</span></a><a href="../20261019/index.html" class="">20261019 <span>1 篇 · 当日归档</span></a><a href="../20261018/index.html" class="">20261018 <span>2 篇 · 当日归档</span></a><a href="../20261016/index.html" class="">20261016 <span>1 篇 · 当日归档</span></a><a href="../20261015/index.html" class="">20261015 <span>1 篇 · 当日归档</span></a><a href="../20261014/index.html" class="">20261014 <span>3 篇 · 当日归档</span></a><a href="../20261013/index.html" class="">20261013 <span>2 篇 · 当日归档</span></a><a href="../20261012/index.html" class="">20261012 <span>2 篇 · 当日归档</span></a><a href="../20261011/index.html" class="">20261011 <span>3 篇 · 当日归档</span></a><a href="../20261010/index.html" class="">20261010 <span>9 篇 · 当日归档</span></a><a href="../20261006/index.html" class="">20261006 <span>2 篇 · 当日归档</span></a><a href="../20261005/index.html" class="">20261005 <span>3 篇 · 当日归档</span></a><a href="../20261004/index.html" class="">20261004 <span>1 篇 · 当日归档</span></a><a href="../20260929/index.html" class="">20260929 <span>0 篇 · 当日归档</span></a><a href="../20260928/index.html" class="">20260928 <span>1 篇 · 当日归档</span></a><a href="../20260927/index.html" class="">20260927 <span>6 篇 · 当日归档</span></a><a href="../20260922/index.html" class="">20260922 <span>1 篇 · 当日归档</span></a><a href="../20260921/index.html" class="">20260921 <span>8 篇 · 当日归档</span></a><a href="../20260914/index.html" class="">20260914 <span>6 篇 · 当日归档</span></a><a href="../20260910/index.html" class="">20260910 <span>1 篇 · 当日归档</span></a><a href="../20260908/index.html" class="">20260908 <span>2 篇 · 当日归档</span></a><a href="../20260907/index.html" class="">20260907 <span>2 篇 · 当日归档</span></a><a href="../20260906/index.html" class="">20260906 <span>1 篇 · 当日归档</span></a><a href="../20260905/index.html" class="">20260905 <span>1 篇 · 当日归档</span></a><a href="../20260904/index.html" class="">20260904 <span>2 篇 · 当日归档</span></a><a href="../20260903/index.html" class="">20260903 <span>2 篇 · 当日归档</span></a><a href="../20260902/index.html" class="">20260902 <span>3 篇 · 当日归档</span></a><a href="../20260831/index.html" class="">20260831 <span>2 篇 · 当日归档</span></a><a href="../20260829/index.html" class="">20260829 <span>1 篇 · 当日归档</span></a><a href="../20260828/index.html" class="">20260828 <span>1 篇 · 当日归档</span></a><a href="../20260825/index.html" class="">20260825 <span>1 篇 · 当日归档</span></a><a href="../20260824/index.html" class="">20260824 <span>2 篇 · 当日归档</span></a><a href="../20260823/index.html" class="">20260823 <span>1 篇 · 当日归档</span></a><a href="../20260821/index.html" class="">20260821 <span>3 篇 · 当日归档</span></a>
+      </div>
+    </nav>
+    <main class="main">
+      <div class="gazette-header">
+        <div>
+          <h1>金融经纬 · 每日纪要</h1>
+          <div class="gazette-meta">JIEDU DAILY FINANCIAL GAZETTE · VOL. 20261123</div>
+        </div>
+        <div class="gazette-meta">2 ARTICLES ARCHIVED</div>
+      </div>
+      
+<section id="summary" class="summary-card">
+  <div class="summary-head">
+    <div>
+      <h3>每日总结 · 20261123</h3>
+      <div class="meta">daily/20261123/20261123_解读君视频总结.md</div>
+    </div>
+  </div>
+  <div class="content"><h1 id="_1">解读君视频摘要</h1>
+<h2 id="1-2026-11-23">1. <a href="#note-wg3bB8ZMNIU">【2026-11-23最新】张瑜重要内容！剧烈波动震荡大势研判——近期市场暴跌还没到危机！ 非常值得一听的内容</a></h2>
+<blockquote>
+<p>一句话：未来三到五个月美欧日共振收紧、全球波动加大但尚未到危机，A股估值承压，债市做多赔率已不高。</p>
+</blockquote>
+<ol>
+<li><strong>全球流动性已进入“波动加大的阶段”（颠簸隧道），基准假设是未来 3–5 个月美欧日共振收紧难以逆转</strong>——美欧日三大央行同步加息、欧日继续缩表，加息周期还剩 1–2 次；只有出现“极其特殊的事件”倒逼，才可能反转。<br><span class="cond-label">边界：</span>这是对“收紧扩散+波动放大”的判断，并不等于已经发生流动性危机。</li>
+<li><strong>冲击先从最远端资产显现：股市估值收缩、全球信用溢价一致性走扩；但靠近央行的资金市场、金融条件与国债市场仍属健康</strong>——美国非银利差仅小幅转正后收敛、美欧金融条件绝对水平仍宽松、国债买卖价差与期限溢价仅回到中位数附近、主要股指估值分位多在中位数及以上。<br><span class="cond-label">边界：</span>一旦近端资金利率利差持续扩大、金融条件快速跌出宽松区间、信用利差破历史高位，才可升级为危机判断。</li>
+<li><strong>国内流动性的第一性原理是居民存款</strong>：消费倾向降至过去 6 年次低、消费贷/经营贷/按揭贷月度收缩、新增存款中定存占比上升（风险偏好下降）→ 一是估值承压（新增 M2 中新增居民存款比重 7–9 月连续上行、非银存款新增偏弱）；二是企业存款与居民存款增速差领先万德全A净利润 3–4 个季度、年底年初见顶。<br><span class="cond-label">边界：</span>四季度至明年一季度价格粘性下利润增速仍冲高，明年二季度起远端才转不明朗。</li>
+<li><strong>下游消费供给出清证据在累积，但幅度远弱于 2015–18 年供改</strong>：供需增速差（需求−投资）9 月达 11.3、逼近 2019 年底 11.7 的高点；下游企业单位数降 5 个多点、企业人数降 4.6、总资产增速降至 3.3%、上市公司固定资产增速 2% 出头、TTM 资本开支 −3.6%。<br><span class="cond-label">边界：</span>属“个位数边际出清”，且以行业总量与上市公司样本推断，不能外推为强出清。</li>
+<li><strong>债券进一步做多的赔率不高，形态更像 2022 年</strong>：十债与政策利率利差已在历史 3%–4%分位、非银负债端增量将随存款搬家放缓而减少、今年已抢跑部分明年基本面走弱。<br><span class="cond-label">边界：</span>后续定价高度依赖央行货币政策与银行间利率，而非基本面趋势——央行越宽松短周期仍有空间，资金面一紧即承压。</li>
+</ol>
+<h2 id="2-2026-11-23-aix">2. <a href="#note-fU44jE3itdM">【最新出炉 2026-11-23附文稿】大摩内部闭门会：宏观策略谈 冰火两重天市场剧烈动荡来袭！ 国产AI芯片或大幅涨价！【文字稿件已经发布于解读君推特X】</a></h2>
+<blockquote>
+<p>一句话：大摩称短期波动仍高、抄底还早，超配股票是12个月维度建议；出口管制收紧将提速国产替代，国产算力或大幅涨价。</p>
+</blockquote>
+<ol>
+<li><strong>短期波动率仍将高企，"抄底还早"；但大摩的"超配股票"是 12 个月（至 2027 年底）维度的建议，不是短期择时信号。</strong> 该判断成立的前提是：2027 年下半年政策与地缘明朗度改善、美联储在 2027 年 3 月结束本轮加息后按兵不动并于 2028 年才转入降息、油价回落至约 75 美元/桶、大型云厂 2027 年 capex 仍近 1.6 万亿美元。若把这些条件套用到未来数周的仓位决策上，结论不成立。</li>
+<li><strong>本轮调整被定性为"AI 资本开支的回报率清算"，而非科技革命被证伪。</strong> 关键量化事实是：美国 IT 投资占 GDP 比重从 2022 年的 3% 多升至当前 5% 以上，约 2–3 年完成 1.5 个百分点，速度约为 1990 年代末互联网周期的 3 倍；建设更快，则资本市场要求回报、质疑"卖铲人"超额利润的时间点也更早。<br><span class="cond-label">适用条件是</span> AI 需求增速不足以支撑上游持续超额利润；若算力租赁价格不跌反涨，则该逻辑被推迟。</li>
+<li><strong>出口管制收紧的基准情形是"有管理的竞争"延续，而非全面脱钩；其副产品是国产替代提速与国产算力供给偏紧，芯片与云服务可能出现远超 10%（数十个百分点乃至"倍数"级）的涨价。</strong> 支撑条件是：新规许可为 case-by-case（而非"原则上拒绝"）、中方握有稀土与关键矿产反制牌、国会更激进的立法在年底前难落地。反向边界是：若美方把中国核心科技企业大规模纳入实体清单（转写中出现"NTT list/实体名单"等表述，具体清单名称存疑），则进入升级情景，结论需重估。</li>
+<li><strong>中国政策在 2027 年仍偏克制：增长目标约 4.5%、政策利率不变、广义赤字率由 11% 降至 10.5%，大规模转向居民转移支付或重启举债投资的概率低。</strong> 前提是出口保持韧性（AI 基建仍在扩张、全球工业周期、产业链嵌入度提升）。只有当外需出现断崖（如美国 AI 硬着陆）或地方财政/信用风险外溢成流动性风险时，才可能触发更大力度的逆周期刺激。</li>
+<li><strong>配置上必须把"国产替代/技术自主"与"全球 AI 产业链"切成两条主线分别对待：做多前者（A 股优于港股），对后者谨慎。</strong> 区域排序上日本、韩国优于台湾；美股中数据中心开发商与电力设备是算力回流本土的直接受益者；欧洲半导体被"误伤"、市场担忧被夸大。上述排序以 12 个月为窗口，且以不出现极端升级情景为边界。</li>
+</ol></div>
+</section>
+
+      
+<article id="note-wg3bB8ZMNIU" class="article">
+  <div class="article-head">
+    <div>
+      <h3><a href="https://www.youtube.com/watch?v=wg3bB8ZMNIU" target="_blank" rel="noreferrer">【2026-11-23最新】张瑜重要内容！剧烈波动震荡大势研判——近期市场暴跌还没到危机！ 非常值得一听的内容</a></h3>
+      <div class="meta">20261123 · wg3bB8ZMNIU · <a href="https://www.youtube.com/watch?v=wg3bB8ZMNIU" target="_blank" rel="noreferrer">观看 YouTube 原片 ↗</a></div>
+    </div>
+  </div>
+  <div class="content"><h1 id="2026-11-23">结构化笔记｜【2026-11-23最新】张瑜重要内容！剧烈波动震荡大势研判——近期市场暴跌还没到危机！ 非常值得一听的内容</h1>
+<h2 id="1">1. 核心结论</h2>
+<ol>
+<li><strong>全球流动性已进入“波动加大的阶段”（颠簸隧道），基准假设是未来 3–5 个月美欧日共振收紧难以逆转</strong>——美欧日三大央行同步加息、欧日继续缩表，加息周期还剩 1–2 次；只有出现“极其特殊的事件”倒逼，才可能反转。边界：这是对“收紧扩散+波动放大”的判断，并不等于已经发生流动性危机。</li>
+<li><strong>冲击先从最远端资产显现：股市估值收缩、全球信用溢价一致性走扩；但靠近央行的资金市场、金融条件与国债市场仍属健康</strong>——美国非银利差仅小幅转正后收敛、美欧金融条件绝对水平仍宽松、国债买卖价差与期限溢价仅回到中位数附近、主要股指估值分位多在中位数及以上。边界：一旦近端资金利率利差持续扩大、金融条件快速跌出宽松区间、信用利差破历史高位，才可升级为危机判断。</li>
+<li><strong>国内流动性的第一性原理是居民存款</strong>：消费倾向降至过去 6 年次低、消费贷/经营贷/按揭贷月度收缩、新增存款中定存占比上升（风险偏好下降）→ 一是估值承压（新增 M2 中新增居民存款比重 7–9 月连续上行、非银存款新增偏弱）；二是企业存款与居民存款增速差领先万德全A净利润 3–4 个季度、年底年初见顶。边界：四季度至明年一季度价格粘性下利润增速仍冲高，明年二季度起远端才转不明朗。</li>
+<li><strong>下游消费供给出清证据在累积，但幅度远弱于 2015–18 年供改</strong>：供需增速差（需求−投资）9 月达 11.3、逼近 2019 年底 11.7 的高点；下游企业单位数降 5 个多点、企业人数降 4.6、总资产增速降至 3.3%、上市公司固定资产增速 2% 出头、TTM 资本开支 −3.6%。边界：属“个位数边际出清”，且以行业总量与上市公司样本推断，不能外推为强出清。</li>
+<li><strong>债券进一步做多的赔率不高，形态更像 2022 年</strong>：十债与政策利率利差已在历史 3%–4%分位、非银负债端增量将随存款搬家放缓而减少、今年已抢跑部分明年基本面走弱。边界：后续定价高度依赖央行货币政策与银行间利率，而非基本面趋势——央行越宽松短周期仍有空间，资金面一紧即承压。</li>
+</ol>
+<h2 id="2">2. 专家观点与逻辑链</h2>
+<h3 id="120">观点 1：全球流动性进入“颠簸隧道”——20 年首次美欧日大级别共振收紧</h3>
+<ul>
+<li><strong>观点归属：</strong> 张瑜（华创宏观）</li>
+<li><strong>结论：</strong> 2026 年二三季度以来全球进入新一轮共振收紧周期，美欧日同步加息并缩表，正在重塑全球流动性环境与各国国债需求结构，这是一条“不知深浅的颠簸隧道”。</li>
+<li><strong>前提事实：</strong> 美欧日占国际货币指数权重约 80%，几乎等同全球金融系统；三大央行持有本国国债比重较 2024 年峰值均降约 10%；美联储虽停止缩表但准备金仍在收缩，欧日仍在缩表；跟踪的全球 26 个主要经济体已有 16 个启动加息（过半）；对照 2015–18 年那轮加息缩表，当时欧日仍在降息扩表（欧洲首次大规模扩表）。（另有“全球信用溢价自 2016 年 10 月以来普遍走扩”一句，与 2026 年时间轴明显冲突，疑为口误或转写错误，不作为结论依据。）</li>
+<li><strong>推导逻辑：</strong> <code>三大央行同步加息+缩表 → 全球基础货币与国债需求结构收缩（占国际货币指数 80%）→ 对流动性最敏感的估值端与信用溢价端先反应 → 流动性环境进入“隧道”，时长与颠簸度取决于三大央行行为</code></li>
+<li><strong>隐含假设：</strong> 三大央行短期不因市场波动改变路径（还需 1–2 次加息）；美联储准备金收缩与欧日缩表效果可加总；国际货币指数权重可代表全球金融系统敞口。</li>
+<li><strong>反例 / 证伪条件：</strong> 三大央行提前暂停或转向；加息后金融条件未继续收紧、信用溢价回落至常态；美联储准备金重新回升；16 个加息经济体出现集中转降息。</li>
+</ul>
+<h3 id="2_1">观点 2：当下还不是流动性危机，只是“隧道”</h3>
+<ul>
+<li><strong>观点归属：</strong> 张瑜、易元青（华创宏观）</li>
+<li><strong>结论：</strong> 股市估值与信用溢价两端已明确变化，但央行近端市场仍平稳且未达历史极端，因此只能定性为“进入隧道”，不能定性为流动性危机。</li>
+<li><strong>前提事实：</strong> 美国非银市场以 SOFR 衡量，与联邦基金利率、超额准备金利率的利差 10 月下旬转正但幅度小，11 月以来转正幅度收敛，整体优于 2025 年；美欧金融条件指数 10 月以来随加息与偏鹰边际收紧，但绝对位置仍在宽松区间，远不及 2022–23 年；美欧国债买卖价差与期限溢价走高，但基本在中位数上下、未达 75%分位；主要股指估值分位除韩国（接近历史最低）外多处于历史中位数或偏高；VIX 及欧洲、日经隐含波动率略高于中位数，日经已显著突破 75%分位；信用债 CDS（欧洲、日本、亚洲除日本、新兴市场、美国）一致性大幅走扩，历史分位偏高、部分接近 75% 中位数水平。</li>
+<li><strong>推导逻辑：</strong> <code>央行控制力随资产“距离”衰减 → 近端（非银资金、金融条件、国债）平稳、远端（股市估值、信用溢价）先恶化 → 当前仅远端恶化、未达极端 → 定性为波动加大的隧道而非危机</code></li>
+<li><strong>隐含假设：</strong> 近端平稳足以阻断远端恶化的自我强化（无强制去杠杆、无赎回负反馈）；“未达历史极端分位”意味着缓冲垫仍存在。</li>
+<li><strong>反例 / 证伪条件：</strong> 非银利差持续扩大且不收敛；金融条件指数快速跌出宽松区间；信用利差与 CDS 突破历史高位；国债认购倍数明显恶化或出现流拍；VIX 与信用市场同步失序。</li>
+</ul>
+<h3 id="3">观点 3：国内流动性的内因是居民预期波动——估值承压 + 远端利润转弱</h3>
+<ul>
+<li><strong>观点归属：</strong> 张瑜（华创宏观）</li>
+<li><strong>结论：</strong> 过去一两年金融市场流动性高度依托非银存款、而非银存款依托居民存款活化，因此居民部门的风险偏好波动是国内流动性的第一性原理；当前居民预期已出现波动，导致估值承压与远端利润预期转弱。</li>
+<li><strong>前提事实：</strong> 消费倾向二、三季度连续下降，三季度为过去 6 年次低（仅高于 2020 年，与 2022 年接近，为过去三四年最低水平）；今年二季度起居民贷款对社融拉动同比转负，消费贷、经营贷、按揭贷出现月度级别收缩（提前还贷）；5 月以来新增居民存款中新增定存比例上升（存款增速下降、定存增速上升）；7、8、9 连续三个月“新增居民存款/新增 M2”比重上行、非银存款新增偏弱；企业存款与居民存款增速差处过去 6 年偏顶部区间，该指标领先万德全A净利润 3–4 个季度。</li>
+<li><strong>推导逻辑：</strong> <code>居民预期转弱（消费倾向↓、三贷收缩、定存化）→ 存款活化下降、非银存款与市场流动性减弱 → 新增 M2 中居民存款占比上升压低权益市净率（负相关）→ 估值波动加大并承压；同时企业-居民存款增速差年底年初见顶 → 3–4 个季度后（明年二季度起）利润名义增速回落</code></li>
+<li><strong>隐含假设：</strong> 居民存款行为是股市增量流动性的主导变量；上述负相关与 3–4 季度领先关系稳定；四季度至一季度价格粘性使规上利润与万德全A净利润仍冲高。</li>
+<li><strong>反例 / 证伪条件：</strong> 消费倾向回升、三贷恢复同比正增长、新增存款定存占比回落（存款重新活化）、存款增速差再上台阶；或政策直接改善居民收入预期使风偏修复。</li>
+</ul>
+<h3 id="4">观点 4：下游消费供给出清在累积证据，值得从出清角度关注龙头</h3>
+<ul>
+<li><strong>观点归属：</strong> 银波（华创宏观）</li>
+<li><strong>结论：</strong> 下游消费的供给出清逻辑值得重视，可从供给出清角度布局消费龙头与现金流改善的龙头个股。</li>
+<li><strong>前提事实：</strong> 官方产能利用率仅覆盖 40 多个工业细分行业中的约 15 个、且多为中上游，故改用月度“供需增速差”（需求增速−投资增速）：下游 9 月已达 11.3，上一轮高点为 2019 年底的 11.7。四项佐证：①企业单位数量，9 月下游降 5 个多点、企业人数降 4.6，而大宗（原油有色）与中游装备制造的単位数、人数仍在上升；②下游总资产增速降至 3.3%，为多年最低，中游与大宗均为两位数；③上市公司下游固定资产增速三季报仅 2% 出头（去年同期 6% 多）；④过去四个季度滚动 TTM 资本开支增速下游为 −3.6%。对照 2015–18 年供改期间煤炭钢铁企业单位与人数为两位数下滑。</li>
+<li><strong>推导逻辑：</strong> <code>需求增速持续高于投资增速 → 企业单位数、从业人数、总资产、资本开支同步收缩 → 供给端退出、竞争格局改善 → 龙头不再需要大额资本开支建护城河，现金流改善</code></li>
+<li><strong>隐含假设：</strong> 供需增速差能代表产能矛盾；上市公司样本可代表行业整体；出清过程不被新增产能投放或需求失速打断。</li>
+<li><strong>反例 / 证伪条件：</strong> 下游投资增速回升、企业单位数反弹、capex 转正；或需求端失速导致量价齐跌（“出清”变成需求塌陷）；或行业以价格战替代产能退出。</li>
+</ul>
+<h3 id="5-2022">观点 5：长端利率进一步做多赔率不高，形态更像 2022 年</h3>
+<ul>
+<li><strong>观点归属：</strong> 若宇（华创宏观）</li>
+<li><strong>结论：</strong> 从利差、配置、基本面三个视角看，当下位置债券进一步做多赔率都不高；2027 年前的债券市场更像 2022 年——高度依赖央行货币政策与银行间利率波动。</li>
+<li><strong>前提事实：</strong> 十债收益率与政策利率（隔夜 1.25%）的利差处于历史约 3%–4%分位，仅 2025 年 1–4 月更低，已近历史极值；过去 30 年经验中工业企业利润同比转负是央行降息的先决条件（仅 2022 年一季度例外）；2026 年居民存款搬家带来非银存款大幅攀升，但实体融资需求偏弱、非银向实体投放平稳，资金滞留二级市场形成配股配债循环；今年工业企业利润增速与 ROE 抬升而债券收益率偏低，被解读为配置资金抢跑明年经济偏弱；2025 年与 2026 年股票成交量回落阶段，国债净价指数同比均出现拔估值，股债跷跷板在短周期始终存在。2022 年三个特征：十债与政策利率差值全年平稳、2021 年抢跑后 2022 年利润下行兑现时利率仅横盘震荡、疫情冲击下居民存款回落使非银配债能力边际减弱。</li>
+<li><strong>推导逻辑：</strong> <code>利差赔率已近极值且降息需利润转负为前提 → 2027 年居民存款不再搬家、非银负债端增量减少、配债力量减弱 → 今年已抢跑部分明年基本面走弱 → 长端下行空间受限 → 定价回到短周期政策与资金面（类 2022）</code></li>
+<li><strong>隐含假设：</strong> 央行降息仍以工业企业利润同比转负为前提；存款搬家放缓会实质传导至非银负债端；2022 年类比在政策框架与投资者结构上仍成立。</li>
+<li><strong>反例 / 证伪条件：</strong> 工业企业利润同比转负触发降息；实体融资需求进一步走弱迫使宽松加码；出现风险事件导致资金面转松、银行间利率明显下行；非银负债端未如预期放缓。</li>
+</ul>
+<h3 id="610">观点 6：10 月财政收支双改善，但收入质量与基建实物量待验证</h3>
+<ul>
+<li><strong>观点归属：</strong> 高拓（华创宏观）</li>
+<li><strong>结论：</strong> 10 月两本账收支两端明显边际改善，但改善主要来自一次性个税入库与四季度集中发债；收入端真实动能已在走弱，基建类支出重回拖累，持续性待观察。</li>
+<li><strong>前提事实：</strong> 广义财政收入增速由 9 月 −3.5% 升至 10 月 4.3%，支出由 −3.7% 升至 4.7%；收入改善来自税收增长与土地收入降幅收窄；税收约 6% 增速中，个税单项拉动 6.8 个百分点（10 月个税增长近 90%），源于 7 月离岸信托个税公告过渡期 10 月底截止、10 月集中入库超 1200 亿元；剔除离岸信托后个税同比 12.8%，低于前三季度累计 14%；10 月证券交易印花税 −33%（9 月 −11%）；三项基建类支出（城乡社区、交通运输、农林水）由 9 月不再拖累转为 10 月拖累 0.3 个百分点；四季度新增政府债同比增量可能是近五年同期最强，25 年 7 月至 26 年 9 月的广义两本账支出增速下行或在今年底暂告一段落。</li>
+<li><strong>推导逻辑：</strong> <code>一次性个税集中入库 + 四季度发债集中形成支出 → 当月收支数据双改善；但剔除一次性后个税动能下行、印花税与金融业所得税随股市调整承压、PPI 见顶回落不利流转税 → 后续税收承压；5500 亿地方债结存限额尚未见明显实物量提速 → 基建支撑待验证</code></li>
+<li><strong>隐含假设：</strong> 离岸信托入库不可持续、不构成趋势性收入；印花税与股市成交高度相关；结存限额能有效转化为实物工作量。</li>
+<li><strong>反例 / 证伪条件：</strong> 11–12 月剔除一次性后的税收增速回升；基建类支出增速转正并形成实物量；土地收入降幅持续收窄；PPI 未回落或再度上行。</li>
+</ul>
+<h2 id="3_1">3. 投资研究指引</h2>
+<blockquote>
+<p>记录视频所表达的研究方向，不构成买卖建议；没有明确投资含义时如实写“未给出可执行指引”。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>主题 / 对象</th>
+<th>视频隐含或明确的方向</th>
+<th>为什么</th>
+<th>正向验证信号</th>
+<th>风险 / 失效信号</th>
+<th>需补的证据</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>全球流动性与风险资产（股票为主）</td>
+<td>未来 3–5 个月以“共振收紧”为基准情形，波动放大、估值受压；不宜把当前下跌直接定性为危机</td>
+<td>美欧日同步加息缩表、占国际货币指数约 80%；远端估值与信用溢价已先反应</td>
+<td>三大央行表态转鸽、加息路径缩短；信用溢价回落；非银利差收敛</td>
+<td>近端资金利率利差持续扩大、金融条件跌出宽松区间、信用利差破历史高位</td>
+<td>三大央行 12 月会议与点阵图、准备金与缩表节奏、26 个经济体加息名单变化</td>
+</tr>
+<tr>
+<td>A 股整体估值与利润节奏</td>
+<td>估值端已进入承压区间；利润“四季度至明年一季度仍有支撑、明年二季度起远端不明朗”</td>
+<td>新增 M2 中居民存款占比连续 3 个月上行；企业-居民存款增速差见顶（领先 3–4 个季度）</td>
+<td>居民存款重新活化、非银存款新增回升；消费倾向与三贷同比改善</td>
+<td>定存占比继续上升、存款增速差加速回落；三贷收缩扩大</td>
+<td>10 月后居民存款结构、非银存款月度新增、消费倾向与三贷月度数据</td>
+</tr>
+<tr>
+<td>下游消费 / 消费龙头</td>
+<td>明确偏积极：从供给出清角度关注消费龙头与现金流改善个股</td>
+<td>供需增速差 11.3 逼近 2019 年高点 11.7；企业单位数、人数、总资产、固定资产、capex 同步收缩</td>
+<td>下游 capex 继续负增、企业单位数继续下降；龙头毛利率与经营现金流改善</td>
+<td>下游投资增速回升、capex 转正；需求失速导致量价齐跌；价格战替代产能退出</td>
+<td>10 月供需增速差更新、细分行业集中度与龙头现金流数据</td>
+</tr>
+<tr>
+<td>长端利率 / 债券</td>
+<td>明确偏谨慎：进一步做多赔率不高；短周期跟随货币政策与银行间利率，类 2022 年震荡</td>
+<td>十债-政策利率利差已处 3%–4%分位；非银负债端增量将放缓；今年已抢跑明年基本面</td>
+<td>工业企业利润同比转负引发降息；资金面转松、银行间利率下行</td>
+<td>利差继续压缩至新低；实体融资需求强于预期；存款搬家重新加速</td>
+<td>工业企业利润月度同比、非银负债端（基金/券商）规模变化、央行公开市场操作</td>
+</tr>
+<tr>
+<td>信用债 / 海外信用市场</td>
+<td>明确提示风险上升：全球信用溢价一致性走扩，是当前最明确走弱的资产类别</td>
+<td>距央行最远、政策呵护最弱；欧洲、日本、亚洲除日本、新兴市场、美国 CDS 同步走扩</td>
+<td>利差走扩后回稳、发行与认购恢复</td>
+<td>CDS 突破 75%分位并向历史高位推进；再融资窗口关闭</td>
+<td>各经济体 CDS 分位数、信用债发行失败率与赎回数据</td>
+</tr>
+<tr>
+<td>财政 / 基建链</td>
+<td>中性偏谨慎：10 月改善含一次性因素，基建实物量尚未见明显提速</td>
+<td>个税一次性入库超 1200 亿；剔除后个税 12.8% 低于前三季度 14%；三项基建支出转为拖累 0.3pct</td>
+<td>5500 亿结存限额形成实物量、基建支出增速转正、土地收入降幅持续收窄</td>
+<td>税收（剔除一次性）继续走弱、印花税与金融业所得税承压、PPI 回落拖累流转税</td>
+<td>11–12 月财政收支、结存限额发行与项目落地进度、土地出让数据</td>
+</tr>
+</tbody>
+</table></div>
+</article>
+
+<article id="note-fU44jE3itdM" class="article">
+  <div class="article-head">
+    <div>
+      <h3><a href="https://www.youtube.com/watch?v=fU44jE3itdM" target="_blank" rel="noreferrer">【最新出炉 2026-11-23附文稿】大摩内部闭门会：宏观策略谈 冰火两重天市场剧烈动荡来袭！ 国产AI芯片或大幅涨价！【文字稿件已经发布于解读君推特X】</a></h3>
+      <div class="meta">20261123 · fU44jE3itdM · <a href="https://www.youtube.com/watch?v=fU44jE3itdM" target="_blank" rel="noreferrer">观看 YouTube 原片 ↗</a></div>
+    </div>
+  </div>
+  <div class="content"><h1 id="2026-11-23-aix">结构化笔记｜【最新出炉 2026-11-23附文稿】大摩内部闭门会：宏观策略谈 冰火两重天市场剧烈动荡来袭！ 国产AI芯片或大幅涨价！【文字稿件已经发布于解读君推特X】</h1>
+<h2 id="1">1. 核心结论</h2>
+<ol>
+<li><strong>短期波动率仍将高企，"抄底还早"；但大摩的"超配股票"是 12 个月（至 2027 年底）维度的建议，不是短期择时信号。</strong> 该判断成立的前提是：2027 年下半年政策与地缘明朗度改善、美联储在 2027 年 3 月结束本轮加息后按兵不动并于 2028 年才转入降息、油价回落至约 75 美元/桶、大型云厂 2027 年 capex 仍近 1.6 万亿美元。若把这些条件套用到未来数周的仓位决策上，结论不成立。</li>
+<li><strong>本轮调整被定性为"AI 资本开支的回报率清算"，而非科技革命被证伪。</strong> 关键量化事实是：美国 IT 投资占 GDP 比重从 2022 年的 3% 多升至当前 5% 以上，约 2–3 年完成 1.5 个百分点，速度约为 1990 年代末互联网周期的 3 倍；建设更快，则资本市场要求回报、质疑"卖铲人"超额利润的时间点也更早。适用条件是 AI 需求增速不足以支撑上游持续超额利润；若算力租赁价格不跌反涨，则该逻辑被推迟。</li>
+<li><strong>出口管制收紧的基准情形是"有管理的竞争"延续，而非全面脱钩；其副产品是国产替代提速与国产算力供给偏紧，芯片与云服务可能出现远超 10%（数十个百分点乃至"倍数"级）的涨价。</strong> 支撑条件是：新规许可为 case-by-case（而非"原则上拒绝"）、中方握有稀土与关键矿产反制牌、国会更激进的立法在年底前难落地。反向边界是：若美方把中国核心科技企业大规模纳入实体清单（转写中出现"NTT list/实体名单"等表述，具体清单名称存疑），则进入升级情景，结论需重估。</li>
+<li><strong>中国政策在 2027 年仍偏克制：增长目标约 4.5%、政策利率不变、广义赤字率由 11% 降至 10.5%，大规模转向居民转移支付或重启举债投资的概率低。</strong> 前提是出口保持韧性（AI 基建仍在扩张、全球工业周期、产业链嵌入度提升）。只有当外需出现断崖（如美国 AI 硬着陆）或地方财政/信用风险外溢成流动性风险时，才可能触发更大力度的逆周期刺激。</li>
+<li><strong>配置上必须把"国产替代/技术自主"与"全球 AI 产业链"切成两条主线分别对待：做多前者（A 股优于港股），对后者谨慎。</strong> 区域排序上日本、韩国优于台湾；美股中数据中心开发商与电力设备是算力回流本土的直接受益者；欧洲半导体被"误伤"、市场担忧被夸大。上述排序以 12 个月为窗口，且以不出现极端升级情景为边界。</li>
+</ol>
+<h2 id="2">2. 专家观点与逻辑链</h2>
+<h3 id="1k">观点 1：K 型分化走到极致会招致"政治与社会清算"，这是本轮全球股市调整的深层框架</h3>
+<ul>
+<li><strong>观点归属：</strong> 邢自强（Robin，大摩中国首席经济学家/宏观）</li>
+<li><strong>结论：</strong> 本轮震荡不是几个孤立新闻的叠加，而是美国 K 型分化（AI/算力/资本盛宴向上，中产承受生活成本、电价、就业替代向下）到极致后的政治反噬；中美竞争是持久战，胜负取决于谁能实现更平衡、更包容的增长与"K 型收敛"。</li>
+<li><strong>前提事实：</strong> 美国中期选举出现被称"蓝色海啸"的民主党大胜；随后在人事、地方数据中心政策上出现调整并伴随股市大跌；通胀与生活成本问题上升；数据中心被指挤占电力、推升电价；AI 替代就业的担忧扩散。</li>
+<li><strong>推导逻辑：</strong> <code>精英叙事主张"AI 要 all in、可少监管"，因为事关产业革命与长期能源安全 → 但普通家庭承担短期成本，且中期选举给出政治反馈 → 政策与监管对数据中心/AI 投资的友好度下降 → 估值与风险溢价重定价，股市剧烈调整</code></li>
+<li><strong>隐含假设：</strong> 选民用经济痛感而非国家安全叙事投票；政策转向会实质影响数据中心审批、电力供给与资本开支节奏；K 型分化在美国已到"必须收敛"的临界点。</li>
+<li><strong>反例 / 证伪条件：</strong> 若中期选举后政策对 AI 资本开支的实际约束有限（审批、电价、补贴均未实质收紧），或 AI 应用带来的生产率红利快速惠及普通就业与工资，则该"清算"叙事被削弱；仅凭一次选举结果外推长期政治周期亦可能过度解读。</li>
+</ul>
+<h3 id="2ai-19952000">观点 2：AI 上游"卖铲人"面临向公用事业/基建运营商回归的估值风险（历史类比 1995–2000 宽带）</h3>
+<ul>
+<li><strong>观点归属：</strong> 邢自强（Robin），并引述新加坡峰会上的客户共识</li>
+<li><strong>结论：</strong> 资本开支高峰期超额利润集中在硬件/基建供应者，但最终这类角色常被市场重新定价为"公用事业型"资产；当前不是科技革命被证伪，而是进入"看真实应用回报"的新阶段。</li>
+<li><strong>前提事实：</strong> 1995–2000 年涨幅最大的是宽带设备生产商与运营商，最终被归类为公用事业类；当时普遍相信"人类对带宽的需求永无上限"；本轮 AI 建设仅用约 3 年就把美国 IT 投资占 GDP 推升 1.5 个百分点以上，而 1990–2000 用约 10 年完成同等幅度。</li>
+<li><strong>推导逻辑：</strong> <code>建设速度是上一轮的约 3 倍 → 资本投入更快到位、回报审视点提前到来 → 市场对"卖铲人"超额利润的可持续性打折 → 上游硬件/算力供应商估值向基建运营/公用事业靠拢，利润向真实应用端迁移</code></li>
+<li><strong>隐含假设：</strong> 算力长期趋向同质化/大宗化；应用端能真正产生营收与生产率提升；历史类比在技术扩散速度不同的情况下仍具解释力。</li>
+<li><strong>反例 / 证伪条件：</strong> 若算力持续供不应求、租赁价格上行（视频中 Charlie 明确把"GPU 租赁价格上涨"作为经济循环再起的信号），上游可维持超额利润；若出现强壁垒（生态锁定、先进制程/HBM 卡位），"公用事业化"可能长期不成立。</li>
+</ul>
+<h3 id="3">观点 3：经历过多次泡沫周期的宏观老将已进入"资本保全模式"，清空股票、看空大宗</h3>
+<ul>
+<li><strong>观点归属：</strong> 转写稿中先称某"宏观大师 Tam"（大摩衍生品主管在峰会上的访谈），随后又以 Druckenmiller 指代，<strong>人名前后不一致，归属存疑，仅作访谈观点引用</strong></li>
+<li><strong>结论：</strong> 因其近 50 年投资生涯中"从未对未来一两年如此缺乏清晰度"，已将股票敞口降至接近于零，对大宗商品同样悲观；认为 AI 算力基建不再是未来几年主旋律，应转向能通过执行任务真正提升营收的 AI 应用者。</li>
+<li><strong>前提事实：</strong> 政治层面对数据中心与 AI 投资不利；AI 融资规模过高，股市与债市投资者将越来越看重回报率而不再"无脑拥抱科技"；历史上 1999–2000 年有精准逃顶也有惨痛教训。</li>
+<li><strong>推导逻辑：</strong> <code>政治阻力上升 + 融资规模过大且回报要求提高 → 算力基建的边际回报不确定 → 降低风险资产敞口、保全资本 → 下一阶段机会在"提升营收的应用者"而非"卖 token 的公司"</code></li>
+<li><strong>隐含假设：</strong> 判断者的信息与框架优于市场；"退场"是可执行的择时动作；应用端回报会先于基建端兑现。</li>
+<li><strong>反例 / 证伪条件：</strong> 若 2027 年云厂 capex 仍近 1.6 万亿美元且算力价格上行，则"基建不再主旋律"被证伪；访谈属个人仓位选择，不构成对大摩官方观点的背书；"近零股票敞口"在流动性驱动的上涨中机会成本极高。</li>
+</ul>
+<h3 id="4">观点 4：出口管制新规的影响分三层，但中美仍在"有管理的竞争"轨道内，外压反而加速国产替代</h3>
+<ul>
+<li><strong>观点归属：</strong> 查理（半导体硬件亚洲首席）+ 邢自强（宏观框架）</li>
+<li><strong>结论：</strong> 新规短期压制中国云厂 capex 与模型训练能力，供给端也受挤压；但中美关系大幅调整"不那么容易"，中方反制牌（稀土、关键矿产）与逐案审批的弹性使全面冲击概率受限，外部封锁将倒逼国产 AI 芯片加速本土化。</li>
+<li><strong>前提事实：</strong> 新规不仅限制新增，还要求存量海外租赁算力在 90 天内申请许可；新增 4 个东南亚国家与巴西进入限制范围；此前做法是 presumption of denial（几乎不批），本次改为 case-by-case；英伟达作为"领头羊"推动的 CPO、800V、576 GPU scale 等边缘创新可能因缺位而放缓；台积电在峰会上举出华为案例——两个季度内其营收占比从 11% 降至不足 1%。</li>
+<li><strong>推导逻辑：</strong> <code>新规覆盖存量、许可 case-by-case → 训练类 workload 获批概率低、推理/API 类相对可控 → 中国云厂 AI 云 capex 存在下行风险，模型迭代节奏受扰 → 但中方有稀土等反制与行政部门保留的谈判弹性，国会激进立法年底难落地 → 基准情形为"有管理的竞争"，同时国产化提速</code></li>
+<li><strong>隐含假设：</strong> 中方反制意愿与能力可信；行政部门愿意继续逐案放行部分许可；国产芯片产能与良率能承接替代需求；东南亚/巴西被纳入限制后，灰色渠道高端训练卡流入显著减少。</li>
+<li><strong>反例 / 证伪条件：</strong> 若 90 天许可大规模被拒且无豁免、或中国核心科技企业被成批列入实体清单，则"有管理的竞争"框架失效；若国产芯片受 fab/packaging 海外供应限制而出货不及预期，则"替代提速"落空（Gary 明确指出国产芯片出货量存在不确定性）。</li>
+</ul>
+<h3 id="5-memory-hbm-asic-hbm">观点 5：国产算力的真正瓶颈是 Memory 价格与 HBM 供给；落点在 ASIC 设计服务与 HBM 库存充足的厂商</h3>
+<ul>
+<li><strong>观点归属：</strong> 查理（半导体硬件）</li>
+<li><strong>结论：</strong> 国产 GPU 供应链的核心约束是内存价格与 HBM 可得性；短期优先关注 ASIC 链条（Google TPU、AWS Trainium 的设计服务供应商）以及 HBM 库存 cushion 较充足的国内厂商，作为 A 股出口管制情景下的首选方向；对成熟制程与"涨价概念"保持警惕。</li>
+<li><strong>前提事实：</strong> 国产 GPU 供应链自今年年中起持续面临 Memory 价格与 HBM supply 挑战；被转写为"很好知"的某厂商最近一季报显示 HBM 库存较充足（<strong>厂商名疑为转写错误，不据此下结论</strong>）；全球两个最成功的 ASIC 项目分别由台系设计服务商承接，转写为"min亚"与世芯（Alchip）（<strong>"min亚"疑为转写错误</strong>）。</li>
+<li><strong>推导逻辑：</strong> <code>海外算力租赁被卡 → 国内模型/云厂被迫转向国产芯片 → 内存与 HBM 成为产能与成本的硬约束 → 谁能锁定 HBM，谁能在国产替代中放量 → 短期业绩确定性集中在 ASIC 设计服务与 HBM 有库存缓冲者</code></li>
+<li><strong>隐含假设：</strong> 国产芯片需求会真实转化为订单（而非仅停留在规划）；HBM 供给瓶颈短期无法缓解；ASIC 路线相对 GPU 在受限环境下更具弹性。</li>
+<li><strong>反例 / 证伪条件：</strong> 若 HBM/内存价格回落或国产 HBM 放量超预期，稀缺性溢价消失；若云厂砍单幅度大于预期，ASIC 订单同样下修；视频亦明确"未来两个月可能有砍单也可能没有"——即结论对订单节奏高度敏感。</li>
+</ul>
+<h3 id="6-12-70">观点 6：短期波动率极高，但 12 个月维度仍建议超配股票（组合 70% 配股票）</h3>
+<ul>
+<li><strong>观点归属：</strong> Laura（全球策略/资产配置，转写中亦称"王莹"）</li>
+<li><strong>结论：</strong> 未来数周至一两个月波动率将维持高位，不建议此时全撤为现金；但从 12 个月（至 2027 年底）维度仍超配股票，并建议多资产组合中约 70% 配置股票。</li>
+<li><strong>前提事实：</strong> 待落地事件密集：英伟达对国会的回复、黄仁勋国会聆讯、商务部长卢特尼克国会聆讯、四项涉芯片与高等级算力的法案年底前研讨定规模、明年 1 月以民主党为主体的国会正式上任；美联储预计 2027 年 3 月结束加息后按兵不动、2028 年进入降息；1 年期国债收益率在 2027 年上半年（尤其一季度）缓慢爬坡，流动性进一步收紧，下半年改善；油价预计 2027 年底回到 75 美元/桶。</li>
+<li><strong>推导逻辑：</strong> <code>政策与地缘的角力集中在未来数周与 2027 年初 → 短期不确定性高、波动率维持高位 → 但 2027 年下半年明确度提升、资金成本见顶回落、油价回落支撑通胀下行 → 以 12 个月为持有期，风险资产的风险回报仍占优</code></li>
+<li><strong>隐含假设：</strong> 投资者持有期确实为 12 个月且能承受期间回撤；美联储路径按预期演绎；油价回落；AI capex 不出现硬着陆。</li>
+<li><strong>反例 / 证伪条件：</strong> 若国会立法超预期严厉、或英伟达事件演化为系统性供应链/信用事件、或通胀二次上行迫使美联储重启加息，则"下半年明朗化"前提破裂；对持有期短的投资者，该建议不适用（Laura 本人以投资期限为前置变量）。</li>
+</ul>
+<h3 id="7a">观点 7：区域与主线排序——日韩优于台湾；A 股优于港股；美国数据中心/电力受益；欧洲半导体被误伤</h3>
+<ul>
+<li><strong>观点归属：</strong> Laura（全球策略）</li>
+<li><strong>结论：</strong> 新兴市场整体转谨慎；日本、韩国优于台湾；中国境内坚定做多国产替代/技术自主主线，对全球 AI 产业链参与者谨慎；同时下调互联网评级、上调生物医药评级，将阿里移出推荐股票池、将寒武纪纳入中国内地+香港合并池；美股数据中心开发商与电力设施厂商受益于算力回流本土；欧洲半导体的担忧被夸大。</li>
+<li><strong>前提事实：</strong> 观点调整始于美国中期选举结果公布，而非 BIS 新规或英伟达事件；日韩为美国核心战略盟友，受出口管制影响较小，且有工业、国防、能源资本开支等更宽窗口；韩国前期调整幅度大、估值更易接受；日本再通胀与治理改革主题信心未受冲击；台湾估值偏高、数据中心相关政策使投资与上线速度放缓、此前救市与限制做空措施使调整未到位；A 股有国家队资金支持且国产替代主线主要在 A 股交易；港股对美债收益率上行更敏感；四项法案中含"全面禁止所有 DUV 设备"条款，但认为现有环境下无法落地，且欧洲半导体管理层已充分指引风险并下调预期。</li>
+<li><strong>推导逻辑：</strong> <code>管制与政治风险重新定价 → 盟友属性 + 多元资本开支窗口使日韩相对抗跌 → 台湾估值高、政策压制数据中心、救市扭曲价格发现 → A 股受益国家队与国产替代交易场所，港股受资金成本压制 → 算力回流美国本土使数据中心与电力设备直接受益；欧洲半导体被过度定价的最坏情形 → 按此调整区域与行业权重</code></li>
+<li><strong>隐含假设：</strong> 国产替代与全球 AI 产业链可在同一市场内清晰分割；国家队资金持续支持 A 股；DUV 全面禁令确实不会落地；欧洲半导体指引已充分反映风险。</li>
+<li><strong>反例 / 证伪条件：</strong> 若 DUV 全面禁令真的进入立法并执行，欧洲半导体"误伤"判断被推翻；若台股估值经一轮下跌完成出清、或数据中心政策转为友好，则"相对谨慎"失效；若中国反制导致实体清单大幅扩容，A 股国产替代主线同样会先经历风险释放（Laura 亦承认届时才是有选择的"bottom fishing"时机，现在"为时尚早"）。</li>
+</ul>
+<h3 id="8">观点 8：出口韧性 → 政策克制；地方国企信用事件是地产调整"下半场"信号，央行反应函数取决于是否演化为流动性风险</h3>
+<ul>
+<li><strong>观点归属：</strong> 蔡志鹏（中国经济学家）</li>
+<li><strong>结论：</strong> 只要出口维持韧性，北京倾向保持政策克制、推进转型与化债：2027 年增长目标约 4.5%、政策利率不变、广义赤字率由 11% 降至 10.5%；地方国企信用事件可理解为地产调整进入下半场向弱资质平台延伸，央行倾向配合信用风险重定价与分层，仅在风险扩散为广泛流动性风险时才加码投放。</li>
+<li><strong>前提事实：</strong> 出口韧性的三个来源：全球 AI 基建仍处扩张期（大摩全球科技团队预测未变）、本轮全球工业周期（含能源转型、工业自动化）下中国的完整产业链与交付速度优势、中国零部件与资本品进一步嵌入全球生产网络；财政收缩的结构性原因包括不愿以中央举债完全弥补土地收入缺口、人口老龄化下的社保缺口推动加强税收与社保监管；周期性原因是出口偏强降低了刺激内需紧迫性、政绩观导向叠加各级政府换届使地方举债更谨慎；与 2020 年永煤事件对比：本轮流动性投放更克制、银行间利率未明显下行甚至上行、风险传染有限。</li>
+<li><strong>推导逻辑：</strong> <code>出口有韧性 → 稳增长紧迫性下降 → 政策保持克制、财政准收缩延续 → 地产调整下半场使弱资质地方国企/城投承压，出现局部信用事件 → 央行不急于大额投放，而是允许信用分层 → 只有当理财/基金赎回、优质地方国企再融资受阻等传染出现时，才转向明确流动性支持</code></li>
+<li><strong>隐含假设：</strong> 出口韧性可持续（依赖 AI 基建不硬着陆）；政策优先级仍在转型与化债而非短期增长；信用风险可被"分层定价"而不失控。</li>
+<li><strong>反例 / 证伪条件：</strong> 若全球 AI 投资硬着陆导致外需断崖、或地方财政压力引发社会反馈，视频明确这会触发更大力度的逆周期刺激（此为作者自设的失效条件）；若信用事件引发理财赎回潮与优质主体再融资受阻，则央行"克制"判断失效。</li>
+</ul>
+<h3 id="9-66">观点 9：人民币不会因贸易顺差与中美利差机械升值，年底看 6.6，路径偏温和且双向波动</h3>
+<ul>
+<li><strong>观点归属：</strong> 蔡志鹏（中国经济学家）</li>
+<li><strong>结论：</strong> 顺差不等同于人民币买盘，结汇高度依赖升值预期；利率平价逻辑所需假设过强，利差扩大不必然要求更大升值，反而可能需要短期贬值以打开预期空间（汇率超调）；预计 2027 年底 USD/CNY 6.6，但该预测已隐含美元升值假设，就名义有效汇率而言并不保守；央行倾向维持资本管制、允许温和升值并制造双向波动。</li>
+<li><strong>前提事实：</strong> 过去 12 个月企业加快结汇，形成一定的汇率自我强化循环；中国高顺差反映储蓄高、投资弱，出口所得美元未必回流国内循环；内需偏弱、明年可能重回低通胀，需要相对宽松的金融条件；快速升值会带来紧缩效应。</li>
+<li><strong>推导逻辑：</strong> <code>升值预期 → 结汇增加 → 顺差被放大为人民币买盘 → 但预期一旦减弱，结汇即放缓 → 顺差扩大不能被外推为可持续大幅升值 → 央行以资本管制 + 温和升值 + 双向波动替代单边升值</code></li>
+<li><strong>隐含假设：</strong> 央行有能力且有意愿管理预期与资本流动；美元不会大幅走弱；出口商结汇行为对预期高度敏感。</li>
+<li><strong>反例 / 证伪条件：</strong> 若美元显著走弱或美联储降息早于预期，人民币可能强于 6.6；若出口快速走弱、结汇逆转，则温和升值路径失效；以"利率平价"论证升值的市场观点在资本管制下本身难以直接检验。</li>
+</ul>
+<h3 id="10bis">观点 10：BIS 新规对互联网平台影响分化；国产芯片供给极紧，短期云与芯片价格可能"数十个百分点甚至倍数"上涨</h3>
+<ul>
+<li><strong>观点归属：</strong> Gary（互联网/大模型产业链首席）</li>
+<li><strong>结论：</strong> 新规比预期更严重（覆盖存量海外租赁、90 天内申请许可、新增 5 国），但训练类 workload 获批概率最低、推理/API 类相对可控；腾讯受影响较小但模型追赶与长期 TAM 仍受制于算力；阿里影响较大、云收入指引由 50% 下调至 30%–45%，但其通过全资平头哥在国产替代中具备中长期优势；短期供应极紧，云与芯片价格可能出现远超 10% 的大幅上涨。</li>
+<li><strong>前提事实：</strong> 本次许可为 case-by-case，而非此前的 presumption of denial；新增限制国包括 4 个东南亚国家与巴西，历史上流入国内的高端英伟达训练卡将更难获得；国产芯片若使用海外 fab/packaging 供应商亦受更大限制；腾讯海外算力与海外训练 workload 相对字节、阿里云更低，主要自有模型为混元，重点业务微信/小微以国内为主；腾讯过去几年 AI 投入偏晚，今年处于追赶期；阿里海外训练算力较大且承接第三方模型公司训练，已下调明年云收入指引；平头哥为阿里百分百控股，芯片团队预测其出货量未来两年大幅提升（明年 70 万颗、后年 120 万颗，阿里口述后年超 100 万颗），本身出货量大于寒武纪；B 卡今年在国内已出现 2–3 倍涨价；阿里长期指引中 2032 年 20GW 目标被下修，但三个财年 1100 亿美元收入目标不变，隐含提价。</li>
+<li><strong>推导逻辑：</strong> <code>存量海外算力需重新申请许可、训练类难获批 → 中国模型公司被迫争抢有限的国产芯片 → 供给极紧、需求刚性 → 芯片与云服务价格大幅上行（capacity 缩小但收入目标不变，只能靠提价）→ 有自研芯片的云厂（阿里+平头哥）相对受益，纯依赖外部算力的平台承压</code></li>
+<li><strong>隐含假设：</strong> 国产芯片出货能兑现（Gary 自己承认出货量存在不确定性，这使云收入 visibility 低于此前海外租赁模式）；涨价可被客户接受而不显著抑制需求；推理类 API 业务能持续获得许可；平头哥海外部署可在 1–2 年内替代现有海外算力。</li>
+<li><strong>反例 / 证伪条件：</strong> 若许可大面积获批、或国产芯片出货超预期、或需求端因涨价而萎缩，则"大幅涨价"与"供给极紧"判断失效；若模型能力与美方差距扩大、国产模型难以突破，则应用端 TAM 与收入增长同步下修（这会同时打击"应用受益"逻辑）。</li>
+</ul>
+<h2 id="3_1">3. 投资研究指引</h2>
+<blockquote>
+<p>记录视频所表达的研究方向，不构成买卖建议；没有明确投资含义时如实写"未给出可执行指引"。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>主题 / 对象</th>
+<th>视频隐含或明确的方向</th>
+<th>为什么</th>
+<th>正向验证信号</th>
+<th>风险 / 失效信号</th>
+<th>需补的证据</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>中国国产 AI 芯片 / 国产算力链（含寒武纪、平头哥等）</td>
+<td>明确偏多（外压倒逼替代，供给紧、价格可能大涨）</td>
+<td>海外租赁与高端卡渠道被卡，国内需求被迫转向国产供给，产能与 HBM 是硬约束</td>
+<td>90 天许可大量被拒；国产芯片出货放量；芯片/云价格出现数十个百分点以上涨幅</td>
+<td>许可 case-by-case 大面积放行；国产芯片受海外 fab/packaging 限制而出货不及；需求被涨价抑制</td>
+<td>各厂商 HBM/内存锁量情况、明年出货量指引、代工与封测产能</td>
+</tr>
+<tr>
+<td>HBM / 存储（转写为"很好知"的厂商，名称存疑）</td>
+<td>明确偏多（A 股出口管制情景下首选方向之一）</td>
+<td>国产 GPU 供应链核心瓶颈是 Memory 价格与 HBM 供给，库存 cushion 充足者短期确定性最高</td>
+<td>HBM 库存持续充足、价格上行、国产 HBM 供应上线</td>
+<td>内存价格回落；国产 HBM 放量致稀缺性消失；云厂砍单</td>
+<td>季报中 HBM 库存与长约细节、国产 HBM 验证进度（厂商名需按原文核对）</td>
+</tr>
+<tr>
+<td>ASIC 设计服务（TPU/Trainium 链条；转写为"min亚"与世芯 Alchip）</td>
+<td>明确偏多（短期可重点关注）</td>
+<td>客户结构不限于 GPU，全球最成功的两个 ASIC 项目在台系设计服务商；受限环境下 ASIC 相对 GPU 更具弹性</td>
+<td>ASIC 新项目开单、客户 capex 上修</td>
+<td>云厂砍单扩散至 ASIC；AI 需求整体下滑</td>
+<td>开单/订单能见度、项目节点、客户集中度</td>
+</tr>
+<tr>
+<td>中国云厂商：阿里</td>
+<td>短空长多（下调云收入指引，但国产替代中长期优势更明显）</td>
+<td>海外训练算力占比高、承接第三方训练，收入指引由 50% 降至 30%–45%；但全资平头哥 + 提价能力构成中长期期权</td>
+<td>平头哥出货达 70 万/120 万颗；云收入回到加速；提价落地且需求不降</td>
+<td>国产芯片出货不确定；模型能力差距扩大；提价导致客户流失</td>
+<td>平头哥实际出货与良率、云业务价格与量的拆分、海外部署时间表</td>
+</tr>
+<tr>
+<td>中国云厂商：腾讯</td>
+<td>相对受影响较小，但长期 TAM 存疑（未给出明确买卖方向）</td>
+<td>海外算力与海外训练 workload 较低，核心业务在国内；但 AI 投入偏晚、追赶依赖算力</td>
+<td>混元模型能力提升、应用商业化数据</td>
+<td>模型能力差距扩大压制应用增长与 TAM 天花板</td>
+<td>混元迭代节奏、算力来源结构、应用变现数据</td>
+</tr>
+<tr>
+<td>中国互联网板块</td>
+<td>明确下调评级；阿里移出推荐股票池</td>
+<td>受宏观环境制约 + 算力约束，处于风口浪尖</td>
+<td>算力约束缓解、政策转向内需</td>
+<td>管制升级、算力进一步收紧</td>
+<td>各家算力自给率、监管与政策边际变化</td>
+</tr>
+<tr>
+<td>中国生物医药</td>
+<td>明确上调评级</td>
+<td>在互联网受制于算力与宏观时作为配置再平衡（视频未展开具体逻辑）</td>
+<td>政策与业绩催化</td>
+<td>视频未给出证伪条件</td>
+<td>上调的具体依据（视频未提供，需另行研究）</td>
+</tr>
+<tr>
+<td>中国 A 股 vs 港股</td>
+<td>明确偏 A 股</td>
+<td>国家队资金支持；国产替代主线主要在 A 股交易；港股对美债收益率上行更敏感</td>
+<td>国家队资金持续、南向/外资流向</td>
+<td>美债收益率超预期上行；国产替代主线同样遭遇风险释放</td>
+<td>A/H 溢价、资金流数据、指数层面估值</td>
+</tr>
+<tr>
+<td>日本、韩国股市</td>
+<td>相对偏多（优于台湾）</td>
+<td>美国核心战略盟友，受出口管制影响较小；有工业、国防、能源资本开支等多元窗口；韩国估值经大幅调整更易接受；日本再通胀与治理改革主题信心未受损</td>
+<td>出口管制豁免/执行温和；日韩资本开支周期上行</td>
+<td>管制扩围至盟友链条；全球 AI capex 硬着陆</td>
+<td>各国出口管制适用细则、行业盈利修正广度</td>
+</tr>
+<tr>
+<td>台湾科技供应链</td>
+<td>相对偏谨慎</td>
+<td>估值偏高；数据中心相关政策使投资与上线速度放缓，冲击中小型供应链；救市与限制做空使调整未到位</td>
+<td>估值回落至合理区间、政策转友好</td>
+<td>估值继续高位、政策进一步收紧</td>
+<td>数据中心政策细则、做空限制的持续时间、中小供应链订单</td>
+</tr>
+<tr>
+<td>美国数据中心开发商 / 电力设施厂商</td>
+<td>明确偏多</td>
+<td>算力产能确定性回流美国本土，数据中心与电力设备是直接受益者</td>
+<td>本土数据中心审批与开工加速、电力投资上修</td>
+<td>电力瓶颈与地方政治阻力上升（正是本轮调整的成因之一）</td>
+<td>并网排队时长、电价与审批政策、订单 backlog</td>
+</tr>
+<tr>
+<td>欧洲半导体</td>
+<td>明确认为被"误伤"、担忧被夸大</td>
+<td>四项法案中"全面禁止所有 DUV"条款在现有环境下无法落地；管理层已充分指引风险并下调预期</td>
+<td>DUV 条款被删或弱化；指引不再下修</td>
+<td>全面 DUV 禁令真的落地执行</td>
+<td>法案文本与表决进程、厂商在手订单与地区收入敞口</td>
+</tr>
+<tr>
+<td>全球股票总配置（多资产）</td>
+<td>明确超配，建议约 70% 配置股票（12 个月维度）</td>
+<td>2027 年增长有韧性、通胀与利率可控；下半年明朗度提升、资金成本见顶、油价回落至 75 美元</td>
+<td>美联储 2027 年 3 月后停止加息；油价回落；云厂 capex 近 1.6 万亿美元兑现</td>
+<td>国会立法超预期严厉；通胀二次上行迫使重启加息；AI 硬着陆；持有期短于 12 个月</td>
+<td>美联储点阵图与通胀路径、法案落地文本、capex 实际执行</td>
+</tr>
+<tr>
+<td>大宗商品</td>
+<td>访谈观点偏空（个人仓位层面，非大摩官方）</td>
+<td>该宏观老将对大宗同样悲观、已进入资本保全模式</td>
+<td>若油价因美伊协议下行，与其判断一致</td>
+<td>供给冲击推升油价 → 反而加剧通胀与加息压力</td>
+<td>美伊谈判进展、能源库存与产能</td>
+</tr>
+<tr>
+<td>成熟制程 / "涨价概念"股</td>
+<td>明确建议规避</td>
+<td>更看好 quality，避开 second-order 与涨价概念；对成熟周期较担忧</td>
+<td>成熟制程价格与库存恶化</td>
+<td>若涨价周期延长则规避成本高</td>
+<td>各节点稼动率、库存周转、报价趋势</td>
+</tr>
+<tr>
+<td>短期择时 / 抄底</td>
+<td>未给出可执行指引（明确"抄底还早"）</td>
+<td>未来数周至一两个月波动率仍高，事件密集</td>
+<td>波动率回落、事件落地</td>
+<td>提前抄底遭遇第二波冲击</td>
+<td>事件日历（聆讯、法案表决）与波动率指标</td>
+</tr>
+<tr>
+<td>中国财政 / 刺激政策</td>
+<td>未给出可执行指引（基准为克制，非交易建议）</td>
+<td>出口有韧性 → 政策保持定力；广义赤字率 11%→10.5%、增长目标约 4.5%</td>
+<td>出口维持、化债推进</td>
+<td>外需断崖或信用风险外溢 → 触发更大刺激</td>
+<td>赤字与专项债额度、地方化债安排、消费与社保政策</td>
+</tr>
+<tr>
+<td>人民币（USD/CNY）</td>
+<td>年底 6.6，温和升值 + 双向波动（非单边交易建议）</td>
+<td>顺差≠买盘，结汇依赖预期；利率平价假设过强；内需偏弱需要宽松金融条件</td>
+<td>结汇平稳、资本管制有效、美元不强</td>
+<td>美元大幅走弱或美联储提前降息（强于 6.6）；出口走弱、结汇逆转</td>
+<td>结汇/售汇率、中间价与逆周期因子、跨境资金流</td>
+</tr>
+</tbody>
+</table>
+<p><strong>整理说明（非视频观点）：</strong> 转写稿存在若干疑点，已在正文标注并未纳入核心结论——① 访谈对象被先后称为"宏观大师 Tam"与 Druckenmiller，人名不一致；② "很好知"（HBM 库存充足的存储厂商）、"min亚"（ASIC 设计服务商）疑为语音转写错误；③ "NTT list" 疑为某类美国限制清单的误转；④ 会议日期（2026-11-23）与文中"明年 27 年""2027 年展望"表述需按原始语境核对；⑤ 文中"美联储继续加息/12 月加息/2027 年 3 月结束加息"属该场交流设定的情景假设，引用时须保持其为观点而非事实。</p></div>
+</article>
+
+      <div class="day-card">
+        <p>归档路径 <code>daily/20261123/</code> · <a href="../../index.html">返回历史总览</a> · <a href="./index.html">本日目录</a></p>
+      </div>
+    </main>
+  </div>
+</body>
+</html>
