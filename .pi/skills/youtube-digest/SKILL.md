@@ -108,7 +108,7 @@ YouTube 下载归档（跨运行去重，按视频 ID）：
    - 它会把 Node.js 传给 yt-dlp，避免“未找到支持的 JavaScript runtime”导致 YouTube 格式缺失。
    - yt-dlp 解析：先试 `which yt-dlp`，再探测 `Roaming/Python/.../Scripts/yt-dlp.exe`，均不存在则一次性回退至 `python -m yt_dlp`，不在常规与回退间反复失败。
    - `--break-on-reject` 在到达日期下界时会让 yt-dlp 返回非零码；脚本只将该有明确标记、且不含 `ERROR:` 的预期边界停止视为成功，不能以 `|| exit 0` 等方式吞掉真实下载错误。
-   - 保存到本次运行输出目录 `<daily_dir>/YYYYMMDD/视频标题 [视频ID]/视频标题 [视频ID].扩展名`，不要按视频 `upload_date` 分散到历史日期目录；标题已用 `%(title).120B` 限制，不再额外叠加 `--trim-filenames 120` 以避免双重裁剪导致文件名被截为“大摩.md”。
+   - 保存到本次运行输出目录 `<daily_dir>/YYYYMMDD/视频标题 [视频ID]/[视频ID].扩展名`：**目录名**带标题便于人看（下游以目录名为基准命名 `.md`），**目录内的媒体与 `.info.json` 一律用 `[ID].ext` 短名**。双重原因：① 本机 Windows `LongPathsEnabled=0`，长中文标题下「目录全名 + 同名文件 + .info.json」超过 260 字符，yt-dlp 会报 `Cannot write video metadata to JSON file` 而直接丢失该条；② 转写稿/清洗版/结构化笔记的文件名都是「目录全名 + 后缀」，路径里目录名出现两次，目录名过长会让 `_清洗版.md` / `_结构化笔记.md` 也写不进去。脚本会自动按 `<daily_dir>` 实际深度算出标题可用字符数（本仓库约 73）并用 `%(title).<N>s`（按字符，不是按字节 `B`）截断。不要手动叠加 `--trim-filenames`，也不要改回 `%(title).120B`。
 3. 调用 `process_video_transcripts.py` 对本次运行输出目录内每个已有 `.info.json` 且尚无同名 `.md` 的视频批量转写：
    - 最多 3 路并发；单个失败不取消其他任务。
    - 成功后目录内只保留 Markdown（脚本已处理音频/视频/`.info.json`/字幕清理）；失败项保留原始文件供下次重试。
