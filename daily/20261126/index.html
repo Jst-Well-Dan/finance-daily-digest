@@ -1,0 +1,966 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>解读君视频日报 · 20261126</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@400;600;700;900&display=swap" rel="stylesheet">
+  <style>
+:root {
+  --bg-page: #FBF8F2;
+  --bg-surface: #FFFDF9;
+  --bg-header: #F4EFE6;
+  --bg-subtle: #F0EADF;
+  --border-main: #E5DDCD;
+  --border-dark: #2B2625;
+  --text-main: #231F20;
+  --text-muted: #5C554E;
+  --text-light: #8E8478;
+  --accent-burgundy: #8B261D;
+  --accent-amber: #B45309;
+  --font-serif: 'Noto Serif SC', Georgia, 'Times New Roman', serif;
+  --font-sans: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'IBM Plex Mono', monospace;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 15px; }
+body {
+  background: var(--bg-page);
+  color: var(--text-main);
+  font-family: var(--font-sans);
+  line-height: 1.85;
+  -webkit-font-smoothing: antialiased;
+}
+
+.wrap {
+  max-width: 1300px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 290px 1fr;
+  min-height: 100vh;
+  border-left: 2px solid var(--border-dark);
+  border-right: 2px solid var(--border-dark);
+  background: var(--bg-surface);
+}
+
+@media (max-width: 1024px) {
+  .wrap { grid-template-columns: 1fr; border: none; }
+}
+
+/* Sidebar */
+.nav {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow-y: auto;
+  padding: 32px 24px;
+  background: #F7F3EB;
+  border-right: 1px solid var(--border-main);
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+@media (max-width: 1024px) {
+  .nav { position: relative; height: auto; border-right: none; border-bottom: 2px solid var(--border-dark); }
+}
+
+.brand {
+  padding-bottom: 18px;
+  border-bottom: 2px solid var(--border-dark);
+}
+.brand h1 {
+  font-family: var(--font-serif);
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: var(--border-dark);
+}
+.brand h1 span {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent-burgundy);
+  margin-top: 4px;
+}
+
+.toc h2 {
+  font-family: var(--font-serif);
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--border-dark);
+  border-bottom: 1px solid var(--border-main);
+  padding-bottom: 6px;
+  margin: 16px 0 10px;
+}
+
+.toc a {
+  display: flex;
+  flex-direction: column;
+  padding: 8px 10px;
+  text-decoration: none;
+  color: var(--text-main);
+  border: 1px solid transparent;
+  border-radius: 4px;
+  transition: all 0.15s;
+  font-size: 13px;
+  line-height: 1.4;
+  margin-bottom: 4px;
+}
+.toc a:hover {
+  background: var(--bg-subtle);
+  border-color: var(--border-main);
+}
+.toc a.active {
+  background: #EFE8DA;
+  border-color: var(--border-main);
+  color: var(--accent-burgundy);
+  font-weight: 600;
+}
+.toc a span {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+.nav-desc {
+  font-size: 11px;
+  font-family: var(--font-mono);
+  color: var(--text-muted);
+  line-height: 1.6;
+  padding: 4px 6px;
+}
+
+/* Main Area */
+.main {
+  padding: 40px 48px 80px;
+  max-width: 960px;
+}
+
+@media (max-width: 768px) {
+  .main { padding: 24px 18px 40px; }
+}
+
+.gazette-header {
+  border-top: 3px double var(--border-dark);
+  border-bottom: 1px solid var(--border-dark);
+  padding: 20px 0;
+  margin-bottom: 36px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+.gazette-header h1 {
+  font-family: var(--font-serif);
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--border-dark);
+}
+.gazette-header .gazette-meta {
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.summary-card, .article {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-main);
+  margin-bottom: 40px;
+}
+
+.summary-head, .article-head {
+  background: var(--bg-header);
+  padding: 20px 26px;
+  border-bottom: 1px solid var(--border-main);
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+}
+.article-head h3, .summary-head h3 {
+  font-family: var(--font-serif);
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text-main);
+  line-height: 1.35;
+}
+.article-head h3 a, .summary-head h3 a {
+  color: inherit;
+  text-decoration: none;
+}
+.article-head h3 a:hover, .summary-head h3 a:hover {
+  color: var(--accent-burgundy);
+}
+
+.meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-top: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.meta a {
+  color: var(--accent-burgundy);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.content {
+  padding: 32px 36px;
+  font-size: 14.5px;
+  line-height: 1.9;
+  color: #2D2726;
+}
+
+@media (max-width: 768px) {
+  .content { padding: 20px 18px; }
+  .summary-head, .article-head { padding: 16px 18px; }
+}
+
+.content h1 {
+  font-family: var(--font-serif);
+  font-size: 22px;
+  font-weight: 700;
+  margin: 0 0 18px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border-dark);
+}
+
+.content h2 {
+  font-family: var(--font-serif);
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--accent-burgundy);
+  background: var(--bg-header);
+  border: 1px solid var(--border-main);
+  border-radius: 4px;
+  padding: 8px 14px;
+  margin: 32px 0 14px;
+  letter-spacing: 0.02em;
+}
+
+.content h3 {
+  font-family: var(--font-serif);
+  font-size: 14.5px;
+  font-weight: 700;
+  margin: 22px 0 10px;
+  color: var(--text-main);
+}
+
+.content p {
+  margin-bottom: 16px;
+  text-align: justify;
+}
+
+.content strong {
+  font-weight: 700;
+  color: #1A1616;
+}
+
+.content ul, .content ol {
+  margin: 12px 0 18px 6px;
+  padding-left: 22px;
+}
+.content li {
+  margin-bottom: 8px;
+  line-height: 1.8;
+}
+.content ul > li::marker {
+  content: "▪ ";
+  color: var(--accent-burgundy);
+}
+.content ol > li::marker {
+  color: var(--accent-burgundy);
+  font-weight: 700;
+  font-family: var(--font-mono);
+}
+.content li > ul, .content li > ol {
+  margin: 8px 0 8px 6px;
+}
+.cond-label {
+  color: var(--accent-burgundy);
+  font-weight: 700;
+}
+.content li > p {
+  margin-bottom: 6px;
+}
+.content li > p:last-child {
+  margin-bottom: 0;
+}
+
+.viewpoint {
+  border: 1px solid var(--border-main);
+  border-radius: 6px;
+  margin: 16px 0 20px;
+  overflow: hidden;
+  background: #FFFDF8;
+}
+.vp-head {
+  background: var(--bg-header);
+  padding: 10px 16px;
+  border-bottom: 1px solid var(--border-main);
+  display: flex;
+  gap: 10px;
+  align-items: baseline;
+  flex-wrap: wrap;
+}
+.vp-num {
+  font-family: var(--font-serif);
+  font-weight: 700;
+  font-size: 14.5px;
+  color: var(--accent-burgundy);
+  white-space: nowrap;
+}
+.vp-title {
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--text-main);
+}
+.vp-owner {
+  margin-left: auto;
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+.vp-row {
+  display: grid;
+  grid-template-columns: 46px 1fr;
+  gap: 12px;
+  padding: 8px 16px;
+  font-size: 13.5px;
+  line-height: 1.8;
+}
+.vp-row + .vp-row {
+  border-top: 1px dashed var(--border-main);
+}
+.vp-label {
+  font-weight: 700;
+  font-size: 12.5px;
+  color: var(--accent-burgundy);
+  white-space: nowrap;
+  padding-top: 1px;
+}
+.vp-val {
+  color: #2D2726;
+  text-align: justify;
+  min-width: 0;
+}
+.vp-val p {
+  margin: 0;
+  text-align: justify;
+}
+.vp-val code {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  background: #EDE6D8;
+  padding: 2px 6px;
+  border-radius: 3px;
+  color: var(--accent-burgundy);
+}
+@media (max-width: 768px) {
+  .vp-row { grid-template-columns: 40px 1fr; padding: 7px 12px; }
+}
+
+.content blockquote {
+  background: #F3ECE0;
+  border: 1px solid var(--border-main);
+  border-radius: 4px;
+  padding: 14px 20px;
+  margin: 20px 0;
+  font-size: 13.5px;
+  font-style: italic;
+  color: #523E3B;
+}
+
+.content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 24px 0;
+  font-size: 13px;
+  border: 1px solid var(--border-main);
+}
+.content th {
+  background: #ECE4D6;
+  font-family: var(--font-serif);
+  font-weight: 700;
+  color: var(--border-dark);
+  text-align: left;
+  padding: 10px 14px;
+  border: 1px solid var(--border-main);
+}
+.content td {
+  padding: 9px 14px;
+  border: 1px solid var(--border-main);
+}
+.content tr:nth-child(even) {
+  background: #F8F4EC;
+}
+
+.content code {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  background: #EDE6D8;
+  padding: 2px 6px;
+  border-radius: 3px;
+  color: var(--accent-burgundy);
+}
+
+.day-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-main);
+  padding: 20px 24px;
+  margin-bottom: 18px;
+}
+.day-card h3 {
+  font-family: var(--font-serif);
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+.day-card h3 a {
+  color: var(--text-main);
+  text-decoration: none;
+}
+.day-card h3 a:hover {
+  color: var(--accent-burgundy);
+}
+.day-card p {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+.btn {
+  display: inline-flex;
+  padding: 8px 14px;
+  border: 1px solid var(--border-dark);
+  background: var(--bg-surface);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  text-decoration: none;
+  color: var(--text-main);
+  font-weight: 600;
+  transition: all 0.15s;
+}
+.btn:hover {
+  background: var(--bg-subtle);
+}
+.btn.primary {
+  background: var(--border-dark);
+  color: #FFFFFF;
+}
+.btn.primary:hover {
+  background: var(--accent-burgundy);
+  border-color: var(--accent-burgundy);
+}
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <nav class="nav">
+      <div class="brand">
+        <h1>解读君视频日报<span>JIEDU DAILY · 20261126</span></h1>
+      </div>
+      <div class="toc">
+        <h2>全量原文</h2>
+        <a href="#summary" class="active">每日核心总结<span>20261126</span></a>
+        <a href="#note-rs9TdRCa650">【2026-11-23】摩根士丹利分析师看台湾股市和A股写下来的走势和趋势<span>20261126 · rs9TdRCa650</span></a><a href="#note-CCSWmdu-yLE">【重磅思考】付鹏：勤劳只能小富，大富靠杠杆——先保现金流，再抓住 AI<span>20261126 · CCSWmdu-yLE</span></a><a href="#note-gw51eUXiH5k">大摩行业周期论剑闭门会2026-11-25 财富预期上调17%，油价往下仍首推中石油（Household Wealth Forecast Raised 17%）<span>20261126 · gw51eUXiH5k</span></a>
+        <h2>历史归档</h2>
+        <a href="../../index.html">← 返回历史总览</a>
+        <a href="../20261126/index.html" class="active">20261126 <span>3 篇 · 当日归档</span></a><a href="../20261124/index.html" class="">20261124 <span>1 篇 · 当日归档</span></a><a href="../20261123/index.html" class="">20261123 <span>2 篇 · 当日归档</span></a><a href="../20261122/index.html" class="">20261122 <span>1 篇 · 当日归档</span></a><a href="../20261121/index.html" class="">20261121 <span>1 篇 · 当日归档</span></a><a href="../20261120/index.html" class="">20261120 <span>1 篇 · 当日归档</span></a><a href="../20261118/index.html" class="">20261118 <span>0 篇 · 当日归档</span></a><a href="../20261117/index.html" class="">20261117 <span>1 篇 · 当日归档</span></a><a href="../20261116/index.html" class="">20261116 <span>5 篇 · 当日归档</span></a><a href="../20261115/index.html" class="">20261115 <span>1 篇 · 当日归档</span></a><a href="../20261113/index.html" class="">20261113 <span>1 篇 · 当日归档</span></a><a href="../20261112/index.html" class="">20261112 <span>1 篇 · 当日归档</span></a><a href="../20261111/index.html" class="">20261111 <span>1 篇 · 当日归档</span></a><a href="../20261110/index.html" class="">20261110 <span>2 篇 · 当日归档</span></a><a href="../20261109/index.html" class="">20261109 <span>2 篇 · 当日归档</span></a><a href="../20261108/index.html" class="">20261108 <span>1 篇 · 当日归档</span></a><a href="../20261107/index.html" class="">20261107 <span>1 篇 · 当日归档</span></a><a href="../20261106/index.html" class="">20261106 <span>1 篇 · 当日归档</span></a><a href="../20261105/index.html" class="">20261105 <span>2 篇 · 当日归档</span></a><a href="../20261104/index.html" class="">20261104 <span>1 篇 · 当日归档</span></a><a href="../20261103/index.html" class="">20261103 <span>2 篇 · 当日归档</span></a><a href="../20261102/index.html" class="">20261102 <span>2 篇 · 当日归档</span></a><a href="../20261101/index.html" class="">20261101 <span>1 篇 · 当日归档</span></a><a href="../20261031/index.html" class="">20261031 <span>1 篇 · 当日归档</span></a><a href="../20261030/index.html" class="">20261030 <span>2 篇 · 当日归档</span></a><a href="../20261028/index.html" class="">20261028 <span>1 篇 · 当日归档</span></a><a href="../20261027/index.html" class="">20261027 <span>1 篇 · 当日归档</span></a><a href="../20261026/index.html" class="">20261026 <span>3 篇 · 当日归档</span></a><a href="../20261024/index.html" class="">20261024 <span>1 篇 · 当日归档</span></a><a href="../20261023/index.html" class="">20261023 <span>3 篇 · 当日归档</span></a><a href="../20261022/index.html" class="">20261022 <span>2 篇 · 当日归档</span></a><a href="../20261021/index.html" class="">20261021 <span>2 篇 · 当日归档</span></a><a href="../20261020/index.html" class="">20261020 <span>1 篇 · 当日归档</span></a><a href="../20261019/index.html" class="">20261019 <span>1 篇 · 当日归档</span></a><a href="../20261018/index.html" class="">20261018 <span>2 篇 · 当日归档</span></a><a href="../20261016/index.html" class="">20261016 <span>1 篇 · 当日归档</span></a><a href="../20261015/index.html" class="">20261015 <span>1 篇 · 当日归档</span></a><a href="../20261014/index.html" class="">20261014 <span>3 篇 · 当日归档</span></a><a href="../20261013/index.html" class="">20261013 <span>2 篇 · 当日归档</span></a><a href="../20261012/index.html" class="">20261012 <span>2 篇 · 当日归档</span></a><a href="../20261011/index.html" class="">20261011 <span>3 篇 · 当日归档</span></a><a href="../20261010/index.html" class="">20261010 <span>9 篇 · 当日归档</span></a><a href="../20261006/index.html" class="">20261006 <span>2 篇 · 当日归档</span></a><a href="../20261005/index.html" class="">20261005 <span>3 篇 · 当日归档</span></a><a href="../20261004/index.html" class="">20261004 <span>1 篇 · 当日归档</span></a><a href="../20260929/index.html" class="">20260929 <span>0 篇 · 当日归档</span></a><a href="../20260928/index.html" class="">20260928 <span>1 篇 · 当日归档</span></a><a href="../20260927/index.html" class="">20260927 <span>6 篇 · 当日归档</span></a><a href="../20260922/index.html" class="">20260922 <span>1 篇 · 当日归档</span></a><a href="../20260921/index.html" class="">20260921 <span>8 篇 · 当日归档</span></a><a href="../20260914/index.html" class="">20260914 <span>6 篇 · 当日归档</span></a><a href="../20260910/index.html" class="">20260910 <span>1 篇 · 当日归档</span></a><a href="../20260908/index.html" class="">20260908 <span>2 篇 · 当日归档</span></a><a href="../20260907/index.html" class="">20260907 <span>2 篇 · 当日归档</span></a><a href="../20260906/index.html" class="">20260906 <span>1 篇 · 当日归档</span></a><a href="../20260905/index.html" class="">20260905 <span>1 篇 · 当日归档</span></a><a href="../20260904/index.html" class="">20260904 <span>2 篇 · 当日归档</span></a><a href="../20260903/index.html" class="">20260903 <span>2 篇 · 当日归档</span></a><a href="../20260902/index.html" class="">20260902 <span>3 篇 · 当日归档</span></a><a href="../20260831/index.html" class="">20260831 <span>2 篇 · 当日归档</span></a><a href="../20260829/index.html" class="">20260829 <span>1 篇 · 当日归档</span></a><a href="../20260828/index.html" class="">20260828 <span>1 篇 · 当日归档</span></a><a href="../20260825/index.html" class="">20260825 <span>1 篇 · 当日归档</span></a><a href="../20260824/index.html" class="">20260824 <span>2 篇 · 当日归档</span></a><a href="../20260823/index.html" class="">20260823 <span>1 篇 · 当日归档</span></a><a href="../20260821/index.html" class="">20260821 <span>3 篇 · 当日归档</span></a>
+      </div>
+    </nav>
+    <main class="main">
+      <div class="gazette-header">
+        <div>
+          <h1>金融经纬 · 每日纪要</h1>
+          <div class="gazette-meta">JIEDU DAILY FINANCIAL GAZETTE · VOL. 20261126</div>
+        </div>
+        <div class="gazette-meta">3 ARTICLES ARCHIVED</div>
+      </div>
+      
+<section id="summary" class="summary-card">
+  <div class="summary-head">
+    <div>
+      <h3>每日总结 · 20261126</h3>
+      <div class="meta">daily/20261126/20261126_解读君视频总结.md</div>
+    </div>
+  </div>
+  <div class="content"><h1 id="_1">解读君视频摘要</h1>
+<h2 id="1-2026-11-23a">1. <a href="#note-rs9TdRCa650">【2026-11-23】摩根士丹利分析师看台湾股市和A股写下来的走势和趋势</a></h2>
+<blockquote>
+<p>一句话：台股估值未出清不宜抄底，A股优于港股、看多国产替代而对全球AI链谨慎，全球仍超配股票。</p>
+</blockquote>
+<ul>
+<li>台湾股市短期谨慎：AI投资与上线节奏放缓压制中小型科技供应链，叠加限制做空的托市，估值尚未真正出清，"跌得多"不构成抄底依据。</li>
+<li>A股配置优于港股，但须把中国AI一分为二：做多国产替代/自主化受益者，对全球AI链受益者谨慎；该判断形成于美国中期选举后，早于BIS新规与英伟达事件。</li>
+<li>出口管制按"个案审批"而非"推定拒绝"执行：模型训练受限最重、纯API推理较轻；若升级至清单式对抗，历史经验指向恐慌下跌中择机买入，但当前仍属观察期。</li>
+<li>中国宏观以出口韧性为前提走政策克制：2027年增长目标约4.5%、政策利率不变、广义赤字率由11%收窄至10.5%，投资端托底为主；人民币温和升值、保留双向波动。</li>
+<li>全球维持超配股票：增长有韧性、通胀可控，2027年大型云厂商资本开支约1.6万亿美元，金融条件已自发收紧约48个基点，12月大幅加息担忧大概率不成立——前提是能源价格不二次传导。</li>
+</ul>
+<h2 id="2-ai">2. <a href="#note-CCSWmdu-yLE">【重磅思考】付鹏：勤劳只能小富，大富靠杠杆——先保现金流，再抓住 AI</a></h2>
+<blockquote>
+<p>一句话：勤劳只能小富，大富靠杠杆：先保住现金流，再降可选杠杆，现金流不能自给时别碰便宜资产，并用AI补上认知。</p>
+</blockquote>
+<ol>
+<li><strong>财富量级分层：勤劳只能换来"小富即安"，千万级靠负债、过亿靠杠杆。</strong> 依据是把约 35 年核心劳动时间线性外推，最理想也不过房、车、孩子加"百万级"现金；<br><span class="cond-label">边界是</span>"无病无灾无失败"的顺境假设，一次大病或长期失业就让曲线下折。</li>
+<li><strong>杠杆的本质是把未来现金流提前折现，成立与否取决于"后面有没有人、拿不拿得出钱"。</strong> 房价、股价、企业估值同属这一机制；人口与收入是硬约束，承担者变少时加杠杆，风险远大于收益。</li>
+<li><strong>资产便宜与现金流友好不可兼得，"错配"才是普通家庭财富分化的主因。</strong> 房价下行时买得便宜，但同期收入与当期现金流往往同步受损；真正的失误是该保现金流时仍在扛负债，以及把资产上涨误当成自己的能力。</li>
+<li><strong>可执行顺序是：先保现金流 → 再降可选杠杆 → 少动且动前全盘规划。</strong> 这是纪律而非时点判断；现金流不能自给时，再便宜的资产也不该接。</li>
+<li><strong>AI 已在教育与认知层面形成实质性平权，是普通家庭绕开"用钱买资源"的现实杠杆。</strong> 有效范围是可标准化的语言陪练、作业答疑等环节；红利只属于真正在用的人，且不改变升学制度与学习自律问题。</li>
+</ol>
+<h2 id="3-2026-11-25-17household-wealth-forecast-raised-17">3. <a href="#note-gw51eUXiH5k">大摩行业周期论剑闭门会2026-11-25 财富预期上调17%，油价往下仍首推中石油（Household Wealth Forecast Raised 17%）</a></h2>
+<blockquote>
+<p>一句话：大摩上调2030年中国家庭财富预测约17%，但上修依赖收入放缓与财富高增并存，油价看跌仍首推高股息中石油。</p>
+</blockquote>
+<ul>
+<li>大摩将2030年中国家庭金融财富预测上调约17%，依据是居民收入增速虽从约9%回落至4%–5%，但储蓄率在退休高峰前维持高位、财富存量十年CAGR仍约10.5%；一旦"收入放缓而财富仍高增"这一组合被数据打破，上修即失去基础。</li>
+<li>该团队判断本轮资金由存款流向保险、证券、理财不是阶段性搬家，而非既成事实：其逻辑依赖金融发展模式转向以投资回报为导向，需以企业ROE与长期股债收益率的实际回升来验证。</li>
+<li>地产、基建、工业投资今年同时走弱被解读为"以回报换速度"的主动调整；转写可支撑的事实仅是基建与工业投资负增长、约40%行业投资回报自低位反弹，"全面回暖"并无证据，作者本人也承认周期未结束。</li>
+<li>能源排序上，即便判断明年油价可能下行，仍把中石油列为三桶油首选，理由是稳健高股息而非油价弹性；油价跌幅是否击穿其现金流与分红能力，是这条逻辑的关键边界。</li>
+<li>铜的中长期偏紧判断不变、明年基本面仍偏紧，并明确反对把今年产量不及预期当作明年自动恢复正常的理由。</li>
+</ul></div>
+</section>
+
+      
+<article id="note-rs9TdRCa650" class="article">
+  <div class="article-head">
+    <div>
+      <h3><a href="https://www.youtube.com/watch?v=rs9TdRCa650" target="_blank" rel="noreferrer">【2026-11-23】摩根士丹利分析师看台湾股市和A股写下来的走势和趋势</a></h3>
+      <div class="meta">20261126 · rs9TdRCa650 · <a href="https://www.youtube.com/watch?v=rs9TdRCa650" target="_blank" rel="noreferrer">观看 YouTube 原片 ↗</a></div>
+    </div>
+  </div>
+  <div class="content"><h1 id="2026-11-23a">结构化笔记｜【2026-11-23】摩根士丹利分析师看台湾股市和A股写下来的走势和趋势</h1>
+<h2 id="1">1. 核心结论</h2>
+<ul>
+<li>台湾股市短期谨慎：AI投资与上线节奏放缓压制中小型科技供应链，叠加限制做空的托市，估值尚未真正出清，"跌得多"不构成抄底依据。</li>
+<li>A股配置优于港股，但须把中国AI一分为二：做多国产替代/自主化受益者，对全球AI链受益者谨慎；该判断形成于美国中期选举后，早于BIS新规与英伟达事件。</li>
+<li>出口管制按"个案审批"而非"推定拒绝"执行：模型训练受限最重、纯API推理较轻；若升级至清单式对抗，历史经验指向恐慌下跌中择机买入，但当前仍属观察期。</li>
+<li>中国宏观以出口韧性为前提走政策克制：2027年增长目标约4.5%、政策利率不变、广义赤字率由11%收窄至10.5%，投资端托底为主；人民币温和升值、保留双向波动。</li>
+<li>全球维持超配股票：增长有韧性、通胀可控，2027年大型云厂商资本开支约1.6万亿美元，金融条件已自发收紧约48个基点，12月大幅加息担忧大概率不成立——前提是能源价格不二次传导。</li>
+</ul>
+<h2 id="2">2. 专家观点与逻辑链</h2>
+<h3 id="1_1">观点 1：台湾科技股调整尚未到位</h3>
+<ul>
+<li><strong>观点归属：</strong> 摩根士丹利股票策略团队（发言人称"劳尔"，名单记为"王莹"，中文名待核验）。</li>
+<li><strong>结论：</strong> 对台湾股市短期谨慎，估值调整未完成。</li>
+<li><strong>前提事实：</strong> 全球AI投资与产品上线放缓，延迟中小型供应链订单；台湾当局救市中大规模限制做空（条款与规模待核验）。</li>
+<li><strong>推导逻辑：</strong> AI投资节奏放缓 → 中小供应链订单与稼动率承压 → 盈利下修 → 限空延缓价格发现、估值未反映下修 → 短期谨慎。</li>
+<li><strong>隐含假设：</strong> 中小供应链盈利对AI订单高度敏感；限空托住估值而非仅降波动。</li>
+<li><strong>反例 / 证伪条件：</strong> AI资本开支持续上修、供应链营收回升，或估值已回到下修后合理区间。</li>
+</ul>
+<h3 id="2aai">观点 2：A股优于港股，主线拆成"国产替代"与"全球AI链"</h3>
+<ul>
+<li><strong>观点归属：</strong> 同上（同一发言人，转入A股与港股配置）。</li>
+<li><strong>结论：</strong> 做多国产替代链、对全球AI链谨慎；下调互联网评级、上调生物医药评级；阿里暂移出股票池，寒武纪由A股池移入内地香港融合池。</li>
+<li><strong>前提事实：</strong> 观点在中期选举后即调整，视频否认由BIS法规或英伟达事件触发；A股有国家队资金、国产替代更多在A股交易；港股更受云厂商与美债收益率影响。</li>
+<li><strong>推导逻辑：</strong> 技术封锁常态化 → 国产链获政策与订单倾斜 → 全球AI链受算力约束 → 两条线盈利确定性分化 → 偏A股、偏国产替代；港股同时承受算力约束与资金成本上行 → 互联网降级。</li>
+<li><strong>隐含假设：</strong> 国家队资金可持续托底；国产订单与产能可兑现；港股对美债利率弹性高于A股。</li>
+<li><strong>反例 / 证伪条件：</strong> BIS执行宽松、海外算力供给恢复，或国产芯片出货不及预期，则强弱反转。</li>
+</ul>
+<h3 id="3">观点 3：地缘升级不是单向利空，"清单冲击"提供择机窗口</h3>
+<ul>
+<li><strong>观点归属：</strong> 同上（同一发言人，转向管制外溢的受益方）。</li>
+<li><strong>结论：</strong> 外溢时美国数据中心与电力设备直接受益；欧洲半导体被"误伤"、担忧夸大；中国被列清单的极端情形倾向视为抄底机会，但目前尚早。</li>
+<li><strong>前提事实：</strong> 算力产能更确定回流美国；12月国会将研讨的4个法案中有一项"全面禁止所有DUV设备"条款，其认为现行环境下无法落地；欧洲半导体厂商已提示风险并下调预期（法案文本待核验）。</li>
+<li><strong>推导逻辑：</strong> 管制扩散 → 算力与配套本土化 → 美国数据中心、电力设备订单增加；欧洲设备商被最严条款定价但难落地 → 预期差偏正面；中方反制有效 → 极端情形受限 → 恐慌下跌后现买入窗口。</li>
+<li><strong>隐含假设：</strong> 最严条款因产业与盟友阻力无法通过；中方反制足以威慑；历史清单后的反弹可复制。</li>
+<li><strong>反例 / 证伪条件：</strong> DUV全面禁令或零部件服务限制落地；清单冲击伴随真实需求破坏。</li>
+</ul>
+<h3 id="4bis">观点 4：BIS新规更严，但执行留了"个案审批"口子</h3>
+<ul>
+<li><strong>观点归属：</strong> Gary（摩根士丹利互联网首席，台北会场，引用半导体团队查理的管制判断）。</li>
+<li><strong>结论：</strong> 影响超预期，但风险按用途分层：训练最重、推理较轻。</li>
+<li><strong>前提事实：</strong> 已签海外租赁合约受影响，现有海外算力需90天内申请许可；以往为"推定拒绝"，本次改为个案审批；美国新增5国（含4个东南亚）进入限制；国产芯片依赖海外晶圆或封测者亦受限（细节待核验）。</li>
+<li><strong>推导逻辑：</strong> 许可改个案审批 → 部分厂商仍可获批，但训练用途获批概率低 → 用海外芯片训练的中国模型受损最重，纯API推理（尤其服务东南亚）风险较低 → 冲击集中于训练环节。</li>
+<li><strong>隐含假设：</strong> 审批尺度可按用途区分；第三国转口已被堵住。</li>
+<li><strong>反例 / 证伪条件：</strong> 许可大量获批；国产供应链在晶圆与封测环节完成替代。</li>
+</ul>
+<h3 id="5">观点 5：阿里与腾讯在算力约束下"短期与中长期相反"</h3>
+<ul>
+<li><strong>观点归属：</strong> Gary（同一发言后半段，落到腾讯与阿里）。</li>
+<li><strong>结论：</strong> 腾讯短期影响小、中长期收入天花板受压；阿里短期冲击大、中长期因平头哥占优。</li>
+<li><strong>前提事实：</strong> 阿里海外训练算力大，部分模型公司经阿里云做海外训练，业绩会已把明年云收入增速指引由50%下调至30%–45%，卖方取低端；公司称长期云收入约1000亿美元、margin 20%以上不变；平头哥为中国云厂商中唯一100%控股的国产芯片公司，半导体团队预测出货明年70万、后年120万颗；腾讯海外算力低于字节、阿里。</li>
+<li><strong>推导逻辑：</strong> 管制收紧 → 海外算力可得性下降 → 云指引下修、供给紧张推动涨价（今年国内B卡已涨2–3倍）→ 需求转向国产芯片 → 平头哥放量 → 阿里中长期占优；腾讯AI投入偏晚、追赶靠海外算力，模型差距扩大则应用变现存压。</li>
+<li><strong>隐含假设：</strong> 国产芯片产能与良率按期放量；涨价可被客户接受、不明显抑制需求。</li>
+<li><strong>反例 / 证伪条件：</strong> 国产芯片出货明显低于70万/120万颗；涨价致云客户流失或自建。</li>
+</ul>
+<h3 id="6">观点 6：出口韧性支撑政策克制，人民币不会单边大幅升值</h3>
+<ul>
+<li><strong>观点归属：</strong> 蔡志鹏（摩根士丹利中国经济学家）。</li>
+<li><strong>结论：</strong> 政策温和克制：增长目标下移、赤字率收窄、利率不变；人民币温和升值、保留双向波动。</li>
+<li><strong>前提事实：</strong> 出口韧性来自三点——全球AI基建仍在扩张、工业周期中中国的成本与交付优势、产业链重构中零部件与资本品更深嵌入全球网络；2027年增长目标约4.5%、广义赤字率由11%收窄至10.5%；地方国企信用事件被视为地产调整下半场；对比2020年永煤，本轮流动性投放更克制；明年底人民币兑美元6.6（已含美元升值假设）。</li>
+<li><strong>推导逻辑：</strong> 出口有韧性 → 刺激内需紧迫性下降 → 财政结构性收缩（不以中央举债填补土地收入缺口、老龄化要求加强社保征管）→ 以投资端托底 → 顺差不等同买盘、结汇依赖升值预期 → 允许温和升值并制造双向波动，快升反带紧缩。</li>
+<li><strong>隐含假设：</strong> 出口份额可维持；地产下行不引发系统性流动性风险；央行容忍局部信用重定价、不容广义流动性风险。</li>
+<li><strong>反例 / 证伪条件：</strong> 出口明显失速；地方国企违约引发理财赎回、优质平台再融资受阻。</li>
+</ul>
+<h3 id="7">观点 7：全球仍超配股票，三个质疑都可回应</h3>
+<ul>
+<li><strong>观点归属：</strong> 蔡志鹏转述摩根士丹利全球策略团队（会上pushback较大）。</li>
+<li><strong>结论：</strong> 维持拥抱风险、超配股票。</li>
+<li><strong>前提事实：</strong> 预计2027年全球增长有韧性；大型云厂商2027年资本开支接近1.6万亿美元、2028年微升；亚洲工业投资周期有韧性；10月FOMC以来金融条件自发收紧约48个基点。</li>
+<li><strong>推导逻辑：</strong> AI资本开支未失速+工业周期有韧性 → 增长不衰退（衰退属尾部）；需求型通胀抬升定价能力 → 抵消部分利率上行；金融条件已提前收紧 → 无需更猛加息 → 股票仍可持有。</li>
+<li><strong>隐含假设：</strong> 通胀主要来自需求而非能源冲击；云厂商资本开支不因融资成本上升而下修。</li>
+<li><strong>反例 / 证伪条件：</strong> 能源价格二次传导迫使央行加息；AI回报率被证实不足导致资本开支下修。</li>
+</ul>
+<h2 id="3_1">3. 投资研究指引</h2>
+<blockquote>
+<p>记录视频所表达的研究方向，不构成买卖建议；没有明确投资含义时如实写"未给出可执行指引"。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>主题 / 对象</th>
+<th>视频隐含或明确的方向</th>
+<th>为什么</th>
+<th>正向验证信号</th>
+<th>风险 / 失效信号</th>
+<th>需补的证据</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>台湾中小型科技供应链</td>
+<td>短期谨慎，不急参与</td>
+<td>AI投资放缓+限空托市使估值未出清</td>
+<td>营收订单回升、估值回到下修后水平</td>
+<td>管制升级、AI资本开支下修</td>
+<td>做空限制的条款与规模</td>
+</tr>
+<tr>
+<td>A股国产替代链（国产算力，提及寒武纪）</td>
+<td>明确超配</td>
+<td>管制常态化使订单与政策向国产链集中，交易主要在A股</td>
+<td>国产芯片出货放量、国家队资金流入</td>
+<td>产能良率不达预期、管制松动</td>
+<td>平头哥与寒武纪出货、客户验证</td>
+</tr>
+<tr>
+<td>港股互联网与云（阿里、腾讯）</td>
+<td>降级，阿里暂移出股票池</td>
+<td>算力约束叠加美债利率敏感度，云指引下修</td>
+<td>云收入回到指引上沿、国产芯片出海部署</td>
+<td>涨价抑制需求、模型差距扩大</td>
+<td>云收入节奏与部署时点</td>
+</tr>
+<tr>
+<td>生物医药（A/H）</td>
+<td>评级上调</td>
+<td>视频仅提评级调整，未展开推导</td>
+<td>未给出</td>
+<td>未给出</td>
+<td>评级报告原文</td>
+</tr>
+<tr>
+<td>美国数据中心与电力设备</td>
+<td>明确正面</td>
+<td>算力产能确定回流美国的直接受益者</td>
+<td>订单与并网审批加速</td>
+<td>管制放松使算力留在海外</td>
+<td>订单与并网数据</td>
+</tr>
+<tr>
+<td>欧洲半导体设备</td>
+<td>认为被"误伤"，偏正面</td>
+<td>最严DUV条款难落地、厂商预期已下调</td>
+<td>12月法案未纳入全面禁令</td>
+<td>全面禁令或零部件服务限制落地</td>
+<td>4个法案文本与厂商指引</td>
+</tr>
+<tr>
+<td>中国利率债与城投信用</td>
+<td>分层而非系统性风险</td>
+<td>央行容忍信用重定价，仅防广义流动性风险</td>
+<td>利差走阔但无理财赎回</td>
+<td>赎回负反馈、优质平台再融资受阻</td>
+<td>央行操作与赎回数据</td>
+</tr>
+<tr>
+<td>人民币</td>
+<td>温和升值+双向波动，年底6.6</td>
+<td>顺差不等同买盘、结汇依赖升值预期、利差论假设过强</td>
+<td>中间价与结汇率双向波动</td>
+<td>出口失速或美元大幅走强</td>
+<td>结汇率与资本流动数据</td>
+</tr>
+</tbody>
+</table></div>
+</article>
+
+<article id="note-CCSWmdu-yLE" class="article">
+  <div class="article-head">
+    <div>
+      <h3><a href="https://www.youtube.com/watch?v=CCSWmdu-yLE" target="_blank" rel="noreferrer">【重磅思考】付鹏：勤劳只能小富，大富靠杠杆——先保现金流，再抓住 AI</a></h3>
+      <div class="meta">20261126 · CCSWmdu-yLE · <a href="https://www.youtube.com/watch?v=CCSWmdu-yLE" target="_blank" rel="noreferrer">观看 YouTube 原片 ↗</a></div>
+    </div>
+  </div>
+  <div class="content"><h1 id="ai">结构化笔记｜【重磅思考】付鹏：勤劳只能小富，大富靠杠杆——先保现金流，再抓住 AI</h1>
+<h2 id="1">1. 核心结论</h2>
+<ol>
+<li><strong>财富量级分层：勤劳只能换来"小富即安"，千万级靠负债、过亿靠杠杆。</strong> 依据是把约 35 年核心劳动时间线性外推，最理想也不过房、车、孩子加"百万级"现金；边界是"无病无灾无失败"的顺境假设，一次大病或长期失业就让曲线下折。</li>
+<li><strong>杠杆的本质是把未来现金流提前折现，成立与否取决于"后面有没有人、拿不拿得出钱"。</strong> 房价、股价、企业估值同属这一机制；人口与收入是硬约束，承担者变少时加杠杆，风险远大于收益。</li>
+<li><strong>资产便宜与现金流友好不可兼得，"错配"才是普通家庭财富分化的主因。</strong> 房价下行时买得便宜，但同期收入与当期现金流往往同步受损；真正的失误是该保现金流时仍在扛负债，以及把资产上涨误当成自己的能力。</li>
+<li><strong>可执行顺序是：先保现金流 → 再降可选杠杆 → 少动且动前全盘规划。</strong> 这是纪律而非时点判断；现金流不能自给时，再便宜的资产也不该接。</li>
+<li><strong>AI 已在教育与认知层面形成实质性平权，是普通家庭绕开"用钱买资源"的现实杠杆。</strong> 有效范围是可标准化的语言陪练、作业答疑等环节；红利只属于真正在用的人，且不改变升学制度与学习自律问题。</li>
+</ol>
+<h2 id="2">2. 专家观点与逻辑链</h2>
+<h3 id="1_1">观点 1：劳动是解决生存的工具，不是财富创造的点</h3>
+<ul>
+<li><strong>观点归属：</strong> 付鹏（个人财富观表述，非机构研究结论）。</li>
+<li><strong>结论：</strong> 否定"勤劳致富"叙事：勤劳解决生存并实现小富，量级跃迁须借助外部资金结构。</li>
+<li><strong>前提事实：</strong> 核心劳动时间约 35 年（20 岁入社会到 55 岁左右退休）；顺境下线性外推，结果是有房、有车、有孩子、手上"百万级"顶头；上一代财富多靠三代人慢积累（经验性陈述，待核验）。</li>
+<li><strong>推导逻辑：</strong> <code>劳动收入=可出售时间×单位时间价格 → 可出售时间存在刚性上限（约35年） → 收入天花板可被算术约束 → 线性外推只能到百万级 → 结论：勤劳对应小富，量级跃迁必须依靠负债与杠杆</code></li>
+<li><strong>隐含假设：</strong> 工资增速慢于资产折现速度；个体无可复制性收入（股权、软件、版权）；劳动时间无法加杠杆。</li>
+<li><strong>反例 / 证伪条件：</strong> 若个体拥有人格化 IP、软件、专利等零边际成本产出的资产，或所处行业工资随生产率非线性抬升，则"劳动只能小富"不成立。</li>
+</ul>
+<h3 id="2_1">观点 2：杠杆是把未来现金流拿到当期，兑现依赖"下一个人"</h3>
+<ul>
+<li><strong>观点归属：</strong> 付鹏。</li>
+<li><strong>结论：</strong> 中性偏谨慎地界定杠杆：关键是加杠杆的时点，而非杠杆倍数本身。</li>
+<li><strong>前提事实：</strong> 企业家身价多为股票市值，按行业 3%–5% 净利率经营无法解释该量级；市值即未来 30–50 年收益的折现（市盈率）；房子的当期现金流只有租金，价差全部来自远期折现；30 年房贷即买方未来现金流被卖方当期取走；房地产关键变量是人口周期（框架判断，待核验）。</li>
+<li><strong>推导逻辑：</strong> <code>资产价格=当期现金流+远期折现 → 远期折现须由他人真金白银支付 → 支付能力取决于人口与收入 → 承担者减少、索取者过多则链条断裂 → 泡沫破裂并周期性重演 → 结论：杠杆的关键是择时</code></li>
+<li><strong>隐含假设：</strong> 折现率与接盘人口可观察；周期下行时资产流动性不至于消失；杠杆成本长期低于资产折现回报。</li>
+<li><strong>反例 / 证伪条件：</strong> 若资产自身现金流（租金、分红、替代的自用租金）在无人接盘时仍能覆盖利息，则"必须有人接盘"的约束被弱化——这正是他在后文案例中自己给出的例外；反之若利率高于资产现金流回报，任何时点的杠杆都难成立。</li>
+</ul>
+<h3 id="3">观点 3：资产价格与现金流不可兼得，错配决定贫富</h3>
+<ul>
+<li><strong>观点归属：</strong> 付鹏。</li>
+<li><strong>结论：</strong> 不认同"等房价跌了再抄底"，认为当期现金流才是"你行不行"的尺子；同时认为普通劳动者应欢迎通胀。</li>
+<li><strong>前提事实：</strong> 房价下行期多数人收入同步变差，"买得便宜"只在资产端受益；父母那代官方通胀率 10% 以上，却能靠自种菜、兄衣弟穿平抑物价，唯一解决不了的是"挣不着钱"；当前为低利率与资产价格下跌并存（2026 年环境判断，待核验）；嘉宾自述 2020 年卖房、五年后原价买回尚余 500 万（个人案例，无法核验）。</li>
+<li><strong>推导逻辑：</strong> <code>房价下行 → 经济收缩 → 收入与现金流下降 → 买价下降被收入下降抵消 → 资产便宜与现金流友好不可兼得 → 只看一端即错配 → 贫富分化扩大</code></li>
+<li><strong>隐含假设：</strong> 房价与居民收入高度同向；个体无法通过跨资产、跨地域配置对冲；通胀对劳动收入的正向作用大于对生活成本的侵蚀。</li>
+<li><strong>反例 / 证伪条件：</strong> 若收入来自逆周期行业或海外收入，房价下跌期其现金流反而改善，"不可兼得"不适用于该个体；若通胀属成本推动而工资不跟随（滞胀），"欢迎通胀"的逻辑失效。</li>
+</ul>
+<h3 id="4">观点 4：逆周期接资产的前提是自身现金流，不是资产便宜</h3>
+<ul>
+<li><strong>观点归属：</strong> 付鹏。</li>
+<li><strong>结论：</strong> 有条件认可自用替代型不动产与现金流型小生意，否定以出租价差为目的的抄底。</li>
+<li><strong>前提事实：</strong> 华润某物业三四层约 2000 余平米作价约 800 万（细节待核验）；数万人社区的足疗店可用预付储值在装修后快速回笼现金；海泰国际（四川北路地铁上盖、loft，100 平米实用近 300 平米）作价 400 余万，原业主 2012 年亦以 400 余万买入，原办公室年租 70 万；嘉宾称"16 年租金收回"，与 70 万对 400 余万不符（疑口误或转写误差，按 6 年左右更合理，待核验）；该楼整层 8–9 户、有房东空置一年以上，出租空置率偏高。</li>
+<li><strong>推导逻辑：</strong> <code>低利率+资产价格下行 → 自用租金是可消除的现金流出 → 买价约等于若干年租金 → 入账可折旧抵税 → 自用年限够长则价差非必要条件 → 结论：自用与现金流型可接，纯出租型不接</code></li>
+<li><strong>隐含假设：</strong> 自用需求稳定十年以上；独立空调与独立水电等物业条件适配工作室用途；空置率不会继续恶化到影响退出；公司有足够税前利润使用折旧抵扣。</li>
+<li><strong>反例 / 证伪条件：</strong> 若业务在 3–5 年内迁移或收缩，"省租金"逻辑消失，400 万变成流动性差的重资产；若空置率继续上行，二手退出价可能低于买入价，"平价卖出+省下租金"的前提被打破。</li>
+</ul>
+<h3 id="5ai">观点 5：AI 带来教育平权，是普通家庭最现实的认知杠杆</h3>
+<ul>
+<li><strong>观点归属：</strong> 付鹏。</li>
+<li><strong>结论：</strong> 看多 AI 在教育场景的颠覆性，认为教培意义已大幅下降；但多数家长尚未真正用起来。</li>
+<li><strong>前提事实：</strong> 一对一外教课时费约 500–600 元，音乐艺术类更贵，国际学校与私教构成教育资源分层；手机支架配合 DeepSeek、元宝等可做口语陪练、拍照识题并即时纠错（工具能力描述，待核验）；AI 不解决升学制度与学习意愿。</li>
+<li><strong>推导逻辑：</strong> <code>教育资源是钱的函数 → AI 把陪练/答疑变成近零边际成本服务 → 家庭付费门槛下降 → 平权在可标准化环节先发生 → 认知门槛下降 → 结论：会用 AI 的家庭获得非货币性杠杆</code></li>
+<li><strong>隐含假设：</strong> 家长具备基本的工具使用与提问能力；AI 输出质量足以承担纠错；学校评价体系仍以标准化考试为主，家庭辅导有边际价值。</li>
+<li><strong>反例 / 证伪条件：</strong> 若 AI 给出错误引导而家长无力甄别，或升学竞争转向无法被 AI 替代的稀缺资源（名额、推荐、竞赛），则"教育平权"的效果显著打折。</li>
+</ul>
+<h2 id="3_1">3. 投资研究指引</h2>
+<blockquote>
+<p>记录视频所表达的研究方向，不构成买卖建议；没有明确投资含义时如实写"未给出可执行指引"。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>主题 / 对象</th>
+<th>视频隐含或明确的方向</th>
+<th>为什么</th>
+<th>正向验证信号</th>
+<th>风险 / 失效信号</th>
+<th>需补的证据</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>家庭资产负债表与负债结构</td>
+<td>明确：先保现金流，再压可选杠杆</td>
+<td>房价下行期收入与资产同时承压，现金流一断即连锁放大</td>
+<td>净现金流为正、可覆盖 6–12 个月刚性支出、无集中到期债务</td>
+<td>靠新增负债维持月供，一次医疗或学费支出即形成缺口</td>
+<td>月度现金流表、债务到期结构、可变现资产占比</td>
+</tr>
+<tr>
+<td>住宅类房产（价差与杠杆逻辑）</td>
+<td>谨慎，不认同以价差加杠杆抄底</td>
+<td>房价收益来自远期折现，需后续人口与收入接盘，人口周期转弱时折现链条断裂</td>
+<td>常住人口与收入回升、租金回报可覆盖持有成本</td>
+<td>空置率上升、二手挂牌周期拉长、租金下行</td>
+<td>当地人口净流入、租金回报率、二手成交周期、空置率</td>
+</tr>
+<tr>
+<td>自用型核心地段小面积商办</td>
+<td>有条件认可：以"替代租金+折旧抵税"为买入依据</td>
+<td>年租 70 万对应 400 余万买入价，自用即回收；独立水电空调适配小团队</td>
+<td>自用年限 10 年以上、买入价约等于 5–6 年租金、物业条件适配业务</td>
+<td>业务迁移或收缩、空置率继续恶化导致退出价低于买入价</td>
+<td>同楼成交价与空置率、物业费与改造成本、折旧与税前利润口径</td>
+</tr>
+<tr>
+<td>社区刚需型小生意（足疗、小餐饮）</td>
+<td>隐含看好：现金流优先于规模与品牌</td>
+<td>数万人社区配套、储值在装修后快速回笼，抗周期性强</td>
+<td>储值余额与月流水稳定、租金占比可控</td>
+<td>储值资金被挪用、同商圈供给过剩、社区人口外流</td>
+<td>周边常住人口、储值负债规模、单店回本周期</td>
+</tr>
+<tr>
+<td>账期型贸易业务</td>
+<td>明确回避：放账期等同于加杠杆</td>
+<td>账期本质是替客户融资，坏账即自身现金流断裂</td>
+<td>现款现货比例高、客户分散</td>
+<td>账期拉长、单一客户占比过高</td>
+<td>应收账款周转天数、坏账率、客户结构</td>
+</tr>
+<tr>
+<td>AI 教育工具应用</td>
+<td>明确看多使用端普及，属能力建设，非投资标的</td>
+<td>可替代部分高价一对一陪练与答疑，直接削减家庭教育支出</td>
+<td>家庭形成稳定使用习惯、错题纠正有效、补课支出实际下降</td>
+<td>只买设备不用、AI 误导无法甄别</td>
+<td>使用频次、效果对比、被替代的补课支出金额</td>
+</tr>
+</tbody>
+</table></div>
+</article>
+
+<article id="note-gw51eUXiH5k" class="article">
+  <div class="article-head">
+    <div>
+      <h3><a href="https://www.youtube.com/watch?v=gw51eUXiH5k" target="_blank" rel="noreferrer">大摩行业周期论剑闭门会2026-11-25 财富预期上调17%，油价往下仍首推中石油（Household Wealth Forecast Raised 17%）</a></h3>
+      <div class="meta">20261126 · gw51eUXiH5k · <a href="https://www.youtube.com/watch?v=gw51eUXiH5k" target="_blank" rel="noreferrer">观看 YouTube 原片 ↗</a></div>
+    </div>
+  </div>
+  <div class="content"><h1 id="2026-11-25-17household-wealth-forecast-raised-17">结构化笔记｜大摩行业周期论剑闭门会2026-11-25 财富预期上调17%，油价往下仍首推中石油（Household Wealth Forecast Raised 17%）</h1>
+<h2 id="1">1. 核心结论</h2>
+<ul>
+<li>大摩将2030年中国家庭金融财富预测上调约17%，依据是居民收入增速虽从约9%回落至4%–5%，但储蓄率在退休高峰前维持高位、财富存量十年CAGR仍约10.5%；一旦"收入放缓而财富仍高增"这一组合被数据打破，上修即失去基础。</li>
+<li>该团队判断本轮资金由存款流向保险、证券、理财不是阶段性搬家，而非既成事实：其逻辑依赖金融发展模式转向以投资回报为导向，需以企业ROE与长期股债收益率的实际回升来验证。</li>
+<li>地产、基建、工业投资今年同时走弱被解读为"以回报换速度"的主动调整；转写可支撑的事实仅是基建与工业投资负增长、约40%行业投资回报自低位反弹，"全面回暖"并无证据，作者本人也承认周期未结束。</li>
+<li>能源排序上，即便判断明年油价可能下行，仍把中石油列为三桶油首选，理由是稳健高股息而非油价弹性；油价跌幅是否击穿其现金流与分红能力，是这条逻辑的关键边界。</li>
+<li>铜的中长期偏紧判断不变、明年基本面仍偏紧，并明确反对把今年产量不及预期当作明年自动恢复正常的理由。</li>
+</ul>
+<h2 id="2">2. 专家观点与逻辑链</h2>
+<h3 id="1203017">观点 1：2030年中国家庭金融财富预测上调约17%</h3>
+<ul>
+<li><strong>观点归属：</strong> 大摩中国金融行业首席（转写称"Richard"，姓名与职务待核验），延续其2021年财富蓝皮书框架。</li>
+<li><strong>结论：</strong> 对中国家庭金融财富总量明确看多，并大幅上修原有预测。</li>
+<li><strong>前提事实：</strong> 2021年与2023年的旧预测偏审慎，理由是银行主导的融资结构、资产适配性与ROE约束；今年居民收入增速仍有4%–5%（转写一处称"4.5%"）；家庭财富十年CAGR约10.5%，近两年10%–12%；人均金融财富相对美国、日韩仍有较大缺口（以上均为嘉宾引用的自家测算，待核验）。转写将"2030年预测"一处误作"2023年预测"，按上下文应为2030年。</li>
+<li><strong>推导逻辑：</strong> 收入增速由约9%降至4%–5% → 但退休高峰前储蓄率难降、财富积累期短且基数缺口大 → 财富存量增速高于金融行业总资产与贷款增速 → 2030年预测上修约17%、2035年前维持约8% → 对中国家庭金融财富总量看多。</li>
+<li><strong>隐含假设：</strong> 居民收入增速不跌破4%；储蓄率在退休高峰前不快速下行；财富统计口径与推算模型未被口径调整打断。</li>
+<li><strong>反例 / 证伪条件：</strong> 收入增速跌破4%、居民消费与支付数据明显弱于其测算、或储蓄率因社保与地产财富收缩而快速回落，则上修幅度需回吐。</li>
+</ul>
+<h3 id="2_1">观点 2：存款向保险、证券、理财的迁移"这次不一样"</h3>
+<ul>
+<li><strong>观点归属：</strong> 同一金融行业首席（与保险行业分析师的行业更新相衔接）。</li>
+<li><strong>结论：</strong> 相对看多非存款类金融资产（保险、证券、理财）的长期资金流入，认为不是牛短熊长下的阶段性搬家。</li>
+<li><strong>前提事实：</strong> 去年与今年上半年股市反弹已带动资金分流；市场普遍以"牛短熊长、资金往返存款"解释这一现象（属市场共识概括，待核验）；嘉宾称监管在投资回报导向上"没有任何动摇"，对回报不达标的专项债与地方项目不建议投资甚至叫停（政策细节待核验）。</li>
+<li><strong>推导逻辑：</strong> 金融发展模式从"重速度"转向"重投资回报" → 企业ROE逐步反弹 → 股权与债权长期收益率抬升 → 居民持有非存款资产的回报与体验改善 → 资金不再回撤存款 → 迁移具备持续性 → 看多保险、证券、理财的资金面。</li>
+<li><strong>隐含假设：</strong> 政策定力可持续；ROE回升能传导至居民端产品收益；居民风险偏好不因一次深度回撤而永久回落到存款。</li>
+<li><strong>反例 / 证伪条件：</strong> 股市出现大幅回撤后资金再次快速回流存款；存款利率相对吸引力上升；或政策重回以规模投资托底内需，模式转向被证伪。</li>
+</ul>
+<h3 id="3">观点 3：内需投资收缩是"以回报换速度"的必要代价</h3>
+<ul>
+<li><strong>观点归属：</strong> 金融行业首席，主持人张雷（Rachel，基础材料）呼应。</li>
+<li><strong>结论：</strong> 对地产、基建、工业投资的调整持中性偏正面解读，认为有利于长期资金回报，而非单纯看空内需。</li>
+<li><strong>前提事实：</strong> 地产投资近年明显走低；今年基建与工业投资出现负增长，嘉宾称历史上少见；基建投资在2021–2022年前已放缓，但为托内需仍高速投入至今年；制造业投资自去年年中持续放缓，同期约40%的行业投资回报自低位反弹（数据为嘉宾口径，待核验）。</li>
+<li><strong>推导逻辑：</strong> 压缩低回报的地产、基建与工业投资 → 资本开支纪律与产能约束 → 供需格局改善、约40%行业ROE反弹 → 长期资本回报抬升 → 支撑观点2的资产收益率反转 → 对权益与长期资金流入偏正面。</li>
+<li><strong>隐含假设：</strong> 投资放缓是主动选择而非需求崩塌；投资回报反弹可扩散而非集中于少数行业；不存在迫使重启规模刺激的增长与就业压力。</li>
+<li><strong>反例 / 证伪条件：</strong> 基建与工业投资负增长伴随企业盈利、就业同步恶化；或政策重新以规模投资托底、叫停项目复工，则"回报换速度"链条中断。嘉宾亦承认"半年投资放缓不足以带来全面回报回暖"。</li>
+</ul>
+<h3 id="4">观点 4：油价往下仍首推中石油，定位稳健高股息</h3>
+<ul>
+<li><strong>观点归属：</strong> 大摩能源行业首席（转写称"Jack"，待核验）。</li>
+<li><strong>结论：</strong> 对油价本身偏谨慎（明年可能下行），但对中石油相对看多，在"三桶油"中排序第一，定位为稳健高股息而非油价弹性标的。</li>
+<li><strong>前提事实：</strong> 该观点在本期开篇摘要中以"即便明年油价可能往下，能源排序仍把中石油放在三桶油首位"呈现；转写正文的能源环节并未展开，分红率、桶油成本、天然气与炼化贡献等支撑数据在稿中缺失（待核验）。</li>
+<li><strong>推导逻辑：</strong> 明年油价中枢下移 → 上游盈利承压 → 但公司现金流与分红政策相对稳定、股息率提供估值支撑 → 相对收益优于同业 → 排序居首 → 作为防御型高股息持有。</li>
+<li><strong>隐含假设：</strong> 分红政策不因油价下跌而下调；成本控制与下游、天然气板块能对冲上游下滑；当前估值已部分反映油价回落。</li>
+<li><strong>反例 / 证伪条件：</strong> 油价跌破其现金流盈亏平衡区间；分红被削减或资本开支被迫抬升；同业出现更优的股息与成本组合，则"首选"依据不再成立。</li>
+</ul>
+<h3 id="5">观点 5：铜中长期偏紧，明年仍偏紧</h3>
+<ul>
+<li><strong>观点归属：</strong> 大摩基础材料分析师张雷（Rachel）。</li>
+<li><strong>结论：</strong> 明确看多铜的中长期供需偏紧，并认为明年基本面仍偏紧。</li>
+<li><strong>前提事实：</strong> 今年铜产量不及预期（矿端扰动，具体矿山与幅度未在转写中展开，待核验）；该判断出现在开篇摘要，正文相应段落未展开。</li>
+<li><strong>推导逻辑：</strong> 今年产量不及预期源于矿端结构性约束 → 供给缺口不会随时间自动修复 → 明年新增供应仍不足以匹配需求 → 供需维持偏紧 → 中长期偏紧判断不变 → 铜价与冶炼加工费中枢有支撑。</li>
+<li><strong>隐含假设：</strong> 需求端不出现大幅下滑（中国地产链、电网投资与海外需求为关键变量）；复产与新增项目投产节奏慢于预期。</li>
+<li><strong>反例 / 证伪条件：</strong> 需求超预期走弱导致转为过剩；或此前延迟项目集中投产、库存快速累积，则"偏紧"被证伪。</li>
+</ul>
+<h2 id="3_1">3. 投资研究指引</h2>
+<blockquote>
+<p>记录视频所表达的研究方向，不构成买卖建议；没有明确投资含义时如实写"未给出可执行指引"。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>主题 / 对象</th>
+<th>视频隐含或明确的方向</th>
+<th>为什么</th>
+<th>正向验证信号</th>
+<th>风险 / 失效信号</th>
+<th>需补的证据</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>中国家庭金融财富总量（2030年）</td>
+<td>明确看多，预测上修约17%，2035年前增速约8%</td>
+<td>收入增速4%–5%、储蓄率高位、退休高峰前仍处积累期</td>
+<td>居民收入增速守住4%以上；居民金融资产增量与存款分流延续</td>
+<td>收入增速跌破4%；储蓄率快速下行；财富增速明显低于10%</td>
+<td>上修后的绝对规模与统计口径、分资产拆分、储蓄率预测模型</td>
+</tr>
+<tr>
+<td>保险 / 证券 / 理财等非存款资产</td>
+<td>隐含看多资金持续流入（嘉宾观点，非结论）</td>
+<td>模式转向投资回报，资金不再阶段性回流存款</td>
+<td>保费与新单、公募与理财规模连续多季净增；ROE与长期收益率同步抬升</td>
+<td>市场深度回撤后资金回流存款；居民风险偏好下降</td>
+<td>资金流量表口径下的存款与非存款迁移数据、保险负债成本</td>
+</tr>
+<tr>
+<td>中石油（三桶油排序）</td>
+<td>相对看多，列为首选，定位高股息防御</td>
+<td>油价可能下行，但现金流与分红相对稳健</td>
+<td>分红率与股息率维持；桶油成本可控；油价下跌中相对收益为正</td>
+<td>油价击穿现金流平衡点；分红下调；资本开支抬升</td>
+<td>历史派息率与分红政策、成本曲线、天然气与炼化贡献拆分</td>
+</tr>
+<tr>
+<td>铜</td>
+<td>明确看多中长期偏紧，明年仍偏紧</td>
+<td>今年产量不及预期属结构性约束而非一次性扰动</td>
+<td>现货升贴水与冶炼加工费偏紧、库存低位、矿端扰动延续</td>
+<td>地产链、电网或海外需求超预期走弱；延迟项目集中投产</td>
+<td>供需平衡表、主要矿山产量指引与复产节奏</td>
+</tr>
+<tr>
+<td>基建 / 制造业投资与行业回报</td>
+<td>中性偏正面（结构调整利好回报），未给出可执行指引</td>
+<td>低回报投资被压制，约40%行业回报已反弹</td>
+<td>分行业投资回报继续回升；低效项目继续被约束</td>
+<td>政策重启规模托底；回报反弹仅限少数行业</td>
+<td>分行业ROIC与产能利用率、专项债项目收益测算</td>
+</tr>
+</tbody>
+</table></div>
+</article>
+
+      <div class="day-card">
+        <p>归档路径 <code>daily/20261126/</code> · <a href="../../index.html">返回历史总览</a> · <a href="./index.html">本日目录</a></p>
+      </div>
+    </main>
+  </div>
+</body>
+</html>
